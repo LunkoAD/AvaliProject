@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "avaliproject:durasteel_deepslate_ore",
+    "#minecraft:needs_diamond_tool"
+  ]
+}

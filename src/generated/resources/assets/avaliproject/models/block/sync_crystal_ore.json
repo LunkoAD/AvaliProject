@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "avaliproject:block/sync_crystal_ore"
+  }
+}

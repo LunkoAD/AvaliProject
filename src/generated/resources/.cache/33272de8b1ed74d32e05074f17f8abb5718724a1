@@ -1,0 +1,6 @@
+// 1.21.1	2024-11-15T22:23:41.2762322	Tags for minecraft:block mod id avaliproject
+f57a1c0d935679dbbcab3f2e8a06cae2238a6735 data/avaliproject/tags/block/incorrect_for_aerogel_tool.json
+3ce6c0583a6dd2e87913ad72b695413c07b69c41 data/avaliproject/tags/block/needs_aerogel_tool.json
+e3f10c460b8f39b85af8c4ddb74b27c59ad3aa9d data/minecraft/tags/block/mineable/pickaxe.json
+accadbc257d397ebad9eb9b72447157ce126641e data/minecraft/tags/block/needs_diamond_tool.json
+3f06279b24cea1094afd6593a55c56e1a2e140d2 data/minecraft/tags/block/needs_iron_tool.json
