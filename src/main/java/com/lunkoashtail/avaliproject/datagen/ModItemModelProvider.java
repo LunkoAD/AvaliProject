@@ -95,6 +95,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SPICY_JERKY.get());
         basicItem(ModItems.TUCKER.get());
         basicItem(ModItems.PIRU_FROND.get());
+
+
+        flowerItem(ModBlocks.GROOU_NODULE);
+        flowerItem(ModBlocks.PIRU_NODULE);
+        flowerItem(ModBlocks.NAKATI_NODULE);
+        flowerItem(ModBlocks.KIRI_NODULE);
+
     }
 
     private void trimmedArmorItem(DeferredItem<ArmorItem> itemDeferredItem) {
@@ -140,6 +147,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                                         "item/" + itemDeferredItem.getId().getPath()));
 
             });
+
         }
     }
 
@@ -172,4 +180,5 @@ public class ModItemModelProvider extends ItemModelProvider {
                         "block/" + block.getId().getPath()));
 
     }
+
 }

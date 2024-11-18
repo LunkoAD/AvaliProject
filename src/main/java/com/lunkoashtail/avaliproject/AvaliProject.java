@@ -47,7 +47,18 @@ public class AvaliProject {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(() -> {
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GROOU_NODULE.getId(), ModBlocks.POTTED_GROOU_NODULE);
+        });
+        event.enqueueWork(() -> {
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.NAKATI_NODULE.getId(), ModBlocks.POTTED_NAKATI_NODULE);
+        });
+        event.enqueueWork(() -> {
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.PIRU_NODULE.getId(), ModBlocks.POTTED_PIRU_NODULE);
+        });
+        event.enqueueWork(() -> {
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.KIRI_NODULE.getId(), ModBlocks.POTTED_KIRI_NODULE);
+        });
     }
 
     // Add the example block item to the building blocks tab

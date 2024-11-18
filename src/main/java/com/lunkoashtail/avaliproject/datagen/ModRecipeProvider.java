@@ -299,6 +299,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_groou", has(ModItems.GROOU))
                 .save(recipeOutput, "avaliproject:sugar_from_groou");
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GROOU, 1)
+                .requires(ModBlocks.GROOU_NODULE)
+                .unlockedBy("has_groou_nodule", has(ModBlocks.GROOU_NODULE))
+                .save(recipeOutput, "avaliproject:groou_from_groou_nodule");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PIRU_COLONY, 1)
+                .requires(ModBlocks.PIRU_NODULE)
+                .unlockedBy("has_groou_nodule", has(ModBlocks.PIRU_NODULE))
+                .save(recipeOutput, "avaliproject:piru_colony_from_piru_nodule");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.NAKATI_OVOID, 1)
+                .requires(ModBlocks.NAKATI_NODULE)
+                .unlockedBy("has_groou_nodule", has(ModBlocks.NAKATI_NODULE))
+                .save(recipeOutput, "avaliproject:nakati_ovoid_from_nakati_nodule");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.KIRI_FRUIT, 1)
+                .requires(ModBlocks.KIRI_NODULE)
+                .unlockedBy("has_kiri_nodule", has(ModBlocks.KIRI_NODULE))
+                .save(recipeOutput, "avaliproject:kiri_fruit_from_kiri_nodule");
+
 
 
         oreSmelting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 200, "lume");

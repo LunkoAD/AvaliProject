@@ -7,6 +7,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
@@ -46,6 +47,28 @@ public class ModBiomeModifiers {
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.AEGISALT_ORES_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
+
+
+        context.register(ADD_PIRU_NODULE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.TAIGA), biomes.getOrThrow(Biomes.BIRCH_FOREST)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PIRU_NODULE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_NAKATI_NODULE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.PLAINS), biomes.getOrThrow(Biomes.DARK_FOREST)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.NAKATI_NODULE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_KIRI_NODULE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.SAVANNA), biomes.getOrThrow(Biomes.JUNGLE)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.KIRI_NODULE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_GROOU_NODULE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.RIVER), biomes.getOrThrow(Biomes.FOREST)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.GROOU_NODULE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+
+
+
     }
     private static ResourceKey<BiomeModifier> registerKey(String name) {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));
@@ -58,6 +81,8 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_AERO_CRYSTAL_ORE = registerKey("add_aero_crystal_ore");
     public static final ResourceKey<BiomeModifier> ADD_AEGISALT_ORE = registerKey("add_aegisalt_ore");
 
-
-
+    public static final ResourceKey<BiomeModifier> ADD_PIRU_NODULE = registerKey("add_piru_nodule");
+    public static final ResourceKey<BiomeModifier> ADD_NAKATI_NODULE = registerKey("add_nakati_nodule");
+    public static final ResourceKey<BiomeModifier> ADD_KIRI_NODULE = registerKey("add_kiri_nodule");
+    public static final ResourceKey<BiomeModifier> ADD_GROOU_NODULE = registerKey("add_groou_nodule");
 }

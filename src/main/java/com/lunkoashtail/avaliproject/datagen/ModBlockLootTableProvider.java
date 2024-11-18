@@ -83,6 +83,20 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NakatiCropBlock.AGE, 5));
         this.add(ModBlocks.NAKATI_CROP_BLOCK.get(), this.createCropDrops(ModBlocks.NAKATI_CROP_BLOCK.get(),
                 ModItems.NAKATI_BARK.get(), ModItems.NAKATI_OVOID.asItem(), NakatiCropConditionBuilder));
+
+
+        this.dropSelf(ModBlocks.GROOU_NODULE.get());
+        this.add(ModBlocks.POTTED_GROOU_NODULE.get(), createPotFlowerItemTable(ModBlocks.GROOU_NODULE));
+        this.dropSelf(ModBlocks.NAKATI_NODULE.get());
+        this.add(ModBlocks.POTTED_NAKATI_NODULE.get(), createPotFlowerItemTable(ModBlocks.NAKATI_NODULE));
+        this.dropSelf(ModBlocks.KIRI_NODULE.get());
+        this.add(ModBlocks.POTTED_KIRI_NODULE.get(), createPotFlowerItemTable(ModBlocks.KIRI_NODULE));
+        this.dropSelf(ModBlocks.PIRU_NODULE.get());
+        this.add(ModBlocks.POTTED_PIRU_NODULE.get(), createPotFlowerItemTable(ModBlocks.PIRU_NODULE));
+
+
+
+
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

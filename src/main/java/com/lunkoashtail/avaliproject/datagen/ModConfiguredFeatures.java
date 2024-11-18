@@ -4,6 +4,7 @@ import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -12,6 +13,9 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -27,6 +31,12 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SYNC_CRYSTAL_ORES_KEY = registerKey("sync_crystal_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_THERMAL_CRYSTAL_ORES_KEY = registerKey("thermal_crystal_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_AEGISALT_ORES_KEY = registerKey("aegisalt_ores");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PIRU_NODULE_KEY = registerKey("piru_nodule");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> NAKATI_NODULE_KEY = registerKey("nakati_nodule");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> KIRI_NODULE_KEY = registerKey("kiri_nodule");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GROOU_NODULE_KEY = registerKey("groou_nodule");
+
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -63,6 +73,18 @@ public class ModConfiguredFeatures {
         register(context, OVERWORLD_SYNC_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldSyncCrystalOres, 4));
         register(context, OVERWORLD_THERMAL_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldThermalCrystalOres, 4));
         register(context, OVERWORLD_AEGISALT_ORES_KEY, Feature.ORE, new OreConfiguration(overworldAegisaltOres, 4));
+
+
+        register(context, PIRU_NODULE_KEY, Feature.FLOWER, new RandomPatchConfiguration(32, 6, 2,
+                PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PIRU_NODULE.get())))));
+        register(context, NAKATI_NODULE_KEY, Feature.FLOWER, new RandomPatchConfiguration(32, 6, 2,
+                PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.NAKATI_NODULE.get())))));
+        register(context, KIRI_NODULE_KEY, Feature.FLOWER, new RandomPatchConfiguration(32, 6, 2,
+                PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.KIRI_NODULE.get())))));
+        register(context, GROOU_NODULE_KEY, Feature.FLOWER, new RandomPatchConfiguration(32, 6, 2,
+                PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.GROOU_NODULE.get())))));
+
+
 
     }
 

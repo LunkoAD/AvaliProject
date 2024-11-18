@@ -73,6 +73,33 @@ public class ModBlocks {
 
 
 
+
+    public static final DeferredBlock<Block> GROOU_NODULE = registerBlock("groou_nodule",
+            () -> new FlowerBlock(MobEffects.ABSORPTION, 4, BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));
+    public static final DeferredBlock<Block> POTTED_GROOU_NODULE = BLOCKS.register("potted_groou_nodule",
+            () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), GROOU_NODULE, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_ALLIUM)));
+
+    public static final DeferredBlock<Block> KIRI_NODULE = registerBlock("kiri_nodule",
+            () -> new FlowerBlock(MobEffects.SATURATION, 4, BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));
+    public static final DeferredBlock<Block> POTTED_KIRI_NODULE = BLOCKS.register("potted_kiri_nodule",
+            () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), KIRI_NODULE, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_ALLIUM)));
+
+    public static final DeferredBlock<Block> NAKATI_NODULE = registerBlock("nakati_nodule",
+            () -> new FlowerBlock(MobEffects.LUCK, 4, BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));
+    public static final DeferredBlock<Block> POTTED_NAKATI_NODULE = BLOCKS.register("potted_nakati_nodule",
+            () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), NAKATI_NODULE, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_ALLIUM)));
+
+    public static final DeferredBlock<Block> PIRU_NODULE = registerBlock("piru_nodule",
+            () -> new FlowerBlock(MobEffects.SATURATION, 4, BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));
+    public static final DeferredBlock<Block> POTTED_PIRU_NODULE = BLOCKS.register("potted_piru_nodule",
+            () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), PIRU_NODULE, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_ALLIUM)));
+
+
+
+
+
+
+
 // Crops
     public static final DeferredBlock<Block> NAKATI_CROP_BLOCK = BLOCKS.register("nakati_crop_block",
             () -> new NakatiCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));

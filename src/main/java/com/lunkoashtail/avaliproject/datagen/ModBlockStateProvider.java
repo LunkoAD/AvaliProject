@@ -48,6 +48,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
         makeCrop(((NakatiCropBlock) ModBlocks.NAKATI_CROP_BLOCK.get()), "nakati_crop_block_stage","nakati_crop_block_stage");
         makeCrop(((PiruCropBlock) ModBlocks.PIRU_CROP_BLOCK.get()), "piru_crop_block_stage","piru_crop_block_stage");
 
+
+        simpleBlock(ModBlocks.GROOU_NODULE.get(),
+                models().cross(blockTexture(ModBlocks.GROOU_NODULE.get()).getPath(), blockTexture(ModBlocks.GROOU_NODULE.get())).renderType("cutout"));
+        simpleBlock(ModBlocks.POTTED_GROOU_NODULE.get(), models().singleTexture("potted_groou_nodule", ResourceLocation.parse("flower_pot_cross"), "plant",
+                blockTexture(ModBlocks.GROOU_NODULE.get())).renderType("cutout"));
+
+        simpleBlock(ModBlocks.PIRU_NODULE.get(),
+                models().cross(blockTexture(ModBlocks.PIRU_NODULE.get()).getPath(), blockTexture(ModBlocks.PIRU_NODULE.get())).renderType("cutout"));
+        simpleBlock(ModBlocks.POTTED_PIRU_NODULE.get(), models().singleTexture("potted_piru_nodule", ResourceLocation.parse("flower_pot_cross"), "plant",
+                blockTexture(ModBlocks.PIRU_NODULE.get())).renderType("cutout"));
+
+        simpleBlock(ModBlocks.NAKATI_NODULE.get(),
+                models().cross(blockTexture(ModBlocks.NAKATI_NODULE.get()).getPath(), blockTexture(ModBlocks.NAKATI_NODULE.get())).renderType("cutout"));
+        simpleBlock(ModBlocks.POTTED_NAKATI_NODULE.get(), models().singleTexture("potted_nakati_nodule", ResourceLocation.parse("flower_pot_cross"), "plant",
+                blockTexture(ModBlocks.NAKATI_NODULE.get())).renderType("cutout"));
+
+        simpleBlock(ModBlocks.KIRI_NODULE.get(),
+                models().cross(blockTexture(ModBlocks.KIRI_NODULE.get()).getPath(), blockTexture(ModBlocks.KIRI_NODULE.get())).renderType("cutout"));
+        simpleBlock(ModBlocks.POTTED_KIRI_NODULE.get(), models().singleTexture("potted_kiri_nodule", ResourceLocation.parse("flower_pot_cross"), "plant",
+                blockTexture(ModBlocks.KIRI_NODULE.get())).renderType("cutout"));
+
     }
 
 

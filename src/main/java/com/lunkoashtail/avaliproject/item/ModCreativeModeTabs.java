@@ -67,6 +67,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.AVALI_HOE);
                         output.accept(ModItems.AVALI_PICKAXE);
                         output.accept(ModItems.PIRU_FROND);
+
+                        output.accept(ModBlocks.GROOU_NODULE);
+                        output.accept(ModBlocks.KIRI_NODULE);
+                        output.accept(ModBlocks.NAKATI_NODULE);
+                        output.accept(ModBlocks.PIRU_NODULE);
+
+
                     }).build());
 
     public static final Supplier<CreativeModeTab> PROTOGEN_ITEM_TAB = CREATIVE_MODE_TAB.register("protogen_items_tab",

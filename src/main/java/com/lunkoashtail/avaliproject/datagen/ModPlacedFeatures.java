@@ -5,12 +5,11 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 import java.util.List;
@@ -45,7 +44,24 @@ public class ModPlacedFeatures {
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
 
 
+        register(context, PIRU_NODULE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.PIRU_NODULE_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+        register(context, NAKATI_NODULE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.NAKATI_NODULE_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+        register(context, GROOU_NODULE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.GROOU_NODULE_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+        register(context, KIRI_NODULE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.KIRI_NODULE_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+
+
     }
+
+    public static final ResourceKey<PlacedFeature> PIRU_NODULE_PLACED_KEY = registerKey("piru_nodule_placed");
+    public static final ResourceKey<PlacedFeature> NAKATI_NODULE_PLACED_KEY = registerKey("nakati_nodule_placed");
+    public static final ResourceKey<PlacedFeature> GROOU_NODULE_PLACED_KEY = registerKey("groou_nodule_placed");
+    public static final ResourceKey<PlacedFeature> KIRI_NODULE_PLACED_KEY = registerKey("kiri_nodule_placed");
+
+
     private static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));
     }
