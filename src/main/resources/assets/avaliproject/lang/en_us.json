@@ -38,6 +38,7 @@
   "item.avaliproject.spicy_jerky": "Spicy Jerky",
   "item.avaliproject.nakati_ovoid": "Nakati Ovoid",
   "item.avaliproject.piru_colony": "Piru Colony",
+  "item.avaliproject.piru_frond": "Piru Frond",
 
   "item.avaliproject.avali_hoe": "Avali Hoe",
   "item.avaliproject.avali_axe": "SK3 Glacier",
@@ -45,6 +46,11 @@
   "item.avaliproject.avali_sword": "VB-CK K.23",
 
   "item.avaliproject.thermal_crystal": "Thermal Crystal",
+
+  "block.avaliproject.nakati_crop_block": "Nakati Crop",
+  "block.avaliproject.piru_crop_block": "Piru Colony Crop",
+  "block.avaliproject.kiri_crop_block": "Kiri Crop",
+  "block.avaliproject.groou_crop_block": "Groou Crop",
 
   "block.avaliproject.lume_block": "Block of Lume",
   "block.avaliproject.lume_ore": "Lume Ore",
@@ -65,6 +71,7 @@
 
   "creativetab.avaliproject.avali_items": "Avali Tab",
   "creativetab.avaliproject.protogen_items": "Protogen Tab",
+  "creativetab.avaliproject.sergal_item": "Sergal Tab",
 
   "tooltip.avaliproject.aerogel.shift_down": "The aerogel is an ephemeral lattice of molecules with incredible structural properties, despite weighing next to nothing.",
   "tooltip.avaliproject.aerogel": "Press §eShift§r for more Information",
@@ -100,5 +107,6 @@
   "tooltip.avaliproject.avali_hoe.tooltip": "An Avali version of the classic hoe.",
   "tooltip.avaliproject.avali_axe.tooltip": "An Avali version of the classic axe.",
   "tooltip.avaliproject.avali_pickaxe.tooltip": "An Avali version of the classic pickaxe.",
-  "tooltip.avaliproject.avali_sword.tooltip": "An Avali version of the classic sword."
+  "tooltip.avaliproject.avali_sword.tooltip": "An Avali version of the classic sword.",
+  "tooltip.avaliproject.piru_frond.tooltip": "A long, fibrous frond from a piru barnacle."
 }

@@ -1,6 +1,7 @@
 package com.lunkoashtail.avaliproject.item;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.item.custom.Aerogel;
 import com.lunkoashtail.avaliproject.item.custom.FuelItem;
 import com.lunkoashtail.avaliproject.item.custom.SimpleDrinkableItem;
@@ -22,6 +23,8 @@ public class ModItems {
     public static final DeferredItem<Item> AVALI_ICON = ITEMS.register("avali_icon",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> PROTOGEN_ICON = ITEMS.register("protogen_icon",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SERGAL_ICON = ITEMS.register("sergal_icon",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> THERMAL_CRYSTAL = ITEMS.register("thermal_crystal",
             () -> new FuelItem(new Item.Properties(), 2600));
@@ -49,14 +52,43 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
+
+
     public static final DeferredItem<Item> GROOU = ITEMS.register("groou",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.GROOU)){
+            () -> new ItemNameBlockItem(ModBlocks.GROOU_CROP_BLOCK.get(), new Item.Properties()){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.translatable("tooltip.avaliproject.groou.tooltip"));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
+    public static final DeferredItem<Item> NAKATI_OVOID = ITEMS.register("nakati_ovoid",
+            () -> new ItemNameBlockItem(ModBlocks.NAKATI_CROP_BLOCK.get(), new Item.Properties()){
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.nakati_ovoid.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+    public static final DeferredItem<Item> KIRI_FRUIT = ITEMS.register("kiri_fruit",
+            () -> new ItemNameBlockItem(ModBlocks.KIRI_CROP_BLOCK.get(), new Item.Properties()){
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.kiri_fruit.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+    public static final DeferredItem<Item> PIRU_COLONY = ITEMS.register("piru_colony",
+            () -> new ItemNameBlockItem(ModBlocks.PIRU_CROP_BLOCK.get(), new Item.Properties()){
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.piru_colony.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+
+
+
     public static final DeferredItem<Item> PIRUZA = ITEMS.register("piruza",
             () -> new Item(new Item.Properties().food(ModFoodProperties.PIRUZA)){
                 @Override
@@ -221,14 +253,6 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
-    public static final DeferredItem<Item> KIRI_FRUIT = ITEMS.register("kiri_fruit",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.KIRI_FRUIT)){
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.kiri_fruit.tooltip"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
     public static final DeferredItem<Item> SPICY_JERKY = ITEMS.register("spicy_jerky",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SPICY_JERKY)){
                 @Override
@@ -242,22 +266,6 @@ public class ModItems {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_bbq.tooltip"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
-    public static final DeferredItem<Item> NAKATI_OVOID = ITEMS.register("nakati_ovoid",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.NAKATI_OVOID)){
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.nakati_ovoid.tooltip"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
-    public static final DeferredItem<Item> PIRU_COLONY = ITEMS.register("piru_colony",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.PIRU_COLONY)){
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.piru_colony.tooltip"));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
@@ -297,6 +305,15 @@ public class ModItems {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_hoe.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+
+    public static final DeferredItem<Item> PIRU_FROND = ITEMS.register("piru_frond",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.PIRU_FROND)){
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.piru_frond.tooltip"));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });

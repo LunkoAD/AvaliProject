@@ -66,6 +66,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.AVALI_SWORD);
                         output.accept(ModItems.AVALI_HOE);
                         output.accept(ModItems.AVALI_PICKAXE);
+                        output.accept(ModItems.PIRU_FROND);
                     }).build());
 
     public static final Supplier<CreativeModeTab> PROTOGEN_ITEM_TAB = CREATIVE_MODE_TAB.register("protogen_items_tab",
@@ -86,7 +87,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PROTOSTEEL_INGOT);
                         output.accept(ModItems.DURASTEEL_INGOT);
                         output.accept(ModItems.FIBER);
+                    }).build());
 
+    public static final Supplier<CreativeModeTab> SERGAL_ITEM_TAB = CREATIVE_MODE_TAB.register("sergal_items_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SERGAL_ICON.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "protogen_items_tab"))
+                    .title(Component.translatable("creativetab.avaliproject.sergal_item"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.SERGAL_ICON);
                     }).build());
 
     public static void register (IEventBus eventBus) {

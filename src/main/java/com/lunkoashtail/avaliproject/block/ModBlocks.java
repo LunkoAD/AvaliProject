@@ -1,7 +1,12 @@
 package com.lunkoashtail.avaliproject.block;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.block.custom.GroouCropBlock;
+import com.lunkoashtail.avaliproject.block.custom.KiriCropBlock;
+import com.lunkoashtail.avaliproject.block.custom.NakatiCropBlock;
+import com.lunkoashtail.avaliproject.block.custom.PiruCropBlock;
 import com.lunkoashtail.avaliproject.item.ModItems;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -64,6 +69,18 @@ public class ModBlocks {
     public static final DeferredBlock<Block> TITANIUM_ORE = registerBlock("titanium_ore",
             () -> new DropExperienceBlock(UniformInt.of(2, 4),
                     BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+
+
+
+
+    public static final DeferredBlock<Block> NAKATI_CROP_BLOCK = BLOCKS.register("nakati_crop_block",
+            () -> new NakatiCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+    public static final DeferredBlock<Block> GROOU_CROP_BLOCK = BLOCKS.register("groou_crop_block",
+            () -> new GroouCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+    public static final DeferredBlock<Block> KIRI_CROP_BLOCK = BLOCKS.register("kiri_crop_block",
+            () -> new KiriCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+    public static final DeferredBlock<Block> PIRU_CROP_BLOCK = BLOCKS.register("piru_crop_block",
+            () -> new PiruCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

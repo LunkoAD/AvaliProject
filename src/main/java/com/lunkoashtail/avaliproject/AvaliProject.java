@@ -4,6 +4,10 @@ import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.components.ModDataComponents;
 import com.lunkoashtail.avaliproject.item.ModCreativeModeTabs;
 import com.lunkoashtail.avaliproject.item.ModItems;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -77,6 +81,7 @@ public class AvaliProject {
             event.accept(ModItems.PROTOSTEEL_INGOT);
             event.accept(ModItems.WOVEN_FABRIC);
             event.accept(ModItems.WOVEN_GRAPHENE);
+            event.accept(ModItems.PIRU_FROND);
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
@@ -134,7 +139,5 @@ public class AvaliProject {
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-
-    }
+    public void onServerStarting(ServerStartingEvent event) {}
 }

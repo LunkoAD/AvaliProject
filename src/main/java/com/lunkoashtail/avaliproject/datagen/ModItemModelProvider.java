@@ -68,6 +68,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         //Icons
         basicItem(ModItems.AVALI_ICON.get());
         basicItem(ModItems.PROTOGEN_ICON.get());
+        basicItem(ModItems.SERGAL_ICON.get());
 
         //Tools
         basicItem(ModItems.AVALI_AXE.get());
@@ -92,6 +93,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.PIRUZA.get());
         basicItem(ModItems.SPICY_JERKY.get());
         basicItem(ModItems.TUCKER.get());
+        basicItem(ModItems.PIRU_FROND.get());
     }
 
     // Shoutout to El_Redstoniano for making this
@@ -136,6 +138,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                         .texture("layer0",
                                 ResourceLocation.fromNamespaceAndPath(MOD_ID,
                                         "item/" + itemDeferredItem.getId().getPath()));
+
             });
         }
     }

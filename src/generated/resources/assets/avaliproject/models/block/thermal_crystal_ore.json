@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "avaliproject:block/thermal_crystal_ore"
-  }
-}
