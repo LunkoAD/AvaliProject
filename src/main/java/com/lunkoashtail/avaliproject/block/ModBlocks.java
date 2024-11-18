@@ -8,6 +8,7 @@ import com.lunkoashtail.avaliproject.block.custom.PiruCropBlock;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -72,7 +73,7 @@ public class ModBlocks {
 
 
 
-
+// Crops
     public static final DeferredBlock<Block> NAKATI_CROP_BLOCK = BLOCKS.register("nakati_crop_block",
             () -> new NakatiCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
     public static final DeferredBlock<Block> GROOU_CROP_BLOCK = BLOCKS.register("groou_crop_block",

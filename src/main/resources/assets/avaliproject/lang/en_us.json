@@ -108,5 +108,14 @@
   "tooltip.avaliproject.avali_axe.tooltip": "An Avali version of the classic axe.",
   "tooltip.avaliproject.avali_pickaxe.tooltip": "An Avali version of the classic pickaxe.",
   "tooltip.avaliproject.avali_sword.tooltip": "An Avali version of the classic sword.",
-  "tooltip.avaliproject.piru_frond.tooltip": "A long, fibrous frond from a piru barnacle."
+  "tooltip.avaliproject.piru_frond.tooltip": "A long, fibrous frond from a piru barnacle.",
+
+  "block.avaliproject.piru_nodule": "Piru Nodule",
+  "block.avaliproject.potted_piru_nodule": "Potted Piru",
+  "block.avaliproject.kiri_nodule": "Kiri Nodule",
+  "block.avaliproject.potted_kiri_nodule": "Potted Kiri",
+  "block.avaliproject.groou_nodule": "Groou Nodule",
+  "block.avaliproject.potted_groou_nodule": "Potted Groou",
+  "block.avaliproject.nakati_nodule": "Nakati Nodule",
+  "block.avaliproject.potted_nakati_nodule": "Potted Nakati"
 }

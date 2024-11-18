@@ -1,6 +1,7 @@
 package com.lunkoashtail.avaliproject.datagen;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
@@ -96,7 +97,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.PIRU_FROND.get());
     }
 
-    // Shoutout to El_Redstoniano for making this
     private void trimmedArmorItem(DeferredItem<ArmorItem> itemDeferredItem) {
         final String MOD_ID = AvaliProject.MOD_ID; // Change this to your mod id
 
@@ -165,5 +165,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.parse("item/handheld")).texture("layer0",
                 ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"item/" + item.getId().getPath()));
+    }
+    public void flowerItem(DeferredBlock<Block> block) {
+        this.withExistingParent(block.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0",  ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,
+                        "block/" + block.getId().getPath()));
+
     }
 }

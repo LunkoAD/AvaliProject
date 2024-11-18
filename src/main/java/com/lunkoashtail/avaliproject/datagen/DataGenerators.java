@@ -34,5 +34,6 @@ public class DataGenerators {
 
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModBlockStateProvider(packOutput, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
     }
 }

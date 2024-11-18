@@ -87,8 +87,6 @@ public class ModItems {
                 }
             });
 
-
-
     public static final DeferredItem<Item> PIRUZA = ITEMS.register("piruza",
             () -> new Item(new Item.Properties().food(ModFoodProperties.PIRUZA)){
                 @Override
@@ -138,7 +136,7 @@ public class ModItems {
                 }
             });
     public static final DeferredItem<Item> AEROGEL = ITEMS.register("aerogel",
-            () -> new Aerogel(new Item.Properties()));
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> AERO_CRYSTAL = ITEMS.register("aero_crystal",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SYNC_CRYSTAL = ITEMS.register("sync_crystal",

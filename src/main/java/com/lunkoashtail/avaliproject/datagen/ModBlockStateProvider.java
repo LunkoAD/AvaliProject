@@ -47,6 +47,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         makeCrop(((KiriCropBlock) ModBlocks.KIRI_CROP_BLOCK.get()), "kiri_crop_block_stage","kiri_crop_block_stage");
         makeCrop(((NakatiCropBlock) ModBlocks.NAKATI_CROP_BLOCK.get()), "nakati_crop_block_stage","nakati_crop_block_stage");
         makeCrop(((PiruCropBlock) ModBlocks.PIRU_CROP_BLOCK.get()), "piru_crop_block_stage","piru_crop_block_stage");
+
     }
 
 
