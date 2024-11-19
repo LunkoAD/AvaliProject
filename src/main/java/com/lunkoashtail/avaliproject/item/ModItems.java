@@ -2,12 +2,14 @@ package com.lunkoashtail.avaliproject.item;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.custom.Aerogel;
 import com.lunkoashtail.avaliproject.item.custom.FuelItem;
 import com.lunkoashtail.avaliproject.item.custom.SimpleDrinkableItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -147,6 +149,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_TITANIUM = ITEMS.register("raw_titanium",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> VILOUS_CLAY = ITEMS.register("vilous_clay",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> REFINED_AEGISALT = ITEMS.register("refined_aegisalt",
             () -> new Item(new Item.Properties()){
                 @Override
@@ -267,6 +271,12 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
+    public static final DeferredItem<Item> SERGAL_CHEESE = ITEMS.register("sergal_cheese",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.SERGAL_CHEESE)));
+    public static final DeferredItem<Item> PROTOGEN_RAM = ITEMS.register("protogen_ram",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.PROTOGEN_RAM)));
+    public static final DeferredItem<Item> VILOUS_CERAMIC_INGOT = ITEMS.register("vilous_ceramic_ingot",
+            () -> new Item(new Item.Properties()));
 
 // Tools
 
@@ -315,6 +325,18 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
+
+    //ENTITY
+    public static final DeferredItem<Item> PENGUIN_SPAWN_EGG = ITEMS.register("penguin_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.PENGUIN, 0xdebd47, 0xccbfbe,
+                    new Item.Properties()));
+
+//    public static final DeferredItem<Item> PROTOGEN_SPAWN_EGG = ITEMS.register("protogen_spawn_egg",
+//            () -> new DeferredSpawnEggItem(ModEntities.PROTOGEN, 0xdebd47, 0xccbfbe,
+//                    new Item.Properties()));
+//    public static final DeferredItem<Item> AVALI_SPAWN_EGG = ITEMS.register("avali_spawn_egg",
+//            () -> new DeferredSpawnEggItem(ModEntities.AVALI, 0xdebd47, 0xccbfbe,
+//                    new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

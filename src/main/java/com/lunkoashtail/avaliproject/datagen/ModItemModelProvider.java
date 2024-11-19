@@ -64,6 +64,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.PROTOSTEEL_INGOT.get());
         basicItem(ModItems.WOVEN_FABRIC.get());
         basicItem(ModItems.WOVEN_GRAPHENE.get());
+        basicItem(ModItems.VILOUS_CLAY.get());
+        basicItem(ModItems.SERGAL_CHEESE.get());
+        basicItem(ModItems.VILOUS_CERAMIC_INGOT.get());
+        basicItem(ModItems.PROTOGEN_RAM.get());
 
 
         //Icons
@@ -101,6 +105,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         flowerItem(ModBlocks.PIRU_NODULE);
         flowerItem(ModBlocks.NAKATI_NODULE);
         flowerItem(ModBlocks.KIRI_NODULE);
+
+
+//ENTITY
+        withExistingParent(ModItems.PENGUIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+//        withExistingParent(ModItems.PROTOGEN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+//        withExistingParent(ModItems.AVALI_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
     }
 

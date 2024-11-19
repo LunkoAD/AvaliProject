@@ -46,7 +46,10 @@ public class ModBiomeModifiers {
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.AEGISALT_ORES_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
-
+        context.register(ADD_VILOUS_CERAMIC_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VILOUS_CERAMIC_ORES_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
 
 
         context.register(ADD_PIRU_NODULE, new BiomeModifiers.AddFeaturesBiomeModifier(
@@ -80,6 +83,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_DURASTEEL_ORE = registerKey("add_durasteel_ore");
     public static final ResourceKey<BiomeModifier> ADD_AERO_CRYSTAL_ORE = registerKey("add_aero_crystal_ore");
     public static final ResourceKey<BiomeModifier> ADD_AEGISALT_ORE = registerKey("add_aegisalt_ore");
+    public static final ResourceKey<BiomeModifier> ADD_VILOUS_CERAMIC_ORE = registerKey("add_vilous_ceramic_ore");
 
     public static final ResourceKey<BiomeModifier> ADD_PIRU_NODULE = registerKey("add_piru_nodule");
     public static final ResourceKey<BiomeModifier> ADD_NAKATI_NODULE = registerKey("add_nakati_nodule");

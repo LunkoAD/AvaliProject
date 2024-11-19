@@ -73,6 +73,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.NAKATI_NODULE);
                         output.accept(ModBlocks.PIRU_NODULE);
 
+                        // ENTITIY
+//                        output.accept(ModItems.PENGUIN_SPAWN_EGG);
+//                        output.accept(ModItems.PROTOGEN_SPAWN_EGG);
+//                        output.accept(ModItems.AVALI_SPAWN_EGG);
+
 
                     }).build());
 
@@ -94,6 +99,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PROTOSTEEL_INGOT);
                         output.accept(ModItems.DURASTEEL_INGOT);
                         output.accept(ModItems.FIBER);
+                        output.accept(ModItems.PROTOGEN_RAM);
                     }).build());
 
     public static final Supplier<CreativeModeTab> SERGAL_ITEM_TAB = CREATIVE_MODE_TAB.register("sergal_items_tab",
@@ -101,7 +107,11 @@ public class ModCreativeModeTabs {
                     .withTabsBefore(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "protogen_items_tab"))
                     .title(Component.translatable("creativetab.avaliproject.sergal_item"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.SERGAL_ICON);
+                        output.accept(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE);
+                        output.accept(ModBlocks.VILOUS_CERAMIC_ORE);
+                        output.accept(ModItems.VILOUS_CLAY);
+                        output.accept(ModItems.SERGAL_CHEESE);
+                        output.accept(ModItems.VILOUS_CERAMIC_INGOT);
                     }).build());
 
     public static void register (IEventBus eventBus) {

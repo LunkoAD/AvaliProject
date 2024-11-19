@@ -1,8 +1,11 @@
 package com.lunkoashtail.avaliproject;
 
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.entity.ModEntities;
+import com.lunkoashtail.avaliproject.entity.client.PenguinRenderer;
 import com.lunkoashtail.avaliproject.item.ModCreativeModeTabs;
 import com.lunkoashtail.avaliproject.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import org.slf4j.Logger;
@@ -39,10 +42,9 @@ public class AvaliProject {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
 
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -59,6 +61,15 @@ public class AvaliProject {
         event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.KIRI_NODULE.getId(), ModBlocks.POTTED_KIRI_NODULE);
         });
+
+
+//ENTITIY
+        EntityRenderers.register(ModEntities.PENGUIN.get(), PenguinRenderer::new);
+//        EntityRenderers.register(ModEntities.PROTOGEN.get(), PenguinRenderer::new);
+//        EntityRenderers.register(ModEntities.AVALI.get(), PenguinRenderer::new);
+
+
+
     }
 
     // Add the example block item to the building blocks tab
@@ -84,6 +95,8 @@ public class AvaliProject {
             event.accept(ModItems.PROTOSTEEL_INGOT);
             event.accept(ModItems.WOVEN_FABRIC);
             event.accept(ModItems.WOVEN_GRAPHENE);
+            event.accept(ModItems.VILOUS_CLAY);
+            event.accept(ModItems.VILOUS_CERAMIC_INGOT);
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
@@ -102,9 +115,17 @@ public class AvaliProject {
             event.accept(ModBlocks.TITANIUM_DEEPSLATE_ORE);
             event.accept(ModBlocks.DURASTEEL_ORE);
             event.accept(ModBlocks.DURASTEEL_DEEPSLATE_ORE);
+            event.accept(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE);
+            event.accept(ModBlocks.VILOUS_CERAMIC_ORE);
         }
 
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
+        }
+
+        if(event.getTabKey() == CreativeModeTabs.SPAWN_EGGS){
+            event.accept(ModItems.PENGUIN_SPAWN_EGG);
+//            event.accept(ModItems.AVALI_SPAWN_EGG);
+//            event.accept(ModItems.PROTOGEN_SPAWN_EGG);
         }
 
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -135,6 +156,8 @@ public class AvaliProject {
             event.accept(ModItems.SPICY_JERKY);
             event.accept(ModItems.NAKATI_OVOID);
             event.accept(ModItems.PIRU_COLONY);
+            event.accept(ModItems.PROTOGEN_RAM);
+            event.accept(ModItems.SERGAL_CHEESE);
         }
     }
 

@@ -21,4 +21,6 @@ public class ModFoodProperties {
     public static final FoodProperties TUCKER = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
     public static final FoodProperties SPICY_JERKY = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
     public static final FoodProperties PIRU_FROND = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
+    public static final FoodProperties SERGAL_CHEESE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
+    public static final FoodProperties PROTOGEN_RAM = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
 }

@@ -12,6 +12,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
+import static java.awt.AWTEventMulticaster.add;
+
 public class ModBlockTagProvider extends BlockTagsProvider {
     public ModBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, AvaliProject.MOD_ID, existingFileHelper);
@@ -34,6 +36,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
                 .add(ModBlocks.AEGISALT_ORE.get())
+                .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
+                .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
                 .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
@@ -43,6 +47,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SYNC_CRYSTAL_ORE.get())
                 .add(ModBlocks.DURASTEEL_ORE.get())
                 .add(ModBlocks.TITANIUM_ORE.get())
+                .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
                 .add(ModBlocks.AEGISALT_ORE.get());
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -52,6 +57,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
+                .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
                 .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
 
 

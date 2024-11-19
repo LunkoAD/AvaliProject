@@ -22,20 +22,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
-        List<ItemLike> LUME_SMELTABLES = List.of(ModItems.LUME_BIT,
+        List<ItemLike> LUME_SMELTABLES = List.of(
                 ModBlocks.LUME_ORE, ModBlocks.LUME_DEEPSLATE_ORE);
-        List<ItemLike> TITANIUM_SMELTABLES = List.of(ModItems.TITANIUM_INGOT,
-                ModBlocks.TITANIUM_ORE, ModBlocks.TITANIUM_DEEPSLATE_ORE);
-        List<ItemLike> DURASTEEL_SMELTABLES = List.of(ModItems.DURASTEEL_INGOT.get(),
-                ModBlocks.DURASTEEL_ORE.get(),ModBlocks.DURASTEEL_DEEPSLATE_ORE.get());
-        List<ItemLike> AERO_CRYSTAL_SMELTABLES = List.of(ModItems.AERO_CRYSTAL,
+        List<ItemLike> TITANIUM_SMELTABLES = List.of(
+                ModBlocks.TITANIUM_ORE, ModBlocks.TITANIUM_DEEPSLATE_ORE, ModItems.RAW_TITANIUM);
+        List<ItemLike> DURASTEEL_SMELTABLES = List.of(
+                ModBlocks.DURASTEEL_ORE.get(),ModBlocks.DURASTEEL_DEEPSLATE_ORE.get(), ModItems.RAW_DURASTEEL);
+        List<ItemLike> AERO_CRYSTAL_SMELTABLES = List.of(
                 ModBlocks.AERO_CRYSTAL_ORE, ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE);
-        List<ItemLike> SYNC_CRYSTAL_SMELTABLES = List.of(ModItems.SYNC_CRYSTAL,
+        List<ItemLike> SYNC_CRYSTAL_SMELTABLES = List.of(
                 ModBlocks.SYNC_CRYSTAL_ORE, ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE);
-        List<ItemLike> THERMAL_CRYSTAL_SMELTABLES = List.of(ModItems.REFINED_AEGISALT,
+        List<ItemLike> THERMAL_CRYSTAL_SMELTABLES = List.of(
                 ModBlocks.THERMAL_CRYSTAL_ORE, ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE);
-                List<ItemLike> AEGISALT_SMELTABLES = List.of(ModItems.REFINED_AEGISALT,
-                ModBlocks.AEGISALT_ORE, ModBlocks.AEGISALT_DEEPSLATE_ORE);
+        List<ItemLike> AEGISALT_SMELTABLES = List.of(
+                ModBlocks.AEGISALT_ORE, ModBlocks.AEGISALT_DEEPSLATE_ORE, ModItems.RAW_AEGISALT);
+        List<ItemLike> VILOUS_CERAMIC_SMELTABLES = List.of(
+                ModBlocks.VILOUS_CERAMIC_ORE, ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE, ModItems.VILOUS_CLAY);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LUME.get())
                 .pattern("BBB")
@@ -318,8 +320,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-        oreSmelting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 200, "lume");
-        oreBlasting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 100, "lume");
+        oreSmelting(recipeOutput, VILOUS_CERAMIC_SMELTABLES, RecipeCategory.MISC, ModItems.VILOUS_CERAMIC_INGOT.get(), 0.25f, 200, "vilous_ceramic");
+        oreBlasting(recipeOutput, VILOUS_CERAMIC_SMELTABLES, RecipeCategory.MISC, ModItems.VILOUS_CERAMIC_INGOT.get(), 0.25f, 100, "vilous_ceramic");
         oreSmelting(recipeOutput, DURASTEEL_SMELTABLES, RecipeCategory.MISC, ModItems.DURASTEEL_INGOT.get(), 0.25f, 200, "Durasteel");
         oreBlasting(recipeOutput, DURASTEEL_SMELTABLES, RecipeCategory.MISC, ModItems.DURASTEEL_INGOT.get(), 0.25f, 100, "Durasteel");
         oreSmelting(recipeOutput, AERO_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.AERO_CRYSTAL.get(), 0.25f, 200, "aero_crystal");
@@ -332,6 +334,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(recipeOutput, AEGISALT_SMELTABLES, RecipeCategory.MISC, ModItems.REFINED_AEGISALT.get(), 0.25f, 100, "refined_aegisalt");
         oreSmelting(recipeOutput, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 200, "titanium");
         oreBlasting(recipeOutput, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 100, "titanium");
+        oreSmelting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 200, "lume_bit");
+        oreBlasting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 100, "lume_bit");
+
     }
 
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,

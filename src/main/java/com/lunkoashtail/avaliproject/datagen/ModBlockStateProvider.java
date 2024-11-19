@@ -42,6 +42,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.DURASTEEL_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.TITANIUM_ORE);
         blockWithItem(ModBlocks.TITANIUM_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.VILOUS_CERAMIC_ORE);
 
         makeCrop(((GroouCropBlock) ModBlocks.GROOU_CROP_BLOCK.get()), "groou_crop_block_stage","groou_crop_block_stage");
         makeCrop(((KiriCropBlock) ModBlocks.KIRI_CROP_BLOCK.get()), "kiri_crop_block_stage","kiri_crop_block_stage");

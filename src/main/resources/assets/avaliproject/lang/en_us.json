@@ -39,6 +39,10 @@
   "item.avaliproject.nakati_ovoid": "Nakati Ovoid",
   "item.avaliproject.piru_colony": "Piru Colony",
   "item.avaliproject.piru_frond": "Piru Frond",
+  "item.avaliproject.sergal_cheese": "Sergal Cheese",
+  "item.avaliproject.protogen_ram": "Protogen Ram",
+  "item.avaliproject.vilous_clay": "Vilous Clay",
+  "item.avaliproject.vilous_ceramic_ingot": "Vilous Ceramic Ingot",
 
   "item.avaliproject.avali_hoe": "Avali Hoe",
   "item.avaliproject.avali_axe": "SK3 Glacier",
@@ -117,5 +121,7 @@
   "block.avaliproject.groou_nodule": "Groou Nodule",
   "block.avaliproject.potted_groou_nodule": "Potted Groou",
   "block.avaliproject.nakati_nodule": "Nakati Nodule",
+  "block.avaliproject.vilous_ceramic_deepslate_ore": "Vilous Ceramic Deepslate Ore",
+  "block.avaliproject.vilous_ceramic_ore": "Vilous Ceramic Ore",
   "block.avaliproject.potted_nakati_nodule": "Potted Nakati"
 }

@@ -31,6 +31,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SYNC_CRYSTAL_ORES_KEY = registerKey("sync_crystal_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_THERMAL_CRYSTAL_ORES_KEY = registerKey("thermal_crystal_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_AEGISALT_ORES_KEY = registerKey("aegisalt_ores");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_VILOUS_CERAMIC_ORES_KEY = registerKey("vilous_ceramic__ores");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PIRU_NODULE_KEY = registerKey("piru_nodule");
     public static final ResourceKey<ConfiguredFeature<?, ?>> NAKATI_NODULE_KEY = registerKey("nakati_nodule");
@@ -65,6 +66,9 @@ public class ModConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> overworldAegisaltOres = List.of(
                 OreConfiguration.target(stoneReplaceables, ModBlocks.AEGISALT_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModBlocks.AEGISALT_DEEPSLATE_ORE.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> overworldVilousCeramicOres = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.VILOUS_CERAMIC_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get().defaultBlockState()));
 
         register(context, OVERWORLD_LUME_ORES_KEY, Feature.ORE, new OreConfiguration(overworldLumeOres, 4));
         register(context, OVERWORLD_TITANIUM_ORES_KEY, Feature.ORE, new OreConfiguration(overworldTitaniumOres, 4));
@@ -73,6 +77,7 @@ public class ModConfiguredFeatures {
         register(context, OVERWORLD_SYNC_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldSyncCrystalOres, 4));
         register(context, OVERWORLD_THERMAL_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldThermalCrystalOres, 4));
         register(context, OVERWORLD_AEGISALT_ORES_KEY, Feature.ORE, new OreConfiguration(overworldAegisaltOres, 4));
+        register(context, OVERWORLD_VILOUS_CERAMIC_ORES_KEY, Feature.ORE, new OreConfiguration(overworldVilousCeramicOres, 4));
 
 
         register(context, PIRU_NODULE_KEY, Feature.FLOWER, new RandomPatchConfiguration(32, 6, 2,

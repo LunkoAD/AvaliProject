@@ -63,6 +63,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 block -> createOreDrop(ModBlocks.TITANIUM_ORE.get(), ModItems.RAW_TITANIUM.get()));
         add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get(),
                 block -> createMultipleOreDrops(ModBlocks.TITANIUM_DEEPSLATE_ORE.get(), ModItems.RAW_TITANIUM.get(), 2, 3));
+        add(ModBlocks.VILOUS_CERAMIC_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.VILOUS_CERAMIC_ORE.get(), ModItems.VILOUS_CLAY.get(), 3, 5));
+        add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get(), ModItems.VILOUS_CLAY.get(), 4, 6));
 
         LootItemCondition.Builder GroouCropConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.GROOU_CROP_BLOCK.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GroouCropBlock.AGE, 5));
