@@ -317,6 +317,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModBlocks.KIRI_NODULE)
                 .unlockedBy("has_kiri_nodule", has(ModBlocks.KIRI_NODULE))
                 .save(recipeOutput, "avaliproject:kiri_fruit_from_kiri_nodule");
+    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SERGAL_CHEESE, 4)
+                .requires(Items.MILK_BUCKET)
+                .unlockedBy("has_milk_bucket", has(Items.MILK_BUCKET))
+                .save(recipeOutput, "avaliproject:sergal_cheese_from_milk_bucket");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PROTOGEN_RAM.get(), 4)
+                .pattern("AAA")
+                .pattern("CBC")
+                .define('B', Items.IRON_NUGGET)
+                .define('C', Items.GOLD_NUGGET)
+                .define('A', ModItems.DURASTEEL_INGOT.get())
+                .unlockedBy("has_gold_nugget", has(Items.GOLD_NUGGET))
+                .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+                .unlockedBy("has_durasteel_ingot", has(ModItems.DURASTEEL_INGOT))
+                .save(recipeOutput);
+
 
 
 

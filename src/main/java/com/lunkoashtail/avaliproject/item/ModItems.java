@@ -2,8 +2,6 @@ package com.lunkoashtail.avaliproject.item;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
-import com.lunkoashtail.avaliproject.entity.ModEntities;
-import com.lunkoashtail.avaliproject.item.custom.Aerogel;
 import com.lunkoashtail.avaliproject.item.custom.FuelItem;
 import com.lunkoashtail.avaliproject.item.custom.SimpleDrinkableItem;
 import net.minecraft.network.chat.Component;
@@ -326,17 +324,6 @@ public class ModItems {
                 }
             });
 
-    //ENTITY
-    public static final DeferredItem<Item> PENGUIN_SPAWN_EGG = ITEMS.register("penguin_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.PENGUIN, 0xdebd47, 0xccbfbe,
-                    new Item.Properties()));
-
-//    public static final DeferredItem<Item> PROTOGEN_SPAWN_EGG = ITEMS.register("protogen_spawn_egg",
-//            () -> new DeferredSpawnEggItem(ModEntities.PROTOGEN, 0xdebd47, 0xccbfbe,
-//                    new Item.Properties()));
-//    public static final DeferredItem<Item> AVALI_SPAWN_EGG = ITEMS.register("avali_spawn_egg",
-//            () -> new DeferredSpawnEggItem(ModEntities.AVALI, 0xdebd47, 0xccbfbe,
-//                    new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

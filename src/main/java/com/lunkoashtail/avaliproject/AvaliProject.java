@@ -1,8 +1,6 @@
 package com.lunkoashtail.avaliproject;
 
 import com.lunkoashtail.avaliproject.block.ModBlocks;
-import com.lunkoashtail.avaliproject.entity.ModEntities;
-import com.lunkoashtail.avaliproject.entity.client.PenguinRenderer;
 import com.lunkoashtail.avaliproject.item.ModCreativeModeTabs;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -42,7 +40,6 @@ public class AvaliProject {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -61,14 +58,6 @@ public class AvaliProject {
         event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.KIRI_NODULE.getId(), ModBlocks.POTTED_KIRI_NODULE);
         });
-
-
-//ENTITIY
-        EntityRenderers.register(ModEntities.PENGUIN.get(), PenguinRenderer::new);
-//        EntityRenderers.register(ModEntities.PROTOGEN.get(), PenguinRenderer::new);
-//        EntityRenderers.register(ModEntities.AVALI.get(), PenguinRenderer::new);
-
-
 
     }
 
@@ -123,9 +112,7 @@ public class AvaliProject {
         }
 
         if(event.getTabKey() == CreativeModeTabs.SPAWN_EGGS){
-            event.accept(ModItems.PENGUIN_SPAWN_EGG);
-//            event.accept(ModItems.AVALI_SPAWN_EGG);
-//            event.accept(ModItems.PROTOGEN_SPAWN_EGG);
+
         }
 
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
