@@ -1,11 +1,15 @@
 package com.lunkoashtail.avaliproject;
 
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.entity.ModEntities;
+import com.lunkoashtail.avaliproject.entity.client.SkskceegehkjaRenderer;
 import com.lunkoashtail.avaliproject.item.ModCreativeModeTabs;
 import com.lunkoashtail.avaliproject.item.ModItems;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -40,6 +44,7 @@ public class AvaliProject {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -59,11 +64,12 @@ public class AvaliProject {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.KIRI_NODULE.getId(), ModBlocks.POTTED_KIRI_NODULE);
         });
 
+        EntityRenderers.register(ModEntities.SKSKCEEGEHKJA.get(), SkskceegehkjaRenderer::new);
     }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.LUME);
             event.accept(ModItems.LUME_BIT);
             event.accept(ModItems.THERMAL_CRYSTAL);
@@ -88,7 +94,7 @@ public class AvaliProject {
             event.accept(ModItems.VILOUS_CERAMIC_INGOT);
         }
 
-        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModBlocks.LUME_BLOCK);
             event.accept(ModBlocks.LUME_ORE);
             event.accept(ModBlocks.LUME_DEEPSLATE_ORE);
@@ -108,24 +114,24 @@ public class AvaliProject {
             event.accept(ModBlocks.VILOUS_CERAMIC_ORE);
         }
 
-        if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
         }
 
-        if(event.getTabKey() == CreativeModeTabs.SPAWN_EGGS){
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
 
         }
 
-        if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.AVALI_AXE);
             event.accept(ModItems.AVALI_PICKAXE);
             event.accept(ModItems.AVALI_HOE);
         }
 
-        if(event.getTabKey() == CreativeModeTabs.COMBAT){
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.AVALI_SWORD);
         }
 
-        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(ModItems.KIRIKIRI_PIE);
             event.accept(ModItems.AVALI_MUFFIN);
             event.accept(ModItems.AVALON_TACO);
@@ -151,5 +157,13 @@ public class AvaliProject {
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {}
+    public void onServerStarting(ServerStartingEvent event) {
+    }
+
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        // Some client setup code
+        LOGGER.info("HELLO FROM CLIENT SETUP");
+        LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        EntityRenderers.register(ModEntities.SKSKCEEGEHKJA.get(), SkskceegehkjaRenderer::new);
+    }
 }

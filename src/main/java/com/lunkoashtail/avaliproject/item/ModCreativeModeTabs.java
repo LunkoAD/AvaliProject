@@ -73,11 +73,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.NAKATI_NODULE);
                         output.accept(ModBlocks.PIRU_NODULE);
 
-                        // ENTITIY
-//                        output.accept(ModItems.PENGUIN_SPAWN_EGG);
-//                        output.accept(ModItems.PROTOGEN_SPAWN_EGG);
-//                        output.accept(ModItems.AVALI_SPAWN_EGG);
-
+                        output.accept(ModItems.SKSKCEEGEHKJA_SPAWN_EGG);
 
                     }).build());
 

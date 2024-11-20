@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.item;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.custom.FuelItem;
 import com.lunkoashtail.avaliproject.item.custom.SimpleDrinkableItem;
 import net.minecraft.network.chat.Component;
@@ -323,7 +324,9 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
-
+    public static final DeferredItem<Item> SKSKCEEGEHKJA_SPAWN_EGG = ITEMS.register("skskceegehkja_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.SKSKCEEGEHKJA, 0xdebd47, 0xccbfbe,
+                    new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -106,6 +106,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         flowerItem(ModBlocks.NAKATI_NODULE);
         flowerItem(ModBlocks.KIRI_NODULE);
 
+        withExistingParent(ModItems.SKSKCEEGEHKJA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
     }
 
     private void trimmedArmorItem(DeferredItem<ArmorItem> itemDeferredItem) {
