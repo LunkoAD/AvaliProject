@@ -64,6 +64,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PIRU_COLONY);
                         output.accept(ModItems.AVALI_AXE);
                         output.accept(ModItems.AVALI_SWORD);
+                        output.accept(ModItems.AVALI_SPEAR);
                         output.accept(ModItems.AVALI_HOE);
                         output.accept(ModItems.AVALI_PICKAXE);
                         output.accept(ModItems.PIRU_FROND);
@@ -86,6 +87,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.TITANIUM_DEEPSLATE_ORE);
                         output.accept(ModBlocks.DURASTEEL_ORE);
                         output.accept(ModBlocks.DURASTEEL_DEEPSLATE_ORE);
+                        output.accept(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE);
+                        output.accept(ModBlocks.ARCAITES_CRYSTAL_ORE);
+                        output.accept(ModItems.ARCAITES_CRYSTAL);
                         output.accept(ModItems.RAW_DURASTEEL);
                         output.accept(ModItems.RAW_TITANIUM);
                         output.accept(ModItems.TITANIUM_INGOT);
@@ -96,6 +100,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DURASTEEL_INGOT);
                         output.accept(ModItems.FIBER);
                         output.accept(ModItems.PROTOGEN_RAM);
+                        output.accept(ModItems.PROTOGEN_AXE);
+                        output.accept(ModItems.PROTOGEN_SWORD);
                     }).build());
 
     public static final Supplier<CreativeModeTab> SERGAL_ITEM_TAB = CREATIVE_MODE_TAB.register("sergal_items_tab",

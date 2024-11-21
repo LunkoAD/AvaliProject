@@ -1,10 +1,7 @@
 package com.lunkoashtail.avaliproject.block;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
-import com.lunkoashtail.avaliproject.block.custom.GroouCropBlock;
-import com.lunkoashtail.avaliproject.block.custom.KiriCropBlock;
-import com.lunkoashtail.avaliproject.block.custom.NakatiCropBlock;
-import com.lunkoashtail.avaliproject.block.custom.PiruCropBlock;
+import com.lunkoashtail.avaliproject.block.custom.*;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -12,6 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BannerBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -28,6 +26,12 @@ public class ModBlocks {
     public static final DeferredBlock<Block> LUME_BLOCK = registerBlock("lume_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+    public static final DeferredBlock<Block> ARCAITES_CRYSTAL_ORE = registerBlock("arcaites_crystal_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 4),
+                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> ARCAITES_CRYSTAL_DEEPSLATE_ORE = registerBlock("arcaites_crystal_deepslate_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 4),
+                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<Block> LUME_ORE = registerBlock("lume_ore",
             () -> new DropExperienceBlock(UniformInt.of(2, 4),
                     BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -77,9 +81,6 @@ public class ModBlocks {
     public static final DeferredBlock<Block> VILOUS_CERAMIC_DEEPSLATE_ORE = registerBlock("vilous_ceramic_deepslate_ore",
             () -> new DropExperienceBlock(UniformInt.of(2, 4),
                     BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
-
-
-
 
     public static final DeferredBlock<Block> GROOU_NODULE = registerBlock("groou_nodule",
             () -> new FlowerBlock(MobEffects.ABSORPTION, 4, BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));

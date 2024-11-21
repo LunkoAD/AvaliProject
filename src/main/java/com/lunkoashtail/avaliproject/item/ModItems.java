@@ -140,6 +140,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> AERO_CRYSTAL = ITEMS.register("aero_crystal",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ARCAITES_CRYSTAL = ITEMS.register("arcaites_crystal",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SYNC_CRYSTAL = ITEMS.register("sync_crystal",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_DURASTEEL = ITEMS.register("raw_durasteel",
@@ -288,6 +290,27 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
+    public static final DeferredItem<SwordItem> AVALI_SPEAR = ITEMS.register("avali_spear",
+            () -> new SwordItem(ModToolTiers.AEROGEL, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.AEROGEL, 8, -2.7f))){
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_spear.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+    public static final DeferredItem<SwordItem> PROTOGEN_SWORD = ITEMS.register("protogen_sword",
+            () -> new SwordItem(ModToolTiers.HARDLIGHT, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.HARDLIGHT, 6, -1.4f))){
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.protogen_sword.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+
+
+
     public static final DeferredItem<PickaxeItem> AVALI_PICKAXE = ITEMS.register("avali_pickaxe",
             () -> new PickaxeItem(ModToolTiers.AEROGEL, new Item.Properties()
                     .attributes(PickaxeItem.createAttributes(ModToolTiers.AEROGEL, 1.0F, -2.8f))){
@@ -306,6 +329,17 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
+    public static final DeferredItem<AxeItem> PROTOGEN_AXE = ITEMS.register("protogen_axe",
+            () -> new AxeItem(ModToolTiers.HARDLIGHT, new Item.Properties()
+                    .attributes(AxeItem.createAttributes(ModToolTiers.HARDLIGHT, 6.0F, -3.2f))){
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.protogen_axe.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+
+
     public static final DeferredItem<HoeItem> AVALI_HOE = ITEMS.register("avali_hoe",
             () -> new HoeItem(ModToolTiers.AEROGEL, new Item.Properties()
                     .attributes(HoeItem.createAttributes(ModToolTiers.AEROGEL, 0F, -3.0f))){

@@ -46,15 +46,21 @@
 
   "item.avaliproject.avali_hoe": "Avali Hoe",
   "item.avaliproject.avali_axe": "SK3 Glacier",
+  "item.avaliproject.avali_spear": "VL10-FR Icicle",
+  "item.avaliproject.protogen_axe": "Hardlight Axe MK1",
   "item.avaliproject.avali_pickaxe": "Avali Pickaxe",
   "item.avaliproject.avali_sword": "VB-CK K.23",
+  "item.avaliproject.protogen_sword": "Hardlight Sword MK1",
 
   "item.avaliproject.thermal_crystal": "Thermal Crystal",
+  "item.avaliproject.arcaites_crystal": "Arcaites Crystal",
 
   "block.avaliproject.nakati_crop_block": "Nakati Crop",
   "block.avaliproject.piru_crop_block": "Piru Colony Crop",
   "block.avaliproject.kiri_crop_block": "Kiri Crop",
   "block.avaliproject.groou_crop_block": "Groou Crop",
+  "block.avaliproject.arcaites_crystal_ore": "Arcaites Crystal Ore",
+  "block.avaliproject.arcaites_crystal_deepslate_ore": "Arcaites Crystal Deepslate Ore",
 
   "block.avaliproject.lume_block": "Block of Lume",
   "block.avaliproject.lume_ore": "Lume Ore",
@@ -110,8 +116,11 @@
   "tooltip.avaliproject.piru_frond.tooltip": "A long, fibrous frond from a piru barnacle.",
   "tooltip.avaliproject.avali_hoe.tooltip": "An Avali version of the classic hoe.",
   "tooltip.avaliproject.avali_axe.tooltip": "An Avali version of the classic axe.",
+  "tooltip.avaliproject.avali_spear.tooltip": "A mid ranged melee weapon using avali technology. Greater damage but slower swings.",
+  "tooltip.avaliproject.protogen_axe.tooltip": "An enhanced version of the classic axe.",
   "tooltip.avaliproject.avali_pickaxe.tooltip": "An Avali version of the classic pickaxe.",
   "tooltip.avaliproject.avali_sword.tooltip": "An Avali version of the classic sword.",
+  "tooltip.avaliproject.protogen_sword.tooltip": "An enhanced version of the classic sword.",
   "tooltip.avaliproject.piru_frond.tooltip": "A long, fibrous frond from a piru barnacle.",
 
   "block.avaliproject.piru_nodule": "Piru Nodule",

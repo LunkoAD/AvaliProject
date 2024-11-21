@@ -38,6 +38,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModBlocks.AEGISALT_ORE, ModBlocks.AEGISALT_DEEPSLATE_ORE, ModItems.RAW_AEGISALT);
         List<ItemLike> VILOUS_CERAMIC_SMELTABLES = List.of(
                 ModBlocks.VILOUS_CERAMIC_ORE, ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE, ModItems.VILOUS_CLAY);
+        List<ItemLike> ARCAITES_CRYSTAL_SMELTABLES = List.of(
+                ModBlocks.ARCAITES_CRYSTAL_ORE, ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE, ModItems.ARCAITES_CRYSTAL);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LUME.get())
                 .pattern("BBB")
@@ -332,9 +334,45 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_durasteel_ingot", has(ModItems.DURASTEEL_INGOT))
                 .save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.PROTOGEN_AXE.get())
+                .pattern(" BB")
+                .pattern(" CA")
+                .pattern(" C ")
+                .define('C', ModItems.DURASTEEL_INGOT.get())
+                .define('B', ModItems.PROTOSTEEL_INGOT.get())
+                .define('A', ModItems.NANITE_INJECTOR.get())
+                .unlockedBy("has_durasteel_ingot", has(ModItems.DURASTEEL_INGOT))
+                .unlockedBy("has_protosteel_ingot", has(ModItems.PROTOSTEEL_INGOT))
+                .unlockedBy("has_nanite_injector", has(ModItems.NANITE_INJECTOR))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.PROTOGEN_SWORD.get())
+                .pattern(" C ")
+                .pattern("ACA")
+                .pattern(" B ")
+                .define('B', ModItems.DURASTEEL_INGOT.get())
+                .define('C', ModItems.PROTOSTEEL_INGOT.get())
+                .define('A', ModItems.NANITE_INJECTOR.get())
+                .unlockedBy("has_durasteel_ingot", has(ModItems.DURASTEEL_INGOT))
+                .unlockedBy("has_protosteel_ingot", has(ModItems.PROTOSTEEL_INGOT))
+                .unlockedBy("has_nanite_injector", has(ModItems.NANITE_INJECTOR))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.AVALI_SPEAR.get())
+                .pattern("  A")
+                .pattern("DC ")
+                .pattern("C  ")
+                .define('A', ModItems.AEROGEL.get())
+                .define('C', ModItems.AEROMER.get())
+                .define('D', ModItems.REFINED_AEGISALT.get())
+                .unlockedBy("has_aerogel", has(ModItems.AEROGEL))
+                .unlockedBy("has_aeromer", has(ModItems.AEROMER))
+                .unlockedBy("has_refined_aegisalt", has(ModItems.REFINED_AEGISALT))
+                .save(recipeOutput);
 
 
 
+
+        oreSmelting(recipeOutput, ARCAITES_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.ARCAITES_CRYSTAL.get(), 0.25f, 200, "arcaites_crystal");
+        oreBlasting(recipeOutput, ARCAITES_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.ARCAITES_CRYSTAL.get(), 0.25f, 100, "arcaites_crystal");
         oreSmelting(recipeOutput, VILOUS_CERAMIC_SMELTABLES, RecipeCategory.MISC, ModItems.VILOUS_CERAMIC_INGOT.get(), 0.25f, 200, "vilous_ceramic");
         oreBlasting(recipeOutput, VILOUS_CERAMIC_SMELTABLES, RecipeCategory.MISC, ModItems.VILOUS_CERAMIC_INGOT.get(), 0.25f, 100, "vilous_ceramic");
         oreSmelting(recipeOutput, DURASTEEL_SMELTABLES, RecipeCategory.MISC, ModItems.DURASTEEL_INGOT.get(), 0.25f, 200, "Durasteel");

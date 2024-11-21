@@ -22,10 +22,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
 
         tag(ItemTags.SWORDS)
-                .add(ModItems.AVALI_SWORD.get());
+                .add(ModItems.AVALI_SWORD.get())
+                .add(ModItems.PROTOGEN_SWORD.get())
+                .add(ModItems.AVALI_SPEAR.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.AVALI_PICKAXE.get());
         tag(ItemTags.AXES)
+                .add(ModItems.PROTOGEN_AXE.get())
                 .add(ModItems.AVALI_AXE.get());
         tag(ItemTags.HOES)
                 .add(ModItems.AVALI_HOE.get());

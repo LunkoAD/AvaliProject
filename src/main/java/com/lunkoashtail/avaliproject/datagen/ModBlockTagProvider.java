@@ -38,6 +38,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.AEGISALT_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
+                .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
                 .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
@@ -48,6 +50,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.DURASTEEL_ORE.get())
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
+                .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
                 .add(ModBlocks.AEGISALT_ORE.get());
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -58,6 +61,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
+                .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
 
 
@@ -66,6 +70,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         tag(ModTags.Blocks.INCORRECT_FOR_AEROGEL_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
+
+        tag(ModTags.Blocks.NEEDS_HARDLIGHT_TOOL)
+                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_HARDLIGHT_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
     }
 }

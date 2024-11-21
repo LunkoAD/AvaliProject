@@ -92,11 +92,14 @@ public class AvaliProject {
             event.accept(ModItems.WOVEN_GRAPHENE);
             event.accept(ModItems.VILOUS_CLAY);
             event.accept(ModItems.VILOUS_CERAMIC_INGOT);
+            event.accept(ModItems.ARCAITES_CRYSTAL);
         }
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModBlocks.LUME_BLOCK);
             event.accept(ModBlocks.LUME_ORE);
+            event.accept(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE);
+            event.accept(ModBlocks.ARCAITES_CRYSTAL_ORE);
             event.accept(ModBlocks.LUME_DEEPSLATE_ORE);
             event.accept(ModBlocks.AERO_CRYSTAL_ORE);
             event.accept(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE);
@@ -118,17 +121,20 @@ public class AvaliProject {
         }
 
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
-
+            event.accept(ModItems.SKSKCEEGEHKJA_SPAWN_EGG);
         }
 
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.AVALI_AXE);
             event.accept(ModItems.AVALI_PICKAXE);
             event.accept(ModItems.AVALI_HOE);
+            event.accept(ModItems.PROTOGEN_AXE);
         }
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.AVALI_SWORD);
+            event.accept(ModItems.PROTOGEN_SWORD);
+            event.accept(ModItems.AVALI_SPEAR);
         }
 
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {

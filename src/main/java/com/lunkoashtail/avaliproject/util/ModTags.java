@@ -12,6 +12,8 @@ public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> NEEDS_AEROGEL_TOOL = createTag("needs_aerogel_tool");
         public static final TagKey<Block> INCORRECT_FOR_AEROGEL_TOOL = createTag("incorrect_for_aerogel_tool");
+        public static final TagKey<Block> NEEDS_HARDLIGHT_TOOL = createTag("needs_hardlight_tool");
+        public static final TagKey<Block> INCORRECT_FOR_HARDLIGHT_TOOL = createTag("incorrect_for_hardlight_tool");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));

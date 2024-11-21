@@ -68,6 +68,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SERGAL_CHEESE.get());
         basicItem(ModItems.VILOUS_CERAMIC_INGOT.get());
         basicItem(ModItems.PROTOGEN_RAM.get());
+        basicItem(ModItems.ARCAITES_CRYSTAL.get());
 
 
         //Icons
@@ -80,6 +81,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.AVALI_PICKAXE.get());
         basicItem(ModItems.AVALI_HOE.get());
         basicItem(ModItems.AVALI_SWORD.get());
+        basicItem(ModItems.PROTOGEN_SWORD.get());
+        basicItem(ModItems.PROTOGEN_AXE.get());
+        basicItem(ModItems.AVALI_SPEAR.get());
 
         //Foods
         basicItem(ModItems.AVALI_BBQ.get());

@@ -14,8 +14,7 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 import java.util.List;
 
-import static com.lunkoashtail.avaliproject.datagen.ModConfiguredFeatures.OVERWORLD_VILOUS_CERAMIC_ORES_KEY;
-import static com.lunkoashtail.avaliproject.datagen.ModConfiguredFeatures.registerKey;
+import static com.lunkoashtail.avaliproject.datagen.ModConfiguredFeatures.*;
 
 public class ModPlacedFeatures {
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
@@ -44,6 +43,9 @@ public class ModPlacedFeatures {
                 ModOrePlacements.commonOrePlacement(12,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
         register(context, VILOUS_CERAMIC_ORES_PLACED_KEY, configuredFeatures.getOrThrow(OVERWORLD_VILOUS_CERAMIC_ORES_KEY),
+                ModOrePlacements.commonOrePlacement(12,
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+        register(context, ARCAITES_CRYSTAL_ORES_PLACED_KEY, configuredFeatures.getOrThrow(OVERWORLD_ARCAITES_CRYSTAL_ORES_KEY),
                 ModOrePlacements.commonOrePlacement(12,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
 
@@ -82,5 +84,6 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> AERO_CRYSTAL_ORES_PLACED_KEY = registerKey("aero_crystal_ores_placed");
     public static final ResourceKey<PlacedFeature> SYNC_CRYSTAL_ORES_PLACED_KEY = registerKey("sync_crystal_ores_placed");
     public static final ResourceKey<PlacedFeature> VILOUS_CERAMIC_ORES_PLACED_KEY = registerKey("vilous_ceramic_ores_placed");
+    public static final ResourceKey<PlacedFeature> ARCAITES_CRYSTAL_ORES_PLACED_KEY = registerKey("arcaites_crystal_ores_placed");
 
 }
