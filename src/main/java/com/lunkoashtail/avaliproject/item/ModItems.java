@@ -359,7 +359,7 @@ public class ModItems {
                 }
             });
     public static final DeferredItem<Item> SKSKCEEGEHKJA_SPAWN_EGG = ITEMS.register("skskceegehkja_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.SKSKCEEGEHKJA, 0xdebd47, 0xccbfbe,
+            () -> new DeferredSpawnEggItem(ModEntities.SKSKCEEGEHKJA, 0x5d5d5d, 0xc9c9c9,
                     new Item.Properties()));
 
     public static void register(IEventBus eventBus) {

@@ -4,7 +4,6 @@ import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
@@ -41,8 +40,8 @@ public class SkskceegehkjaEntity extends Animal {
     }
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 20D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25D)
+                .add(Attributes.MAX_HEALTH, 400)
+                .add(Attributes.MOVEMENT_SPEED, 0.16D)
                 .add(Attributes.FOLLOW_RANGE, 24D);
     }
     @Override
@@ -54,20 +53,6 @@ public class SkskceegehkjaEntity extends Animal {
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
         return ModEntities.SKSKCEEGEHKJA.get().create(pLevel);
     }
-
-    @Override
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        if (itemstack.is(Items.BUCKET) && !this.isBaby()) {
-            player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
-            ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, Items.MILK_BUCKET.getDefaultInstance());
-            player.setItemInHand(hand, itemstack1);
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
-        } else {
-            return super.mobInteract(player, hand);
-        }
-    }
-
     private void setupAnimationStates() {
         if(this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = 20;
@@ -81,6 +66,21 @@ public class SkskceegehkjaEntity extends Animal {
         super.tick();
         if(this.level().isClientSide()) {
             this.setupAnimationStates();
+        }
+    }
+
+    @Override
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        if (itemstack.is(Items.BUCKET) && !this.isBaby()) {
+            player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
+            ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, Items.MILK_BUCKET.getDefaultInstance());
+            player.setItemInHand(hand, itemstack1);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+        }
+
+        else {
+            return super.mobInteract(player, hand);
         }
     }
 }
