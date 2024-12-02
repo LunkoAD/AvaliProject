@@ -4,8 +4,11 @@ import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.custom.FuelItem;
+import com.lunkoashtail.avaliproject.item.custom.ModEffectSwordItem;
 import com.lunkoashtail.avaliproject.item.custom.SimpleDrinkableItem;
+import com.lunkoashtail.avaliproject.sound.ModSounds;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
@@ -18,6 +21,10 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AvaliProject.MOD_ID);
 
     public static final DeferredItem<Item> LUME = ITEMS.register("lume",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> NOVULITE = ITEMS.register("novulite",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> AGATE = ITEMS.register("agate",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> LUME_BIT = ITEMS.register("lume_bit",
             () -> new Item(new Item.Properties()));
@@ -56,7 +63,7 @@ public class ModItems {
 
 
     public static final DeferredItem<Item> GROOU = ITEMS.register("groou",
-            () -> new ItemNameBlockItem(ModBlocks.GROOU_CROP_BLOCK.get(), new Item.Properties()){
+            () -> new ItemNameBlockItem(ModBlocks.GROOU_CROP_BLOCK.get() , new Item.Properties().food(ModFoodProperties.GROOU)){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.translatable("tooltip.avaliproject.groou.tooltip"));
@@ -161,21 +168,9 @@ public class ModItems {
                 }
             });
     public static final DeferredItem<Item> DURASTEEL_INGOT = ITEMS.register("durasteel_ingot",
-            () -> new Item(new Item.Properties()){
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.durasteel_ingot.tooltip"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
-            () -> new Item(new Item.Properties()){
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.titanium_ingot.tooltip"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> AEROMER = ITEMS.register("aeromer",
             () -> new Item(new Item.Properties()){
                 @Override
@@ -291,8 +286,8 @@ public class ModItems {
                 }
             });
     public static final DeferredItem<SwordItem> AVALI_SPEAR = ITEMS.register("avali_spear",
-            () -> new SwordItem(ModToolTiers.AEROGEL, new Item.Properties()
-                    .attributes(SwordItem.createAttributes(ModToolTiers.AEROGEL, 8, -2.7f))){
+            () -> new ModEffectSwordItem(ModToolTiers.AEROGEL, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.AEROGEL, 8, -2.7f)), MobEffects.MOVEMENT_SLOWDOWN){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_spear.tooltip"));
@@ -358,9 +353,42 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
-    public static final DeferredItem<Item> SKSKCEEGEHKJA_SPAWN_EGG = ITEMS.register("skskceegehkja_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.SKSKCEEGEHKJA, 0x5d5d5d, 0xc9c9c9,
+    public static final DeferredItem<Item> SKSCEEGEHKJA_SPAWN_EGG = ITEMS.register("sksceegehkja_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.SKSCEEGEHKJA, 0x5d5d5d, 0xc9c9c9,
                     new Item.Properties()));
+    public static final DeferredItem<Item> SKACIKKJRRBWCAK_SPAWN_EGG = ITEMS.register("skacikkjrrbwcak_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.SKACIKKJRRKBWCAK, 0x623928, 0x91776d,
+                    new Item.Properties()));
+
+
+    public static final DeferredItem<SwordItem> SERGAL_GREATSWORD = ITEMS.register("sergal_greatsword",
+            () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.CERAMIC, 8.0F, -2.2f))));
+    public static final DeferredItem<SwordItem> SERGAL_LANCE = ITEMS.register("sergal_lance",
+            () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.CERAMIC, 6.0F, -1.5f))));
+    public static final DeferredItem<SwordItem> SERGAL_MACE = ITEMS.register("sergal_mace",
+            () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()
+                    .attributes(AxeItem.createAttributes(ModToolTiers.CERAMIC, 9.0F, -2.2f))));
+//    public static final DeferredItem<Item> SERGAL_SLINGSHOT = ITEMS.register("sergal_slingshot",
+//            () -> new BowItem(new Item.Properties().durability(996)){
+//                @Override
+//                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+//                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.sergal_slingshot.tooltip"));
+//                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+//                }
+//            });
+
+    public static final DeferredItem<SwordItem> SERGAL_SWORD = ITEMS.register("sergal_sword",
+            () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()
+                    .attributes(AxeItem.createAttributes(ModToolTiers.CERAMIC, 6.5F, -2.2f))));
+    public static final DeferredItem<Item> MERP_MUSIC_DISC = ITEMS.registerItem("merp_music_disc",
+            properties -> new Item(properties.jukeboxPlayable(ModSounds.MERP_KEY).stacksTo(1)));
+    public static final DeferredItem<Item> AVALI_DANCE_MUSIC_DISC = ITEMS.registerItem("avali_dance_music_disc",
+            properties -> new Item(properties.jukeboxPlayable(ModSounds.AVALI_DANCE_KEY).stacksTo(1)));
+
+
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

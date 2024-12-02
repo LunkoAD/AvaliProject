@@ -2,9 +2,8 @@ package com.lunkoashtail.avaliproject.event;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
-import com.lunkoashtail.avaliproject.entity.client.ModModelLayers;
-import com.lunkoashtail.avaliproject.entity.client.SkskceegehkjaModel;
-import com.lunkoashtail.avaliproject.entity.custom.SkskceegehkjaEntity;
+import com.lunkoashtail.avaliproject.entity.custom.SkacikkjrrkbwcakEntity;
+import com.lunkoashtail.avaliproject.entity.custom.SksceegehkjaEntity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -18,16 +17,18 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(ModModelLayers.SKSKCEEGEHKJA, SkskceegehkjaModel::createBodyLayer);
     }
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(ModEntities.SKSKCEEGEHKJA.get(), SkskceegehkjaEntity.createAttributes().build());
+        event.put(ModEntities.SKSCEEGEHKJA.get(), SksceegehkjaEntity.createAttributes().build());
+        event.put(ModEntities.SKACIKKJRRKBWCAK.get(), SkacikkjrrkbwcakEntity.createAttributes().build());
     }
 
     @SubscribeEvent
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
-        event.register(ModEntities.SKSKCEEGEHKJA.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(ModEntities.SKSCEEGEHKJA.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.SKACIKKJRRKBWCAK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }

@@ -40,7 +40,25 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
                 .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
-                .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
+                .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get())
+                .add(ModBlocks.AVALI_PATTERN_BLOCK_1.get())
+                .add(ModBlocks.AVALI_PATTERN_BLOCK_2.get())
+                .add(ModBlocks.AVALI_PATTERN_BLOCK_3.get())
+                .add(ModBlocks.AVALI_PATTERN_BLOCK_4.get())
+                .add(ModBlocks.AVALI_WALL_PATTERN_BLOCK_1.get())
+                .add(ModBlocks.AVALI_WALL_PATTERN_BLOCK_2.get())
+                .add(ModBlocks.AVALI_WALL_PATTERN_BLOCK_3.get())
+                .add(ModBlocks.AVALI_WALL_PATTERN_BLOCK_4.get())
+                .add(ModBlocks.AVALI_FABRIC_BLOCK.get())
+                .add(ModBlocks.SOFT_TAPESTRY.get())
+                .add(ModBlocks.PROTOGEN_SUPPORT_BLOCK.get())
+                .add(ModBlocks.DETAILED_PROTOGEN_BLOCK.get())
+                .add(ModBlocks.AGATE_ORE.get())
+                .add(ModBlocks.AGATE_DEEPSLATE_ORE.get())
+                .add(ModBlocks.NOVULITE_DEEPSLATE_ORE.get())
+                .add(ModBlocks.NOVULITE_ORE.get())
+                .add(ModBlocks.NOVULITE_BLOCK.get())
+                .add(ModBlocks.AGATE_BLOCK.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.LUME_ORE.get())
@@ -51,6 +69,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
                 .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
+                .add(ModBlocks.NOVULITE_ORE.get())
+                .add(ModBlocks.AGATE_ORE.get())
                 .add(ModBlocks.AEGISALT_ORE.get());
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -62,6 +82,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
                 .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.NOVULITE_DEEPSLATE_ORE.get())
+                .add(ModBlocks.AGATE_DEEPSLATE_ORE.get())
                 .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
 
 
@@ -77,6 +99,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         tag(ModTags.Blocks.INCORRECT_FOR_HARDLIGHT_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
+
+        tag(ModTags.Blocks.NEEDS_CERAMIC_TOOL)
+                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
     }
 }

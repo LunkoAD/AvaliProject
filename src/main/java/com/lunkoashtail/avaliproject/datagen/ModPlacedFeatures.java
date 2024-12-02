@@ -22,7 +22,7 @@ public class ModPlacedFeatures {
 
 
         register(context, LUME_ORES_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_LUME_ORES_KEY),
-                ModOrePlacements.commonOrePlacement(12,
+                ModOrePlacements.commonOrePlacement(6,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
         register(context, DURASTEEL_ORES_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_DURASTEEL_ORES_KEY),
                 ModOrePlacements.commonOrePlacement(12,
@@ -47,6 +47,12 @@ public class ModPlacedFeatures {
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
         register(context, ARCAITES_CRYSTAL_ORES_PLACED_KEY, configuredFeatures.getOrThrow(OVERWORLD_ARCAITES_CRYSTAL_ORES_KEY),
                 ModOrePlacements.commonOrePlacement(12,
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+        register(context, NOVULITE_ORES_PLACED_KEY, configuredFeatures.getOrThrow(OVERWORLD_NOVULITE_ORES_KEY),
+                ModOrePlacements.commonOrePlacement(6,
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+        register(context, AGATE_ORES_PLACED_KEY, configuredFeatures.getOrThrow(OVERWORLD_AGATE_ORES_KEY),
+                ModOrePlacements.commonOrePlacement(6,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
 
 
@@ -85,5 +91,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SYNC_CRYSTAL_ORES_PLACED_KEY = registerKey("sync_crystal_ores_placed");
     public static final ResourceKey<PlacedFeature> VILOUS_CERAMIC_ORES_PLACED_KEY = registerKey("vilous_ceramic_ores_placed");
     public static final ResourceKey<PlacedFeature> ARCAITES_CRYSTAL_ORES_PLACED_KEY = registerKey("arcaites_crystal_ores_placed");
+    public static final ResourceKey<PlacedFeature> NOVULITE_ORES_PLACED_KEY = registerKey("novulite_ores_placed");
+    public static final ResourceKey<PlacedFeature> AGATE_ORES_PLACED_KEY = registerKey("agate_ores_placed");
 
 }

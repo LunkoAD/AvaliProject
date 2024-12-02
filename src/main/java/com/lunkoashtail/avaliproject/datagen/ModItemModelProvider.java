@@ -69,6 +69,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VILOUS_CERAMIC_INGOT.get());
         basicItem(ModItems.PROTOGEN_RAM.get());
         basicItem(ModItems.ARCAITES_CRYSTAL.get());
+        basicItem(ModItems.NOVULITE.get());
+        basicItem(ModItems.AGATE.get());
+        basicItem(ModItems.MERP_MUSIC_DISC.get());
+        basicItem(ModItems.AVALI_DANCE_MUSIC_DISC.get());
 
 
         //Icons
@@ -80,10 +84,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.AVALI_AXE.get());
         basicItem(ModItems.AVALI_PICKAXE.get());
         basicItem(ModItems.AVALI_HOE.get());
-        basicItem(ModItems.AVALI_SWORD.get());
+//        basicItem(ModItems.AVALI_SWORD.get());
         basicItem(ModItems.PROTOGEN_SWORD.get());
         basicItem(ModItems.PROTOGEN_AXE.get());
         basicItem(ModItems.AVALI_SPEAR.get());
+        basicItem(ModItems.SERGAL_GREATSWORD.get());
+        basicItem(ModItems.SERGAL_LANCE.get());
+        basicItem(ModItems.SERGAL_SWORD.get());
+//        basicItem(ModItems.SERGAL_SLINGSHOT.get());
+        basicItem(ModItems.SERGAL_MACE.get());
 
         //Foods
         basicItem(ModItems.AVALI_BBQ.get());
@@ -110,7 +119,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         flowerItem(ModBlocks.NAKATI_NODULE);
         flowerItem(ModBlocks.KIRI_NODULE);
 
-        withExistingParent(ModItems.SKSKCEEGEHKJA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.SKSCEEGEHKJA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
     }
 

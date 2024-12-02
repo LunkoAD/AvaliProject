@@ -1,0 +1,6 @@
+{
+  "parent": "mccourse:item/kaupen_bow",
+  "textures": {
+    "layer0": "mccourse:item/sergal_slingshot_pulling_0"
+  }
+}

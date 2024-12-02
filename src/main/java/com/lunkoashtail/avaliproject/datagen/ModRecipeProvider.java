@@ -39,7 +39,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         List<ItemLike> VILOUS_CERAMIC_SMELTABLES = List.of(
                 ModBlocks.VILOUS_CERAMIC_ORE, ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE, ModItems.VILOUS_CLAY);
         List<ItemLike> ARCAITES_CRYSTAL_SMELTABLES = List.of(
-                ModBlocks.ARCAITES_CRYSTAL_ORE, ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE, ModItems.ARCAITES_CRYSTAL);
+                ModBlocks.ARCAITES_CRYSTAL_ORE, ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE);
+        List<ItemLike> NOVULITE_SMELTABLES = List.of(
+                ModBlocks.NOVULITE_ORE, ModBlocks.NOVULITE_DEEPSLATE_ORE);
+        List<ItemLike> AGATE_SMELTABLES = List.of(
+                ModBlocks.AGATE_ORE, ModBlocks.AGATE_DEEPSLATE_ORE);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LUME.get())
                 .pattern("BBB")
@@ -303,23 +307,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_groou", has(ModItems.GROOU))
                 .save(recipeOutput, "avaliproject:sugar_from_groou");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GROOU, 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.GROOU, 1)
                 .requires(ModBlocks.GROOU_NODULE)
                 .unlockedBy("has_groou_nodule", has(ModBlocks.GROOU_NODULE))
                 .save(recipeOutput, "avaliproject:groou_from_groou_nodule");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PIRU_COLONY, 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.PIRU_COLONY, 1)
                 .requires(ModBlocks.PIRU_NODULE)
                 .unlockedBy("has_groou_nodule", has(ModBlocks.PIRU_NODULE))
                 .save(recipeOutput, "avaliproject:piru_colony_from_piru_nodule");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.NAKATI_OVOID, 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.NAKATI_OVOID, 1)
                 .requires(ModBlocks.NAKATI_NODULE)
                 .unlockedBy("has_groou_nodule", has(ModBlocks.NAKATI_NODULE))
                 .save(recipeOutput, "avaliproject:nakati_ovoid_from_nakati_nodule");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.KIRI_FRUIT, 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.KIRI_FRUIT, 1)
                 .requires(ModBlocks.KIRI_NODULE)
                 .unlockedBy("has_kiri_nodule", has(ModBlocks.KIRI_NODULE))
                 .save(recipeOutput, "avaliproject:kiri_fruit_from_kiri_nodule");
-    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SERGAL_CHEESE, 4)
+    ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.SERGAL_CHEESE, 4)
                 .requires(Items.MILK_BUCKET)
                 .unlockedBy("has_milk_bucket", has(Items.MILK_BUCKET))
                 .save(recipeOutput, "avaliproject:sergal_cheese_from_milk_bucket");
@@ -367,8 +371,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_aeromer", has(ModItems.AEROMER))
                 .unlockedBy("has_refined_aegisalt", has(ModItems.REFINED_AEGISALT))
                 .save(recipeOutput);
-
-
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NOVULITE_BLOCK.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', ModItems.NOVULITE.get())
+                .unlockedBy("avaliproject:has_novulite", has(ModItems.NOVULITE))
+                .save(recipeOutput, "avaliproject:novulite_block_from_novulite");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.NOVULITE.get(), 9)
+                .requires(ModBlocks.NOVULITE_BLOCK)
+                .unlockedBy("avaliproject:has_novulite_block", has(ModBlocks.NOVULITE_BLOCK))
+                .save(recipeOutput, "avaliproject:novulite_from_novulite_block");
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AGATE_BLOCK.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', ModItems.AGATE.get())
+                .unlockedBy("avaliproject:has_agate", has(ModItems.AGATE))
+                .save(recipeOutput, "avaliproject:agate_block_from_agate");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.AGATE.get(), 9)
+                .requires(ModBlocks.AGATE_BLOCK)
+                .unlockedBy("avaliproject:has_agate_block", has(ModBlocks.AGATE_BLOCK))
+                .save(recipeOutput, "avaliproject:agate_from_agate_block");
 
 
         oreSmelting(recipeOutput, ARCAITES_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.ARCAITES_CRYSTAL.get(), 0.25f, 200, "arcaites_crystal");
@@ -389,6 +413,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(recipeOutput, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 100, "titanium");
         oreSmelting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 200, "lume_bit");
         oreBlasting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 100, "lume_bit");
+        oreSmelting(recipeOutput, AGATE_SMELTABLES, RecipeCategory.MISC, ModItems.AGATE.get(), 0.25f, 200, "agate");
+        oreBlasting(recipeOutput, AGATE_SMELTABLES, RecipeCategory.MISC, ModItems.AGATE.get(), 0.25f, 100, "agate");
+        oreSmelting(recipeOutput, NOVULITE_SMELTABLES, RecipeCategory.MISC, ModItems.NOVULITE.get(), 0.25f, 200, "novulite");
+        oreBlasting(recipeOutput, NOVULITE_SMELTABLES, RecipeCategory.MISC, ModItems.NOVULITE.get(), 0.25f, 100, "novulite");
 
     }
 

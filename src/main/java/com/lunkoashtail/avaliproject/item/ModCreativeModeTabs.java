@@ -31,6 +31,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.AEGISALT_DEEPSLATE_ORE);
                         output.accept(ModBlocks.LUME_BLOCK);
                         output.accept(ModBlocks.LUME_ORE);
+                        output.accept(ModBlocks.AVALI_PATTERN_BLOCK_1);
+                        output.accept(ModBlocks.AVALI_PATTERN_BLOCK_2);
+                        output.accept(ModBlocks.AVALI_PATTERN_BLOCK_3);
+                        output.accept(ModBlocks.AVALI_PATTERN_BLOCK_4);
+                        output.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_1);
+                        output.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_2);
+                        output.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_3);
+                        output.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_4);
+                        output.accept(ModBlocks.AVALI_FABRIC_BLOCK);
+                        output.accept(ModBlocks.SOFT_TAPESTRY);
                         output.accept(ModItems.LUME);
                         output.accept(ModItems.LUME_BIT);
                         output.accept(ModItems.KIRIKIRI_PIE);
@@ -68,13 +78,17 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.AVALI_HOE);
                         output.accept(ModItems.AVALI_PICKAXE);
                         output.accept(ModItems.PIRU_FROND);
+                        output.accept(ModItems.AVALI_DANCE_MUSIC_DISC);
 
                         output.accept(ModBlocks.GROOU_NODULE);
                         output.accept(ModBlocks.KIRI_NODULE);
                         output.accept(ModBlocks.NAKATI_NODULE);
                         output.accept(ModBlocks.PIRU_NODULE);
 
-                        output.accept(ModItems.SKSKCEEGEHKJA_SPAWN_EGG);
+                        output.accept(ModItems.SKSCEEGEHKJA_SPAWN_EGG);
+                        output.accept(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG);
+
+//                        output.accept(ModBlocks.NANOLOOM.get());
 
                     }).build());
 
@@ -89,6 +103,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.DURASTEEL_DEEPSLATE_ORE);
                         output.accept(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE);
                         output.accept(ModBlocks.ARCAITES_CRYSTAL_ORE);
+                        output.accept(ModBlocks.DETAILED_PROTOGEN_BLOCK);
+                        output.accept(ModBlocks.PROTOGEN_SUPPORT_BLOCK);
+                        output.accept(ModBlocks.NOVULITE_DEEPSLATE_ORE);
+                        output.accept(ModBlocks.NOVULITE_BLOCK);
+                        output.accept(ModBlocks.NOVULITE_ORE);
                         output.accept(ModItems.ARCAITES_CRYSTAL);
                         output.accept(ModItems.RAW_DURASTEEL);
                         output.accept(ModItems.RAW_TITANIUM);
@@ -102,6 +121,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PROTOGEN_RAM);
                         output.accept(ModItems.PROTOGEN_AXE);
                         output.accept(ModItems.PROTOGEN_SWORD);
+                        output.accept(ModItems.NOVULITE);
                     }).build());
 
     public static final Supplier<CreativeModeTab> SERGAL_ITEM_TAB = CREATIVE_MODE_TAB.register("sergal_items_tab",
@@ -111,9 +131,19 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE);
                         output.accept(ModBlocks.VILOUS_CERAMIC_ORE);
+                        output.accept(ModBlocks.AGATE_ORE);
+                        output.accept(ModBlocks.AGATE_DEEPSLATE_ORE);
+                        output.accept(ModBlocks.AGATE_BLOCK);
+                        output.accept(ModItems.AGATE);
                         output.accept(ModItems.VILOUS_CLAY);
                         output.accept(ModItems.SERGAL_CHEESE);
                         output.accept(ModItems.VILOUS_CERAMIC_INGOT);
+                        output.accept(ModItems.SERGAL_LANCE);
+                        output.accept(ModItems.SERGAL_SWORD);
+                        output.accept(ModItems.SERGAL_GREATSWORD);
+                        output.accept(ModItems.SERGAL_MACE);
+//                        output.accept(ModItems.SERGAL_SLINGSHOT);
+                        output.accept(ModItems.MERP_MUSIC_DISC);
                     }).build());
 
     public static void register (IEventBus eventBus) {

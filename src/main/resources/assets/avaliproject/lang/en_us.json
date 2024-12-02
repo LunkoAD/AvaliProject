@@ -51,9 +51,17 @@
   "item.avaliproject.avali_pickaxe": "Avali Pickaxe",
   "item.avaliproject.avali_sword": "VB-CK K.23",
   "item.avaliproject.protogen_sword": "Hardlight Sword MK1",
+  "item.avaliproject.sergal_greatsword": "Sergal Greatsword",
+  "item.avaliproject.sergal_lance": "Sergal Lance",
+  "item.avaliproject.sergal_mace": "Sergal Mace",
+  "item.avaliproject.sergal_sword": "Sergal Sword",
+  "item.avaliproject.merp_music_disc": "Merp Music Disc",
+  "item.avaliproject.avali_dance_music_disc": "Avali Dance Music Disc",
 
   "item.avaliproject.thermal_crystal": "Thermal Crystal",
   "item.avaliproject.arcaites_crystal": "Arcaites Crystal",
+  "item.avaliproject.novulite": "Novulite",
+  "item.avaliproject.agate": "Agate",
 
   "block.avaliproject.nakati_crop_block": "Nakati Crop",
   "block.avaliproject.piru_crop_block": "Piru Colony Crop",
@@ -79,6 +87,27 @@
   "block.avaliproject.sync_crystal_ore": "Sync Crystal Ore",
   "block.avaliproject.avali_cargo_crate": "Avali Cargo Crate",
 
+
+  "block.avaliproject.novulite_ore": "Novulite Ore",
+  "block.avaliproject.novulite_deepslate_ore": "Novulite Deepslate Ore",
+  "block.avaliproject.agate_ore": "Agate Ore",
+  "block.avaliproject.agate_deepslate_ore": "Agate Deepslate Ore",
+  "block.avaliproject.avali_wall_pattern_block_1": "Avali Wall Pattern Block 1",
+  "block.avaliproject.avali_wall_pattern_block_2": "Avali Wall Pattern Block 2",
+  "block.avaliproject.avali_wall_pattern_block_3": "Avali Wall Pattern Block 3",
+  "block.avaliproject.avali_wall_pattern_block_4": "Avali Wall Pattern Block 4",
+  "block.avaliproject.avali_pattern_block_1": "Avali Pattern Block 1",
+  "block.avaliproject.avali_pattern_block_2": "Avali Pattern Block 2",
+  "block.avaliproject.avali_pattern_block_3": "Avali Pattern Block 3",
+  "block.avaliproject.avali_pattern_block_4": "Avali Pattern Block 4",
+  "block.avaliproject.avali_fabric_block": "Avali Fabric Block",
+  "block.avaliproject.soft_tapestry": "Soft Avali Tapestry",
+  "block.avaliproject.detailed_protogen_block": "Detailed Protogen Block",
+  "block.avaliproject.protogen_support_block": "Protogen Support Block",
+  "block.avaliproject.agate_block": "Agate Block",
+  "block.avaliproject.novulite_block": "Novulite Block",
+
+
   "creativetab.avaliproject.avali_items": "Avali Tab",
   "creativetab.avaliproject.protogen_items": "Protogen Tab",
   "creativetab.avaliproject.sergal_item": "Sergal Tab",
@@ -92,7 +121,7 @@
   "tooltip.avaliproject.kiri_fruit.tooltip": "The fruiting body of a subterranean slime mould. This one has already sporing though.",
   "tooltip.avaliproject.kiri_cider.tooltip": "Slightly fermented kiri juice including a bit the ground-up rind and a dash of nakati",
   "tooltip.avaliproject.tucker.tooltip": "Just like normal cookies, only spikier.",
-  "tooltip.avaliproject.woven_graphene.tooltip": "Grapene that's been woven specially for use in avaly crafting stations.",
+  "tooltip.avaliproject.woven_graphene.tooltip": "Grapene that's been woven specially for use in avali crafting stations.",
   "tooltip.avaliproject.woven_fabric.tooltip": "A small square of woven fabric",
   "tooltip.avaliproject.protosteel_ingot.tooltip": "A complex nanite-infused alloy, used to create strong weapons and armour.",
   "tooltip.avaliproject.nanite_injector.tooltip": "A small Nanite Injector, used in crafting recipes.",
@@ -134,5 +163,6 @@
   "block.avaliproject.vilous_ceramic_ore": "Vilous Ceramic Ore",
   "block.avaliproject.potted_nakati_nodule": "Potted Nakati",
 
-  "item.avaliproject.skskceegehkja_spawn_egg": "Skskcee'Gehkja Spawn Egg"
+  "item.avaliproject.sksceegehkja_spawn_egg": "Skskcee'Gehkja Spawn Egg",
+  "item.avaliproject.skacikkjrrbwcak_spawn_egg": "Skacik kjrrk’bwcak Spawn Egg"
 }

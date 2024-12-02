@@ -34,6 +34,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_VILOUS_CERAMIC_ORES_KEY = registerKey("vilous_ceramic_ores");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ARCAITES_CRYSTAL_ORES_KEY = registerKey("arcaites_crystal_ores");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_NOVULITE_ORES_KEY = registerKey("novulite_ores");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_AGATE_ORES_KEY = registerKey("agate_ores");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PIRU_NODULE_KEY = registerKey("piru_nodule");
     public static final ResourceKey<ConfiguredFeature<?, ?>> NAKATI_NODULE_KEY = registerKey("nakati_nodule");
@@ -74,8 +76,14 @@ public class ModConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> overworldArcaitesCrystalOres = List.of(
                 OreConfiguration.target(stoneReplaceables, ModBlocks.ARCAITES_CRYSTAL_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> overworldNovuliteOres = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.NOVULITE_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.NOVULITE_DEEPSLATE_ORE.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> overworldAgateOres = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.AGATE_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.AGATE_DEEPSLATE_ORE.get().defaultBlockState()));
 
-        register(context, OVERWORLD_LUME_ORES_KEY, Feature.ORE, new OreConfiguration(overworldLumeOres, 4));
+        register(context, OVERWORLD_LUME_ORES_KEY, Feature.ORE, new OreConfiguration(overworldLumeOres, 3));
         register(context, OVERWORLD_TITANIUM_ORES_KEY, Feature.ORE, new OreConfiguration(overworldTitaniumOres, 4));
         register(context, OVERWORLD_DURASTEEL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldDurasteelOres, 4));
         register(context, OVERWORLD_AERO_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldAeroCrystalOres, 4));
@@ -84,6 +92,8 @@ public class ModConfiguredFeatures {
         register(context, OVERWORLD_AEGISALT_ORES_KEY, Feature.ORE, new OreConfiguration(overworldAegisaltOres, 4));
         register(context, OVERWORLD_VILOUS_CERAMIC_ORES_KEY, Feature.ORE, new OreConfiguration(overworldVilousCeramicOres, 4));
         register(context, OVERWORLD_ARCAITES_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldArcaitesCrystalOres, 3));
+        register(context, OVERWORLD_NOVULITE_ORES_KEY, Feature.ORE, new OreConfiguration(overworldNovuliteOres, 3));
+        register(context, OVERWORLD_AGATE_ORES_KEY, Feature.ORE, new OreConfiguration(overworldAgateOres, 3));
 
 
         register(context, PIRU_NODULE_KEY, Feature.FLOWER, new RandomPatchConfiguration(32, 6, 2,

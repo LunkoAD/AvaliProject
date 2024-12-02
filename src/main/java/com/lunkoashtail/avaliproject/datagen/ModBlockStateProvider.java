@@ -45,7 +45,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.VILOUS_CERAMIC_ORE);
         blockWithItem(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.AVALI_FABRIC_BLOCK);
+        blockWithItem(ModBlocks.SOFT_TAPESTRY);
+        blockWithItem(ModBlocks.DETAILED_PROTOGEN_BLOCK);
+        blockWithItem(ModBlocks.PROTOGEN_SUPPORT_BLOCK);
+        blockWithItem(ModBlocks.AVALI_PATTERN_BLOCK_1);
+        blockWithItem(ModBlocks.AVALI_PATTERN_BLOCK_2);
+        blockWithItem(ModBlocks.AVALI_PATTERN_BLOCK_3);
+        blockWithItem(ModBlocks.AVALI_PATTERN_BLOCK_4);
+        blockWithItem(ModBlocks.AVALI_WALL_PATTERN_BLOCK_1);
+        blockWithItem(ModBlocks.AVALI_WALL_PATTERN_BLOCK_3);
+        blockWithItem(ModBlocks.AVALI_WALL_PATTERN_BLOCK_2);
+        blockWithItem(ModBlocks.AVALI_WALL_PATTERN_BLOCK_4);
         blockWithItem(ModBlocks.ARCAITES_CRYSTAL_ORE);
+        blockWithItem(ModBlocks.NOVULITE_ORE);
+        blockWithItem(ModBlocks.AGATE_ORE);
+        blockWithItem(ModBlocks.NOVULITE_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.AGATE_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.NOVULITE_BLOCK);
+        blockWithItem(ModBlocks.AGATE_BLOCK);
+
+        blockWithItem(ModBlocks.NANOLOOM);
 
         makeCrop(((GroouCropBlock) ModBlocks.GROOU_CROP_BLOCK.get()), "groou_crop_block_stage","groou_crop_block_stage");
         makeCrop(((KiriCropBlock) ModBlocks.KIRI_CROP_BLOCK.get()), "kiri_crop_block_stage","kiri_crop_block_stage");

@@ -34,6 +34,24 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.LUME_BLOCK.get());
+        dropSelf(ModBlocks.AVALI_FABRIC_BLOCK.get());
+        dropSelf(ModBlocks.SOFT_TAPESTRY.get());
+        dropSelf(ModBlocks.AVALI_WALL_PATTERN_BLOCK_1.get());
+        dropSelf(ModBlocks.AVALI_WALL_PATTERN_BLOCK_2.get());
+        dropSelf(ModBlocks.AVALI_WALL_PATTERN_BLOCK_3.get());
+        dropSelf(ModBlocks.AVALI_WALL_PATTERN_BLOCK_4.get());
+        dropSelf(ModBlocks.AVALI_PATTERN_BLOCK_1.get());
+        dropSelf(ModBlocks.AVALI_PATTERN_BLOCK_2.get());
+        dropSelf(ModBlocks.AVALI_PATTERN_BLOCK_3.get());
+        dropSelf(ModBlocks.AVALI_PATTERN_BLOCK_4.get());
+        dropSelf(ModBlocks.PROTOGEN_SUPPORT_BLOCK.get());
+        dropSelf(ModBlocks.DETAILED_PROTOGEN_BLOCK.get());
+        dropSelf(ModBlocks.NOVULITE_DEEPSLATE_ORE.get());
+        dropSelf(ModBlocks.NOVULITE_ORE.get());
+        dropSelf(ModBlocks.NOVULITE_BLOCK.get());
+        dropSelf(ModBlocks.AGATE_BLOCK.get());
+
+        dropSelf(ModBlocks.NANOLOOM.get());
 
         add(ModBlocks.AEGISALT_ORE.get(),
                 block -> createOreDrop(ModBlocks.AEGISALT_ORE.get(), ModItems.RAW_AEGISALT.get()));
@@ -43,6 +61,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 block -> createMultipleOreDrops(ModBlocks.LUME_ORE.get(), ModItems.LUME_BIT.get(), 2, 3));
         add(ModBlocks.LUME_DEEPSLATE_ORE.get(),
                 block -> createMultipleOreDrops(ModBlocks.LUME_DEEPSLATE_ORE.get(), ModItems.LUME_BIT.get(), 4, 6));
+
+        add(ModBlocks.NOVULITE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.NOVULITE_ORE.get(), ModItems.NOVULITE.get(), 2, 3));
+        add(ModBlocks.NOVULITE_DEEPSLATE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.NOVULITE_DEEPSLATE_ORE.get(), ModItems.NOVULITE.get(), 4, 6));
+        add(ModBlocks.AGATE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.AGATE_ORE.get(), ModItems.AGATE.get(), 2, 3));
+        add(ModBlocks.AGATE_DEEPSLATE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.AGATE_DEEPSLATE_ORE.get(), ModItems.AGATE.get(), 4, 6));
+
         add(ModBlocks.AERO_CRYSTAL_ORE.get(),
                 block -> createOreDrop(ModBlocks.AERO_CRYSTAL_ORE.get(), ModItems.AERO_CRYSTAL.get()));
         add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.get(),
