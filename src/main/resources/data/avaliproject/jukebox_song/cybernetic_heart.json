@@ -1,0 +1,8 @@
+{
+  "comparator_output": 15,
+  "description": {
+    "translate": "item.avaliproject.cybernetic_heart_music_disc.desc"
+  },
+  "length_in_seconds": 213.0,
+  "sound_event": "avaliproject:cybernetic_heart"
+}

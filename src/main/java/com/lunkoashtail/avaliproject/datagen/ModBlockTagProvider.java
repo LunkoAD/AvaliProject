@@ -58,7 +58,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.NOVULITE_DEEPSLATE_ORE.get())
                 .add(ModBlocks.NOVULITE_ORE.get())
                 .add(ModBlocks.NOVULITE_BLOCK.get())
-                .add(ModBlocks.AGATE_BLOCK.get());
+                .add(ModBlocks.AGATE_BLOCK.get())
+                .add(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK.get())
+                .add(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK.get())
+                .add(ModBlocks.ALT_AVALI_FABRIC_BLOCK.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.LUME_ORE.get())

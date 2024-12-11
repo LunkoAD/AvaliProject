@@ -140,6 +140,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> AVALI_FABRIC_BLOCK = registerBlock("avali_fabric_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> ALT_AVALI_FABRIC_BLOCK = registerBlock("alt_avali_fabric_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
     public static final DeferredBlock<Block> SOFT_TAPESTRY = registerBlock("soft_tapestry",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
@@ -147,6 +150,12 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final DeferredBlock<Block> PROTOGEN_SUPPORT_BLOCK = registerBlock("protogen_support_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+    public static final DeferredBlock<Block> ALT_DETAILED_PROTOGEN_BLOCK = registerBlock("alt_detailed_protogen_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+    public static final DeferredBlock<Block> ALT_PROTOGEN_SUPPORT_BLOCK = registerBlock("alt_protogen_support_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 

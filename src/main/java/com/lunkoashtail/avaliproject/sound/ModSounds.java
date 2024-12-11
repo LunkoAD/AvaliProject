@@ -23,6 +23,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> AVALI_DANCE = registerSoundEvent("avali_dance");
     public static final ResourceKey<JukeboxSong> AVALI_DANCE_KEY = createSong("avali_dance");
 
+    public static final Supplier<SoundEvent> CYBERNETIC_HEART = registerSoundEvent("cybernetic_heart");
+    public static final ResourceKey<JukeboxSong> CYBERNETIC_HEART_KEY = createSong("cybernetic_heart");
+
 
     private static ResourceKey<JukeboxSong> createSong(String name) {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));

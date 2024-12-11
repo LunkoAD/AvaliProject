@@ -64,6 +64,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.AGATE_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.NOVULITE_BLOCK);
         blockWithItem(ModBlocks.AGATE_BLOCK);
+        blockWithItem(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK);
+        blockWithItem(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK);
+        blockWithItem(ModBlocks.ALT_AVALI_FABRIC_BLOCK);
 
         blockWithItem(ModBlocks.NANOLOOM);
 

@@ -50,6 +50,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.NOVULITE_ORE.get());
         dropSelf(ModBlocks.NOVULITE_BLOCK.get());
         dropSelf(ModBlocks.AGATE_BLOCK.get());
+        dropSelf(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK.get());
+        dropSelf(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK.get());
+        dropSelf(ModBlocks.ALT_AVALI_FABRIC_BLOCK.get());
 
         dropSelf(ModBlocks.NANOLOOM.get());
 

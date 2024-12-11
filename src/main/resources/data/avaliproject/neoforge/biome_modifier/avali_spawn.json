@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:snowy_plains",
+  "spawners": {
+    "type": "avaliproject:avali",
+    "maxCount": 6,
+    "minCount": 2,
+    "weight": 225
+  }
+}

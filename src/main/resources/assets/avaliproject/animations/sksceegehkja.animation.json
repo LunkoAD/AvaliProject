@@ -163,6 +163,7 @@
 			}
 		},
 		"Walk": {
+			"loop": true,
 			"animation_length": 2.0057,
 			"bones": {
 				"body": {
@@ -289,6 +290,10 @@
 							"vector": [17.5, 0, 0],
 							"easing": "linear"
 						},
+						"1.8378": {
+							"vector": [-21.32, 0, 0],
+							"easing": "linear"
+						},
 						"2.0": {
 							"vector": [0, 0, 0],
 							"easing": "linear"
@@ -341,6 +346,10 @@
 						},
 						"0.4595": {
 							"vector": [17.5, 0, 0],
+							"easing": "linear"
+						},
+						"0.8108": {
+							"vector": [-21.32, 0, 0],
 							"easing": "linear"
 						},
 						"0.973": {
@@ -399,6 +408,10 @@
 						},
 						"0.4595": {
 							"vector": [27.5, 0, 0],
+							"easing": "linear"
+						},
+						"0.8108": {
+							"vector": [-21.32, 0, 0],
 							"easing": "linear"
 						},
 						"0.973": {
@@ -465,6 +478,10 @@
 						},
 						"1.4865": {
 							"vector": [27.5, 0, 0],
+							"easing": "linear"
+						},
+						"1.8378": {
+							"vector": [-21.32, 0, 0],
 							"easing": "linear"
 						},
 						"2.0": {

@@ -57,6 +57,10 @@
   "item.avaliproject.sergal_sword": "Sergal Sword",
   "item.avaliproject.merp_music_disc": "Merp Music Disc",
   "item.avaliproject.avali_dance_music_disc": "Avali Dance Music Disc",
+  "item.avaliproject.avali_dance_music_disc.desc": "Unison - ec#28intro",
+  "item.avaliproject.merp_music_disc.desc": "Tytolis - Merp",
+  "item.avaliproject.cybernetic_heart_music_disc": "CYBERNETIC HEART Music Disc",
+  "item.avaliproject.cybernetic_heart_music_disc.desc": "Ivycomb - CYBERNETIC HEART",
 
   "item.avaliproject.thermal_crystal": "Thermal Crystal",
   "item.avaliproject.arcaites_crystal": "Arcaites Crystal",
@@ -101,9 +105,12 @@
   "block.avaliproject.avali_pattern_block_3": "Avali Pattern Block 3",
   "block.avaliproject.avali_pattern_block_4": "Avali Pattern Block 4",
   "block.avaliproject.avali_fabric_block": "Avali Fabric Block",
+  "block.avaliproject.alt_avali_fabric_block": "Alternate Avali Fabric Block",
   "block.avaliproject.soft_tapestry": "Soft Avali Tapestry",
   "block.avaliproject.detailed_protogen_block": "Detailed Protogen Block",
+  "block.avaliproject.alt_detailed_protogen_block": "Alternate Detailed Protogen Block",
   "block.avaliproject.protogen_support_block": "Protogen Support Block",
+  "block.avaliproject.alt_protogen_support_block": "Alternate Protogen Support Block",
   "block.avaliproject.agate_block": "Agate Block",
   "block.avaliproject.novulite_block": "Novulite Block",
 
@@ -164,5 +171,14 @@
   "block.avaliproject.potted_nakati_nodule": "Potted Nakati",
 
   "item.avaliproject.sksceegehkja_spawn_egg": "Skskcee'Gehkja Spawn Egg",
-  "item.avaliproject.skacikkjrrbwcak_spawn_egg": "Skacik kjrrk’bwcak Spawn Egg"
+  "item.avaliproject.skacikkjrrbwcak_spawn_egg": "Skacik kjrrk’bwcak Spawn Egg",
+  "item.avaliproject.protogen_spawn_egg": "Protogen Spawn Egg",
+  "item.avaliproject.primagen_spawn_egg": "Primagen Spawn Egg",
+  "item.avaliproject.avali_spawn_egg": "Avali Spawn Egg",
+
+  "entity.avaliproject.sksceegehkja": "Skskcee'Gehkja ",
+  "entity.avaliproject.skacikkjrrbwcak": "Skacik kjrrk’bwcak",
+  "entity.avaliproject.protogen": "Protogen",
+  "entity.avaliproject.primagen": "Primagen",
+  "entity.avaliproject.avali": "Avali"
 }

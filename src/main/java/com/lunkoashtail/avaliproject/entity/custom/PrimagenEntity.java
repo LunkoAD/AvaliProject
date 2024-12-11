@@ -1,12 +1,12 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
+import com.lunkoashtail.avaliproject.entity.client.PrimagenVariant;
 import com.lunkoashtail.avaliproject.item.ModItems;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LightLayer;
+import net.minecraft.Util;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.animation.PlayState;
@@ -17,27 +17,18 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-
+import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.sounds.SoundEvent;
@@ -49,38 +40,28 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
 
-import java.util.List;
 
-public class SkacikkjrrkbwcakEntity extends Animal implements GeoEntity {
-    public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(SkacikkjrrkbwcakEntity.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(SkacikkjrrkbwcakEntity.class, EntityDataSerializers.STRING);
-    public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(SkacikkjrrkbwcakEntity.class, EntityDataSerializers.STRING);
+public class PrimagenEntity extends Monster implements GeoEntity {
+    private static final EntityDataAccessor<Integer> VARIANT =
+            SynchedEntityData.defineId(PrimagenEntity.class, EntityDataSerializers.INT);
+
+    public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(PrimagenEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(PrimagenEntity.class, EntityDataSerializers.STRING);
+    public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(PrimagenEntity.class, EntityDataSerializers.STRING);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private boolean swinging;
     private boolean lastloop;
     private long lastSwing;
     public String animationprocedure = "empty";
 
-    public SkacikkjrrkbwcakEntity(EntityType<SkacikkjrrkbwcakEntity> type, Level world) {
+    public PrimagenEntity(EntityType<PrimagenEntity> type, Level world) {
         super(type, world);
-        xpReward = 1;
+        xpReward = 2;
         setNoAi(false);
-    }
-
-    @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(SHOOT, false);
-        builder.define(ANIMATION, "undefined");
-        builder.define(TEXTURE, "skacikkjrrkbwcaktext");
     }
 
     public void setTexture(String texture) {
         this.entityData.set(TEXTURE, texture);
-    }
-
-    public static boolean canSpawnHere(EntityType<SkacikkjrrkbwcakEntity> type, ServerLevelAccessor world, MobSpawnType reason, BlockPos pos, RandomSource random) {
-        return world.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK) && world.getBrightness(LightLayer.SKY, pos) > 8;
     }
 
     public String getTexture() {
@@ -90,7 +71,7 @@ public class SkacikkjrrkbwcakEntity extends Animal implements GeoEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true) {
             @Override
             protected boolean canPerformAttack(LivingEntity entity) {
                 return this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity);
@@ -98,9 +79,13 @@ public class SkacikkjrrkbwcakEntity extends Animal implements GeoEntity {
         });
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
-        this.goalSelector.addGoal(4, new BreedGoal(this, 1));
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(6, new FloatGoal(this));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new FloatGoal(this));
+    }
+
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
+        this.spawnAtLocation(new ItemStack(ModItems.PROTOGEN_RAM.get()));
     }
 
     @Override
@@ -114,19 +99,6 @@ public class SkacikkjrrkbwcakEntity extends Animal implements GeoEntity {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        compound.putString("Texture", this.getTexture());
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        if (compound.contains("Texture"))
-            this.setTexture(compound.getString("Texture"));
-    }
-
-    @Override
     public void baseTick() {
         super.baseTick();
         this.refreshDimensions();
@@ -137,37 +109,21 @@ public class SkacikkjrrkbwcakEntity extends Animal implements GeoEntity {
         return super.getDefaultDimensions(pose).scale(1f);
     }
 
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
-        SkacikkjrrkbwcakEntity retval = ModEntities.SKACIKKJRRKBWCAK.get().create(serverWorld);
-        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
-        return retval;
-    }
-
-    @Override
-    public boolean isFood(ItemStack stack) {
-        return List.of(ModItems.KIRI_FRUIT.get()).contains(stack.getItem());
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        this.updateSwingTime();
-    }
-
     public static void init(RegisterSpawnPlacementsEvent event) {
-        event.register(ModEntities.SKACIKKJRRKBWCAK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(ModEntities.PRIMAGEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
-        builder = builder.add(Attributes.MAX_HEALTH, 10);
-        builder = builder.add(Attributes.ARMOR, 0);
+        builder = builder.add(Attributes.MAX_HEALTH, 20);
+        builder = builder.add(Attributes.ARMOR, 3);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);
         builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.5);
+        builder = builder.add(Attributes.ATTACK_KNOCKBACK, 1);
         return builder;
     }
 
@@ -206,7 +162,7 @@ public class SkacikkjrrkbwcakEntity extends Animal implements GeoEntity {
     protected void tickDeath() {
         ++this.deathTime;
         if (this.deathTime == 20) {
-            this.remove(SkacikkjrrkbwcakEntity.RemovalReason.KILLED);
+            this.remove(PrimagenEntity.RemovalReason.KILLED);
             this.dropExperience(this);
         }
     }
@@ -229,4 +185,45 @@ public class SkacikkjrrkbwcakEntity extends Animal implements GeoEntity {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
     }
+
+
+
+
+    /* VARIANT */
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SHOOT, false);
+        builder.define(ANIMATION, "undefined");
+        builder.define(TEXTURE, "primagenblue");
+        builder.define(VARIANT, 0);
+    }
+    private int getTypeVariant() {
+        return this.entityData.get(VARIANT);
+    }
+    public PrimagenVariant getVariant() {
+        return PrimagenVariant.byId(this.getTypeVariant() & 255);
+    }
+    private void setVariant(PrimagenVariant variant) {
+        this.entityData.set(VARIANT, variant.getId() & 255);
+    }
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        pCompound.putInt("Variant", this.getTypeVariant());
+    }
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        this.entityData.set(VARIANT, pCompound.getInt("Variant"));
+    }
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
+                                        @Nullable SpawnGroupData pSpawnGroupData) {
+        PrimagenVariant variant = Util.getRandom(PrimagenVariant.values(), this.random);
+        this.setVariant(variant);
+        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
+    }
+
+
 }

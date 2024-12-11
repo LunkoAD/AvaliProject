@@ -73,6 +73,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.AGATE.get());
         basicItem(ModItems.MERP_MUSIC_DISC.get());
         basicItem(ModItems.AVALI_DANCE_MUSIC_DISC.get());
+        basicItem(ModItems.CYBERNETIC_HEART_MUSIC_DISC.get());
 
 
         //Icons
@@ -121,6 +122,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         withExistingParent(ModItems.SKSCEEGEHKJA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.PRIMAGEN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.PROTOGEN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.AVALI_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
     }
 

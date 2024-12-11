@@ -326,7 +326,7 @@ public class ModItems {
             });
     public static final DeferredItem<AxeItem> PROTOGEN_AXE = ITEMS.register("protogen_axe",
             () -> new AxeItem(ModToolTiers.HARDLIGHT, new Item.Properties()
-                    .attributes(AxeItem.createAttributes(ModToolTiers.HARDLIGHT, 6.0F, -3.2f))){
+                    .attributes(AxeItem.createAttributes(ModToolTiers.HARDLIGHT, 6.0F, -2.8f))){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.translatable("tooltip.avaliproject.protogen_axe.tooltip"));
@@ -360,16 +360,26 @@ public class ModItems {
             () -> new DeferredSpawnEggItem(ModEntities.SKACIKKJRRKBWCAK, 0x623928, 0x91776d,
                     new Item.Properties()));
 
+    public static final DeferredItem<Item> PROTOGEN_SPAWN_EGG = ITEMS.register("protogen_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.PROTOGEN, 0xdbdbdb, 0x68ffff,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> PRIMAGEN_SPAWN_EGG = ITEMS.register("primagen_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.PRIMAGEN, 0xeaeaea, 0x68ff55,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> AVALI_SPAWN_EGG = ITEMS.register("avali_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.AVALI, 0xff8432, 0xfff7d6,
+                    new Item.Properties()));
+
 
     public static final DeferredItem<SwordItem> SERGAL_GREATSWORD = ITEMS.register("sergal_greatsword",
             () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()
-                    .attributes(SwordItem.createAttributes(ModToolTiers.CERAMIC, 8.0F, -2.2f))));
+                    .attributes(SwordItem.createAttributes(ModToolTiers.CERAMIC, 8.0F, -2.4f))));
     public static final DeferredItem<SwordItem> SERGAL_LANCE = ITEMS.register("sergal_lance",
             () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.CERAMIC, 6.0F, -1.5f))));
     public static final DeferredItem<SwordItem> SERGAL_MACE = ITEMS.register("sergal_mace",
             () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()
-                    .attributes(AxeItem.createAttributes(ModToolTiers.CERAMIC, 9.0F, -2.2f))));
+                    .attributes(AxeItem.createAttributes(ModToolTiers.CERAMIC, 9.0F, -3.2f))));
 //    public static final DeferredItem<Item> SERGAL_SLINGSHOT = ITEMS.register("sergal_slingshot",
 //            () -> new BowItem(new Item.Properties().durability(996)){
 //                @Override
@@ -386,7 +396,8 @@ public class ModItems {
             properties -> new Item(properties.jukeboxPlayable(ModSounds.MERP_KEY).stacksTo(1)));
     public static final DeferredItem<Item> AVALI_DANCE_MUSIC_DISC = ITEMS.registerItem("avali_dance_music_disc",
             properties -> new Item(properties.jukeboxPlayable(ModSounds.AVALI_DANCE_KEY).stacksTo(1)));
-
+    public static final DeferredItem<Item> CYBERNETIC_HEART_MUSIC_DISC = ITEMS.registerItem("cybernetic_heart_music_disc",
+            properties -> new Item(properties.jukeboxPlayable(ModSounds.CYBERNETIC_HEART_KEY).stacksTo(1)));
 
 
 

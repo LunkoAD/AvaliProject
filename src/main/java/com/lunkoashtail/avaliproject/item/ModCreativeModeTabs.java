@@ -40,6 +40,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_3);
                         output.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_4);
                         output.accept(ModBlocks.AVALI_FABRIC_BLOCK);
+                        output.accept(ModBlocks.ALT_AVALI_FABRIC_BLOCK);
                         output.accept(ModBlocks.SOFT_TAPESTRY);
                         output.accept(ModItems.LUME);
                         output.accept(ModItems.LUME_BIT);
@@ -87,6 +88,7 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModItems.SKSCEEGEHKJA_SPAWN_EGG);
                         output.accept(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG);
+                        output.accept(ModItems.AVALI_SPAWN_EGG);
 
 //                        output.accept(ModBlocks.NANOLOOM.get());
 
@@ -103,7 +105,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.DURASTEEL_DEEPSLATE_ORE);
                         output.accept(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE);
                         output.accept(ModBlocks.ARCAITES_CRYSTAL_ORE);
+                        output.accept(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK);
                         output.accept(ModBlocks.DETAILED_PROTOGEN_BLOCK);
+                        output.accept(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK);
                         output.accept(ModBlocks.PROTOGEN_SUPPORT_BLOCK);
                         output.accept(ModBlocks.NOVULITE_DEEPSLATE_ORE);
                         output.accept(ModBlocks.NOVULITE_BLOCK);
@@ -122,6 +126,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PROTOGEN_AXE);
                         output.accept(ModItems.PROTOGEN_SWORD);
                         output.accept(ModItems.NOVULITE);
+                        output.accept(ModItems.PROTOGEN_SPAWN_EGG);
+                        output.accept(ModItems.PRIMAGEN_SPAWN_EGG);
+                        output.accept(ModItems.CYBERNETIC_HEART_MUSIC_DISC);
                     }).build());
 
     public static final Supplier<CreativeModeTab> SERGAL_ITEM_TAB = CREATIVE_MODE_TAB.register("sergal_items_tab",

@@ -3,8 +3,7 @@ package com.lunkoashtail.avaliproject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.block.entity.ModBlockEntities;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
-import com.lunkoashtail.avaliproject.entity.client.SkacikkjrrkbwcakRenderer;
-import com.lunkoashtail.avaliproject.entity.client.SksceegehkjaRenderer;
+import com.lunkoashtail.avaliproject.entity.client.*;
 import com.lunkoashtail.avaliproject.item.ModCreativeModeTabs;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import com.lunkoashtail.avaliproject.screen.ModMenuTypes;
@@ -12,6 +11,7 @@ import com.lunkoashtail.avaliproject.screen.custom.NanoloomScreen;
 import com.lunkoashtail.avaliproject.sound.ModSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -76,6 +76,11 @@ public class AvaliProject {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.KIRI_NODULE.getId(), ModBlocks.POTTED_KIRI_NODULE);
             System.out.println("Common setup for Avali Project.");
         });
+        LOGGER.info("HELLO FROM COMMON SETUP");
+        if (Config.logDirtBlock)
+            LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
+        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
+        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
@@ -88,6 +93,9 @@ public class AvaliProject {
             }
             EntityRenderers.register(ModEntities.SKSCEEGEHKJA.get(), SksceegehkjaRenderer::new);
             EntityRenderers.register(ModEntities.SKACIKKJRRKBWCAK.get(), SkacikkjrrkbwcakRenderer::new);
+            EntityRenderers.register(ModEntities.PROTOGEN.get(), ProtogenRenderer::new);
+            EntityRenderers.register(ModEntities.PRIMAGEN.get(), PrimagenRenderer::new);
+            EntityRenderers.register(ModEntities.AVALI.get(), AvaliRenderer::new);
         }
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
@@ -168,13 +176,20 @@ public class AvaliProject {
             event.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_3);
             event.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_4);
             event.accept(ModBlocks.AVALI_FABRIC_BLOCK);
+            event.accept(ModBlocks.ALT_AVALI_FABRIC_BLOCK);
             event.accept(ModBlocks.SOFT_TAPESTRY);
             event.accept(ModBlocks.DETAILED_PROTOGEN_BLOCK);
             event.accept(ModBlocks.PROTOGEN_SUPPORT_BLOCK);
+            event.accept(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK);
+            event.accept(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK);
         }
 
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
             event.accept(ModItems.SKSCEEGEHKJA_SPAWN_EGG);
+            event.accept(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG);
+            event.accept(ModItems.PROTOGEN_SPAWN_EGG);
+            event.accept(ModItems.PRIMAGEN_SPAWN_EGG);
+            event.accept(ModItems.AVALI_SPAWN_EGG);
         }
 
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {

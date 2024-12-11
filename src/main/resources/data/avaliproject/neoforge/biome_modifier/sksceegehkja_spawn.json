@@ -3,8 +3,8 @@
   "biomes": "minecraft:snowy_plains",
   "spawners": {
     "type": "avaliproject:sksceegehkja",
-    "maxCount": 5,
-    "minCount": 2,
+    "maxCount": 3,
+    "minCount": 1,
     "weight": 15
   }
 }

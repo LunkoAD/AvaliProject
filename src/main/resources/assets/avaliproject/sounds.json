@@ -14,5 +14,13 @@
         "stream": true
       }
     ]
+  },
+  "cybernetic_heart": {
+    "sounds": [
+      {
+        "name": "avaliproject:cybernetic_heart",
+        "stream": true
+      }
+    ]
   }
 }
