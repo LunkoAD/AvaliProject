@@ -96,6 +96,12 @@ public class AvaliProject {
             EntityRenderers.register(ModEntities.PROTOGEN.get(), ProtogenRenderer::new);
             EntityRenderers.register(ModEntities.PRIMAGEN.get(), PrimagenRenderer::new);
             EntityRenderers.register(ModEntities.AVALI.get(), AvaliRenderer::new);
+            EntityRenderers.register(ModEntities.SERGAL.get(), SergalRenderer::new);
+            EntityRenderers.register(ModEntities.EEPUOR.get(), EepuorRenderer::new);
+            EntityRenderers.register(ModEntities.STALKER.get(), StalkerRenderer::new);
+            EntityRenderers.register(ModEntities.MAMAGEN.get(), MamagenRenderer::new);
+            EntityRenderers.register(ModEntities.CAKLERAH.get(), CaklerahRenderer::new);
+            EntityRenderers.register(ModEntities.TALXLEECH.get(), TalxleechRenderer::new);
         }
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
@@ -190,6 +196,12 @@ public class AvaliProject {
             event.accept(ModItems.PROTOGEN_SPAWN_EGG);
             event.accept(ModItems.PRIMAGEN_SPAWN_EGG);
             event.accept(ModItems.AVALI_SPAWN_EGG);
+            event.accept(ModItems.SERGAL_SPAWN_EGG);
+            event.accept(ModItems.EEPUOR_SPAWN_EGG);
+            event.accept(ModItems.STALKER_SPAWN_EGG);
+            event.accept(ModItems.TALXLEECH_SPAWN_EGG);
+            event.accept(ModItems.MAMAGEN_SPAWN_EGG);
+            event.accept(ModItems.CAKLERAH_SPAWN_EGG);
         }
 
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {

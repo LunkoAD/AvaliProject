@@ -3,6 +3,7 @@ package com.lunkoashtail.avaliproject.item;
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
+import com.lunkoashtail.avaliproject.item.custom.AvaliswordItem;
 import com.lunkoashtail.avaliproject.item.custom.FuelItem;
 import com.lunkoashtail.avaliproject.item.custom.ModEffectSwordItem;
 import com.lunkoashtail.avaliproject.item.custom.SimpleDrinkableItem;
@@ -276,15 +277,18 @@ public class ModItems {
 
 // Tools
 
-    public static final DeferredItem<SwordItem> AVALI_SWORD = ITEMS.register("avali_sword",
-            () -> new SwordItem(ModToolTiers.AEROGEL, new Item.Properties()
-                    .attributes(SwordItem.createAttributes(ModToolTiers.AEROGEL, 5, -2.4f))){
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_sword.tooltip"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
+//    public static final DeferredItem<SwordItem> AVALI_SWORD = ITEMS.register("avali_sword",
+//            () -> new SwordItem(ModToolTiers.AEROGEL, new Item.Properties()
+//                    .attributes(SwordItem.createAttributes(ModToolTiers.AEROGEL, 5, -2.4f))){
+//                @Override
+//                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+//                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_sword.tooltip"));
+//                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+//                }
+//            });
+
+    public static final DeferredItem<Item> AVALI_SWORD = ITEMS.register("avali_sword", AvaliswordItem::new);
+
     public static final DeferredItem<SwordItem> AVALI_SPEAR = ITEMS.register("avali_spear",
             () -> new ModEffectSwordItem(ModToolTiers.AEROGEL, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.AEROGEL, 8, -2.7f)), MobEffects.MOVEMENT_SLOWDOWN){
@@ -315,15 +319,17 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
+//    public static final DeferredItem<Item> AVALI_AXE = ITEMS.register("avali_axe", AvaliAxeItem::new );
     public static final DeferredItem<AxeItem> AVALI_AXE = ITEMS.register("avali_axe",
-            () -> new AxeItem(ModToolTiers.AEROGEL, new Item.Properties()
-                    .attributes(AxeItem.createAttributes(ModToolTiers.AEROGEL, 6.0F, -3.2f))){
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_axe.tooltip"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
+        () -> new AxeItem(ModToolTiers.AEROGEL, new Item.Properties()
+                .attributes(AxeItem.createAttributes(ModToolTiers.AEROGEL, 4.0F, -2.8f))){
+            @Override
+            public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_axe.tooltip"));
+                super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+            }
+        });
+
     public static final DeferredItem<AxeItem> PROTOGEN_AXE = ITEMS.register("protogen_axe",
             () -> new AxeItem(ModToolTiers.HARDLIGHT, new Item.Properties()
                     .attributes(AxeItem.createAttributes(ModToolTiers.HARDLIGHT, 6.0F, -2.8f))){
@@ -359,6 +365,9 @@ public class ModItems {
     public static final DeferredItem<Item> SKACIKKJRRBWCAK_SPAWN_EGG = ITEMS.register("skacikkjrrbwcak_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.SKACIKKJRRKBWCAK, 0x623928, 0x91776d,
                     new Item.Properties()));
+    public static final DeferredItem<Item> EEPUOR_SPAWN_EGG = ITEMS.register("eepuor_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.EEPUOR, 0xfae1a9, 0xaa7937,
+                    new Item.Properties()));
 
     public static final DeferredItem<Item> PROTOGEN_SPAWN_EGG = ITEMS.register("protogen_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.PROTOGEN, 0xdbdbdb, 0x68ffff,
@@ -368,6 +377,22 @@ public class ModItems {
                     new Item.Properties()));
     public static final DeferredItem<Item> AVALI_SPAWN_EGG = ITEMS.register("avali_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.AVALI, 0xff8432, 0xfff7d6,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> SERGAL_SPAWN_EGG = ITEMS.register("sergal_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.SERGAL, 0xfae1a9, 0xaa7937,
+                    new Item.Properties()));
+
+    public static final DeferredItem<Item> CAKLERAH_SPAWN_EGG = ITEMS.register("caklerah_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.CAKLERAH, 0xfae1a9, 0xaa7937,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> MAMAGEN_SPAWN_EGG = ITEMS.register("mamagen_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.MAMAGEN, 0xfae1a9, 0xaa7937,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> TALXLEECH_SPAWN_EGG = ITEMS.register("talxleech_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.TALXLEECH, 0xfae1a9, 0xaa7937,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> STALKER_SPAWN_EGG = ITEMS.register("stalker_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.STALKER, 0xfae1a9, 0xaa7937,
                     new Item.Properties()));
 
 
@@ -399,6 +424,9 @@ public class ModItems {
     public static final DeferredItem<Item> CYBERNETIC_HEART_MUSIC_DISC = ITEMS.registerItem("cybernetic_heart_music_disc",
             properties -> new Item(properties.jukeboxPlayable(ModSounds.CYBERNETIC_HEART_KEY).stacksTo(1)));
 
+
+ //   public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(AvaliProject.MOD_ID);
+ //   public static final DeferredItem<Item> AVALI_SWORD = REGISTRY.register("avali_sword", AvaliswordItem::new);
 
 
     public static void register(IEventBus eventBus) {

@@ -197,22 +197,27 @@ public class ProtogenEntity extends Monster implements GeoEntity {
     private int getTypeVariant() {
         return this.entityData.get(VARIANT);
     }
+
     public ProtogenVariant getVariant() {
         return ProtogenVariant.byId(this.getTypeVariant() & 255);
     }
+
     private void setVariant(ProtogenVariant variant) {
         this.entityData.set(VARIANT, variant.getId() & 255);
     }
+
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("Variant", this.getTypeVariant());
     }
+
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.entityData.set(VARIANT, pCompound.getInt("Variant"));
     }
+
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
                                         @Nullable SpawnGroupData pSpawnGroupData) {

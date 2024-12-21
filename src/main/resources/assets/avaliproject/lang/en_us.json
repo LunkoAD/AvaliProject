@@ -175,10 +175,29 @@
   "item.avaliproject.protogen_spawn_egg": "Protogen Spawn Egg",
   "item.avaliproject.primagen_spawn_egg": "Primagen Spawn Egg",
   "item.avaliproject.avali_spawn_egg": "Avali Spawn Egg",
+  "item.avaliproject.sergal_spawn_egg": "Sergal Spawn Egg",
+  "item.avaliproject.eepuor_spawn_egg": "Eepuor’Brk Spawn Egg",
+  "item.avaliproject.caklerah_spawn_egg": "Ahrwa Caklerah Spawn Egg",
+  "item.avaliproject.mamagen_spawn_egg": "Mamagen Spawn Egg",
+  "item.avaliproject.stalker_spawn_egg": "Talyxian Stalker Spawn Egg",
+  "item.avaliproject.talxleech_spawn_egg": "Talyxian Leeches Spawn Egg",
+
+  "block.avaliproject.eepuoreggs": "Eepuor’Brk Eggs",
 
   "entity.avaliproject.sksceegehkja": "Skskcee'Gehkja ",
   "entity.avaliproject.skacikkjrrbwcak": "Skacik kjrrk’bwcak",
   "entity.avaliproject.protogen": "Protogen",
   "entity.avaliproject.primagen": "Primagen",
-  "entity.avaliproject.avali": "Avali"
+  "entity.avaliproject.avali": "Avali",
+  "entity.avaliproject.sergal": "Sergal",
+  "entity.avaliproject.eepuor": "Eepuor’Brk",
+  "entity.avaliproject.stalker": "Talyxian Stalker",
+  "entity.avaliproject.caklerah": "Ahrwa Caklerah",
+  "entity.avaliproject.mamagen": "Mamagen",
+  "entity.avaliproject.talxleech": "Talyxian Leeches",
+
+  "painting.avaliproject.avali_painting.title": "Tribal Avali Tapestry",
+  "painting.avaliproject.avali_painting.author": "Fevix",
+  "painting.avaliproject.rain_sergal_painting.title": "Queen-General Rain Silves",
+  "painting.avaliproject.rain_sergal_painting.author": "LangyX"
 }

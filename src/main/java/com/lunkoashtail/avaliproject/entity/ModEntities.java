@@ -33,6 +33,30 @@ public class ModEntities {
             ENTITY_TYPES.register("avali", () -> EntityType.Builder.of(AvaliEntity::new, MobCategory.CREATURE)
                     .sized(0.95f, 1.75f).build("avali"));
 
+    public static final Supplier<EntityType<SergalEntity>> SERGAL =
+            ENTITY_TYPES.register("sergal", () -> EntityType.Builder.of(SergalEntity::new, MobCategory.CREATURE)
+                    .sized(0.95f, 1.75f).build("sergal"));
+
+    public static final Supplier<EntityType<EepuorEntity>> EEPUOR =
+            ENTITY_TYPES.register("eepuor", () -> EntityType.Builder.of(EepuorEntity::new, MobCategory.CREATURE)
+                    .sized(0.95f, 1.75f).build("eepuor"));
+
+    public static final Supplier<EntityType<MamagenEntity>> MAMAGEN =
+            ENTITY_TYPES.register("mamagen", () -> EntityType.Builder.of(MamagenEntity::new, MobCategory.CREATURE)
+                    .sized(0.95f, 1.75f).build("mamagen"));
+
+    public static final Supplier<EntityType<StalkerEntity>> STALKER =
+            ENTITY_TYPES.register("stalker", () -> EntityType.Builder.of(StalkerEntity::new, MobCategory.CREATURE)
+                    .sized(0.95f, 1.75f).build("stalker"));
+
+    public static final Supplier<EntityType<CaklerahEntity>> CAKLERAH =
+            ENTITY_TYPES.register("caklerah", () -> EntityType.Builder.of(CaklerahEntity::new, MobCategory.CREATURE)
+                    .sized(0.95f, 1.75f).build("caklerah"));
+
+    public static final Supplier<EntityType<TalxleechEntity>> TALXLEECH =
+            ENTITY_TYPES.register("talxleech", () -> EntityType.Builder.of(TalxleechEntity::new, MobCategory.CREATURE)
+                    .sized(6f, 2f).build("talxleech"));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

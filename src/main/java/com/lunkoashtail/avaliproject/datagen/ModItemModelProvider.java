@@ -82,7 +82,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SERGAL_ICON.get());
 
         //Tools
-        basicItem(ModItems.AVALI_AXE.get());
+//        basicItem(ModItems.AVALI_AXE.get());
         basicItem(ModItems.AVALI_PICKAXE.get());
         basicItem(ModItems.AVALI_HOE.get());
 //        basicItem(ModItems.AVALI_SWORD.get());
@@ -125,6 +125,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.PRIMAGEN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.PROTOGEN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.AVALI_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.SERGAL_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.EEPUOR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.MAMAGEN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.STALKER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.CAKLERAH_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.TALXLEECH_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
     }
 

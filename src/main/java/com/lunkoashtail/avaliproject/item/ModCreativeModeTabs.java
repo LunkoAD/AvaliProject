@@ -88,7 +88,9 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModItems.SKSCEEGEHKJA_SPAWN_EGG);
                         output.accept(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG);
+                        output.accept(ModItems.EEPUOR_SPAWN_EGG);
                         output.accept(ModItems.AVALI_SPAWN_EGG);
+                        output.accept(ModItems.CAKLERAH_SPAWN_EGG);
 
 //                        output.accept(ModBlocks.NANOLOOM.get());
 
@@ -128,6 +130,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.NOVULITE);
                         output.accept(ModItems.PROTOGEN_SPAWN_EGG);
                         output.accept(ModItems.PRIMAGEN_SPAWN_EGG);
+                        output.accept(ModItems.MAMAGEN_SPAWN_EGG);
                         output.accept(ModItems.CYBERNETIC_HEART_MUSIC_DISC);
                     }).build());
 
@@ -151,6 +154,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SERGAL_MACE);
 //                        output.accept(ModItems.SERGAL_SLINGSHOT);
                         output.accept(ModItems.MERP_MUSIC_DISC);
+                        output.accept(ModItems.SERGAL_SPAWN_EGG);
+                        output.accept(ModItems.TALXLEECH_SPAWN_EGG);
+                        output.accept(ModItems.STALKER_SPAWN_EGG);
                     }).build());
 
     public static void register (IEventBus eventBus) {

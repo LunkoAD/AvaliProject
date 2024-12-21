@@ -23,7 +23,7 @@ public class PrimagenModel extends GeoModel<PrimagenEntity> {
 
     @Override
     public ResourceLocation getTextureResource(PrimagenEntity entity) {
-        return ResourceLocation.parse("avaliproject:textures/entity/" + entity.getTexture() + ".png");
+        return ResourceLocation.parse("avaliproject:textures/entity/primagen/" + entity.getTexture() + ".png");
     }
 
     @Override
