@@ -31,6 +31,7 @@ public class ModEventBusEvents {
         event.put(ModEntities.MAMAGEN.get(), MamagenEntity.createAttributes().build());
         event.put(ModEntities.CAKLERAH.get(), CaklerahEntity.createAttributes().build());
         event.put(ModEntities.TALXLEECH.get(), TalxleechEntity.createAttributes().build());
+        event.put(ModEntities.TALXWEASEL.get(), TalxweaselEntity.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -57,6 +58,8 @@ public class ModEventBusEvents {
         event.register(ModEntities.CAKLERAH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(ModEntities.TALXLEECH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.TALXWEASEL.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }

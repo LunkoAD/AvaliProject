@@ -156,6 +156,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MERP_MUSIC_DISC);
                         output.accept(ModItems.SERGAL_SPAWN_EGG);
                         output.accept(ModItems.TALXLEECH_SPAWN_EGG);
+                        output.accept(ModItems.TALXWEASEL_SPAWN_EGG);
                         output.accept(ModItems.STALKER_SPAWN_EGG);
                     }).build());
 

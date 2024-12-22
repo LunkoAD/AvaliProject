@@ -391,6 +391,9 @@ public class ModItems {
     public static final DeferredItem<Item> TALXLEECH_SPAWN_EGG = ITEMS.register("talxleech_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.TALXLEECH, 0xfae1a9, 0xaa7937,
                     new Item.Properties()));
+    public static final DeferredItem<Item> TALXWEASEL_SPAWN_EGG = ITEMS.register("talxweasel_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.TALXWEASEL, 0xfae1a9, 0xaa7937,
+                    new Item.Properties()));
     public static final DeferredItem<Item> STALKER_SPAWN_EGG = ITEMS.register("stalker_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.STALKER, 0xfae1a9, 0xaa7937,
                     new Item.Properties()));

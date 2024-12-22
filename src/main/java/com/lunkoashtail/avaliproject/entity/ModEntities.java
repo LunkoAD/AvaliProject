@@ -56,6 +56,9 @@ public class ModEntities {
     public static final Supplier<EntityType<TalxleechEntity>> TALXLEECH =
             ENTITY_TYPES.register("talxleech", () -> EntityType.Builder.of(TalxleechEntity::new, MobCategory.CREATURE)
                     .sized(6f, 2f).build("talxleech"));
+    public static final Supplier<EntityType<TalxweaselEntity>> TALXWEASEL =
+            ENTITY_TYPES.register("talxweasel", () -> EntityType.Builder.of(TalxweaselEntity::new, MobCategory.CREATURE)
+                    .sized(1.25f, 1.75f).build("talxweasel"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

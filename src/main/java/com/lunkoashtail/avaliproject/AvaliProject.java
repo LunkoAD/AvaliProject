@@ -102,6 +102,7 @@ public class AvaliProject {
             EntityRenderers.register(ModEntities.MAMAGEN.get(), MamagenRenderer::new);
             EntityRenderers.register(ModEntities.CAKLERAH.get(), CaklerahRenderer::new);
             EntityRenderers.register(ModEntities.TALXLEECH.get(), TalxleechRenderer::new);
+            EntityRenderers.register(ModEntities.TALXWEASEL.get(), TalxweaselRenderer::new);
         }
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
@@ -200,6 +201,7 @@ public class AvaliProject {
             event.accept(ModItems.EEPUOR_SPAWN_EGG);
             event.accept(ModItems.STALKER_SPAWN_EGG);
             event.accept(ModItems.TALXLEECH_SPAWN_EGG);
+            event.accept(ModItems.TALXWEASEL_SPAWN_EGG);
             event.accept(ModItems.MAMAGEN_SPAWN_EGG);
             event.accept(ModItems.CAKLERAH_SPAWN_EGG);
         }

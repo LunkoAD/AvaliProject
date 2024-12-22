@@ -180,7 +180,8 @@
   "item.avaliproject.caklerah_spawn_egg": "Ahrwa Caklerah Spawn Egg",
   "item.avaliproject.mamagen_spawn_egg": "Mamagen Spawn Egg",
   "item.avaliproject.stalker_spawn_egg": "Talyxian Stalker Spawn Egg",
-  "item.avaliproject.talxleech_spawn_egg": "Talyxian Leeches Spawn Egg",
+  "item.avaliproject.talxleech_spawn_egg": "Talyxian Leech Spawn Egg",
+  "item.avaliproject.talxweasel_spawn_egg": "Talyxian Weasel Spawn Egg",
 
   "block.avaliproject.eepuoreggs": "Eepuor’Brk Eggs",
 
@@ -194,7 +195,8 @@
   "entity.avaliproject.stalker": "Talyxian Stalker",
   "entity.avaliproject.caklerah": "Ahrwa Caklerah",
   "entity.avaliproject.mamagen": "Mamagen",
-  "entity.avaliproject.talxleech": "Talyxian Leeches",
+  "entity.avaliproject.talxleech": "Talyxian Leech",
+  "entity.avaliproject.talxweasel": "Talyxian Weasel",
 
   "painting.avaliproject.avali_painting.title": "Tribal Avali Tapestry",
   "painting.avaliproject.avali_painting.author": "Fevix",
