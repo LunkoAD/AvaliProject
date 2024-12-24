@@ -47,7 +47,7 @@ public class ModEntities {
 
     public static final Supplier<EntityType<StalkerEntity>> STALKER =
             ENTITY_TYPES.register("stalker", () -> EntityType.Builder.of(StalkerEntity::new, MobCategory.CREATURE)
-                    .sized(0.95f, 1.75f).build("stalker"));
+                    .sized(1.5f, 2f).build("stalker"));
 
     public static final Supplier<EntityType<CaklerahEntity>> CAKLERAH =
             ENTITY_TYPES.register("caklerah", () -> EntityType.Builder.of(CaklerahEntity::new, MobCategory.CREATURE)
