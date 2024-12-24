@@ -408,10 +408,10 @@ public class ModItems {
                     new Item.Properties()));
 
     public static final DeferredItem<Item> MIZOLE_SPAWN_EGG = ITEMS.register("mizole_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.MIZOLE, 0x456e6f, 0x26cc20,
+            () -> new DeferredSpawnEggItem(ModEntities.MIZOLE, 0x8f9596, 0x4f879a,
                     new Item.Properties()));
     public static final DeferredItem<Item> SPORE_SPAWN_EGG = ITEMS.register("spore_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.SPORE, 0x456e6f, 0x26cc20,
+            () -> new DeferredSpawnEggItem(ModEntities.SPORE, 0xcacaca, 0x757d5b,
                     new Item.Properties()));
 
     public static final DeferredItem<SwordItem> SERGAL_GREATSWORD = ITEMS.register("sergal_greatsword",
