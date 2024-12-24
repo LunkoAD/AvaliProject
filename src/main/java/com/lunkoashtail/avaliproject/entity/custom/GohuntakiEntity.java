@@ -14,7 +14,6 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.EventHooks;
 
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.Items;
@@ -22,15 +21,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.TamableAnimal;
@@ -54,21 +49,20 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-public class StalkerEntity extends TamableAnimal implements GeoEntity {
-    public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.STRING);
-    public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.STRING);
+public class GohuntakiEntity extends TamableAnimal implements GeoEntity {
+    public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(GohuntakiEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(GohuntakiEntity.class, EntityDataSerializers.STRING);
+    public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(GohuntakiEntity.class, EntityDataSerializers.STRING);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private boolean swinging;
     private boolean lastloop;
     private long lastSwing;
     public String animationprocedure = "empty";
 
-    public StalkerEntity(EntityType<StalkerEntity> type, Level world) {
+    public GohuntakiEntity(EntityType<GohuntakiEntity> type, Level world) {
         super(type, world);
         xpReward = 2;
         setNoAi(false);
@@ -79,7 +73,7 @@ public class StalkerEntity extends TamableAnimal implements GeoEntity {
         super.defineSynchedData(builder);
         builder.define(SHOOT, false);
         builder.define(ANIMATION, "undefined");
-        builder.define(TEXTURE, "stalker");
+        builder.define(TEXTURE, "gohuntaki");
     }
 
     public void setTexture(String texture) {
@@ -99,19 +93,10 @@ public class StalkerEntity extends TamableAnimal implements GeoEntity {
                 return this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity);
             }
         });
-        this.goalSelector.addGoal(2, new BreedGoal(this, 1));
-        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1, (float) 10, (float) 2));
-        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1));
-        this.targetSelector.addGoal(5, new HurtByTargetGoal(this).setAlertOthers());
-        this.goalSelector.addGoal(6, new OwnerHurtByTargetGoal(this));
-        this.targetSelector.addGoal(7, new OwnerHurtTargetGoal(this));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(9, new FloatGoal(this));
-    }
-
-    @Override
-    public void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.warden.step")), 0.15f, 1);
+        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
+        this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new FloatGoal(this));
     }
 
     @Override
@@ -195,14 +180,14 @@ public class StalkerEntity extends TamableAnimal implements GeoEntity {
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
-        StalkerEntity retval = ModEntities.STALKER.get().create(serverWorld);
+        GohuntakiEntity retval = ModEntities.GOHUNTAKI.get().create(serverWorld);
         retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
         return retval;
     }
 
     @Override
     public boolean isFood(ItemStack stack) {
-        return List.of(Items.ROTTEN_FLESH).contains(stack.getItem());
+        return List.of(Items.HONEYCOMB).contains(stack.getItem());
     }
 
     @Override
@@ -212,19 +197,20 @@ public class StalkerEntity extends TamableAnimal implements GeoEntity {
     }
 
     public static void init(RegisterSpawnPlacementsEvent event) {
-        event.register(ModEntities.STALKER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(ModEntities.GOHUNTAKI.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
-        builder = builder.add(Attributes.MAX_HEALTH, 15);
-        builder = builder.add(Attributes.ARMOR, 1);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 4);
+        builder = builder.add(Attributes.MAX_HEALTH, 25);
+        builder = builder.add(Attributes.ARMOR, 3);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 5);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);
         builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
-        builder = builder.add(Attributes.ATTACK_KNOCKBACK, 0.5);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 1);
+        builder = builder.add(Attributes.ATTACK_KNOCKBACK, 2);
         return builder;
     }
 
@@ -281,7 +267,7 @@ public class StalkerEntity extends TamableAnimal implements GeoEntity {
     protected void tickDeath() {
         ++this.deathTime;
         if (this.deathTime == 20) {
-            this.remove(StalkerEntity.RemovalReason.KILLED);
+            this.remove(GohuntakiEntity.RemovalReason.KILLED);
             this.dropExperience(this);
         }
     }

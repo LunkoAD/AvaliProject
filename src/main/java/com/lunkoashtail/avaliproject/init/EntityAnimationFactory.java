@@ -94,7 +94,41 @@ public class EntityAnimationFactory {
                     syncable.animationprocedure = animation;
                 }
             }
-
+            if (event.getEntity() instanceof GohuntakiEntity syncable) {
+                String animation = syncable.getSyncedAnimation();
+                if (!animation.equals("undefined")) {
+                    syncable.setAnimation("undefined");
+                    syncable.animationprocedure = animation;
+                }
+            }
+            if (event.getEntity() instanceof TalxdogEntity syncable) {
+                String animation = syncable.getSyncedAnimation();
+                if (!animation.equals("undefined")) {
+                    syncable.setAnimation("undefined");
+                    syncable.animationprocedure = animation;
+                }
+            }
+            if (event.getEntity() instanceof TalxwolfEntity syncable) {
+                String animation = syncable.getSyncedAnimation();
+                if (!animation.equals("undefined")) {
+                    syncable.setAnimation("undefined");
+                    syncable.animationprocedure = animation;
+                }
+            }
+            if (event.getEntity() instanceof SporeEntity syncable) {
+                String animation = syncable.getSyncedAnimation();
+                if (!animation.equals("undefined")) {
+                    syncable.setAnimation("undefined");
+                    syncable.animationprocedure = animation;
+                }
+            }
+            if (event.getEntity() instanceof MizoleEntity syncable) {
+                String animation = syncable.getSyncedAnimation();
+                if (!animation.equals("undefined")) {
+                    syncable.setAnimation("undefined");
+                    syncable.animationprocedure = animation;
+                }
+            }
         }
     }
 }

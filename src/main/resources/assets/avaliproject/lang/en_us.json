@@ -182,8 +182,11 @@
   "item.avaliproject.stalker_spawn_egg": "Talyxian Stalker Spawn Egg",
   "item.avaliproject.talxleech_spawn_egg": "Talyxian Leech Spawn Egg",
   "item.avaliproject.talxweasel_spawn_egg": "Talyxian Weasel Spawn Egg",
-
-  "block.avaliproject.eepuoreggs": "Eepuor’Brk Eggs",
+  "item.avaliproject.gohuntaki_spawn_egg": "Gohuntaki Stalker Spawn Egg",
+  "item.avaliproject.talxdog_spawn_egg": "Talyxian Dog Stalker Spawn Egg",
+  "item.avaliproject.talxwolf_spawn_egg": "Talyxian Wolf Stalker Spawn Egg",
+  "item.avaliproject.mizole_spawn_egg": "Mizole Stalker Spawn Egg",
+  "item.avaliproject.spore_spawn_egg": "Spore Stalker Spawn Egg",
 
   "entity.avaliproject.sksceegehkja": "Skskcee'Gehkja ",
   "entity.avaliproject.skacikkjrrbwcak": "Skacik kjrrk’bwcak",
@@ -197,6 +200,11 @@
   "entity.avaliproject.mamagen": "Mamagen",
   "entity.avaliproject.talxleech": "Talyxian Leech",
   "entity.avaliproject.talxweasel": "Talyxian Weasel",
+  "entity.avaliproject.gohuntaki": "Gohuntaki Stalker",
+  "entity.avaliproject.talxdog": "Talyxian Dog Stalker",
+  "entity.avaliproject.talxwolf": "Talyxian Wolf Stalker",
+  "entity.avaliproject.spore": "Spore Stalker",
+  "entity.avaliproject.mizole": "Mizole Stalker",
 
   "painting.avaliproject.avali_painting.title": "Tribal Avali Tapestry",
   "painting.avaliproject.avali_painting.author": "Fevix",

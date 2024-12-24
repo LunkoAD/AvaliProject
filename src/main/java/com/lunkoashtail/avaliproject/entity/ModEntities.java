@@ -55,10 +55,25 @@ public class ModEntities {
 
     public static final Supplier<EntityType<TalxleechEntity>> TALXLEECH =
             ENTITY_TYPES.register("talxleech", () -> EntityType.Builder.of(TalxleechEntity::new, MobCategory.CREATURE)
-                    .sized(6f, 2f).build("talxleech"));
+                    .sized(1.5f, 1.75f).build("talxleech"));
     public static final Supplier<EntityType<TalxweaselEntity>> TALXWEASEL =
             ENTITY_TYPES.register("talxweasel", () -> EntityType.Builder.of(TalxweaselEntity::new, MobCategory.CREATURE)
                     .sized(1.25f, 1.75f).build("talxweasel"));
+    public static final Supplier<EntityType<GohuntakiEntity>> GOHUNTAKI =
+            ENTITY_TYPES.register("gohuntaki", () -> EntityType.Builder.of(GohuntakiEntity::new, MobCategory.CREATURE)
+                    .sized(1.5f, 2f).build("gohuntaki"));
+    public static final Supplier<EntityType<TalxdogEntity>> TALXDOG =
+            ENTITY_TYPES.register("talxdog", () -> EntityType.Builder.of(TalxdogEntity::new, MobCategory.CREATURE)
+                    .sized(1.5f, 2f).build("talxdog"));
+    public static final Supplier<EntityType<TalxwolfEntity>> TALXWOLF =
+            ENTITY_TYPES.register("talxwolf", () -> EntityType.Builder.of(TalxwolfEntity::new, MobCategory.CREATURE)
+                    .sized(1.5f, 2f).build("talxwolf"));
+    public static final Supplier<EntityType<SporeEntity>> SPORE =
+            ENTITY_TYPES.register("spore", () -> EntityType.Builder.of(SporeEntity::new, MobCategory.CREATURE)
+                    .sized(1.5f, 2f).build("spore"));
+    public static final Supplier<EntityType<MizoleEntity>> MIZOLE =
+            ENTITY_TYPES.register("mizole", () -> EntityType.Builder.of(MizoleEntity::new, MobCategory.CREATURE)
+                    .sized(1.5f, 2f).build("mizole"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

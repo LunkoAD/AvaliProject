@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:birch_forest",
+  "spawners": {
+    "type": "avaliproject:talxwolf",
+    "maxCount": 6,
+    "minCount": 2,
+    "weight": 100
+  }
+}

@@ -366,7 +366,7 @@ public class ModItems {
             () -> new DeferredSpawnEggItem(ModEntities.SKACIKKJRRKBWCAK, 0x623928, 0x91776d,
                     new Item.Properties()));
     public static final DeferredItem<Item> EEPUOR_SPAWN_EGG = ITEMS.register("eepuor_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.EEPUOR, 0xfae1a9, 0xaa7937,
+            () -> new DeferredSpawnEggItem(ModEntities.EEPUOR, 0x2d2f31, 0x3effff,
                     new Item.Properties()));
 
     public static final DeferredItem<Item> PROTOGEN_SPAWN_EGG = ITEMS.register("protogen_spawn_egg",
@@ -379,25 +379,40 @@ public class ModItems {
             () -> new DeferredSpawnEggItem(ModEntities.AVALI, 0xff8432, 0xfff7d6,
                     new Item.Properties()));
     public static final DeferredItem<Item> SERGAL_SPAWN_EGG = ITEMS.register("sergal_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.SERGAL, 0xfae1a9, 0xaa7937,
+            () -> new DeferredSpawnEggItem(ModEntities.SERGAL, 0xf6d6c9, 0x84121e,
                     new Item.Properties()));
 
     public static final DeferredItem<Item> CAKLERAH_SPAWN_EGG = ITEMS.register("caklerah_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.CAKLERAH, 0xfae1a9, 0xaa7937,
+            () -> new DeferredSpawnEggItem(ModEntities.CAKLERAH, 0xeae6da, 0xf19751,
                     new Item.Properties()));
     public static final DeferredItem<Item> MAMAGEN_SPAWN_EGG = ITEMS.register("mamagen_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.MAMAGEN, 0xfae1a9, 0xaa7937,
+            () -> new DeferredSpawnEggItem(ModEntities.MAMAGEN, 0x1b1c2b, 0x9fa1b7,
                     new Item.Properties()));
     public static final DeferredItem<Item> TALXLEECH_SPAWN_EGG = ITEMS.register("talxleech_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.TALXLEECH, 0xfae1a9, 0xaa7937,
+            () -> new DeferredSpawnEggItem(ModEntities.TALXLEECH, 0x783c1d, 0x939393,
                     new Item.Properties()));
     public static final DeferredItem<Item> TALXWEASEL_SPAWN_EGG = ITEMS.register("talxweasel_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.TALXWEASEL, 0xfae1a9, 0xaa7937,
+            () -> new DeferredSpawnEggItem(ModEntities.TALXWEASEL, 0x0d0d0c, 0x484b47,
                     new Item.Properties()));
     public static final DeferredItem<Item> STALKER_SPAWN_EGG = ITEMS.register("stalker_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.STALKER, 0xfae1a9, 0xaa7937,
+            () -> new DeferredSpawnEggItem(ModEntities.STALKER, 0x9d9d9d, 0x9f3d00,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> GOHUNTAKI_SPAWN_EGG = ITEMS.register("gohuntaki_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.GOHUNTAKI, 0x564d4c, 0x8d381e,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> TALXDOG_SPAWN_EGG = ITEMS.register("talxdog_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.TALXDOG, 0x7e7e6f, 0x261e20,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> TALXWOLF_SPAWN_EGG = ITEMS.register("talxwolf_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.TALXWOLF, 0xa7a7a7, 0x303736,
                     new Item.Properties()));
 
+    public static final DeferredItem<Item> MIZOLE_SPAWN_EGG = ITEMS.register("mizole_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.MIZOLE, 0x456e6f, 0x26cc20,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> SPORE_SPAWN_EGG = ITEMS.register("spore_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.SPORE, 0x456e6f, 0x26cc20,
+                    new Item.Properties()));
 
     public static final DeferredItem<SwordItem> SERGAL_GREATSWORD = ITEMS.register("sergal_greatsword",
             () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()

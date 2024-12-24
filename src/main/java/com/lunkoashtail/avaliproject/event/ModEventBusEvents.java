@@ -32,6 +32,11 @@ public class ModEventBusEvents {
         event.put(ModEntities.CAKLERAH.get(), CaklerahEntity.createAttributes().build());
         event.put(ModEntities.TALXLEECH.get(), TalxleechEntity.createAttributes().build());
         event.put(ModEntities.TALXWEASEL.get(), TalxweaselEntity.createAttributes().build());
+        event.put(ModEntities.GOHUNTAKI.get(), GohuntakiEntity.createAttributes().build());
+        event.put(ModEntities.TALXDOG.get(), TalxdogEntity.createAttributes().build());
+        event.put(ModEntities.TALXWOLF.get(), TalxwolfEntity.createAttributes().build());
+        event.put(ModEntities.SPORE.get(), SporeEntity.createAttributes().build());
+        event.put(ModEntities.MIZOLE.get(), MizoleEntity.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -60,6 +65,16 @@ public class ModEventBusEvents {
         event.register(ModEntities.TALXLEECH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(ModEntities.TALXWEASEL.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.GOHUNTAKI.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.TALXDOG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.TALXWOLF.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.SPORE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.MIZOLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }
