@@ -37,6 +37,8 @@ public class ModEventBusEvents {
         event.put(ModEntities.TALXWOLF.get(), TalxwolfEntity.createAttributes().build());
         event.put(ModEntities.SPORE.get(), SporeEntity.createAttributes().build());
         event.put(ModEntities.MIZOLE.get(), MizoleEntity.createAttributes().build());
+        event.put(ModEntities.FEMALE_NEVREAN.get(), FemaleNevreanEntity.createAttributes().build());
+        event.put(ModEntities.MALE_NEVREAN.get(), MaleNevreanEntity.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -45,6 +47,11 @@ public class ModEventBusEvents {
                 Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(ModEntities.SKACIKKJRRKBWCAK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.FEMALE_NEVREAN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.MALE_NEVREAN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
         event.register(ModEntities.PROTOGEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(ModEntities.PRIMAGEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,

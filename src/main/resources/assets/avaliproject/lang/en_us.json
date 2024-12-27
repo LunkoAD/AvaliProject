@@ -187,6 +187,8 @@
   "item.avaliproject.talxwolf_spawn_egg": "Talyxian Wolf Stalker Spawn Egg",
   "item.avaliproject.mizole_spawn_egg": "Mizole Stalker Spawn Egg",
   "item.avaliproject.spore_spawn_egg": "Spore Stalker Spawn Egg",
+  "item.avaliproject.female_nevrean_spawn_egg": "Female Nevrean Spawn Egg",
+  "item.avaliproject.male_nevrean_spawn_egg": "Male Nevrean Spawn Egg",
 
   "entity.avaliproject.sksceegehkja": "Skskcee'Gehkja ",
   "entity.avaliproject.skacikkjrrbwcak": "Skacik kjrrk’bwcak",
@@ -205,6 +207,8 @@
   "entity.avaliproject.talxwolf": "Talyxian Wolf Stalker",
   "entity.avaliproject.spore": "Spore Stalker",
   "entity.avaliproject.mizole": "Mizole Stalker",
+  "entity.avaliproject.female_nevrean": "Female Nevrean",
+  "entity.avaliproject.male_nevrean": "Male Nevrean",
 
   "painting.avaliproject.avali_painting.title": "Tribal Avali Tapestry",
   "painting.avaliproject.avali_painting.author": "Fevix",

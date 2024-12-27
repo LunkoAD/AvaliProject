@@ -413,6 +413,12 @@ public class ModItems {
     public static final DeferredItem<Item> SPORE_SPAWN_EGG = ITEMS.register("spore_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.SPORE, 0xcacaca, 0x757d5b,
                     new Item.Properties()));
+    public static final DeferredItem<Item> FEMALE_NEVREAN_SPAWN_EGG = ITEMS.register("female_nevrean_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.FEMALE_NEVREAN, 0x554d40, 0xcfac69,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> MALE_NEVREAN_SPAWN_EGG = ITEMS.register("male_nevrean_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.MALE_NEVREAN, 0xfbdd67, 0xccee0e,
+                    new Item.Properties()));
 
     public static final DeferredItem<SwordItem> SERGAL_GREATSWORD = ITEMS.register("sergal_greatsword",
             () -> new SwordItem(ModToolTiers.CERAMIC, new Item.Properties()

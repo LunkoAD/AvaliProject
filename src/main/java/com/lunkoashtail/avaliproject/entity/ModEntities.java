@@ -75,6 +75,13 @@ public class ModEntities {
             ENTITY_TYPES.register("mizole", () -> EntityType.Builder.of(MizoleEntity::new, MobCategory.CREATURE)
                     .sized(1.5f, 2f).build("mizole"));
 
+    public static final Supplier<EntityType<MaleNevreanEntity>> MALE_NEVREAN =
+            ENTITY_TYPES.register("male_nevrean", () -> EntityType.Builder.of(MaleNevreanEntity::new, MobCategory.CREATURE)
+                    .sized(1.5f, 2f).build("male_nevrean"));
+    public static final Supplier<EntityType<FemaleNevreanEntity>> FEMALE_NEVREAN =
+            ENTITY_TYPES.register("female_nevrean", () -> EntityType.Builder.of(FemaleNevreanEntity::new, MobCategory.CREATURE)
+                    .sized(1.5f, 2f).build("female_nevrean"));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

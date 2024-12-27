@@ -163,6 +163,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TALXWOLF_SPAWN_EGG);
                         output.accept(ModItems.MIZOLE_SPAWN_EGG);
                         output.accept(ModItems.SPORE_SPAWN_EGG);
+                        output.accept(ModItems.MALE_NEVREAN_SPAWN_EGG);
+                        output.accept(ModItems.FEMALE_NEVREAN_SPAWN_EGG);
                     }).build());
 
     public static void register (IEventBus eventBus) {
