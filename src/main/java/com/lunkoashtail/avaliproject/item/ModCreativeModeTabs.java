@@ -41,6 +41,17 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_4);
                         output.accept(ModBlocks.AVALI_FABRIC_BLOCK);
                         output.accept(ModBlocks.ALT_AVALI_FABRIC_BLOCK);
+                        output.accept(ModBlocks.AVALI_CARVING_1);
+                        output.accept(ModBlocks.AVALI_CARVING_2);
+                        output.accept(ModBlocks.AVALI_CARVING_3);
+                        output.accept(ModBlocks.AVALI_CARVING_4);
+                        output.accept(ModBlocks.AVALI_CARVING_5);
+                        output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_1);
+                        output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_2);
+                        output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_3);
+                        output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_4);
+                        output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_5);
+                        output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_6);
                         output.accept(ModBlocks.SOFT_TAPESTRY);
                         output.accept(ModItems.LUME);
                         output.accept(ModItems.LUME_BIT);

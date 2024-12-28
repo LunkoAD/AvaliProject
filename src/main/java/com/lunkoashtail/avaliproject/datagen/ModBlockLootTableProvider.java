@@ -53,6 +53,17 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK.get());
         dropSelf(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK.get());
         dropSelf(ModBlocks.ALT_AVALI_FABRIC_BLOCK.get());
+        dropSelf(ModBlocks.AVALI_CARVING_1.get());
+        dropSelf(ModBlocks.AVALI_CARVING_2.get());
+        dropSelf(ModBlocks.AVALI_CARVING_3.get());
+        dropSelf(ModBlocks.AVALI_CARVING_4.get());
+        dropSelf(ModBlocks.AVALI_CARVING_5.get());
+        dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_1.get());
+        dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_2.get());
+        dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_3.get());
+        dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_4.get());
+        dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_5.get());
+        dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_6.get());
 
         dropSelf(ModBlocks.NANOLOOM.get());
 

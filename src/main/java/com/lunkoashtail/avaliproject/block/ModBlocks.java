@@ -159,6 +159,42 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
+
+    public static final DeferredBlock<Block> AVALI_NIGHTLY_FABRIC_1 = registerBlock("avali_nightly_fabric_1",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> AVALI_NIGHTLY_FABRIC_2 = registerBlock("avali_nightly_fabric_2",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> AVALI_NIGHTLY_FABRIC_3 = registerBlock("avali_nightly_fabric_3",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> AVALI_NIGHTLY_FABRIC_4 = registerBlock("avali_nightly_fabric_4",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> AVALI_NIGHTLY_FABRIC_5 = registerBlock("avali_nightly_fabric_5",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> AVALI_NIGHTLY_FABRIC_6 = registerBlock("avali_nightly_fabric_6",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
+    public static final DeferredBlock<Block> AVALI_CARVING_1 = registerBlock("avali_carving_1",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+    public static final DeferredBlock<Block> AVALI_CARVING_2 = registerBlock("avali_carving_2",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+    public static final DeferredBlock<Block> AVALI_CARVING_3 = registerBlock("avali_carving_3",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+    public static final DeferredBlock<Block> AVALI_CARVING_4 = registerBlock("avali_carving_4",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+    public static final DeferredBlock<Block> AVALI_CARVING_5 = registerBlock("avali_carving_5",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+
+
     public static final DeferredBlock<Block> AGATE_BLOCK = registerBlock("agate_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));

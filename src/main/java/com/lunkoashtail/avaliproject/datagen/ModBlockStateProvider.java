@@ -67,6 +67,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK);
         blockWithItem(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK);
         blockWithItem(ModBlocks.ALT_AVALI_FABRIC_BLOCK);
+        blockWithItem(ModBlocks.AVALI_CARVING_1);
+        blockWithItem(ModBlocks.AVALI_CARVING_2);
+        blockWithItem(ModBlocks.AVALI_CARVING_3);
+        blockWithItem(ModBlocks.AVALI_CARVING_4);
+        blockWithItem(ModBlocks.AVALI_CARVING_5);
+        blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_1);
+        blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_2);
+        blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_3);
+        blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_4);
+        blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_5);
+        blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_6);
 
         blockWithItem(ModBlocks.NANOLOOM);
 

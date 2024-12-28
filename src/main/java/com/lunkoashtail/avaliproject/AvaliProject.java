@@ -196,6 +196,17 @@ public class AvaliProject {
             event.accept(ModBlocks.PROTOGEN_SUPPORT_BLOCK);
             event.accept(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK);
             event.accept(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK);
+            event.accept(ModBlocks.AVALI_CARVING_1);
+            event.accept(ModBlocks.AVALI_CARVING_2);
+            event.accept(ModBlocks.AVALI_CARVING_3);
+            event.accept(ModBlocks.AVALI_CARVING_4);
+            event.accept(ModBlocks.AVALI_CARVING_5);
+            event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_1);
+            event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_2);
+            event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_3);
+            event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_4);
+            event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_5);
+            event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_6);
         }
 
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
