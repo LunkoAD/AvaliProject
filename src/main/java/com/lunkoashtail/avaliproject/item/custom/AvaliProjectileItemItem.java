@@ -39,7 +39,7 @@ public class AvaliProjectileItemItem extends Item {
                 } else {
                     if (stack.isDamageableItem()) {
                         if (world instanceof ServerLevel serverLevel)
-                            stack.hurtAndBreak(1, serverLevel, player, _stkprov -> {
+                            stack.hurtAndBreak(1, player, _stkprov -> {
                             });
                     } else {
                         stack.shrink(1);

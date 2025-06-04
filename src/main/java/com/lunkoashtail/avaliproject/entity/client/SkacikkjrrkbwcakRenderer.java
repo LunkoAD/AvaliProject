@@ -1,5 +1,6 @@
 package com.lunkoashtail.avaliproject.entity.client;
 
+import com.lunkoashtail.avaliproject.entity.custom.SergalEntity;
 import com.lunkoashtail.avaliproject.entity.custom.SkacikkjrrkbwcakEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -17,16 +18,11 @@ public class SkacikkjrrkbwcakRenderer extends GeoEntityRenderer<Skacikkjrrkbwcak
     }
 
     @Override
-    public RenderType getRenderType(SkacikkjrrkbwcakEntity animatable, ResourceLocation texture, MultiBufferSource bufferSource, float partialTick) {
-        return RenderType.entityTranslucent(getTextureLocation(animatable));
-    }
-
-    @Override
-    public void preRender(PoseStack poseStack, SkacikkjrrkbwcakEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int color) {
-        float scale = 1f;
+    public void preRender(PoseStack poseStack, SkacikkjrrkbwcakEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        float scale = 0.65f;
         this.scaleHeight = scale;
         this.scaleWidth = scale;
-        super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, color);
+        super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red,  green,blue, alpha);
     }
 
 }

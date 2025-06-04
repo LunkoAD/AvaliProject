@@ -6,8 +6,8 @@ import com.lunkoashtail.avaliproject.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.BlockTagsProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -125,21 +125,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
-        tag(ModTags.Blocks.INCORRECT_FOR_AEROGEL_TOOL)
-                .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
 
         tag(ModTags.Blocks.NEEDS_HARDLIGHT_TOOL)
                 .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
-        tag(ModTags.Blocks.INCORRECT_FOR_HARDLIGHT_TOOL)
-                .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
 
         tag(ModTags.Blocks.NEEDS_CERAMIC_TOOL)
                 .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
-
-        tag(ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL)
-                .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
     }
 }

@@ -11,30 +11,26 @@ import com.lunkoashtail.avaliproject.screen.ModMenuTypes;
 import com.lunkoashtail.avaliproject.screen.custom.NanoloomScreen;
 import com.lunkoashtail.avaliproject.sound.ModSounds;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.fml.util.thread.SidedThreadGroups;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -50,7 +46,7 @@ public class AvaliProject {
     public AvaliProject(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
-        NeoForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(this);
 
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
@@ -66,7 +62,7 @@ public class AvaliProject {
         ModMenuTypes.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        //modContainer.addConfig(Config.SPEC); //we don't use this. - @989onan
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -78,12 +74,13 @@ public class AvaliProject {
             System.out.println("Common setup for Avali Project.");
         });
         LOGGER.info("HELLO FROM COMMON SETUP");
-        if (Config.logDirtBlock)
+        //we don't use this. - @989onan
+        /*if (Config.logDirtBlock)
             LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));*/
     }
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
@@ -117,8 +114,12 @@ public class AvaliProject {
             EntityRenderers.register(ModEntities.AVALI_DRONE.get(), AvaliDroneRenderer::new);
         }
         @SubscribeEvent
-        public static void registerScreens(RegisterMenuScreensEvent event) {
-            event.register(ModMenuTypes.NANOLOOM_MENU.get(), NanoloomScreen::new);
+        public static void clientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(
+                    // Assume RegistryObject<MenuType<MyMenu>> MY_MENU
+                    // Assume MyContainerScreen<MyMenu> which takes in three parameters
+                    () -> MenuScreens.register(ModMenuTypes.NANOLOOM_MENU.get(), NanoloomScreen::new)
+            );
         }
     }
 
@@ -276,29 +277,5 @@ public class AvaliProject {
             event.accept(ModItems.PROTOGEN_RAM);
             event.accept(ModItems.SERGAL_CHEESE);
         }
-    }
-
-    private static final Collection<Tuple<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
-
-    public static void queueServerWork(int tick, Runnable action) {
-        if (Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER)
-            workQueue.add(new Tuple<>(action, tick));
-    }
-
-    @SubscribeEvent
-    public void tick(ServerTickEvent.Post event) {
-        List<Tuple<Runnable, Integer>> actions = new ArrayList<>();
-        workQueue.forEach(work -> {
-            work.setB(work.getB() - 1);
-            if (work.getB() == 0)
-                actions.add(work);
-        });
-        actions.forEach(e -> e.getA().run());
-        workQueue.removeAll(actions);
-    }
-
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
     }
 }

@@ -11,6 +11,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -23,12 +25,17 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
-    protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+    public ModBlockLootTableProvider() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 
     @Override
@@ -119,32 +126,32 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         LootItemCondition.Builder GroouCropConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.GROOU_CROP_BLOCK.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GroouCropBlock.AGE, 5));
         this.add(ModBlocks.GROOU_CROP_BLOCK.get(), this.createCropDrops(ModBlocks.GROOU_CROP_BLOCK.get(),
-                ModItems.FIBER.get(), ModItems.GROOU.asItem(), GroouCropConditionBuilder));
+                ModItems.FIBER.get(), ModItems.GROOU.get(), GroouCropConditionBuilder));
 
         LootItemCondition.Builder KiriCropConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.KIRI_CROP_BLOCK.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(KiriCropBlock.AGE, 5));
         this.add(ModBlocks.KIRI_CROP_BLOCK.get(), this.createCropDrops(ModBlocks.KIRI_CROP_BLOCK.get(),
-                ModItems.KIRI_FRUIT.get(), ModItems.KIRI_FRUIT.asItem(), KiriCropConditionBuilder));
+                ModItems.KIRI_FRUIT.get(), ModItems.KIRI_FRUIT.get(), KiriCropConditionBuilder));
 
         LootItemCondition.Builder PiruCropConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PIRU_CROP_BLOCK.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PiruCropBlock.AGE, 5));
         this.add(ModBlocks.PIRU_CROP_BLOCK.get(), this.createCropDrops(ModBlocks.PIRU_CROP_BLOCK.get(),
-                ModItems.PIRU_FROND.get(), ModItems.PIRU_COLONY.asItem(), PiruCropConditionBuilder));
+                ModItems.PIRU_FROND.get(), ModItems.PIRU_COLONY.get(), PiruCropConditionBuilder));
 
         LootItemCondition.Builder NakatiCropConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.NAKATI_CROP_BLOCK.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NakatiCropBlock.AGE, 5));
         this.add(ModBlocks.NAKATI_CROP_BLOCK.get(), this.createCropDrops(ModBlocks.NAKATI_CROP_BLOCK.get(),
-                ModItems.NAKATI_BARK.get(), ModItems.NAKATI_OVOID.asItem(), NakatiCropConditionBuilder));
+                ModItems.NAKATI_BARK.get(), ModItems.NAKATI_OVOID.get(), NakatiCropConditionBuilder));
 
 
         this.dropSelf(ModBlocks.GROOU_NODULE.get());
-        this.add(ModBlocks.POTTED_GROOU_NODULE.get(), createPotFlowerItemTable(ModBlocks.GROOU_NODULE));
+        this.add(ModBlocks.POTTED_GROOU_NODULE.get(), createPotFlowerItemTable(ModBlocks.GROOU_NODULE.get()));
         this.dropSelf(ModBlocks.NAKATI_NODULE.get());
-        this.add(ModBlocks.POTTED_NAKATI_NODULE.get(), createPotFlowerItemTable(ModBlocks.NAKATI_NODULE));
+        this.add(ModBlocks.POTTED_NAKATI_NODULE.get(), createPotFlowerItemTable(ModBlocks.NAKATI_NODULE.get()));
         this.dropSelf(ModBlocks.KIRI_NODULE.get());
-        this.add(ModBlocks.POTTED_KIRI_NODULE.get(), createPotFlowerItemTable(ModBlocks.KIRI_NODULE));
+        this.add(ModBlocks.POTTED_KIRI_NODULE.get(), createPotFlowerItemTable(ModBlocks.KIRI_NODULE.get()));
         this.dropSelf(ModBlocks.PIRU_NODULE.get());
-        this.add(ModBlocks.POTTED_PIRU_NODULE.get(), createPotFlowerItemTable(ModBlocks.PIRU_NODULE));
+        this.add(ModBlocks.POTTED_PIRU_NODULE.get(), createPotFlowerItemTable(ModBlocks.PIRU_NODULE.get()));
 
 
 
@@ -152,15 +159,24 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {
-        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         return this.createSilkTouchDispatchTable(pBlock,
                 this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
-                        .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
+                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
 
+
+    //this rewrite is bad, but I wrote this at 4:00am I was tired - @989onan
     @Override
-    protected Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
+    protected @NotNull Iterable<Block> getKnownBlocks() {
+        List<RegistryObject<Block>> returned = List.copyOf(ModBlocks.BLOCKS.getEntries());
+        Block[] blocks = new Block[returned.size()];
+        int i = 0;
+        for(RegistryObject<Block> h : ModBlocks.BLOCKS.getEntries()){
+
+            blocks[i] = h.get();
+            i++;
+        }
+        return List.of(blocks);
     }
 }

@@ -12,11 +12,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredBlock;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
 
@@ -110,16 +110,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
 
-    private void blockWithItem(DeferredBlock<?> deferredBlock) {
-        simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
+    private void blockWithItem(RegistryObject<Block> RegistryObject) {
+        simpleBlockWithItem(RegistryObject.get(), cubeAll(RegistryObject.get()));
     }
 
-    private void blockItem(DeferredBlock<?> deferredBlock) {
-        simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("avaliproject:block/" + deferredBlock.getId().getPath()));
+    private void blockItem(RegistryObject<Block> RegistryObject) {
+        simpleBlockItem(RegistryObject.get(), new ModelFile.UncheckedModelFile("avaliproject:block/" + RegistryObject.getId().getPath()));
     }
 
-    private void blockItem(DeferredBlock<?> deferredBlock, String appendix) {
-        simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("avaliproject:block/" + deferredBlock.getId().getPath() + appendix));
+    private void blockItem(RegistryObject<Block> RegistryObject, String appendix) {
+        simpleBlockItem(RegistryObject.get(), new ModelFile.UncheckedModelFile("avaliproject:block/" + RegistryObject.getId().getPath() + appendix));
     }
 
     public void makeCrop(CropBlock block, String modelName, String textureName) {

@@ -1,11 +1,11 @@
 package com.lunkoashtail.avaliproject.entity.client;
 
 import com.lunkoashtail.avaliproject.entity.custom.TalxleechEntity;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.model.data.EntityModelData;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.animation.AnimationState;
 
 import net.minecraft.util.Mth;
 import net.minecraft.resources.ResourceLocation;

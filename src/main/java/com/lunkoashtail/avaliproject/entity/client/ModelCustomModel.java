@@ -40,7 +40,7 @@ public class ModelCustomModel<T extends Entity> extends EntityModel<T> {
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int rgb) {
-        bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, rgb);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float r,float g, float b, float a) {
+        bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, r,g,b,a);
     }
 }
