@@ -1,8 +1,16 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
+import com.lunkoashtail.avaliproject.entity.client.ProtogenVariant;
+import com.lunkoashtail.avaliproject.entity.client.SergalVariant;
+import com.lunkoashtail.avaliproject.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -25,9 +33,6 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -43,6 +48,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
+
+import javax.annotation.Nullable;
 
 
 public class ProtogenEntity extends Monster implements GeoEntity {
@@ -77,8 +84,12 @@ public class ProtogenEntity extends Monster implements GeoEntity {
         super.registerGoals();
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
             @Override
-            protected boolean canPerformAttack(LivingEntity entity) {
-                return this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity);
+            protected void checkAndPerformAttack(LivingEntity entity, double thingy_idk_what_this_is) {
+                if(this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity)){
+                    this.resetAttackCooldown();
+                    this.mob.swing(InteractionHand.MAIN_HAND);
+                    this.mob.doHurtTarget(entity);
+                }
             }
         });
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
@@ -87,9 +98,9 @@ public class ProtogenEntity extends Monster implements GeoEntity {
         this.goalSelector.addGoal(5, new FloatGoal(this));
     }
 
-    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
-        this.spawnAtLocation(new ItemStack(ModItems.PROTOGEN_RAM.get()));
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
+        this.spawnAtLocation(new ItemStack(ModItems.PROTOGEN_RAM.get(), 1+looting));
     }
 
     @Override
@@ -109,13 +120,13 @@ public class ProtogenEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public EntityDimensions getDefaultDimensions(Pose pose) {
-        return super.getDefaultDimensions(pose).scale(1f);
+    public EntityDimensions getDimensions(Pose pose) {
+        return super.getDimensions(pose).scale(1f);
     }
 
-    public static void init(RegisterSpawnPlacementsEvent event) {
-        event.register(ModEntities.PROTOGEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), RegisterSpawnPlacementsEvent.Operation.REPLACE);
+    public static void init(SpawnPlacementRegisterEvent event) {
+        event.register(ModEntities.PROTOGEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -125,7 +136,7 @@ public class ProtogenEntity extends Monster implements GeoEntity {
         builder = builder.add(Attributes.ARMOR, 2);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 2);
         builder = builder.add(Attributes.FOLLOW_RANGE, 12);
-        builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
+        
         builder = builder.add(Attributes.ATTACK_KNOCKBACK, 0.5);
         return builder;
     }
@@ -166,7 +177,7 @@ public class ProtogenEntity extends Monster implements GeoEntity {
         ++this.deathTime;
         if (this.deathTime == 20) {
             this.remove(ProtogenEntity.RemovalReason.KILLED);
-            this.dropExperience(this);
+            this.dropExperience();
         }
     }
 
@@ -192,12 +203,12 @@ public class ProtogenEntity extends Monster implements GeoEntity {
 
     /* VARIANT */
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(SHOOT, false);
-        builder.define(ANIMATION, "undefined");
-        builder.define(TEXTURE, "protogenblue");
-        builder.define(VARIANT, 0);
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(SHOOT, false);
+        this.entityData.define(ANIMATION, "undefined");
+        this.entityData.define(TEXTURE, "protogenblue");
+        this.entityData.define(VARIANT, 0);
     }
     private int getTypeVariant() {
         return this.entityData.get(VARIANT);
@@ -225,9 +236,9 @@ public class ProtogenEntity extends Monster implements GeoEntity {
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
-                                        @Nullable SpawnGroupData pSpawnGroupData) {
+                                        @Nullable SpawnGroupData pSpawnGroupData, @Nullable CompoundTag datatag) {
         ProtogenVariant variant = Util.getRandom(ProtogenVariant.values(), this.random);
         this.setVariant(variant);
-        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
+        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData,datatag);
     }
 }

@@ -43,11 +43,11 @@ public class AvaliswordItemRenderer extends GeoItemRenderer<AvaliswordItem> {
 
     @Override
     public void actuallyRender(PoseStack matrixStackIn, AvaliswordItem animatable, BakedGeoModel model, RenderType type, MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, boolean isRenderer, float partialTicks, int packedLightIn,
-                               int packedOverlayIn, int color) {
+                               int packedOverlayIn, float red, float green, float blue, float alpha) {
         this.currentBuffer = renderTypeBuffer;
         this.renderType = type;
         this.animatable = animatable;
-        super.actuallyRender(matrixStackIn, animatable, model, type, renderTypeBuffer, vertexBuilder, isRenderer, partialTicks, packedLightIn, packedOverlayIn, color);
+        super.actuallyRender(matrixStackIn, animatable, model, type, renderTypeBuffer, vertexBuilder, isRenderer, partialTicks, packedLightIn, packedOverlayIn, red,  green,  blue,  alpha);
         if (this.renderArms) {
             this.renderArms = false;
         }

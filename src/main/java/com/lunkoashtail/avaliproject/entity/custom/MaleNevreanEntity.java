@@ -3,6 +3,7 @@ package com.lunkoashtail.avaliproject.entity.custom;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -26,9 +27,6 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -64,11 +62,11 @@ public class MaleNevreanEntity extends Animal implements GeoEntity {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(SHOOT, false);
-        builder.define(ANIMATION, "undefined");
-        builder.define(TEXTURE, "male_nevrean");
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(SHOOT, false);
+        this.entityData.define(ANIMATION, "undefined");
+        this.entityData.define(TEXTURE, "male_nevrean");
     }
 
     public void setTexture(String texture) {
@@ -129,14 +127,14 @@ public class MaleNevreanEntity extends Animal implements GeoEntity {
     }
 
     @Override
-    public EntityDimensions getDefaultDimensions(Pose pose) {
-        return super.getDefaultDimensions(pose).scale(1f);
+    public EntityDimensions getDimensions(Pose pose) {
+        return super.getDimensions(pose).scale(1f);
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
         MaleNevreanEntity retval = ModEntities.MALE_NEVREAN.get().create(serverWorld);
-        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
+        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null,null);
         return retval;
     }
 
@@ -151,9 +149,9 @@ public class MaleNevreanEntity extends Animal implements GeoEntity {
         this.updateSwingTime();
     }
 
-    public static void init(RegisterSpawnPlacementsEvent event) {
-        event.register(ModEntities.MALE_NEVREAN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), RegisterSpawnPlacementsEvent.Operation.REPLACE);
+    public static void init(SpawnPlacementRegisterEvent event) {
+        event.register(ModEntities.MALE_NEVREAN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -163,7 +161,7 @@ public class MaleNevreanEntity extends Animal implements GeoEntity {
         builder = builder.add(Attributes.ARMOR, 0);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);
-        builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
+        
         return builder;
     }
 
@@ -203,7 +201,7 @@ public class MaleNevreanEntity extends Animal implements GeoEntity {
         ++this.deathTime;
         if (this.deathTime == 20) {
             this.remove(MaleNevreanEntity.RemovalReason.KILLED);
-            this.dropExperience(this);
+            this.dropExperience();
         }
     }
 

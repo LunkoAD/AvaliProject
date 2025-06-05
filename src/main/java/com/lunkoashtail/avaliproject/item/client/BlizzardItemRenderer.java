@@ -2,7 +2,6 @@ package com.lunkoashtail.avaliproject.item.client;
 
 import com.lunkoashtail.avaliproject.item.custom.BlizzardItem;
 import com.lunkoashtail.avaliproject.util.AnimUtils;
-import software.bernie.geckolib.util.RenderUtil;
 import software.bernie.geckolib.renderer.GeoItemRenderer;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
@@ -18,11 +17,13 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.Minecraft;
 
+import java.util.Arrays;
 import java.util.Set;
 import java.util.HashSet;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
+import software.bernie.geckolib.util.RenderUtils;
 
 public class BlizzardItemRenderer extends GeoItemRenderer<BlizzardItem> {
     public BlizzardItemRenderer() {
@@ -51,18 +52,18 @@ public class BlizzardItemRenderer extends GeoItemRenderer<BlizzardItem> {
 
     @Override
     public void actuallyRender(PoseStack matrixStackIn, BlizzardItem animatable, BakedGeoModel model, RenderType type, MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, boolean isRenderer, float partialTicks, int packedLightIn,
-                               int packedOverlayIn, int color) {
+                               int packedOverlayIn, float red, float green, float blue, float alpha) {
         this.currentBuffer = renderTypeBuffer;
         this.renderType = type;
         this.animatable = animatable;
-        super.actuallyRender(matrixStackIn, animatable, model, type, renderTypeBuffer, vertexBuilder, isRenderer, partialTicks, packedLightIn, packedOverlayIn, color);
+        super.actuallyRender(matrixStackIn, animatable, model, type, renderTypeBuffer, vertexBuilder, isRenderer, partialTicks, packedLightIn, packedOverlayIn, red, green, blue, alpha);
         if (this.renderArms) {
             this.renderArms = false;
         }
     }
 
     @Override
-    public void renderRecursively(PoseStack stack, BlizzardItem animatable, GeoBone bone, RenderType type, MultiBufferSource buffer, VertexConsumer bufferIn, boolean isReRender, float partialTick, int packedLightIn, int packedOverlayIn, int color) {
+    public void renderRecursively(PoseStack stack, BlizzardItem animatable, GeoBone bone, RenderType type, MultiBufferSource buffer, VertexConsumer bufferIn, boolean isReRender, float partialTick, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
         Minecraft mc = Minecraft.getInstance();
         String name = bone.getName();
         boolean renderingArms = false;
@@ -77,12 +78,12 @@ public class BlizzardItemRenderer extends GeoItemRenderer<BlizzardItem> {
             PlayerRenderer playerRenderer = (PlayerRenderer) mc.getEntityRenderDispatcher().getRenderer(player);
             PlayerModel<AbstractClientPlayer> model = playerRenderer.getModel();
             stack.pushPose();
-            RenderUtil.translateMatrixToBone(stack, bone);
-            RenderUtil.translateToPivotPoint(stack, bone);
-            RenderUtil.rotateMatrixAroundBone(stack, bone);
-            RenderUtil.scaleMatrixForBone(stack, bone);
-            RenderUtil.translateAwayFromPivotPoint(stack, bone);
-            ResourceLocation loc = player.getSkin().texture();
+            RenderUtils.translateMatrixToBone(stack, bone);
+            RenderUtils.translateToPivotPoint(stack, bone);
+            RenderUtils.rotateMatrixAroundBone(stack, bone);
+            RenderUtils.scaleMatrixForBone(stack, bone);
+            RenderUtils.translateAwayFromPivotPoint(stack, bone);
+            ResourceLocation loc = player.m_108560_(); //player skin. this one wasn't mapped on MCP parchment mappings...
             if (name.equals("")) {
                 stack.translate(-1.0f * SCALE_RECIPROCAL, 2.0f * SCALE_RECIPROCAL, 0.0f);
                 if (!player.isInvisible()) {
@@ -98,7 +99,7 @@ public class BlizzardItemRenderer extends GeoItemRenderer<BlizzardItem> {
             }
             stack.popPose();
         }
-        super.renderRecursively(stack, animatable, bone, type, buffer, bufferIn, isReRender, partialTick, packedLightIn, packedOverlayIn, color);
+        super.renderRecursively(stack, animatable, bone, type, buffer, bufferIn, isReRender, partialTick, packedLightIn, packedOverlayIn, red,green,blue,alpha);
     }
 
     @Override

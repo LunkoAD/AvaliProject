@@ -5,12 +5,13 @@ import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.level.entity.EntityTickList;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import software.bernie.geckolib.event.GeoRenderEvent;
 
 /*
 @Mod.EventBusSubscriber
 public class EntityAnimationFactory {
     @SubscribeEvent
-    public static void onEntityTick(Entity.Pre event) {
+    public static void onEntityTick(GeoRenderEvent.Entity.Pre event) {
         if (event != null && event.getEntity() != null) {
             if (event.getEntity() instanceof SkacikkjrrkbwcakEntity syncable) {
                 String animation = syncable.getSyncedAnimation();
