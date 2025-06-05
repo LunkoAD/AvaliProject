@@ -1,12 +1,5 @@
 package com.lunkoashtail.avaliproject.init;
 
-import com.lunkoashtail.avaliproject.entity.custom.*;
-import net.minecraft.world.entity.EntityEvent;
-import net.minecraft.world.level.entity.EntityTickList;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import software.bernie.geckolib.event.GeoRenderEvent;
-
 /*
 @Mod.EventBusSubscriber
 public class EntityAnimationFactory {

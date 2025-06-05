@@ -1,10 +1,5 @@
 package com.lunkoashtail.avaliproject.init;
 
-import com.lunkoashtail.avaliproject.item.custom.*;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import software.bernie.geckolib.animatable.GeoItem;
 /*
 @Mod.EventBusSubscriber
 public class ItemAnimationFactory {
