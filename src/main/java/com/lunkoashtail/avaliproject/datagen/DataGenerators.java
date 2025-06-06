@@ -45,11 +45,11 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModBlockStateProvider(packOutput, existingFileHelper));
 
-        var registrySet = VanillaRegistries.createLookup();
+        //var registrySet = VanillaRegistries.createLookup();
 
 
 
-        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(packOutput, event.getLookupProvider(), registrySet, Set.of(AvaliProject.MOD_ID)) {
+        /*generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(packOutput, event.getLookupProvider(), registrySet, Set.of(AvaliProject.MOD_ID)) {
             @Override
             public String getName() {
                 return "Data Registries: " + AvaliProject.MOD_ID;
@@ -59,7 +59,7 @@ public class DataGenerators {
             protected boolean shouldDump(ResourceKey<?> key) {
                 return false;
             }
-        });
+        });*/
 
     }
 }

@@ -63,16 +63,15 @@ public class ModDimensions {
         HolderGetter<Biome> biomeRegistry = context.lookup(Registries.BIOME);
         HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
-
         NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(
                     new Climate.ParameterList<>(
                             List.of(
                                     Pair.of(
                                             new Climate.ParameterPoint(
-                                                    Climate.Parameter.point(-0.4f),
-                                                    Climate.Parameter.point(0.2f),
-                                                    Climate.Parameter.span(0.0f,0.1f),
+                                                    Climate.Parameter.point(0f),
+                                                    Climate.Parameter.point(0.1f),
+                                                    Climate.Parameter.span(0.1f,0.6f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
@@ -81,25 +80,25 @@ public class ModDimensions {
                                     ),
                                     Pair.of(
                                             new Climate.ParameterPoint(
-                                                    Climate.Parameter.point(-0.4f),
+                                                    Climate.Parameter.point(-0.7f),
                                                     Climate.Parameter.point(0.2f),
-                                                    Climate.Parameter.span(0.0f,0.1f),
-                                                    Climate.Parameter.point(0.0f),
-                                                    Climate.Parameter.point(0.0f),
-                                                    Climate.Parameter.point(0.0f),
-                                                    0
-                                            ),  biomeRegistry.getOrThrow(AvalonBiomes.SNOWY_PLAINS)
-                                    ),
-                                    Pair.of(
-                                            new Climate.ParameterPoint(
-                                                    Climate.Parameter.point(-0.4f),
-                                                    Climate.Parameter.point(0.2f),
-                                                    Climate.Parameter.span(0.0f,0.1f),
+                                                    Climate.Parameter.span(0.1f,0.1f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     0
                                             ),  biomeRegistry.getOrThrow(AvalonBiomes.PERMAFROST_FORESTS)
+                                    ),
+                                    Pair.of(
+                                            new Climate.ParameterPoint(
+                                                    Climate.Parameter.point(-0.9f),
+                                                    Climate.Parameter.point(0.5f),
+                                                    Climate.Parameter.span(0.1f,0.5f),
+                                                    Climate.Parameter.point(0.0f),
+                                                    Climate.Parameter.point(0.0f),
+                                                    Climate.Parameter.point(0.0f),
+                                                    0
+                                            ),  biomeRegistry.getOrThrow(AvalonBiomes.AVALON_CITIES)
                                     )
                             )
 

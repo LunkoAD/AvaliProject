@@ -1,7 +1,11 @@
 package com.lunkoashtail.avaliproject.util;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.datagen.avalon.AvalonBiomes;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -11,7 +15,16 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModTags {
-    public static final TagKey<Biome> AVALON = TagKey.create(ForgeRegistries.BIOMES.getRegistryKey(), ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_avalon"));
+
+    public static class Biomes{
+        public static final TagKey<Biome> AVALON = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_avalon"));
+        public static final TagKey<Biome> AVALON_SNOWY_PLAINS = TagKey.create(Registries.BIOME, AvalonBiomes.SNOWY_PLAINS.location());
+        public static final TagKey<Biome> AVALON_AVALON_CITIES = TagKey.create(Registries.BIOME, AvalonBiomes.AVALON_CITIES.location());
+        public static final TagKey<Biome> AVALON_PERMAFROST_FORESTS = TagKey.create(Registries.BIOME, AvalonBiomes.PERMAFROST_FORESTS.location());
+        public static final TagKey<Biome> AVALON_SHIFTING_ICE = TagKey.create(Registries.BIOME, AvalonBiomes.SHIFTING_ICE.location());
+    }
+
+
 
     public static class Blocks {
         public static final TagKey<Block> NEEDS_AEROGEL_TOOL = createTag("needs_aerogel_tool");
