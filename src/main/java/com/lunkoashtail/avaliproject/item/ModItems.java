@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -418,66 +419,66 @@ public class ModItems {
                 }
             });
     public static final RegistryObject<Item> SKSCEEGEHKJA_SPAWN_EGG = ITEMS.register("sksceegehkja_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.SKSCEEGEHKJA.get(), 0x5d5d5d, 0xc9c9c9,
+            () -> new ForgeSpawnEggItem(ModEntities.SKSCEEGEHKJA, 0x5d5d5d, 0xc9c9c9,
                     new Item.Properties()));
     public static final RegistryObject<Item> SKACIKKJRRBWCAK_SPAWN_EGG = ITEMS.register("skacikkjrrbwcak_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.SKACIKKJRRKBWCAK.get(), 0x623928, 0x91776d,
+            () -> new ForgeSpawnEggItem(ModEntities.SKACIKKJRRKBWCAK, 0x623928, 0x91776d,
                     new Item.Properties()));
     public static final RegistryObject<Item> EEPUOR_SPAWN_EGG = ITEMS.register("eepuor_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.EEPUOR.get(), 0x2d2f31, 0x3effff,
+            () -> new ForgeSpawnEggItem(ModEntities.EEPUOR, 0x2d2f31, 0x3effff,
                     new Item.Properties()));
 
     public static final RegistryObject<Item> PROTOGEN_SPAWN_EGG = ITEMS.register("protogen_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.PROTOGEN.get(), 0xdbdbdb, 0x68ffff,
+            () -> new ForgeSpawnEggItem(ModEntities.PROTOGEN, 0xdbdbdb, 0x68ffff,
                     new Item.Properties()));
     public static final RegistryObject<Item> PRIMAGEN_SPAWN_EGG = ITEMS.register("primagen_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.PRIMAGEN.get(), 0xeaeaea, 0x68ff55,
+            () -> new ForgeSpawnEggItem(ModEntities.PRIMAGEN, 0xeaeaea, 0x68ff55,
                     new Item.Properties()));
     public static final RegistryObject<Item> AVALI_SPAWN_EGG = ITEMS.register("avali_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.AVALI.get(), 0xff8432, 0xfff7d6,
+            () -> new ForgeSpawnEggItem(ModEntities.AVALI, 0xff8432, 0xfff7d6,
                     new Item.Properties()));
     public static final RegistryObject<Item> SERGAL_SPAWN_EGG = ITEMS.register("sergal_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.SERGAL.get(), 0xf6d6c9, 0x84121e,
+            () -> new ForgeSpawnEggItem(ModEntities.SERGAL, 0xf6d6c9, 0x84121e,
                     new Item.Properties()));
     public static final RegistryObject<Item> CHRGAKBZ_SPAWN_EGG = ITEMS.register("chrgakbz_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.CHRGAKBZ.get(), 0x3a757d, 0x3d1c5e,
+            () -> new ForgeSpawnEggItem(ModEntities.CHRGAKBZ, 0x3a757d, 0x3d1c5e,
                     new Item.Properties()));
     public static final RegistryObject<Item> CAKLERAH_SPAWN_EGG = ITEMS.register("caklerah_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.CAKLERAH.get(), 0xeae6da, 0xf19751,
+            () -> new ForgeSpawnEggItem(ModEntities.CAKLERAH, 0xeae6da, 0xf19751,
                     new Item.Properties()));
     public static final RegistryObject<Item> MAMAGEN_SPAWN_EGG = ITEMS.register("mamagen_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.MAMAGEN.get(), 0x1b1c2b, 0x9fa1b7,
+            () -> new ForgeSpawnEggItem(ModEntities.MAMAGEN, 0x1b1c2b, 0x9fa1b7,
                     new Item.Properties()));
     public static final RegistryObject<Item> TALXLEECH_SPAWN_EGG = ITEMS.register("talxleech_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.TALXLEECH.get(), 0x783c1d, 0x939393,
+            () -> new ForgeSpawnEggItem(ModEntities.TALXLEECH, 0x783c1d, 0x939393,
                     new Item.Properties()));
     public static final RegistryObject<Item> TALXWEASEL_SPAWN_EGG = ITEMS.register("talxweasel_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.TALXWEASEL.get(), 0x0d0d0c, 0x484b47,
+            () -> new ForgeSpawnEggItem(ModEntities.TALXWEASEL, 0x0d0d0c, 0x484b47,
                     new Item.Properties()));
     public static final RegistryObject<Item> STALKER_SPAWN_EGG = ITEMS.register("stalker_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.STALKER.get(), 0x9d9d9d, 0x9f3d00,
+            () -> new ForgeSpawnEggItem(ModEntities.STALKER, 0x9d9d9d, 0x9f3d00,
                     new Item.Properties()));
     public static final RegistryObject<Item> GOHUNTAKI_SPAWN_EGG = ITEMS.register("gohuntaki_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.GOHUNTAKI.get(), 0x564d4c, 0x8d381e,
+            () -> new ForgeSpawnEggItem(ModEntities.GOHUNTAKI, 0x564d4c, 0x8d381e,
                     new Item.Properties()));
     public static final RegistryObject<Item> TALXDOG_SPAWN_EGG = ITEMS.register("talxdog_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.TALXDOG.get(), 0x7e7e6f, 0x261e20,
+            () -> new ForgeSpawnEggItem(ModEntities.TALXDOG, 0x7e7e6f, 0x261e20,
                     new Item.Properties()));
     public static final RegistryObject<Item> TALXWOLF_SPAWN_EGG = ITEMS.register("talxwolf_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.TALXWOLF.get(), 0xa7a7a7, 0x303736,
+            () -> new ForgeSpawnEggItem(ModEntities.TALXWOLF, 0xa7a7a7, 0x303736,
                     new Item.Properties()));
 
     public static final RegistryObject<Item> MIZOLE_SPAWN_EGG = ITEMS.register("mizole_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.MIZOLE.get(), 0x8f9596, 0x4f879a,
+            () -> new ForgeSpawnEggItem(ModEntities.MIZOLE, 0x8f9596, 0x4f879a,
                     new Item.Properties()));
     public static final RegistryObject<Item> SPORE_SPAWN_EGG = ITEMS.register("spore_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.SPORE.get(), 0xcacaca, 0x757d5b,
+            () -> new ForgeSpawnEggItem(ModEntities.SPORE, 0xcacaca, 0x757d5b,
                     new Item.Properties()));
     public static final RegistryObject<Item> FEMALE_NEVREAN_SPAWN_EGG = ITEMS.register("female_nevrean_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.FEMALE_NEVREAN.get(), 0x554d40, 0xcfac69,
+            () -> new ForgeSpawnEggItem(ModEntities.FEMALE_NEVREAN, 0x554d40, 0xcfac69,
                     new Item.Properties()));
     public static final RegistryObject<Item> MALE_NEVREAN_SPAWN_EGG = ITEMS.register("male_nevrean_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.MALE_NEVREAN.get(), 0xfbdd67, 0xccee0e,
+            () -> new ForgeSpawnEggItem(ModEntities.MALE_NEVREAN, 0xfbdd67, 0xccee0e,
                     new Item.Properties()));
 
     public static final RegistryObject<SwordItem> SERGAL_GREATSWORD = ITEMS.register("sergal_greatsword",
