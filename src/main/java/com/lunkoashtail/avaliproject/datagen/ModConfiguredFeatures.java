@@ -8,7 +8,6 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -16,7 +15,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -27,8 +25,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LUME_ORES_KEY = registerKey("lume_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_TITANIUM_ORES_KEY = registerKey("titanium_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_DURASTEEL_ORES_KEY = registerKey("durasteel_ores");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_AERO_CRYSTAL_ORES_KEY = registerKey("aero_crystal_ores");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SYNC_CRYSTAL_ORES_KEY = registerKey("sync_crystal_ores");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> AVALON_AERO_CRYSTAL_ORES_KEY = registerKey("aero_crystal_ores");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> AVALON_SYNC_CRYSTAL_ORES_KEY = registerKey("sync_crystal_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_THERMAL_CRYSTAL_ORES_KEY = registerKey("thermal_crystal_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_AEGISALT_ORES_KEY = registerKey("aegisalt_ores");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_VILOUS_CERAMIC_ORES_KEY = registerKey("vilous_ceramic_ores");
@@ -86,8 +84,8 @@ public class ModConfiguredFeatures {
         register(context, OVERWORLD_LUME_ORES_KEY, Feature.ORE, new OreConfiguration(overworldLumeOres, 3));
         register(context, OVERWORLD_TITANIUM_ORES_KEY, Feature.ORE, new OreConfiguration(overworldTitaniumOres, 4));
         register(context, OVERWORLD_DURASTEEL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldDurasteelOres, 4));
-        register(context, OVERWORLD_AERO_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldAeroCrystalOres, 4));
-        register(context, OVERWORLD_SYNC_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldSyncCrystalOres, 3));
+        register(context, AVALON_AERO_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldAeroCrystalOres, 4));
+        register(context, AVALON_SYNC_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldSyncCrystalOres, 3));
         register(context, OVERWORLD_THERMAL_CRYSTAL_ORES_KEY, Feature.ORE, new OreConfiguration(overworldThermalCrystalOres, 4));
         register(context, OVERWORLD_AEGISALT_ORES_KEY, Feature.ORE, new OreConfiguration(overworldAegisaltOres, 4));
         register(context, OVERWORLD_VILOUS_CERAMIC_ORES_KEY, Feature.ORE, new OreConfiguration(overworldVilousCeramicOres, 4));

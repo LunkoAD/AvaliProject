@@ -8,6 +8,8 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeBiomeTagsProvider;
+import com.lunkoashtail.avaliproject.datagen.avalon.AvalonTags;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -25,7 +27,7 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper  = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK))));
+                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK),new LootTableProvider.SubProviderEntry(ModEntityLootTableProvider::new, LootContextParamSets.ENTITY))));
         generator.addProvider(event.includeServer(), new com.lunkoashtail.avaliproject.datagen.ModRecipeProvider(packOutput));
 
         BlockTagsProvider blockTagsProvider = new com.lunkoashtail.avaliproject.datagen.ModBlockTagProvider(packOutput, lookupProvider, existingFileHelper);
@@ -34,6 +36,8 @@ public class DataGenerators {
 
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModBlockStateProvider(packOutput, existingFileHelper));
+        generator.addProvider(event.includeServer(), new AvalonTags(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
+
     }
 }

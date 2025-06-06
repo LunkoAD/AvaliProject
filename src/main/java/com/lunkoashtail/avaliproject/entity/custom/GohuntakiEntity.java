@@ -5,6 +5,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -76,16 +78,7 @@ public class GohuntakiEntity extends TamableAnimal implements GeoEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true) {
-            @Override
-            protected void checkAndPerformAttack(LivingEntity entity, double thingy_idk_what_this_is) {
-                if(this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity)){
-                    this.resetAttackCooldown();
-                    this.mob.swing(InteractionHand.MAIN_HAND);
-                    this.mob.doHurtTarget(entity);
-                }
-            }
-        });
+        this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Monster.class, true, true));
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));

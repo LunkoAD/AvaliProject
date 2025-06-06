@@ -1,13 +1,11 @@
 package com.lunkoashtail.avaliproject.worldgen.dimensions;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.datagen.avalon.AvalonBiomes;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.data.worldgen.biome.BiomeData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -19,18 +17,12 @@ import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-import net.minecraft.world.level.levelgen.NoiseSettings;
-import net.minecraft.world.level.levelgen.Noises;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryManager;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
 import java.util.OptionalLong;
-import java.util.function.Function;
 
-public class Register {
+public class ModDimensions {
 
     public static final ResourceKey<LevelStem> AVALON_KEY = ResourceKey.create(Registries.LEVEL_STEM,
             ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avalon"));
@@ -80,42 +72,42 @@ public class Register {
                                             new Climate.ParameterPoint(
                                                     Climate.Parameter.point(-0.4f),
                                                     Climate.Parameter.point(0.2f),
-                                                    Climate.Parameter.span(0.1f,0),
+                                                    Climate.Parameter.span(0.0f,0.1f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     0
-                                            ),  ForgeRegistries.BIOMES.getHolder(Biomes.SNOWY_PLAINS).get()
+                                            ),  biomeRegistry.getOrThrow(AvalonBiomes.SHIFTING_ICE)
                                     ),
                                     Pair.of(
                                             new Climate.ParameterPoint(
                                                     Climate.Parameter.point(-0.4f),
                                                     Climate.Parameter.point(0.2f),
-                                                    Climate.Parameter.span(0.1f,0),
+                                                    Climate.Parameter.span(0.0f,0.1f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     0
-                                            ),  ForgeRegistries.BIOMES.getHolder(Biomes.SNOWY_PLAINS).get()
+                                            ),  biomeRegistry.getOrThrow(AvalonBiomes.SNOWY_PLAINS)
                                     ),
                                     Pair.of(
                                             new Climate.ParameterPoint(
                                                     Climate.Parameter.point(-0.4f),
                                                     Climate.Parameter.point(0.2f),
-                                                    Climate.Parameter.span(0.1f,0),
+                                                    Climate.Parameter.span(0.0f,0.1f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     Climate.Parameter.point(0.0f),
                                                     0
-                                            ),  ForgeRegistries.BIOMES.getHolder(Biomes.SNOWY_PLAINS).get()
+                                            ),  biomeRegistry.getOrThrow(AvalonBiomes.PERMAFROST_FORESTS)
                                     )
                             )
 
                     )
             ),
-                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
+                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.OVERWORLD));
 
-        LevelStem stem = new LevelStem(dimTypes.getOrThrow(Register.AVALON), noiseBasedChunkGenerator);
+        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.AVALON), noiseBasedChunkGenerator);
 
         context.register(AVALON_KEY, stem);
     }

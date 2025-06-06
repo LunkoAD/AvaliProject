@@ -2,10 +2,12 @@ package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -37,9 +39,9 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
-import com.lunkoashtail.avaliproject.worldgen.dimensions.Register;
+import com.lunkoashtail.avaliproject.worldgen.dimensions.ModDimensions;
 
-public class AvaliEntity extends Monster implements GeoEntity {
+public class AvaliEntity extends Villager implements GeoEntity {
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.STRING);
@@ -74,14 +76,7 @@ public class AvaliEntity extends Monster implements GeoEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
-            @Override
-            protected void checkAndPerformAttack(LivingEntity entity, double distance) {
-                if(this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity)){
-                    super.checkAndPerformAttack(entity,distance);
-                }
-            }
-        });
+        this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Monster.class, true, true));
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
@@ -91,7 +86,7 @@ public class AvaliEntity extends Monster implements GeoEntity {
     @Override
     protected void dropCustomDeathLoot(@NotNull DamageSource pSource, int pLooting, boolean pRecentlyHit) {
         super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
-        this.spawnAtLocation(new ItemStack(Items.FEATHER, 1+(pLooting)));
+
     }
 
     @Override
@@ -147,7 +142,7 @@ public class AvaliEntity extends Monster implements GeoEntity {
 
     public static void init(SpawnPlacementRegisterEvent event) {
         event.register(ModEntities.AVALI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8 && world.getLevel().dimension().equals(Register.AVALON_LEVEL)), SpawnPlacementRegisterEvent.Operation.REPLACE);
+                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {

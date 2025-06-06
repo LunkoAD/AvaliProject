@@ -35,6 +35,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.AVALI_AXE.get());
         tag(ItemTags.HOES)
                 .add(ModItems.AVALI_HOE.get());
+        tag(ItemTags.MUSIC_DISCS)
+                .add(ModItems.MERP_MUSIC_DISC.get())
+                .add(ModItems.AVALI_DANCE_MUSIC_DISC.get())
+                .add(ModItems.CYBERNETIC_HEART_MUSIC_DISC.get());
 //        tag(ItemTags.BOW_ENCHANTABLE)
 //                .add(ModItems.SERGAL_SLINGSHOT.get());
 //        tag(ItemTags.MACE_ENCHANTABLE)

@@ -36,10 +36,10 @@ public class ModPlacedFeatures {
         register(context, THERMAL_CRYSTAL_ORES_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_THERMAL_CRYSTAL_ORES_KEY),
                 ModOrePlacements.commonOrePlacement(12,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
-        register(context, AERO_CRYSTAL_ORES_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_AERO_CRYSTAL_ORES_KEY),
+        register(context, AERO_CRYSTAL_ORES_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.AVALON_AERO_CRYSTAL_ORES_KEY),
                 ModOrePlacements.commonOrePlacement(12,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
-        register(context, SYNC_CRYSTAL_ORES_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_SYNC_CRYSTAL_ORES_KEY),
+        register(context, SYNC_CRYSTAL_ORES_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.AVALON_SYNC_CRYSTAL_ORES_KEY),
                 ModOrePlacements.commonOrePlacement(12,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
         register(context, VILOUS_CERAMIC_ORES_PLACED_KEY, configuredFeatures.getOrThrow(OVERWORLD_VILOUS_CERAMIC_ORES_KEY),

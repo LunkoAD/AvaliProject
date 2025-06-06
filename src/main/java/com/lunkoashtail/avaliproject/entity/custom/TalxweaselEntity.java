@@ -82,16 +82,7 @@ public class TalxweaselEntity extends Monster implements GeoEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
-            @Override
-            protected void checkAndPerformAttack(LivingEntity entity, double thingy_idk_what_this_is) {
-                if(this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity)){
-                    this.resetAttackCooldown();
-                    this.mob.swing(InteractionHand.MAIN_HAND);
-                    this.mob.doHurtTarget(entity);
-                }
-            }
-        });
+
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));

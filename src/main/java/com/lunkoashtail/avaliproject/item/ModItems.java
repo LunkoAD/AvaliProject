@@ -499,11 +499,11 @@ public class ModItems {
     public static final RegistryObject<SwordItem> SERGAL_SWORD = ITEMS.register("sergal_sword",
             () -> new SwordItem(ModToolTiers.CERAMIC, 7, -2.2f, new Item.Properties()));
     public static final RegistryObject<Item> MERP_MUSIC_DISC = ITEMS.register("merp_music_disc",
-            () -> new RecordItem(8, ModSounds.MERP, new Item.Properties().stacksTo(1), 120));
+            () -> new RecordItem(8, ModSounds.MERP, new Item.Properties().stacksTo(1), 120*20));
     public static final RegistryObject<Item> AVALI_DANCE_MUSIC_DISC = ITEMS.register("avali_dance_music_disc",
-            () -> new RecordItem(8, ModSounds.AVALI_DANCE, new Item.Properties().stacksTo(1), 65));
+            () -> new RecordItem(8, ModSounds.AVALI_DANCE, new Item.Properties().stacksTo(1), 65*20));
     public static final RegistryObject<Item> CYBERNETIC_HEART_MUSIC_DISC = ITEMS.register("cybernetic_heart_music_disc",
-            () -> new RecordItem(8, ModSounds.CYBERNETIC_HEART, new Item.Properties().stacksTo(1), 187));
+            () -> new RecordItem(8, ModSounds.CYBERNETIC_HEART, new Item.Properties().stacksTo(1), 187*20));
 
 
  //   public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(AvaliProject.MOD_ID);
