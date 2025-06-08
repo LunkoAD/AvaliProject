@@ -17,7 +17,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModTags {
 
     public static class Biomes{
-        public static final TagKey<Biome> AVALON = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_avalon"));
+        //public static final TagKey<Biome> AVALON = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_avalon"));
         public static final TagKey<Biome> AVALON_SNOWY_PLAINS = TagKey.create(Registries.BIOME, AvalonBiomes.SNOWY_PLAINS.location());
         public static final TagKey<Biome> AVALON_AVALON_CITIES = TagKey.create(Registries.BIOME, AvalonBiomes.AVALON_CITIES.location());
         public static final TagKey<Biome> AVALON_PERMAFROST_FORESTS = TagKey.create(Registries.BIOME, AvalonBiomes.PERMAFROST_FORESTS.location());

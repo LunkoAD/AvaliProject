@@ -30,10 +30,7 @@ public class ModBiomeModifiers {
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LUME_ORES_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
-        context.register(ADD_SYNC_CRYSTAL_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.AVALON),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SYNC_CRYSTAL_ORES_PLACED_KEY)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+
         context.register(ADD_TITANIUM_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.TITANIUM_ORES_PLACED_KEY)),
@@ -46,10 +43,7 @@ public class ModBiomeModifiers {
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.DURASTEEL_ORES_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
-        context.register(ADD_AERO_CRYSTAL_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.AVALON),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.AERO_CRYSTAL_ORES_PLACED_KEY)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
+
         context.register(ADD_AEGISALT_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.AEGISALT_ORES_PLACED_KEY)),
@@ -73,10 +67,6 @@ public class ModBiomeModifiers {
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
 
-        context.register(ADD_PIRU_NODULE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.AVALON),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PIRU_NODULE_PLACED_KEY)),
-                GenerationStep.Decoration.VEGETAL_DECORATION));
         context.register(ADD_NAKATI_NODULE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.PLAINS), biomes.getOrThrow(Biomes.DARK_FOREST)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.NAKATI_NODULE_PLACED_KEY)),
@@ -89,7 +79,6 @@ public class ModBiomeModifiers {
                 HolderSet.direct(biomes.getOrThrow(Biomes.RIVER), biomes.getOrThrow(Biomes.FOREST)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.GROOU_NODULE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
-        context.register(SPAWN_AVALIS, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(biomes.getOrThrow(ModTags.Biomes.AVALON), List.of(new MobSpawnSettings.SpawnerData(ModEntities.AVALI.get(), Weight.of(2),1,1))));
 
 
 

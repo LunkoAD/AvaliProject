@@ -81,6 +81,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+
     // Put repositories for dependencies here
     maven {
         // location of the maven that hosts JEI files since January 2023
@@ -101,6 +102,9 @@ repositories {
             includeGroupByRegex("software\\.bernie.*")
             includeGroup("com.eliotlash.mclib")
         }
+    }
+    maven{//ad astra
+        url = "https://maven.teamresourceful.com/repository/maven-public/"
     }
 }
 // Sets up a dependency configuration called 'localRuntime'.
@@ -123,7 +127,9 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation fg.deobf("earth.terrarium:ad_astra-forge-$minecraft_version-$adAstraVersion") //ad astra
 }
 
 
