@@ -21,6 +21,8 @@ import net.minecraft.data.worldgen.BootstapContext;
 
 import java.util.List;
 
+import static com.lunkoashtail.avaliproject.datagen.avalon.AvalonGenerators.settingsAvali;
+
 public class ModBiomeModifiers {
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -80,7 +82,7 @@ public class ModBiomeModifiers {
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.GROOU_NODULE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
-
+        context.register(SPAWN_AVALIS, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(biomes.getOrThrow(ModTags.Biomes.AVALON), List.of(settingsAvali)));
 
     }
     private static ResourceKey<BiomeModifier> registerKey(String name) {

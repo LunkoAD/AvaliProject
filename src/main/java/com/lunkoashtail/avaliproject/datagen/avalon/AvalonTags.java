@@ -23,9 +23,12 @@ public class AvalonTags extends BiomeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider){
+        this.tag(ModTags.Biomes.AVALON)
+                .addOptional(AvalonBiomes.AVALON_CITIES.location())
+                .addOptional(AvalonBiomes.SNOWY_PLAINS.location())
+                .addOptional(AvalonBiomes.PERMAFROST_FORESTS.location())
+                .addOptional(AvalonBiomes.SHIFTING_ICE.location());
 
-        //TODO: This is dumb. Why do biome tags not exist during this stage of the game?
-        //TODO: I'm gonna crash out. - @989omnan
         //System.out.println("getting into this dreaded junk for loading data gen tags");
 
         //System.out.println(pProvider.lookup(Registries.BIOME).get());

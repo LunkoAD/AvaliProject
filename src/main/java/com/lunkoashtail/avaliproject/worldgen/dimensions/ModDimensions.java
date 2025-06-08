@@ -31,7 +31,6 @@ public class ModDimensions {
     public static final ResourceKey<DimensionType> AVALON = ResourceKey.create(Registries.DIMENSION_TYPE,
             ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avalon_type"));
 
-
     public static void bootstrapType(BootstapContext<DimensionType> context) {
         context.register(AVALON, new DimensionType(
                 OptionalLong.of(12000),

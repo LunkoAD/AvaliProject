@@ -24,11 +24,11 @@ public class AvalonGenerators {
 
 
     public static void addWildlife(MobSpawnSettings.Builder spawner){
-        spawner.addSpawn(MobCategory.CREATURE, settingsAvali);
+        //spawner.addSpawn(MobCategory.CREATURE, settingsAvali);
     }
 
     public static void addAvalis(MobSpawnSettings.Builder spawner){
-        spawner.addSpawn(MobCategory.CREATURE, settingsAvali);
+        //spawner.addSpawn(MobCategory.CREATURE, settingsAvali);
     }
 
     public static void addWaterLife(MobSpawnSettings.Builder spawner){

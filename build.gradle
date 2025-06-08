@@ -12,7 +12,7 @@ plugins {
 
 }
 
-version = mod_version
+version = "forge-${minecraft_version}-mod_version"
 group = mod_group_id
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -52,11 +52,11 @@ minecraft {
 
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', mod_id
+            property 'forge.enabledGameTestNamespaces', "${mod_id}"
         }
 
         server {
-            property 'forge.enabledGameTestNamespaces', mod_id
+            property 'forge.enabledGameTestNamespaces', "${mod_id}"
             args '--nogui'
         }
 
@@ -64,7 +64,7 @@ minecraft {
         // By default, the server will crash when no gametests are provided.
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
+            property 'forge.enabledGameTestNamespaces', "${mod_id}"
         }
 
         data {
@@ -72,7 +72,7 @@ minecraft {
             workingDirectory project.file('run-data')
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
     }
 }
@@ -119,17 +119,24 @@ configurations {
 dependencies {
     // Specify the version of Minecraft to use.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // compile against the JEI API but do not include it at runtime
-    compileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    // at runtime, use the full JEI jar for NeoForge
+
+    // at runtime, use the full JEI jar for Forge
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    implementation fg.deobf("earth.terrarium:ad_astra-forge-$minecraft_version-$adAstraVersion") //ad astra
+    implementation fg.deobf("earth.terrarium.botarium:botarium-forge-${minecraft_version}:${botarium_version}")
+    implementation fg.deobf("earth.terrarium.adastra:ad_astra-forge-${minecraft_version}:${ad_astra_version}")
+    implementation fg.deobf("com.teamresourceful.resourcefullib:resourcefullib-forge-${minecraft_version}:${resourcefullib_version}")
+    implementation fg.deobf("com.teamresourceful.resourcefulconfig:resourcefulconfig-forge-${minecraft_version}:${resourcefulconfig_version}")
+
+    compileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    //compileOnly fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+    //compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
+
 }
 
 
@@ -140,12 +147,27 @@ dependencies {
 // See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
 tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [
-            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-            forge_version: forge_version, forge_version_range: forge_version_range,
-            loader_version_range: loader_version_range,
-            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors: mod_authors, mod_description: mod_description,
-            mod_display_url: mod_display_url, mod_logo_file: mod_logo_file, credits:credits
+            //All of these are synced with gradle.properties
+            //these are used to replace and inject properties into the toml so that the compiled mod in a mod browser has
+            //things like credits, name, license, etc - @989onan
+            minecraft_version: minecraft_version,
+            forge_version: forge_version,
+            loader_version: loader_version,
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_license: mod_license,
+            mod_version: mod_version,
+            mod_authors: mod_authors,
+            mod_description: mod_description,
+            mod_display_url: mod_display_url,
+            mod_logo_file: mod_logo_file,
+            credits: credits,
+            mod_issues_page: mod_issues_page,
+            //extra AdAstra bits.
+            ad_astra_version: ad_astra_version, botarium_version: botarium_version,
+            resourcefulconfig_version: resourcefulconfig_version,
+            //Geckolib
+            geckolib_version: geckolib_version
     ]
     inputs.properties replaceProperties
 
@@ -161,7 +183,7 @@ tasks.named('jar', Jar).configure {
                 'Specification-Title'     : mod_id,
                 'Specification-Vendor'    : mod_authors,
                 'Specification-Version'   : '1', // We are version 1 of ourselves
-                'Implementation-Title'    : project.name,
+                'Implementation-Title'    : mod_name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : mod_authors,
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
