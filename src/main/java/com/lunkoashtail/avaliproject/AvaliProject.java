@@ -43,7 +43,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Mod(AvaliProject.MOD_ID)
 public class AvaliProject {
     public static final String MOD_ID = "avaliproject";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public AvaliProject(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();

@@ -1,4 +1,4 @@
-package com.lunkoashtail.avaliproject.worldgen.dimensions;
+package com.lunkoashtail.avaliproject.datagen;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.datagen.avalon.AvalonBiomes;
@@ -17,7 +17,6 @@ import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.OptionalLong;
@@ -29,11 +28,18 @@ public class ModDimensions {
     public static final ResourceKey<Level> AVALON_LEVEL = ResourceKey.create(Registries.DIMENSION,
             ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avalon"));
     public static final ResourceKey<DimensionType> AVALON = ResourceKey.create(Registries.DIMENSION_TYPE,
-            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avalon_type"));
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avalon"));
+
+    public static final ResourceKey<LevelStem> AVALON_ORBIT_KEY = ResourceKey.create(Registries.LEVEL_STEM,
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avalon_orbit"));
+    public static final ResourceKey<Level> AVALON_ORBIT_LEVEL = ResourceKey.create(Registries.DIMENSION,
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avalon_orbit"));
+    public static final ResourceKey<DimensionType> AVALON_ORBIT = ResourceKey.create(Registries.DIMENSION_TYPE,
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avalon_orbit"));
 
     public static void bootstrapType(BootstapContext<DimensionType> context) {
         context.register(AVALON, new DimensionType(
-                OptionalLong.of(12000),
+                OptionalLong.empty(),
                 true,
                 false,
                 false,
@@ -45,8 +51,8 @@ public class ModDimensions {
                 384,
                 384,
                 BlockTags.INFINIBURN_OVERWORLD,
-                BuiltinDimensionTypes.OVERWORLD_EFFECTS,
-                1.0F,
+                ModDimensions.AVALON.location(),
+                        .1F,
                 new DimensionType.MonsterSettings(
                         false,
                         false,
@@ -56,12 +62,39 @@ public class ModDimensions {
 
 
         ));
+
+        context.register(AVALON_ORBIT, new DimensionType(
+                OptionalLong.of(12000),
+                true,
+                false,
+                false,
+                true,
+                1.0,
+                true,
+                false,
+                -64,
+                384,
+                384,
+                BlockTags.INFINIBURN_OVERWORLD,
+                ModDimensions.AVALON_ORBIT.location(),
+                0.0F,
+                new DimensionType.MonsterSettings(
+                        false,
+                        false,
+                        ConstantInt.of(0),
+                        0
+                )
+        ));
     }
 
     public static void bootstrapStem(BootstapContext<LevelStem> context) {
         HolderGetter<Biome> biomeRegistry = context.lookup(Registries.BIOME);
         HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
+
+        //create a generator based on the default ad astra noise. - @989onan
+        //we cannot reference these directly, due to the no data gen files nature of ad astra release files. - @989onan
+
         NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(
                     new Climate.ParameterList<>(
@@ -105,9 +138,7 @@ public class ModDimensions {
             ),
                 noiseGenSettings.getOrThrow(NoiseGeneratorSettings.OVERWORLD));
 
-        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.AVALON), noiseBasedChunkGenerator);
-
-        context.register(AVALON_KEY, stem);
+        context.register(AVALON_KEY, new LevelStem(dimTypes.getOrThrow(ModDimensions.AVALON), noiseBasedChunkGenerator));
     }
 
     //public static final RegistryObject<Level> AVALON_LEVEL = LEVELS.register("avalon", () -> );

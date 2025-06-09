@@ -1,6 +1,8 @@
 package com.lunkoashtail.avaliproject.datagen;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.worldgen.dimensions.adastra.AdAstra_PlanetRenderers;
+import com.lunkoashtail.avaliproject.worldgen.dimensions.adastra.AdAstra_Planets;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -38,10 +40,19 @@ public class DataGenerators {
         BlockTagsProvider blockTagsProvider = new com.lunkoashtail.avaliproject.datagen.ModBlockTagProvider(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTagsProvider);
         generator.addProvider(event.includeServer(), new com.lunkoashtail.avaliproject.datagen.ModItemTagProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new AdAstra_PlanetRenderers(packOutput));
+        generator.addProvider(event.includeServer(), new AdAstra_Planets(packOutput));
 
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
 
+
+        generator.addProvider(
+                // Tell generator to run only when client assets are generating
+                event.includeClient(),
+                new ModSoundDefinitionProvider(packOutput, event.getExistingFileHelper())
+        );
         generator.addProvider(event.includeServer(), new AvalonTags(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModEntityTypeTagProvider(packOutput,lookupProvider));
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModBlockStateProvider(packOutput, existingFileHelper));
 

@@ -35,6 +35,13 @@ public class AvalonGenerators {
         //spawner.addSpawn(MobCategory.CREATURE, settingsAvali);
     }
 
+    public static void AvalonAllGen(BiomeGenerationSettings.Builder builder) {
+        BiomeDefaultFeatures.addDefaultOres(builder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+        BiomeDefaultFeatures.addSurfaceFreezing(builder);
+        addAvalonOres(builder);
+    }
+
     public static void addAvalonOres(BiomeGenerationSettings.Builder pBuilder){
         pBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.AEGISALT_ORES_PLACED_KEY);
         pBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.AERO_CRYSTAL_ORES_PLACED_KEY);
@@ -79,12 +86,7 @@ public class AvalonGenerators {
 
     //freeze the land, add ores, and add clay/dirt. - @989onan
     //finally, add avalon ores - @989onan
-    public static void AvalonAllGen(BiomeGenerationSettings.Builder builder) {
-        BiomeDefaultFeatures.addDefaultOres(builder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
-        BiomeDefaultFeatures.addSurfaceFreezing(builder);
-        addAvalonOres(builder);
-    }
+
 
     public static Biome taiga(BiomeGenerationSettings.Builder biomeBuilder) {
         boolean pIsCold = true;

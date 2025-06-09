@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
@@ -23,6 +24,10 @@ public class ModSounds {
 
     public static final Supplier<SoundEvent> CYBERNETIC_HEART = registerSoundEvent("cybernetic_heart");
     // static final ResourceKey<JukeboxSong> CYBERNETIC_HEART_KEY = createSong("cybernetic_heart");
+
+    public static final RegistryObject<SoundEvent> AVALI_CHIRP_1 = SOUND_EVENTS.register("avali", () ->
+            SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avali/audio_track_1")));
+
 
 
     private static Supplier<SoundEvent> registerSoundEvent(String name) {

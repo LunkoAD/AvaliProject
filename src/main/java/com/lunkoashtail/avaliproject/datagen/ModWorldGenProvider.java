@@ -3,7 +3,6 @@ package com.lunkoashtail.avaliproject.datagen;
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.datagen.avalon.AvalonBiomes;
 
-import com.lunkoashtail.avaliproject.worldgen.dimensions.ModDimensions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
