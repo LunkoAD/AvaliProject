@@ -28,12 +28,5 @@ public class AvalonTags extends BiomeTagsProvider {
                 .addOptional(AvalonBiomes.SNOWY_PLAINS.location())
                 .addOptional(AvalonBiomes.PERMAFROST_FORESTS.location())
                 .addOptional(AvalonBiomes.SHIFTING_ICE.location());
-
-        //System.out.println("getting into this dreaded junk for loading data gen tags");
-
-        //System.out.println(pProvider.lookup(Registries.BIOME).get());
-
-        //System.out.println(pProvider.lookup(Registries.BIOME).get().get(ModTags.Biomes.AVALON_SNOWY_PLAINS));
-        //System.out.println("Success!!!!!!!!!!!");
     }
 }

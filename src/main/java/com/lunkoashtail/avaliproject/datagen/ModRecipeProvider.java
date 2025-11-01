@@ -62,7 +62,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("avaliproject:has_lume", has(ModItems.LUME.get()))
                 .save(recipeOutput, "avaliproject:lume_block_from_lume");
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.AVALI_SWORD.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.AVALI_SWORD.get())
                 .pattern(" A ")
                 .pattern(" A ")
                 .pattern(" B ")
@@ -94,6 +94,51 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_aerogel", has(ModItems.AEROGEL.get()))
                 .unlockedBy("has_aeromer", has(ModItems.AEROMER.get()))
                 .unlockedBy("has_woven_graphene", has(ModItems.WOVEN_GRAPHENE.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SERGAL_SWORD.get())
+                .pattern(" A ")
+                .pattern(" A ")
+                .pattern(" B ")
+                .define('A', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .define('B', Items.STICK)
+                .unlockedBy("has_vilous", has(ModItems.VILOUS_CERAMIC_INGOT.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK.get())
+                .pattern("AAA")
+                .pattern("AAA")
+                .pattern("AAA")
+                .define('A', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .unlockedBy("has_vilous", has(ModItems.VILOUS_CERAMIC_INGOT.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SERGAL_MACE.get())
+                .pattern("ACA")
+                .pattern(" B ")
+                .pattern(" B ")
+                .define('A', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .define('B', Items.STICK)
+                .define('C', ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK.get())
+                .unlockedBy("has_vilous_block", has(ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SERGAL_GREATSWORD.get())
+                .pattern("AA ")
+                .pattern("AA ")
+                .pattern(" B ")
+                .define('A', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .define('B', Items.STICK)
+                .unlockedBy("has_vilous", has(ModItems.VILOUS_CERAMIC_INGOT.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SERGAL_LANCE.get())
+                .pattern(" A ")
+                .pattern(" B ")
+                .pattern(" B ")
+                .define('A', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .define('B', Items.STICK)
+                .unlockedBy("has_vilous", has(ModItems.VILOUS_CERAMIC_INGOT.get()))
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.AVALI_AXE.get())
@@ -427,7 +472,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_flint", has(Items.FLINT))
                 .unlockedBy("has_amethyst_crystal", has(Items.AMETHYST_SHARD))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.SOFT_TAPESTRY.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.SOFT_TAPESTRY.get(), 9)
                 .pattern("BAB")
                 .pattern("ABA")
                 .pattern("BAB")
@@ -436,7 +481,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_wool", has(Items.ORANGE_WOOL))
                 .unlockedBy("has_yellow_wool", has(Items.YELLOW_WOOL))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_FABRIC_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_FABRIC_BLOCK.get(), 9)
                 .pattern("BBA")
                 .pattern("BAB")
                 .pattern("BBA")
@@ -445,7 +490,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ALT_AVALI_FABRIC_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ALT_AVALI_FABRIC_BLOCK.get(), 9)
                 .pattern("BBB")
                 .pattern("ABA")
                 .pattern("BAB")
@@ -454,7 +499,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.PROTOGEN_SUPPORT_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.PROTOGEN_SUPPORT_BLOCK.get(), 9)
                 .pattern("BAB")
                 .pattern("BAB")
                 .pattern("BAB")
@@ -463,7 +508,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_gray_concrete", has(Items.GRAY_CONCRETE))
                 .unlockedBy("has_black_concrete", has(Items.BLACK_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK.get(), 9)
                 .pattern("AAA")
                 .pattern("BBB")
                 .pattern("AAA")
@@ -472,7 +517,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_gray_concrete", has(Items.GRAY_CONCRETE))
                 .unlockedBy("has_black_concrete", has(Items.BLACK_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DETAILED_PROTOGEN_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DETAILED_PROTOGEN_BLOCK.get(), 9)
                 .pattern("BAB")
                 .pattern("BAB")
                 .pattern("BAB")
@@ -481,7 +526,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_black_concrete", has(Items.BLACK_CONCRETE))
                 .unlockedBy("has_light_blue_concrete", has(Items.LIGHT_BLUE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK.get(), 9)
                 .pattern("AAA")
                 .pattern("BBB")
                 .pattern("AAA")
@@ -490,7 +535,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_black_concrete", has(Items.BLACK_CONCRETE))
                 .unlockedBy("has_light_blue_concrete", has(Items.LIGHT_BLUE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_PATTERN_BLOCK_1.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_PATTERN_BLOCK_1.get(), 9)
                 .pattern("AAB")
                 .pattern("BAA")
                 .pattern("ABA")
@@ -499,7 +544,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_PATTERN_BLOCK_2.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_PATTERN_BLOCK_2.get(), 9)
                 .pattern("ABA")
                 .pattern("AAB")
                 .pattern("BAA")
@@ -508,7 +553,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_PATTERN_BLOCK_3.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_PATTERN_BLOCK_3.get(), 9)
                 .pattern("ABA")
                 .pattern("ABA")
                 .pattern("ABA")
@@ -517,7 +562,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_PATTERN_BLOCK_4.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_PATTERN_BLOCK_4.get(), 9)
                 .pattern("BAB")
                 .pattern("ABA")
                 .pattern("ABA")
@@ -526,7 +571,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_WALL_PATTERN_BLOCK_1.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_WALL_PATTERN_BLOCK_1.get(), 9)
                 .pattern("AAA")
                 .pattern("BAB")
                 .pattern("ABA")
@@ -535,7 +580,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_WALL_PATTERN_BLOCK_2.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_WALL_PATTERN_BLOCK_2.get(), 9)
                 .pattern("AAA")
                 .pattern("BBA")
                 .pattern("AAB")
@@ -544,7 +589,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_WALL_PATTERN_BLOCK_3.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_WALL_PATTERN_BLOCK_3.get(), 9)
                 .pattern("AAA")
                 .pattern("BBB")
                 .pattern("AAA")
@@ -553,7 +598,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_orange_concrete", has(Items.ORANGE_CONCRETE))
                 .unlockedBy("has_white_concrete", has(Items.WHITE_CONCRETE))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_WALL_PATTERN_BLOCK_4.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_WALL_PATTERN_BLOCK_4.get(), 9)
                 .pattern("BAA")
                 .pattern("ABB")
                 .pattern("ABA")
@@ -565,7 +610,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_1.get())
+        /*ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_1.get(), 9)
                 .pattern("AAB")
                 .pattern("ABA")
                 .pattern("ABB")
@@ -574,7 +619,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_white_wool", has(Items.WHITE_WOOL))
                 .unlockedBy("has_blue_wool", has(Items.BLUE_WOOL))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_2.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_2.get(), 9)
                 .pattern("BAA")
                 .pattern("ABB")
                 .pattern("BBA")
@@ -583,7 +628,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_white_wool", has(Items.WHITE_WOOL))
                 .unlockedBy("has_blue_wool", has(Items.BLUE_WOOL))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_3.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_3.get(), 9)
                 .pattern("ABB")
                 .pattern("BAA")
                 .pattern("ABA")
@@ -592,7 +637,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_white_wool", has(Items.WHITE_WOOL))
                 .unlockedBy("has_blue_wool", has(Items.BLUE_WOOL))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_4.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_4.get(), 9)
                 .pattern("BAB")
                 .pattern("BAA")
                 .pattern("ABB")
@@ -601,7 +646,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_white_wool", has(Items.WHITE_WOOL))
                 .unlockedBy("has_blue_wool", has(Items.BLUE_WOOL))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_5.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_5.get(), 9)
                 .pattern("BAA")
                 .pattern("ABA")
                 .pattern("BBA")
@@ -610,7 +655,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_white_wool", has(Items.WHITE_WOOL))
                 .unlockedBy("has_blue_wool", has(Items.BLUE_WOOL))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_6.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_NIGHTLY_FABRIC_6.get(), 9)
                 .pattern("ABB")
                 .pattern("AAB")
                 .pattern("ABB")
@@ -619,7 +664,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_white_wool", has(Items.WHITE_WOOL))
                 .unlockedBy("has_blue_wool", has(Items.BLUE_WOOL))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_1.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_1.get(), 9)
                 .pattern("AAA")
                 .pattern("BAA")
                 .pattern("BBA")
@@ -628,7 +673,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_acacia_planks", has(Items.ACACIA_PLANKS))
                 .unlockedBy("has_dark_oak_planks", has(Items.DARK_OAK_PLANKS))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_2.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_2.get(), 9)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("BBA")
@@ -637,7 +682,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_acacia_planks", has(Items.ACACIA_PLANKS))
                 .unlockedBy("has_dark_oak_planks", has(Items.DARK_OAK_PLANKS))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_3.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_3.get(), 9)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("BBB")
@@ -646,7 +691,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_acacia_planks", has(Items.ACACIA_PLANKS))
                 .unlockedBy("has_dark_oak_planks", has(Items.DARK_OAK_PLANKS))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_4.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_4.get(), 9)
                 .pattern("AAA")
                 .pattern("AAB")
                 .pattern("BBB")
@@ -655,7 +700,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_acacia_planks", has(Items.ACACIA_PLANKS))
                 .unlockedBy("has_dark_oak_planks", has(Items.DARK_OAK_PLANKS))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_5.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.AVALI_CARVING_5.get(), 9)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("ABB")
@@ -663,7 +708,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', Items.DARK_OAK_PLANKS)
                 .unlockedBy("has_acacia_planks", has(Items.ACACIA_PLANKS))
                 .unlockedBy("has_dark_oak_planks", has(Items.DARK_OAK_PLANKS))
-                .save(recipeOutput);
+                .save(recipeOutput);*/
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MLSERIES_HILT.get())

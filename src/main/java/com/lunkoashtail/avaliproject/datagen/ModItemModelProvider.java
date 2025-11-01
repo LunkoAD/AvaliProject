@@ -136,12 +136,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.TUCKER.get());
         basicItem(ModItems.PIRU_FROND.get());
 
-
+        //flowers
         flowerItem(ModBlocks.GROOU_NODULE);
         flowerItem(ModBlocks.PIRU_NODULE);
         flowerItem(ModBlocks.NAKATI_NODULE);
         flowerItem(ModBlocks.KIRI_NODULE);
 
+
+        //spawn eggs
         withExistingParent(ModItems.SKSCEEGEHKJA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.PRIMAGEN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
@@ -162,6 +164,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.FEMALE_NEVREAN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.MALE_NEVREAN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.CHRGAKBZ_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+
+        //buckets
+        withExistingParent(ModItems.AMMONIA_BUCKET.getId().getPath(), ResourceLocation.fromNamespaceAndPath("forge","item/bucket"));
     }
 
     private void trimmedArmorItem(RegistryObject<ArmorItem> itemDeferredItem) {

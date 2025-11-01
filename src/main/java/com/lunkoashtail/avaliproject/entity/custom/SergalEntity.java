@@ -50,7 +50,7 @@ import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
 
-public class SergalEntity extends Monster implements GeoEntity {
+public class SergalEntity extends net.minecraft.world.entity.PathfinderMob implements GeoEntity {
 
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(SergalEntity.class, EntityDataSerializers.INT);

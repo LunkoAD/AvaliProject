@@ -43,7 +43,7 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new AdAstra_PlanetRenderers(packOutput));
         generator.addProvider(event.includeServer(), new AdAstra_Planets(packOutput));
 
-        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
+
 
 
         generator.addProvider(
@@ -55,7 +55,8 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ModEntityTypeTagProvider(packOutput,lookupProvider));
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new com.lunkoashtail.avaliproject.datagen.ModBlockStateProvider(packOutput, existingFileHelper));
-
+        generator.addProvider(event.includeServer(), new ModFluidTags(packOutput,lookupProvider,existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
         //var registrySet = VanillaRegistries.createLookup();
 
 

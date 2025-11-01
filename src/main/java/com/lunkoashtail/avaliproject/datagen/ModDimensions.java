@@ -21,6 +21,8 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import java.util.List;
 import java.util.OptionalLong;
 
+import static com.lunkoashtail.avaliproject.datagen.ModNoiseGenProvider.AVALON_NOISE;
+
 public class ModDimensions {
 
     public static final ResourceKey<LevelStem> AVALON_KEY = ResourceKey.create(Registries.LEVEL_STEM,
@@ -136,7 +138,7 @@ public class ModDimensions {
 
                     )
             ),
-                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.OVERWORLD));
+                noiseGenSettings.getOrThrow(AVALON_NOISE));
 
         context.register(AVALON_KEY, new LevelStem(dimTypes.getOrThrow(ModDimensions.AVALON), noiseBasedChunkGenerator));
     }

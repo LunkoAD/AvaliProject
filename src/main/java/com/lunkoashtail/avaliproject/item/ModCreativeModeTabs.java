@@ -43,7 +43,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.AVALI_WALL_PATTERN_BLOCK_4.get());
                         output.accept(ModBlocks.AVALI_FABRIC_BLOCK.get());
                         output.accept(ModBlocks.ALT_AVALI_FABRIC_BLOCK.get());
-                        output.accept(ModBlocks.AVALI_CARVING_1.get());
+                        /*output.accept(ModBlocks.AVALI_CARVING_1.get());
                         output.accept(ModBlocks.AVALI_CARVING_2.get());
                         output.accept(ModBlocks.AVALI_CARVING_3.get());
                         output.accept(ModBlocks.AVALI_CARVING_4.get());
@@ -53,7 +53,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_3.get());
                         output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_4.get());
                         output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_5.get());
-                        output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_6.get());
+                        output.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_6.get());*/
                         output.accept(ModBlocks.SOFT_TAPESTRY.get());
                         output.accept(ModItems.LUME.get());
                         output.accept(ModItems.LUME_BIT.get());
@@ -210,6 +210,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SPORE_SPAWN_EGG.get());
                         output.accept(ModItems.MALE_NEVREAN_SPAWN_EGG.get());
                         output.accept(ModItems.FEMALE_NEVREAN_SPAWN_EGG.get());
+                        output.accept(ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK.get());
                     }).build());
 
     public static void register (IEventBus eventBus) {

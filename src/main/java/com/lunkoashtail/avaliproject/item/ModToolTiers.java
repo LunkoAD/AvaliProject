@@ -15,13 +15,15 @@ import net.minecraftforge.common.TierSortingRegistry;
 import java.util.List;
 
 public class ModToolTiers {
-    public static final Tier AEROGEL = TierSortingRegistry.registerTier(
-            new ForgeTier(1996, 7, 3f, 20, 25, ModTags.Blocks.INCORRECT_FOR_AEROGEL_TOOL, () -> Ingredient.of(ModItems.AEROGEL.get())),
-            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "aerogel"), List.of(Tiers.NETHERITE), List.of());
-    public static final Tier HARDLIGHT = TierSortingRegistry.registerTier(new ForgeTier(
-            1996, 9, 4f, 20,25,ModTags.Blocks.INCORRECT_FOR_HARDLIGHT_TOOL, () -> Ingredient.of(ModItems.PROTOSTEEL_INGOT.get())),
-            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "hardlight"), List.of(AEROGEL,Tiers.NETHERITE), List.of());
     public static final Tier CERAMIC = TierSortingRegistry.registerTier(new ForgeTier(
-            1996, 8, 5f, 20,25,ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL, () -> Ingredient.of(ModItems.VILOUS_CERAMIC_INGOT.get())),
-            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "ceramic"), List.of(AEROGEL,Tiers.NETHERITE,HARDLIGHT), List.of());
+                    7, 1996, 5f, 20,25,ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL, () -> Ingredient.of(ModItems.VILOUS_CERAMIC_INGOT.get())),
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "ceramic"), List.of(Tiers.IRON), List.of());
+    public static final Tier HARDLIGHT = TierSortingRegistry.registerTier(new ForgeTier(
+            8, 1996, 4f, 23,25,ModTags.Blocks.INCORRECT_FOR_HARDLIGHT_TOOL, () -> Ingredient.of(ModItems.PROTOSTEEL_INGOT.get())),
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "hardlight"), List.of(CERAMIC), List.of());
+
+
+    public static final Tier AEROGEL = TierSortingRegistry.registerTier(
+            new ForgeTier(9, 3992, 3f, 30, 25, ModTags.Blocks.INCORRECT_FOR_AEROGEL_TOOL, () -> Ingredient.of(ModItems.AEROGEL.get())),
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "aerogel"), List.of(HARDLIGHT), List.of());
 }

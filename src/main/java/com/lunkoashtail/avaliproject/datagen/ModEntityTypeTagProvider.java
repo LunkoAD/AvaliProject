@@ -29,10 +29,13 @@ public class ModEntityTypeTagProvider extends EntityTypeTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
 
         this.tag(NO_OXYGEN)
-                .add(ModEntities.AVALI.get());
+                .add(ModEntities.AVALI.get())
+                .add(ModEntities.SKSCEEGEHKJA.get());
 
         this.tag(EXTREME_COLD)
-                .add(ModEntities.AVALI.get());
+                .add(ModEntities.AVALI.get())
+                .add(ModEntities.SKSCEEGEHKJA.get());
+
 
     }
 }

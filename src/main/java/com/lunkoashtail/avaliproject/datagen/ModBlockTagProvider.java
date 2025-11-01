@@ -37,6 +37,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
                 .add(ModBlocks.AEGISALT_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
+                .add(ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK.get())
                 .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
                 .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
@@ -64,75 +65,68 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.ALT_AVALI_FABRIC_BLOCK.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.LUME_ORE.get())
-                .add(ModBlocks.AERO_CRYSTAL_ORE.get())
+
+
                 .add(ModBlocks.THERMAL_CRYSTAL_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_ORE.get())
-                .add(ModBlocks.DURASTEEL_ORE.get())
-                .add(ModBlocks.TITANIUM_ORE.get())
+
+                .add(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
+
+                .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
+                .add(ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK.get())
                 .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
+
                 .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
-                .add(ModBlocks.NOVULITE_ORE.get())
-                .add(ModBlocks.AGATE_ORE.get())
-                .add(ModBlocks.AEGISALT_ORE.get());
+                .add(ModBlocks.NOVULITE_ORE.get());
+
+
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.LUME_DEEPSLATE_ORE.get())
-                .add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
-                .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
-                .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.NOVULITE_DEEPSLATE_ORE.get())
-                .add(ModBlocks.AGATE_DEEPSLATE_ORE.get())
-                .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
 
-        tag(BlockTags.IRON_ORES)
-                .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get())
-                .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
-                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
-                .add(ModBlocks.AEGISALT_ORE.get())
-                .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
-                .add(ModBlocks.DURASTEEL_ORE.get())
-                .add(ModBlocks.TITANIUM_ORE.get());
-        tag(BlockTags.EMERALD_ORES)
-                .add(ModBlocks.AGATE_DEEPSLATE_ORE.get())
-                .add(ModBlocks.NOVULITE_DEEPSLATE_ORE.get())
-                .add(ModBlocks.LUME_DEEPSLATE_ORE.get())
-                .add(ModBlocks.AGATE_ORE.get())
-                .add(ModBlocks.NOVULITE_ORE.get())
-                .add(ModBlocks.LUME_ORE.get());
-        tag(BlockTags.DIAMOND_ORES)
+
+
+
+
+
                 .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_ORE.get())
-                .add(ModBlocks.AERO_CRYSTAL_ORE.get());
-        tag(BlockTags.COAL_ORES)
-                .add(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.THERMAL_CRYSTAL_ORE.get());
+                .add(ModBlocks.NOVULITE_DEEPSLATE_ORE.get())
+
+                .add(ModBlocks.AGATE_DEEPSLATE_ORE.get())
+                .add(ModBlocks.AGATE_ORE.get());
+
         tag(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.AGATE_BLOCK.get())
                 .add(ModBlocks.LUME_BLOCK.get())
-                .add(ModBlocks.NOVULITE_BLOCK.get());
+                .add(ModBlocks.NOVULITE_BLOCK.get())
+                .add(ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK.get());
 
 
-        tag(ModTags.Blocks.NEEDS_AEROGEL_TOOL)
-                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
 
 
         tag(ModTags.Blocks.NEEDS_HARDLIGHT_TOOL)
-                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+                .add(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.SYNC_CRYSTAL_ORE.get())
+
+                .add(ModBlocks.AEGISALT_ORE.get())
+                .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get())
+
+                .add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.AERO_CRYSTAL_ORE.get())
+                .add(ModBlocks.LUME_ORE.get())
+                .add(ModBlocks.LUME_DEEPSLATE_ORE.get())
+
+                .addTag(ModTags.Blocks.NEEDS_CERAMIC_TOOL);
 
 
         tag(ModTags.Blocks.NEEDS_CERAMIC_TOOL)
+
+                .add(ModBlocks.TITANIUM_ORE.get())
+                .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
+
                 .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.DURASTEEL_ORE.get())
+
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
     }
 }

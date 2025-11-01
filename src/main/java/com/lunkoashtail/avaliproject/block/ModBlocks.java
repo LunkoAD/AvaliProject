@@ -2,6 +2,8 @@ package com.lunkoashtail.avaliproject.block;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.custom.*;
+import com.lunkoashtail.avaliproject.block.fluid.Ammonia;
+import com.lunkoashtail.avaliproject.block.fluid.ModFluids;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
@@ -9,6 +11,10 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -89,6 +95,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> VILOUS_CERAMIC_ORE = registerBlock("vilous_ceramic_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE),
                     UniformInt.of(2, 4)));
+    public static final RegistryObject<Block> VILOUS_CERAMIC_INGOT_BLOCK = registerBlock("vilous_ceramic_ingot_block",
+            () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final RegistryObject<Block> VILOUS_CERAMIC_DEEPSLATE_ORE = registerBlock("vilous_ceramic_deepslate_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE),
                     UniformInt.of(2, 4)));
@@ -161,7 +169,7 @@ public class ModBlocks {
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
 
-    public static final RegistryObject<Block> AVALI_NIGHTLY_FABRIC_1 = registerBlock("avali_nightly_fabric_1",
+    /*public static final RegistryObject<Block> AVALI_NIGHTLY_FABRIC_1 = registerBlock("avali_nightly_fabric_1",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOL)));
     public static final RegistryObject<Block> AVALI_NIGHTLY_FABRIC_2 = registerBlock("avali_nightly_fabric_2",
@@ -193,7 +201,7 @@ public class ModBlocks {
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
     public static final RegistryObject<Block> AVALI_CARVING_5 = registerBlock("avali_carving_5",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.WOOD)));*/
 
 
     public static final RegistryObject<Block> AGATE_BLOCK = registerBlock("agate_block",
@@ -219,6 +227,23 @@ public class ModBlocks {
     public static final RegistryObject<Block> PIRU_CROP_BLOCK = BLOCKS.register("piru_crop_block",
             () -> new PiruCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
+
+
+    public static final RegistryObject<LiquidBlock> AMMONIA_BLOCK =
+            BLOCKS.register(
+                    ModFluids.AMMONIA.getId().getPath(),
+                    () -> new LiquidBlock(()-> (FlowingFluid) ModFluids.AMMONIA.get(),
+                            BlockBehaviour.Properties.of()
+                                    .mapColor(MapColor.WATER)
+                                    .replaceable()
+                                    .noCollission()
+                                    .strength(100f)
+                                    .noLootTable()
+                                    .liquid()
+                                    .pushReaction(PushReaction.DESTROY)
+                                    .sound(SoundType.EMPTY)
+                    )
+            );
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

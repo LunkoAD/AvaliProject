@@ -21,6 +21,7 @@ public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
             .add(ForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
             .add(Registries.BIOME, AvalonBiomes::boostrap)
+            .add(Registries.NOISE_SETTINGS, ModNoiseGenProvider::bootstrapType)
             .add(Registries.LEVEL_STEM, ModDimensions::bootstrapStem);
     public ModWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(AvaliProject.MOD_ID));

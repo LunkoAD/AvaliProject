@@ -151,6 +151,7 @@
   "block.avaliproject.alt_protogen_support_block": "Alternate Protogen Support Block",
   "block.avaliproject.agate_block": "Agate Block",
   "block.avaliproject.novulite_block": "Novulite Block",
+  "block.avaliproject.vilous_ceramic_ingot_block": "Vilous Ceramic Ingot Block",
 
 
   "creativetab.avaliproject.avali_items": "Avali Tab",
@@ -195,7 +196,6 @@
   "tooltip.avaliproject.avali_pickaxe.tooltip": "An Avali version of the classic pickaxe.",
   "tooltip.avaliproject.avali_sword.tooltip": "An Avali version of the classic sword.",
   "tooltip.avaliproject.protogen_sword.tooltip": "An enhanced version of the classic sword.",
-  "tooltip.avaliproject.piru_frond.tooltip": "A long, fibrous frond from a piru barnacle.",
 
   "block.avaliproject.piru_nodule": "Piru Nodule",
   "block.avaliproject.potted_piru_nodule": "Potted Piru",
@@ -229,6 +229,7 @@
   "item.avaliproject.male_nevrean_spawn_egg": "Male Nevrean Spawn Egg",
   "item.avaliproject.chrgakbz_spawn_egg": "Chrgakbz GehrR’rwhkr Ku’gRrmay Spawn Egg",
 
+
   "entity.avaliproject.sksceegehkja": "Skskcee'Gehkja ",
   "entity.avaliproject.skacikkjrrbwcak": "Skacik kjrrk’bwcak",
   "entity.avaliproject.protogen": "Protogen",
@@ -257,9 +258,13 @@
   "painting.avaliproject.rain_sergal_painting.author": "LangyX",
 
 
+  "item.avaliproject.ammonia_bucket": "Bucket of Ammonia",
+  "fluid.avaliproject.ammonia": "Bucket of Ammonia",
+
   "solar_system.avaliproject.avol": "Avol",
   "planet.avaliproject.avalon": "Avalon",
 
 
   "sound.avaliproject.avali_chirp": "Avali chirps"
+
 }

@@ -52,7 +52,7 @@ public class AvalonBiomes {
         BiomeGenerationSettings.Builder biomeBuilder =
                 new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
         context.register(PERMAFROST_FORESTS, AvalonGenerators.taiga(biomeBuilder));
-        context.register(SNOWY_PLAINS, AvalonGenerators.plains(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER),false,true,false));
+        context.register(SNOWY_PLAINS, AvalonGenerators.plains(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER)));
         context.register(SHIFTING_ICE, AvalonGenerators.frozenOcean(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER), true));
         context.register(AVALON_CITIES, AvalonGenerators.cities(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER),false));
     }

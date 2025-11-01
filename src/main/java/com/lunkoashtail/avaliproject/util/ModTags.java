@@ -18,6 +18,8 @@ public class ModTags {
 
     public static class Biomes{
         public static final TagKey<Biome> AVALON = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_avalon"));
+        public static final TagKey<Biome> VAIL = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_vail"));
+        public static final TagKey<Biome> PROTO = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_proto"));
     }
 
 
@@ -37,6 +39,8 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> TRANSFORMABLE_ITEMS = createTag("transformable_items");
+
+        public static final TagKey<Item> CHEESE = ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "cheese"));
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));

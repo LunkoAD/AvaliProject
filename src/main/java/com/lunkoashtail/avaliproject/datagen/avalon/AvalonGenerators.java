@@ -21,6 +21,8 @@ public class AvalonGenerators {
 
 
     public static final MobSpawnSettings.SpawnerData settingsAvali = new MobSpawnSettings.SpawnerData(ModEntities.AVALI.get(), Weight.of(2),1,1);
+    public static final MobSpawnSettings.SpawnerData settingsSksceeGehkja = new MobSpawnSettings.SpawnerData(ModEntities.SKSCEEGEHKJA.get(), Weight.of(2),1,1);
+
 
 
     public static void addWildlife(MobSpawnSettings.Builder spawner){
@@ -35,17 +37,18 @@ public class AvalonGenerators {
         //spawner.addSpawn(MobCategory.CREATURE, settingsAvali);
     }
 
-    public static void AvalonAllGen(BiomeGenerationSettings.Builder builder) {
-        BiomeDefaultFeatures.addDefaultOres(builder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(builder);
-        BiomeDefaultFeatures.addSurfaceFreezing(builder);
-        addAvalonOres(builder);
-    }
-
-    public static void addAvalonOres(BiomeGenerationSettings.Builder pBuilder){
+    public static void AvalonAllGen(BiomeGenerationSettings.Builder pBuilder) {
+        BiomeDefaultFeatures.addDefaultOres(pBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(pBuilder);
+        BiomeDefaultFeatures.addSurfaceFreezing(pBuilder);
         pBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.AEGISALT_ORES_PLACED_KEY);
         pBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.AERO_CRYSTAL_ORES_PLACED_KEY);
+        pBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.LUME_ORES_PLACED_KEY);
         pBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PIRU_NODULE_PLACED_KEY);
+        pBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.NAKATI_NODULE_PLACED_KEY);
+        pBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.KIRI_NODULE_PLACED_KEY);
+        pBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GROOU_NODULE_PLACED_KEY);
+
     }
 
     public static Biome frozenOcean(HolderGetter<PlacedFeature> pPlacedFeatures, HolderGetter<ConfiguredWorldCarver<?>> pWorldCarvers, boolean pIsDeep) {
@@ -102,28 +105,18 @@ public class AvalonGenerators {
         return biome(true, f, pIsCold ? 0.4F : 0.8F, pIsCold ? 4020182 : 4159204, 329011, (Integer)null, (Integer)null, spawnbuilder, biomeBuilder, Musics.GAME);//TODO: WE NEED MUSIC - @989onan
     }
 
-    public static Biome plains(HolderGetter<PlacedFeature> pPlacedFeatures, HolderGetter<ConfiguredWorldCarver<?>> pWorldCarvers, boolean pIsSunflowerPlains, boolean pIsCold, boolean pIsIceSpikes) {
+    public static Biome plains(HolderGetter<PlacedFeature> pPlacedFeatures, HolderGetter<ConfiguredWorldCarver<?>> pWorldCarvers) {
         MobSpawnSettings.Builder mobspawnsettings$builder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomegenerationsettings$builder = new BiomeGenerationSettings.Builder(pPlacedFeatures, pWorldCarvers);
         addWildlife(mobspawnsettings$builder);
         AvalonAllGen(biomegenerationsettings$builder);
-        if (pIsCold) {
-            mobspawnsettings$builder.creatureGenerationProbability(0.07F);
-
-            if (pIsIceSpikes) {
-                biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, MiscOverworldPlacements.ICE_SPIKE);
-                biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, MiscOverworldPlacements.ICE_PATCH);
-            }
-        }
 
         BiomeDefaultFeatures.addDefaultOres(biomegenerationsettings$builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomegenerationsettings$builder);
-        if (pIsCold) {
-            BiomeDefaultFeatures.addSnowyTrees(biomegenerationsettings$builder);
-        }
+        BiomeDefaultFeatures.addSnowyTrees(biomegenerationsettings$builder);
 
-        float f = pIsCold ? 0.0F : 0.8F;
-        return biome(true, f, pIsCold ? 0.5F : 0.4F, pIsCold ? 4020182 : 4159204,329011, (Integer)null, (Integer)null, mobspawnsettings$builder, biomegenerationsettings$builder, Musics.GAME);//TODO: WE NEED MUSIC - @989onan
+        float f = 0.0F;
+        return biome(true, f, 0.5F,  4020182 ,329011, (Integer)null, (Integer)null, mobspawnsettings$builder, biomegenerationsettings$builder, Musics.GAME);//TODO: WE NEED MUSIC - @989onan
     }
 
     private static Biome biome(boolean pHasPrecipitation, float pTemperature, float pDownfall, int pWaterColor, int pWaterFogColor, @javax.annotation.Nullable Integer pGrassColorOverride, @javax.annotation.Nullable Integer pFoliageColorOverride, MobSpawnSettings.Builder pMobSpawnSettings, BiomeGenerationSettings.Builder pGenerationSettings, @Nullable Music pBackgroundMusic) {

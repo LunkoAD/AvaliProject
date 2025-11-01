@@ -57,10 +57,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.NOVULITE_ORE.get());
         dropSelf(ModBlocks.NOVULITE_BLOCK.get());
         dropSelf(ModBlocks.AGATE_BLOCK.get());
+        dropSelf(ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK.get());
         dropSelf(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK.get());
         dropSelf(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK.get());
         dropSelf(ModBlocks.ALT_AVALI_FABRIC_BLOCK.get());
-        dropSelf(ModBlocks.AVALI_CARVING_1.get());
+        /*dropSelf(ModBlocks.AVALI_CARVING_1.get());
         dropSelf(ModBlocks.AVALI_CARVING_2.get());
         dropSelf(ModBlocks.AVALI_CARVING_3.get());
         dropSelf(ModBlocks.AVALI_CARVING_4.get());
@@ -70,7 +71,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_3.get());
         dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_4.get());
         dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_5.get());
-        dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_6.get());
+        dropSelf(ModBlocks.AVALI_NIGHTLY_FABRIC_6.get());*/
 
         dropSelf(ModBlocks.NANOLOOM.get());
 

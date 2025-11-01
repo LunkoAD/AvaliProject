@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject;
 
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.block.entity.ModBlockEntities;
+import com.lunkoashtail.avaliproject.block.fluid.ModFluids;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.entity.client.*;
 import com.lunkoashtail.avaliproject.event.ExplosiveProjectileEvent;
@@ -56,6 +57,9 @@ public class AvaliProject {
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModFluids.register(modEventBus);
+
+
 
         if (!ModList.get().isLoaded("geckolib")) {
             throw new IllegalStateException("Geckolib is not loaded! This mod requires Geckolib to function.");
@@ -205,7 +209,7 @@ public class AvaliProject {
             event.accept(ModBlocks.PROTOGEN_SUPPORT_BLOCK);
             event.accept(ModBlocks.ALT_DETAILED_PROTOGEN_BLOCK);
             event.accept(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK);
-            event.accept(ModBlocks.AVALI_CARVING_1);
+            /*event.accept(ModBlocks.AVALI_CARVING_1);
             event.accept(ModBlocks.AVALI_CARVING_2);
             event.accept(ModBlocks.AVALI_CARVING_3);
             event.accept(ModBlocks.AVALI_CARVING_4);
@@ -215,7 +219,7 @@ public class AvaliProject {
             event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_3);
             event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_4);
             event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_5);
-            event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_6);
+            event.accept(ModBlocks.AVALI_NIGHTLY_FABRIC_6);*/
         }
 
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {

@@ -44,6 +44,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.TITANIUM_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.VILOUS_CERAMIC_ORE);
+        blockWithItem(ModBlocks.VILOUS_CERAMIC_INGOT_BLOCK);
         blockWithItem(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.AVALI_FABRIC_BLOCK);
         blockWithItem(ModBlocks.SOFT_TAPESTRY);
@@ -81,12 +82,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.NANOLOOM);
 
+        //crops
         makeCrop(((GroouCropBlock) ModBlocks.GROOU_CROP_BLOCK.get()), "groou_crop_block_stage","groou_crop_block_stage");
         makeCrop(((KiriCropBlock) ModBlocks.KIRI_CROP_BLOCK.get()), "kiri_crop_block_stage","kiri_crop_block_stage");
         makeCrop(((NakatiCropBlock) ModBlocks.NAKATI_CROP_BLOCK.get()), "nakati_crop_block_stage","nakati_crop_block_stage");
         makeCrop(((PiruCropBlock) ModBlocks.PIRU_CROP_BLOCK.get()), "piru_crop_block_stage","piru_crop_block_stage");
 
 
+        //plants that don't have block items
         simpleBlock(ModBlocks.GROOU_NODULE.get(),
                 models().cross(blockTexture(ModBlocks.GROOU_NODULE.get()).getPath(), blockTexture(ModBlocks.GROOU_NODULE.get())).renderType("cutout"));
         simpleBlock(ModBlocks.POTTED_GROOU_NODULE.get(), models().singleTexture("potted_groou_nodule", ResourceLocation.parse("flower_pot_cross"), "plant",

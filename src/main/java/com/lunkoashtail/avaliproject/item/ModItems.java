@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.item;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.block.fluid.ModFluids;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.custom.*;
 import com.lunkoashtail.avaliproject.sound.ModSounds;
@@ -9,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,6 +18,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
+
+import static net.minecraft.world.item.Items.BUCKET;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, AvaliProject.MOD_ID);
@@ -495,6 +499,12 @@ public class ModItems {
 //                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 //                }
 //            });
+
+    //fluids
+    public static final RegistryObject<Item> AMMONIA_BUCKET = ITEMS.register("ammonia_bucket", () ->
+            new BucketItem(ModFluids.AMMONIA,
+                    (new Item.Properties())
+                            .craftRemainder(BUCKET).stacksTo(1)));
 
     public static final RegistryObject<SwordItem> SERGAL_SWORD = ITEMS.register("sergal_sword",
             () -> new SwordItem(ModToolTiers.CERAMIC, 7, -2.2f, new Item.Properties()));
