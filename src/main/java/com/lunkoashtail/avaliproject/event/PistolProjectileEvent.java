@@ -41,6 +41,7 @@ public class PistolProjectileEvent {
                     };
                     entityToSpawn.setBaseDamage(damage);
                     entityToSpawn.setSilent(true);
+                    entityToSpawn.setOwner(entity);
                     return entityToSpawn;
                 }
             }.getArrow(projectileLevel, 1, 0, (byte) 2);
