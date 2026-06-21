@@ -1,14 +1,10 @@
 package com.lunkoashtail.avaliproject.init;
 
-import com.lunkoashtail.avaliproject.entity.custom.*;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
-
-@EventBusSubscriber
+/*
+@Mod.EventBusSubscriber
 public class EntityAnimationFactory {
     @SubscribeEvent
-    public static void onEntityTick(EntityTickEvent.Pre event) {
+    public static void onEntityTick(GeoRenderEvent.Entity.Pre event) {
         if (event != null && event.getEntity() != null) {
             if (event.getEntity() instanceof SkacikkjrrkbwcakEntity syncable) {
                 String animation = syncable.getSyncedAnimation();
@@ -159,4 +155,4 @@ public class EntityAnimationFactory {
             }
         }
     }
-}
+}*/

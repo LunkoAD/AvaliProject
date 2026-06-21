@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.entity.client;
 
 import com.google.common.collect.Maps;
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.entity.custom.ProtogenEntity;
 import com.lunkoashtail.avaliproject.entity.custom.SergalEntity;
 import net.minecraft.Util;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -60,10 +61,10 @@ public class SergalRenderer extends GeoEntityRenderer<SergalEntity> {
     }
 
     @Override
-    public void preRender(PoseStack poseStack, SergalEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int color) {
-        float scale = 1.2f;
+    public void preRender(PoseStack poseStack, SergalEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        float scale = 0.65f;
         this.scaleHeight = scale;
         this.scaleWidth = scale;
-        super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, color);
+        super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red,  green,blue, alpha);
     }
 }

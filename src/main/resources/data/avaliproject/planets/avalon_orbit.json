@@ -1,0 +1,9 @@
+{
+  "dimension": "avaliproject:avalon_orbit",
+  "gravity": 0.0,
+  "oxygen": false,
+  "solar_power": 4,
+  "solar_system": "avaliproject:avol",
+  "temperature": -270,
+  "tier": 4
+}

@@ -6,30 +6,29 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.item.JukeboxSong;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.common.util.DeferredSoundType;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
 public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
-            DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, AvaliProject.MOD_ID);
+            DeferredRegister.create(Registries.SOUND_EVENT, AvaliProject.MOD_ID);
 
     public static final Supplier<SoundEvent> MERP = registerSoundEvent("merp");
-    public static final ResourceKey<JukeboxSong> MERP_KEY = createSong("merp");
+    //public static final ResourceKey<JukeboxSong> MERP_KEY = createSong("merp");
 
     public static final Supplier<SoundEvent> AVALI_DANCE = registerSoundEvent("avali_dance");
-    public static final ResourceKey<JukeboxSong> AVALI_DANCE_KEY = createSong("avali_dance");
+    //public static final ResourceKey<JukeboxSong> AVALI_DANCE_KEY = createSong("avali_dance");
 
     public static final Supplier<SoundEvent> CYBERNETIC_HEART = registerSoundEvent("cybernetic_heart");
-    public static final ResourceKey<JukeboxSong> CYBERNETIC_HEART_KEY = createSong("cybernetic_heart");
+    // static final ResourceKey<JukeboxSong> CYBERNETIC_HEART_KEY = createSong("cybernetic_heart");
+
+    public static final RegistryObject<SoundEvent> AVALI_CHIRP_1 = SOUND_EVENTS.register("avali", () ->
+            SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "avali/audio_track_1")));
 
 
-    private static ResourceKey<JukeboxSong> createSong(String name) {
-        return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));
-    }
 
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name);

@@ -21,7 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
 
@@ -76,16 +76,16 @@ public class NanoloomBlockEntity extends BlockEntity implements MenuProvider {
         return new NanoloomMenu(pContainerId, pPlayerInventory, this, this.data);
     }
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
+    protected void saveAdditional(CompoundTag pTag) {
+        pTag.put("inventory", itemHandler.serializeNBT());
         pTag.putInt("nanoloom.progress", progress);
         pTag.putInt("nanoloom.max_progress", maxProgress);
-        super.saveAdditional(pTag, pRegistries);
+        super.saveAdditional(pTag);
     }
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
-        itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        itemHandler.deserializeNBT(pTag.getCompound("inventory"));
         progress = pTag.getInt("nanoloom.progress");
         maxProgress = pTag.getInt("nanoloom.max_progress");
     }
@@ -149,7 +149,7 @@ public class NanoloomBlockEntity extends BlockEntity implements MenuProvider {
         return ClientboundBlockEntityDataPacket.create(this);
     }
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
-        return saveWithoutMetadata(pRegistries);
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
     }
 }

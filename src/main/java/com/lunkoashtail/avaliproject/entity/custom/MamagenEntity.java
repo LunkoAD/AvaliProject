@@ -1,36 +1,38 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.item.Items;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
-import software.bernie.geckolib.animation.RawAnimation;
-import software.bernie.geckolib.animation.PlayState;
-import software.bernie.geckolib.animation.AnimationState;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.server.level.ServerLevel;
@@ -40,6 +42,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.BlockPos;
 
 public class MamagenEntity extends PathfinderMob implements GeoEntity {
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(MamagenEntity.class, EntityDataSerializers.BOOLEAN);
@@ -58,11 +61,11 @@ public class MamagenEntity extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(SHOOT, false);
-        builder.define(ANIMATION, "undefined");
-        builder.define(TEXTURE, "mamagen");
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(SHOOT, false);
+        this.entityData.define(ANIMATION, "undefined");
+        this.entityData.define(TEXTURE, "mamagen");
     }
 
     public void setTexture(String texture) {
@@ -76,21 +79,16 @@ public class MamagenEntity extends PathfinderMob implements GeoEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
-            @Override
-            protected boolean canPerformAttack(LivingEntity entity) {
-                return this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity);
-            }
-        });
+        this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Monster.class, true, true));
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new FloatGoal(this));
     }
 
-    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
-        this.spawnAtLocation(new ItemStack(Items.CAKE));
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
+        this.spawnAtLocation(new ItemStack(Items.CAKE,1+looting));
     }
 
     @Override
@@ -123,8 +121,8 @@ public class MamagenEntity extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public EntityDimensions getDefaultDimensions(Pose pose) {
-        return super.getDefaultDimensions(pose).scale(1f);
+    public EntityDimensions getDimensions(Pose pose) {
+        return super.getDimensions(pose).scale(1f);
     }
 
     @Override
@@ -133,9 +131,9 @@ public class MamagenEntity extends PathfinderMob implements GeoEntity {
         this.updateSwingTime();
     }
 
-    public static void init(RegisterSpawnPlacementsEvent event) {
-        event.register(ModEntities.MAMAGEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), RegisterSpawnPlacementsEvent.Operation.REPLACE);
+    public static void init(SpawnPlacementRegisterEvent event) {
+        event.register(ModEntities.MAMAGEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -145,7 +143,7 @@ public class MamagenEntity extends PathfinderMob implements GeoEntity {
         builder = builder.add(Attributes.ARMOR, 2);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 5);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);
-        builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
+        
         builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 2);
         builder = builder.add(Attributes.ATTACK_KNOCKBACK, 3);
         return builder;
@@ -187,7 +185,7 @@ public class MamagenEntity extends PathfinderMob implements GeoEntity {
         ++this.deathTime;
         if (this.deathTime == 20) {
             this.remove(MamagenEntity.RemovalReason.KILLED);
-            this.dropExperience(this);
+            this.dropExperience();
         }
     }
 

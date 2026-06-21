@@ -3,8 +3,6 @@ package com.lunkoashtail.avaliproject.entity.custom;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.event.ExplosiveOnBlockEvent;
 import com.lunkoashtail.avaliproject.item.ModItems;
-import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.EntityHitResult;
@@ -19,8 +17,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.util.RandomSource;
-
-import javax.annotation.Nullable;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class AvaliExplosiveEntity extends AbstractArrow implements ItemSupplier {
@@ -31,23 +29,10 @@ public class AvaliExplosiveEntity extends AbstractArrow implements ItemSupplier 
         super(type, world);
     }
 
-    public AvaliExplosiveEntity(EntityType<? extends AvaliExplosiveEntity> type, double x, double y, double z, Level world, @Nullable ItemStack firedFromWeapon) {
-        super(type, x, y, z, world, PROJECTILE_ITEM, firedFromWeapon);
-    }
-
-    public AvaliExplosiveEntity(EntityType<? extends AvaliExplosiveEntity> type, LivingEntity entity, Level world, @Nullable ItemStack firedFromWeapon) {
-        super(type, entity, world, PROJECTILE_ITEM, firedFromWeapon);
-    }
-
     @Override
     @OnlyIn(Dist.CLIENT)
-    public ItemStack getItem() {
+    public ItemStack getPickupItem() {
         return PROJECTILE_ITEM;
-    }
-
-    @Override
-    protected ItemStack getDefaultPickupItem() {
-        return new ItemStack(ModItems.AVALI_PROJECTILE_ITEM.get());
     }
 
     @Override
@@ -58,17 +43,6 @@ public class AvaliExplosiveEntity extends AbstractArrow implements ItemSupplier 
 
     public void setKnockback(int knockback) {
         this.knockback = knockback;
-    }
-
-    @Override
-    protected void doKnockback(LivingEntity livingEntity, DamageSource damageSource) {
-        if (knockback > 0.0) {
-            double d1 = Math.max(0.0, 1.0 - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-            Vec3 vec3 = this.getDeltaMovement().multiply(1.0, 0.0, 1.0).normalize().scale(knockback * 0.6 * d1);
-            if (vec3.lengthSqr() > 0.0) {
-                livingEntity.push(vec3.x, 0.1, vec3.z);
-            }
-        }
     }
 
     @Override
@@ -105,7 +79,7 @@ public class AvaliExplosiveEntity extends AbstractArrow implements ItemSupplier 
     }
 
     public static AvaliExplosiveEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
-        AvaliExplosiveEntity entityarrow = new AvaliExplosiveEntity(ModEntities.AVALI_EXPLOSIVE.get(), entity, world, null);
+        AvaliExplosiveEntity entityarrow = new AvaliExplosiveEntity(ModEntities.AVALI_EXPLOSIVE.get(), world);
         entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
         entityarrow.setSilent(true);
         entityarrow.setCritArrow(false);
@@ -116,7 +90,7 @@ public class AvaliExplosiveEntity extends AbstractArrow implements ItemSupplier 
     }
 
     public static AvaliExplosiveEntity shoot(LivingEntity entity, LivingEntity target) {
-        AvaliExplosiveEntity entityarrow = new AvaliExplosiveEntity(ModEntities.AVALI_EXPLOSIVE.get(), entity, entity.level(), null);
+        AvaliExplosiveEntity entityarrow = new AvaliExplosiveEntity(ModEntities.AVALI_EXPLOSIVE.get(), entity.level());
         double dx = target.getX() - entity.getX();
         double dy = target.getY() + target.getEyeHeight() - 1.1;
         double dz = target.getZ() - entity.getZ();
@@ -127,5 +101,10 @@ public class AvaliExplosiveEntity extends AbstractArrow implements ItemSupplier 
         entityarrow.setCritArrow(false);
         entity.level().addFreshEntity(entityarrow);
         return entityarrow;
+    }
+
+    @Override
+    public ItemStack getItem() {
+        return PROJECTILE_ITEM;
     }
 }

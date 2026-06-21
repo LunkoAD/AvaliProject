@@ -16,7 +16,7 @@ public class GroouCropBlock extends CropBlock {
     }
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.GROOU;
+        return ModItems.GROOU.get();
     }
     @Override
     public IntegerProperty getAgeProperty() {

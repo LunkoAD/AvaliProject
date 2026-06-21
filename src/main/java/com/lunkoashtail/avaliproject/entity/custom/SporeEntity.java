@@ -1,47 +1,34 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
-import software.bernie.geckolib.animation.RawAnimation;
-import software.bernie.geckolib.animation.PlayState;
-import software.bernie.geckolib.animation.AnimationState;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
-
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.event.EventHooks;
 
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.Difficulty;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
@@ -52,6 +39,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.List;
+
+import static net.minecraftforge.event.ForgeEventFactory.onAnimalTame;
 
 public class SporeEntity extends TamableAnimal implements GeoEntity {
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(SporeEntity.class, EntityDataSerializers.BOOLEAN);
@@ -70,11 +59,11 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(SHOOT, false);
-        builder.define(ANIMATION, "undefined");
-        builder.define(TEXTURE, "spore");
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(SHOOT, false);
+        this.entityData.define(ANIMATION, "undefined");
+        this.entityData.define(TEXTURE, "spore");
     }
 
     public void setTexture(String texture) {
@@ -90,8 +79,12 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
         super.registerGoals();
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
             @Override
-            protected boolean canPerformAttack(LivingEntity entity) {
-                return this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity);
+            protected void checkAndPerformAttack(LivingEntity entity, double thingy_idk_what_this_is) {
+                if(this.isTimeToAttack() && this.mob.distanceToSqr(entity) < (this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth()) && this.mob.getSensing().hasLineOfSight(entity)){
+                    this.resetAttackCooldown();
+                    this.mob.swing(InteractionHand.MAIN_HAND);
+                    this.mob.doHurtTarget(entity);
+                }
             }
         });
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
@@ -100,9 +93,9 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
         this.goalSelector.addGoal(5, new FloatGoal(this));
     }
 
-    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
-        this.spawnAtLocation(new ItemStack(Items.BONE));
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
+        this.spawnAtLocation(new ItemStack(Items.BONE, looting+1));
     }
 
     @Override
@@ -143,7 +136,7 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
                     if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
                         this.usePlayerItem(sourceentity, hand, itemstack);
                         FoodProperties foodproperties = itemstack.getFoodProperties(this);
-                        float nutrition = foodproperties != null ? (float) foodproperties.nutrition() : 1;
+                        float nutrition = foodproperties != null ? (float) foodproperties.getNutrition() : 1;
                         this.heal(nutrition);
                         retval = InteractionResult.sidedSuccess(this.level().isClientSide());
                     } else if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
@@ -156,7 +149,7 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
                 }
             } else if (this.isFood(itemstack)) {
                 this.usePlayerItem(sourceentity, hand, itemstack);
-                if (this.random.nextInt(3) == 0 && !EventHooks.onAnimalTame(this, sourceentity)) {
+                if (this.random.nextInt(3) == 0 && !onAnimalTame(this, sourceentity)) {
                     this.tame(sourceentity);
                     this.level().broadcastEntityEvent(this, (byte) 7);
                 } else {
@@ -180,14 +173,14 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
     }
 
     @Override
-    public EntityDimensions getDefaultDimensions(Pose pose) {
-        return super.getDefaultDimensions(pose).scale(1f);
+    public EntityDimensions getDimensions(Pose pose) {
+        return super.getDimensions(pose).scale(1f);
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
         SporeEntity retval = ModEntities.SPORE.get().create(serverWorld);
-        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
+        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null,null);
         return retval;
     }
 
@@ -202,10 +195,10 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
         this.updateSwingTime();
     }
 
-    public static void init(RegisterSpawnPlacementsEvent event) {
-        event.register(ModEntities.SPORE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+    public static void init(SpawnPlacementRegisterEvent event) {
+        event.register(ModEntities.SPORE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Monster.isDarkEnoughToSpawn(world, pos, random) && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)),
-                RegisterSpawnPlacementsEvent.Operation.REPLACE);
+                SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -215,7 +208,7 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
         builder = builder.add(Attributes.ARMOR, 2);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 4);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);
-        builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
+
         builder = builder.add(Attributes.ATTACK_KNOCKBACK, 1);
         return builder;
     }
@@ -274,7 +267,7 @@ public class SporeEntity extends TamableAnimal implements GeoEntity {
         ++this.deathTime;
         if (this.deathTime == 20) {
             this.remove(SporeEntity.RemovalReason.KILLED);
-            this.dropExperience(this);
+            this.dropExperience();
         }
     }
 

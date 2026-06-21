@@ -11,12 +11,11 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
+import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.LinkedHashMap;
 
@@ -137,12 +136,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.TUCKER.get());
         basicItem(ModItems.PIRU_FROND.get());
 
-
+        //flowers
         flowerItem(ModBlocks.GROOU_NODULE);
         flowerItem(ModBlocks.PIRU_NODULE);
         flowerItem(ModBlocks.NAKATI_NODULE);
         flowerItem(ModBlocks.KIRI_NODULE);
 
+
+        //spawn eggs
         withExistingParent(ModItems.SKSCEEGEHKJA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.PRIMAGEN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
@@ -163,79 +164,83 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.FEMALE_NEVREAN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.MALE_NEVREAN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.CHRGAKBZ_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+
+        //buckets
+        withExistingParent(ModItems.AMMONIA_BUCKET.getId().getPath(), ResourceLocation.fromNamespaceAndPath("forge","item/bucket"));
     }
 
-    private void trimmedArmorItem(DeferredItem<ArmorItem> itemDeferredItem) {
+    private void trimmedArmorItem(RegistryObject<ArmorItem> itemDeferredItem) {
         final String MOD_ID = AvaliProject.MOD_ID; // Change this to your mod id
+        ArmorItem armorItem = itemDeferredItem.get();
 
-        if(itemDeferredItem.get() instanceof ArmorItem armorItem) {
-            trimMaterials.forEach((trimMaterial, value) -> {
-                float trimValue = value;
+        trimMaterials.forEach((trimMaterial, value) -> {
+            float trimValue = value;
 
-                String armorType = switch (armorItem.getEquipmentSlot()) {
-                    case HEAD -> "helmet";
-                    case CHEST -> "chestplate";
-                    case LEGS -> "leggings";
-                    case FEET -> "boots";
-                    default -> "";
-                };
+            String armorType = switch (armorItem.getEquipmentSlot()) {
+                case HEAD -> "helmet";
+                case CHEST -> "chestplate";
+                case LEGS -> "leggings";
+                case FEET -> "boots";
+                default -> "";
+            };
 
-                String armorItemPath = armorItem.toString();
-                String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
-                String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
-                ResourceLocation armorItemResLoc = ResourceLocation.parse(armorItemPath);
-                ResourceLocation trimResLoc = ResourceLocation.parse(trimPath); // minecraft namespace
-                ResourceLocation trimNameResLoc = ResourceLocation.parse(currentTrimName);
+            String armorItemPath = armorItem.toString();
+            String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
+            String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
+            ResourceLocation armorItemResLoc = ResourceLocation.parse(armorItemPath);
+            ResourceLocation trimResLoc = ResourceLocation.parse(trimPath); // minecraft namespace
+            ResourceLocation trimNameResLoc = ResourceLocation.parse(currentTrimName);
 
-                // This is used for making the ExistingFileHelper acknowledge that this texture exist, so this will
-                // avoid an IllegalArgumentException
-                existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
+            // This is used for making the ExistingFileHelper acknowledge that this texture exist, so this will
+            // avoid an IllegalArgumentException
+            existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
 
-                // Trimmed armorItem files
-                getBuilder(currentTrimName)
-                        .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                        .texture("layer0", armorItemResLoc.getNamespace() + ":item/" + armorItemResLoc.getPath())
-                        .texture("layer1", trimResLoc);
+            // Trimmed armorItem files
+            getBuilder(currentTrimName)
+                    .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                    .texture("layer0", armorItemResLoc.getNamespace() + ":item/" + armorItemResLoc.getPath())
+                    .texture("layer1", trimResLoc);
 
-                // Non-trimmed armorItem file (normal variant)
-                this.withExistingParent(itemDeferredItem.getId().getPath(),
-                                mcLoc("item/generated"))
-                        .override()
-                        .model(new ModelFile.UncheckedModelFile(trimNameResLoc.getNamespace()  + ":item/" + trimNameResLoc.getPath()))
-                        .predicate(mcLoc("trim_type"), trimValue).end()
-                        .texture("layer0",
-                                ResourceLocation.fromNamespaceAndPath(MOD_ID,
-                                        "item/" + itemDeferredItem.getId().getPath()));
+            // Non-trimmed armorItem file (normal variant)
+            this.withExistingParent(itemDeferredItem.getId().getPath(),
+                            mcLoc("item/generated"))
+                    .override()
+                    .model(new ModelFile.UncheckedModelFile(trimNameResLoc.getNamespace()  + ":item/" + trimNameResLoc.getPath()))
+                    .predicate(mcLoc("trim_type"), trimValue).end()
+                    .texture("layer0",
+                            ResourceLocation.fromNamespaceAndPath(MOD_ID,
+                                    "item/" + itemDeferredItem.getId().getPath()));
 
-            });
+        });
 
-        }
+
     }
 
-    public void buttonItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+    public void buttonItem(RegistryObject<?> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(block.getId().getPath(), mcLoc("block/button_inventory"))
                 .texture("texture",  ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));
     }
 
-    public void fenceItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+    public void fenceItem(RegistryObject<?> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
                 .texture("texture",  ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));
     }
 
-    public void wallItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+    public void wallItem(RegistryObject<?> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(block.getId().getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall",  ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));
     }
 
-    private ItemModelBuilder handheldItem(DeferredItem<?> item) {
+    private ItemModelBuilder handheldItem(RegistryObject<?> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.parse("item/handheld")).texture("layer0",
                 ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"item/" + item.getId().getPath()));
     }
-    public void flowerItem(DeferredBlock<Block> block) {
+    public void flowerItem(RegistryObject<Block> block) {
         this.withExistingParent(block.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0",  ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,
                         "block/" + block.getId().getPath()));
