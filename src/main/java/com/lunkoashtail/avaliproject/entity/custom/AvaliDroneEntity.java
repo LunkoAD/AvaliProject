@@ -2,22 +2,20 @@ package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.ModItems;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3d;
 import software.bernie.geckolib.util.GeckoLibUtil;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.EventHooks;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -38,6 +36,16 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
@@ -59,8 +67,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.EnumSet;
 
-import static net.minecraftforge.event.ForgeEventFactory.onAnimalTame;
-
 public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, GeoEntity {
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(AvaliDroneEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(AvaliDroneEntity.class, EntityDataSerializers.STRING);
@@ -80,11 +86,11 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SHOOT, false);
-        this.entityData.define(ANIMATION, "undefined");
-        this.entityData.define(TEXTURE, "avali_drone");
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SHOOT, false);
+        builder.define(ANIMATION, "undefined");
+        builder.define(TEXTURE, "avali_drone");
     }
 
     public void setTexture(String texture) {
@@ -104,7 +110,7 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
     protected void registerGoals() {
         super.registerGoals();
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Monster.class, true, false));
-        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 1, (float) 10, (float) 2, true));
+        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 1, (float) 10, (float) 2));
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 3, 20) {
             @Override
             protected Vec3 getPosition() {
@@ -214,20 +220,20 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
         }
     }
 
-    @Override
-    protected void dropCustomDeathLoot(DamageSource source, int plooting, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(source, plooting, recentlyHitIn);
-        this.spawnAtLocation(new ItemStack(Items.IRON_INGOT, 6*plooting));
+
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
+        this.spawnAtLocation(new ItemStack(Items.IRON_INGOT, 6));
     }
 
     @Override
     public SoundEvent getHurtSound(DamageSource ds) {
-        return SoundEvents.GENERIC_HURT;
+        return BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.generic.hurt"));
     }
 
     @Override
     public SoundEvent getDeathSound() {
-        return SoundEvents.GENERIC_DEATH;
+        return BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.generic.death"));
     }
 
     @Override
@@ -249,7 +255,7 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
     }
 
     @Override
-    public @NotNull InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
+    public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
         ItemStack itemstack = sourceentity.getItemInHand(hand);
         InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
         Item item = itemstack.getItem();
@@ -263,7 +269,7 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
                     if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
                         this.usePlayerItem(sourceentity, hand, itemstack);
                         FoodProperties foodproperties = itemstack.getFoodProperties(this);
-                        float nutrition = foodproperties != null ? (float) foodproperties.getNutrition() : 1;
+                        float nutrition = foodproperties != null ? (float) foodproperties.nutrition() : 1;
                         this.heal(nutrition);
                         retval = InteractionResult.sidedSuccess(this.level().isClientSide());
                     } else if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
@@ -276,7 +282,7 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
                 }
             } else if (this.isFood(itemstack)) {
                 this.usePlayerItem(sourceentity, hand, itemstack);
-                if (this.random.nextInt(3) == 0 && !onAnimalTame(this, sourceentity)) {
+                if (this.random.nextInt(3) == 0 && !EventHooks.onAnimalTame(this, sourceentity)) {
                     this.tame(sourceentity);
                     this.level().broadcastEntityEvent(this, (byte) 7);
                 } else {
@@ -300,8 +306,8 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        return super.getDimensions(pose).scale(1f);
+    public EntityDimensions getDefaultDimensions(Pose pose) {
+        return super.getDefaultDimensions(pose).scale(1f);
     }
 
     @Override
@@ -312,7 +318,7 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
         AvaliDroneEntity retval = ModEntities.AVALI_DRONE.get().create(serverWorld);
-        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null, null);
+        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
         return retval;
     }
 
@@ -337,9 +343,9 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
         this.setNoGravity(true);
     }
 
-    public static void init(SpawnPlacementRegisterEvent event) {
-        event.register(ModEntities.AVALI_DRONE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), SpawnPlacementRegisterEvent.Operation.REPLACE);
+    public static void init(RegisterSpawnPlacementsEvent event) {
+        event.register(ModEntities.AVALI_DRONE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -349,6 +355,7 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
         builder = builder.add(Attributes.ARMOR, 5);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);
+        builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
         builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 3);
         builder = builder.add(Attributes.FLYING_SPEED, 0.3);
         return builder;
@@ -391,7 +398,7 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
         ++this.deathTime;
         if (this.deathTime == 20) {
             this.remove(AvaliDroneEntity.RemovalReason.KILLED);
-            this.dropExperience();
+            this.dropExperience(this);
         }
     }
 

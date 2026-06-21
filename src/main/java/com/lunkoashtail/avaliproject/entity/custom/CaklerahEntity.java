@@ -1,17 +1,16 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.*;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
+
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -31,6 +30,12 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.tags.BlockTags;
@@ -64,11 +69,11 @@ public class CaklerahEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SHOOT, false);
-        this.entityData.define(ANIMATION, "undefined");
-        this.entityData.define(TEXTURE, "caklerah");
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SHOOT, false);
+        builder.define(ANIMATION, "undefined");
+        builder.define(TEXTURE, "caklerah");
     }
 
     public void setTexture(String texture) {
@@ -142,14 +147,14 @@ public class CaklerahEntity extends Monster implements GeoEntity {
         this.targetSelector.addGoal(6, new HurtByTargetGoal(this).setAlertOthers());
     }
 
-    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
-        this.spawnAtLocation(new ItemStack(Blocks.ACACIA_SAPLING, 1+looting));
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
+        this.spawnAtLocation(new ItemStack(Blocks.ACACIA_SAPLING));
     }
 
     @Override
     public SoundEvent getHurtSound(DamageSource ds) {
-        return SoundEvents.GENERIC_HURT;
+        return BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.generic.hurt"));
     }
 
     @Override
@@ -182,8 +187,8 @@ public class CaklerahEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        return super.getDimensions(pose).scale(1f);
+    public EntityDimensions getDefaultDimensions(Pose pose) {
+        return super.getDefaultDimensions(pose).scale(1f);
     }
 
     @Override
@@ -200,9 +205,9 @@ public class CaklerahEntity extends Monster implements GeoEntity {
         this.setNoGravity(true);
     }
 
-    public static void init(SpawnPlacementRegisterEvent event) {
-        event.register(ModEntities.CAKLERAH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), SpawnPlacementRegisterEvent.Operation.REPLACE);
+    public static void init(RegisterSpawnPlacementsEvent event) {
+        event.register(ModEntities.CAKLERAH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) -> (world.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getRawBrightness(pos, 0) > 8), RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -212,6 +217,7 @@ public class CaklerahEntity extends Monster implements GeoEntity {
         builder = builder.add(Attributes.ARMOR, 0);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);
+        builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
         builder = builder.add(Attributes.FLYING_SPEED, 0.3);
         return builder;
     }
@@ -253,7 +259,7 @@ public class CaklerahEntity extends Monster implements GeoEntity {
         ++this.deathTime;
         if (this.deathTime == 20) {
             this.remove(CaklerahEntity.RemovalReason.KILLED);
-            this.dropExperience();
+            this.dropExperience(this);
         }
     }
 

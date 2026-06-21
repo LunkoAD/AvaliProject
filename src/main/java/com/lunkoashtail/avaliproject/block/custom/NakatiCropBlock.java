@@ -16,7 +16,7 @@ public class NakatiCropBlock extends CropBlock {
     }
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.NAKATI_OVOID.get();
+        return ModItems.NAKATI_OVOID;
     }
     @Override
     public IntegerProperty getAgeProperty() {

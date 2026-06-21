@@ -10,12 +10,12 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 
 public class NanoloomMenu extends AbstractContainerMenu {
-    public NanoloomBlockEntity blockEntity;
-    private Level level;
-    private ContainerData data;
+    public final NanoloomBlockEntity blockEntity;
+    private final Level level;
+    private final ContainerData data;
     public NanoloomMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
@@ -31,11 +31,6 @@ public class NanoloomMenu extends AbstractContainerMenu {
         this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 3, 152, 62));
         addDataSlots(data);
     }
-
-    public NanoloomMenu(int i, Inventory inventory) {
-        super(ModMenuTypes.NANOLOOM_MENU.get(), i);
-    }
-
     public boolean isCrafting() {
         return data.get(0) > 0;
     }

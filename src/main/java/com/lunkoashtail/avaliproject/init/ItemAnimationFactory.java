@@ -1,7 +1,17 @@
 package com.lunkoashtail.avaliproject.init;
 
-/*
-@Mod.EventBusSubscriber
+import com.lunkoashtail.avaliproject.item.custom.*;
+import software.bernie.geckolib.animatable.GeoItem;
+
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.component.DataComponents;
+
+@EventBusSubscriber
 public class ItemAnimationFactory {
     @SubscribeEvent
     public static void animatedItems(PlayerTickEvent.Post event) {
@@ -137,4 +147,4 @@ public class ItemAnimationFactory {
             }
         }
     }
-}*/
+}

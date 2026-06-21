@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import com.mojang.math.Axis;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.jetbrains.annotations.NotNull;
 
 public class AvaliExplosiveRenderer extends EntityRenderer<AvaliExplosiveEntity> {
     private static final ResourceLocation texture = ResourceLocation.parse("avaliproject:textures/entity/avali_projectile.png");
@@ -24,12 +23,12 @@ public class AvaliExplosiveRenderer extends EntityRenderer<AvaliExplosiveEntity>
     }
 
     @Override
-    public void render(@NotNull AvaliExplosiveEntity entityIn, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, int packedLightIn) {
+    public void render(AvaliExplosiveEntity entityIn, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, int packedLightIn) {
         VertexConsumer vb = bufferIn.getBuffer(RenderType.entityCutout(this.getTextureLocation(entityIn)));
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entityIn.yRotO, entityIn.getYRot()) - 90));
         poseStack.mulPose(Axis.ZP.rotationDegrees(90 + Mth.lerp(partialTicks, entityIn.xRotO, entityIn.getXRot())));
-        model.renderToBuffer(poseStack, vb, packedLightIn, OverlayTexture.NO_OVERLAY, 1,1,1,1);
+        model.renderToBuffer(poseStack, vb, packedLightIn, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
         super.render(entityIn, entityYaw, partialTicks, poseStack, bufferIn, packedLightIn);
     }

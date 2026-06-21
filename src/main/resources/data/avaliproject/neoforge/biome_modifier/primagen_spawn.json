@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:cherry_grove",
+  "spawners": {
+    "type": "avaliproject:primagen",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 65
+  }
+}

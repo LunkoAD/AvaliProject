@@ -1,0 +1,26 @@
+{
+  "merp": {
+    "sounds": [
+      {
+        "name": "avaliproject:merp",
+        "stream": true
+      }
+    ]
+  },
+  "avali_dance": {
+    "sounds": [
+      {
+        "name": "avaliproject:avali_dance",
+        "stream": true
+      }
+    ]
+  },
+  "cybernetic_heart": {
+    "sounds": [
+      {
+        "name": "avaliproject:cybernetic_heart",
+        "stream": true
+      }
+    ]
+  }
+}

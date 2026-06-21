@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:jungle",
+  "spawners": {
+    "type": "avaliproject:caklerah",
+    "weight": 120,
+    "minCount": 1,
+    "maxCount": 4
+  }
+}

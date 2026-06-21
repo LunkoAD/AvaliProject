@@ -1,7 +1,6 @@
 package com.lunkoashtail.avaliproject.event;
 
-import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
@@ -27,9 +26,9 @@ public class SksceegehkjaMilkingEvent {
             }
             if (world instanceof Level _level) {
                 if (!_level.isClientSide()) {
-                    _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GOAT_MILK, SoundSource.NEUTRAL, 1, 1);
+                    _level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.goat.milk")), SoundSource.NEUTRAL, 1, 1);
                 } else {
-                    _level.playLocalSound(x, y, z, SoundEvents.GOAT_MILK, SoundSource.NEUTRAL, 1, 1, false);
+                    _level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.goat.milk")), SoundSource.NEUTRAL, 1, 1, false);
                 }
             }
             if (sourceentity instanceof Player _player) {

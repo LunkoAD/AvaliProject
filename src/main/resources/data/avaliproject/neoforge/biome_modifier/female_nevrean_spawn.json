@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:jungle",
+  "spawners": {
+    "type": "avaliproject:female_nevrean",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 100
+  }
+}

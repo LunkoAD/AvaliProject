@@ -1,6 +1,5 @@
 package com.lunkoashtail.avaliproject.entity.client;
 
-import com.lunkoashtail.avaliproject.entity.custom.ChrgakbzEntity;
 import com.lunkoashtail.avaliproject.entity.custom.EepuorEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
@@ -21,10 +20,15 @@ public class EepuorRenderer extends GeoEntityRenderer<EepuorEntity> {
     }
 
     @Override
-    public void preRender(PoseStack poseStack, EepuorEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        float scale = 0.65f;
+    public RenderType getRenderType(EepuorEntity animatable, ResourceLocation texture, MultiBufferSource bufferSource, float partialTick) {
+        return RenderType.entityTranslucent(getTextureLocation(animatable));
+    }
+
+    @Override
+    public void preRender(PoseStack poseStack, EepuorEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int color) {
+        float scale = 1f;
         this.scaleHeight = scale;
         this.scaleWidth = scale;
-        super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red,  green,blue, alpha);
+        super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, color);
     }
 }

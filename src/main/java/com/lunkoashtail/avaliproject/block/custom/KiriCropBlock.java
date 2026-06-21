@@ -16,7 +16,7 @@ public class KiriCropBlock extends CropBlock {
     }
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.KIRI_FRUIT.get();
+        return ModItems.KIRI_FRUIT;
     }
     @Override
     public IntegerProperty getAgeProperty() {

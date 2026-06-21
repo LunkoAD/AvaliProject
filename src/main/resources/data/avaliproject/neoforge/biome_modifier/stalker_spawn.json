@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:badlands",
+  "spawners": {
+    "type": "avaliproject:stalker",
+    "weight": 120,
+    "minCount": 1,
+    "maxCount": 3
+  }
+}
