@@ -40,6 +40,7 @@ public class CustomProjectileEvent {
                         }
                     };
                     entityToSpawn.setBaseDamage(damage);
+                    entityToSpawn.setOwner(entity);
                     entityToSpawn.setSilent(true);
                     return entityToSpawn;
                 }
