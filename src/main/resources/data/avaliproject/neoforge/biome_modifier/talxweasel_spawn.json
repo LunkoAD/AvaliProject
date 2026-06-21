@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:swamp",
+  "spawners": {
+    "type": "avaliproject:talxweasel",
+    "weight": 100,
+    "minCount": 1,
+    "maxCount": 6
+  }
+}

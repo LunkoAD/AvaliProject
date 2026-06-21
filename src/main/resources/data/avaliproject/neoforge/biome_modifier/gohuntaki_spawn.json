@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:forest",
+  "spawners": {
+    "type": "avaliproject:gohuntaki",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 120
+  }
+}

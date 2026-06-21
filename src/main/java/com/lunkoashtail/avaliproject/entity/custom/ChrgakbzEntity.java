@@ -1,48 +1,44 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.control.MoveControl;
-import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Cod;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.fluids.FluidType;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
-import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.common.NeoForgeMod;
+
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.ai.goal.PanicGoal;
+import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
@@ -51,7 +47,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
@@ -69,7 +64,7 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
         super(type, world);
         xpReward = 2;
         setNoAi(false);
-        this.setPathfindingMalus(BlockPathTypes.WATER, 0);
+        this.setPathfindingMalus(PathType.WATER, 0);
         this.moveControl = new MoveControl(this) {
             @Override
             public void tick() {
@@ -105,11 +100,11 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SHOOT, false);
-        this.entityData.define(ANIMATION, "undefined");
-        this.entityData.define(TEXTURE, "chrgakbz");
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SHOOT, false);
+        builder.define(ANIMATION, "undefined");
+        builder.define(TEXTURE, "chrgakbz");
     }
 
     public void setTexture(String texture) {
@@ -132,25 +127,24 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
         this.goalSelector.addGoal(2, new PanicGoal(this, 1.2));
     }
 
-    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
-        this.spawnAtLocation(new ItemStack(Items.SCUTE, 1+looting));
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
+        this.spawnAtLocation(new ItemStack(Items.TURTLE_SCUTE));
     }
 
     @Override
     public SoundEvent getAmbientSound() {
-        return this.isInWater() ? null : SoundEvents.TURTLE_AMBIENT_LAND;
+        return BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.turtle.ambient_land"));
     }
 
     @Override
     public SoundEvent getHurtSound(DamageSource ds) {
-        return SoundEvents.TURTLE_HURT;
+        return BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.turtle.hurt"));
     }
-
 
     @Override
     public SoundEvent getDeathSound() {
-        return SoundEvents.TURTLE_DEATH;
+        return BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.turtle.death"));
     }
 
     @Override
@@ -180,14 +174,14 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        return super.getDimensions(pose).scale(1f);
+    public EntityDimensions getDefaultDimensions(Pose pose) {
+        return super.getDefaultDimensions(pose).scale(1f);
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
         ChrgakbzEntity retval = ModEntities.CHRGAKBZ.get().create(serverWorld);
-        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null,null);
+        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
         return retval;
     }
 
@@ -198,9 +192,6 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
 
     @Override
     public boolean canDrownInFluidType(FluidType type) {
-        if(type == ForgeMod.WATER_TYPE.get()){
-            return true;
-        }
         return false;
     }
 
@@ -220,9 +211,9 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
         this.updateSwingTime();
     }
 
-    public static void init(SpawnPlacementRegisterEvent event) {
-        event.register(ModEntities.CHRGAKBZ.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) -> (world.getBlockState(pos).is(Blocks.WATER) && world.getBlockState(pos.above()).is(Blocks.WATER)), SpawnPlacementRegisterEvent.Operation.REPLACE);
+    public static void init(RegisterSpawnPlacementsEvent event) {
+        event.register(ModEntities.CHRGAKBZ.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) -> (world.getBlockState(pos).is(Blocks.WATER) && world.getBlockState(pos.above()).is(Blocks.WATER)), RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -232,7 +223,8 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
         builder = builder.add(Attributes.ARMOR, 5);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);
-        builder = builder.add(ForgeMod.SWIM_SPEED.get(), 0.3);
+        builder = builder.add(Attributes.STEP_HEIGHT, 0.6);
+        builder = builder.add(NeoForgeMod.SWIM_SPEED, 0.3);
         return builder;
     }
 
@@ -270,7 +262,7 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
         ++this.deathTime;
         if (this.deathTime == 20) {
             this.remove(ChrgakbzEntity.RemovalReason.KILLED);
-            this.dropExperience();
+            this.dropExperience(this);
         }
     }
 

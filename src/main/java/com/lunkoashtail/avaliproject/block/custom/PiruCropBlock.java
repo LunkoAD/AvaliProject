@@ -16,7 +16,7 @@ public class PiruCropBlock extends CropBlock {
     }
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.PIRU_COLONY.get();
+        return ModItems.PIRU_COLONY;
     }
     @Override
     public IntegerProperty getAgeProperty() {

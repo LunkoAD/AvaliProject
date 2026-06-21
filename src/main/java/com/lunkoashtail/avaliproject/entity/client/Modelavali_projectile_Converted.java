@@ -40,7 +40,7 @@ public class Modelavali_projectile_Converted<T extends Entity> extends EntityMod
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float r,float g, float b, float a) {
-        bone.render(poseStack, vertexConsumer, packedLight, packedOverlay, r,g,b,a);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int rgb) {
+        bone.render(poseStack, vertexConsumer, packedLight, packedOverlay, rgb);
     }
 }

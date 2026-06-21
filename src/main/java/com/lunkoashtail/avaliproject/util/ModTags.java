@@ -1,29 +1,14 @@
 package com.lunkoashtail.avaliproject.util;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
-import com.lunkoashtail.avaliproject.datagen.avalon.AvalonBiomes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModTags {
-
-    public static class Biomes{
-        public static final TagKey<Biome> AVALON = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_avalon"));
-        public static final TagKey<Biome> VAIL = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_vail"));
-        public static final TagKey<Biome> PROTO = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID,"planet_proto"));
-    }
-
-
-
     public static class Blocks {
         public static final TagKey<Block> NEEDS_AEROGEL_TOOL = createTag("needs_aerogel_tool");
         public static final TagKey<Block> INCORRECT_FOR_AEROGEL_TOOL = createTag("incorrect_for_aerogel_tool");
@@ -39,8 +24,6 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> TRANSFORMABLE_ITEMS = createTag("transformable_items");
-
-        public static final TagKey<Item> CHEESE = ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "cheese"));
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));

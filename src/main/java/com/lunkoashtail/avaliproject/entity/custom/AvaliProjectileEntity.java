@@ -2,6 +2,8 @@ package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.ModItems;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.Level;
@@ -13,8 +15,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
@@ -28,11 +28,11 @@ public class AvaliProjectileEntity extends AbstractArrow implements ItemSupplier
     }
 
     public AvaliProjectileEntity(EntityType<? extends AvaliProjectileEntity> type, double x, double y, double z, Level world, @Nullable ItemStack firedFromWeapon) {
-        super(type, x, y, z, world);
+        super(type, x, y, z, world, PROJECTILE_ITEM, firedFromWeapon);
     }
 
     public AvaliProjectileEntity(EntityType<? extends AvaliProjectileEntity> type, LivingEntity entity, Level world, @Nullable ItemStack firedFromWeapon) {
-        super(type, entity, world);
+        super(type, entity, world, PROJECTILE_ITEM, firedFromWeapon);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class AvaliProjectileEntity extends AbstractArrow implements ItemSupplier
     }
 
     @Override
-    protected ItemStack getPickupItem() {
+    protected ItemStack getDefaultPickupItem() {
         return new ItemStack(ModItems.AVALI_PROJECTILE_ITEM.get());
     }
 
@@ -57,8 +57,14 @@ public class AvaliProjectileEntity extends AbstractArrow implements ItemSupplier
     }
 
     @Override
-    public int getKnockback() {
-        return knockback;
+    protected void doKnockback(LivingEntity livingEntity, DamageSource damageSource) {
+        if (knockback > 0.0) {
+            double d1 = Math.max(0.0, 1.0 - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+            Vec3 vec3 = this.getDeltaMovement().multiply(1.0, 0.0, 1.0).normalize().scale(knockback * 0.6 * d1);
+            if (vec3.lengthSqr() > 0.0) {
+                livingEntity.push(vec3.x, 0.1, vec3.z);
+            }
+        }
     }
 
     @Override

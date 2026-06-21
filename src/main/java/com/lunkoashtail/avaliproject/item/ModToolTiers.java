@@ -1,29 +1,15 @@
 package com.lunkoashtail.avaliproject.item;
 
-import com.lunkoashtail.avaliproject.AvaliProject;
-import com.lunkoashtail.avaliproject.util.Aerogel;
 import com.lunkoashtail.avaliproject.util.ModTags;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.ForgeTier;
-import net.minecraftforge.common.TierSortingRegistry;
-
-import java.util.List;
+import net.neoforged.neoforge.common.SimpleTier;
 
 public class ModToolTiers {
-    public static final Tier CERAMIC = TierSortingRegistry.registerTier(new ForgeTier(
-                    7, 1996, 5f, 20,25,ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL, () -> Ingredient.of(ModItems.VILOUS_CERAMIC_INGOT.get())),
-            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "ceramic"), List.of(), List.of(Tiers.IRON));
-    public static final Tier HARDLIGHT = TierSortingRegistry.registerTier(new ForgeTier(
-            8, 1996, 4f, 23,25,ModTags.Blocks.INCORRECT_FOR_HARDLIGHT_TOOL, () -> Ingredient.of(ModItems.PROTOSTEEL_INGOT.get())),
-            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "hardlight"), List.of(), List.of(CERAMIC));
-
-
-    public static final Tier AEROGEL = TierSortingRegistry.registerTier(
-            new ForgeTier(9, 3992, 3f, 30, 25, ModTags.Blocks.INCORRECT_FOR_AEROGEL_TOOL, () -> Ingredient.of(ModItems.AEROGEL.get())),
-            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "aerogel"), List.of(), List.of(HARDLIGHT));
+    public static final Tier AEROGEL = new SimpleTier(ModTags.Blocks.INCORRECT_FOR_AEROGEL_TOOL,
+            1996, 7f, 3f, 20, () -> Ingredient.of(ModItems.AEROGEL));
+    public static final Tier HARDLIGHT = new SimpleTier(ModTags.Blocks.INCORRECT_FOR_HARDLIGHT_TOOL,
+            1996, 9f, 4f, 20, () -> Ingredient.of(ModItems.PROTOSTEEL_INGOT));
+    public static final Tier CERAMIC = new SimpleTier(ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL,
+            1996, 8f, 5f, 20, () -> Ingredient.of(ModItems.VILOUS_CERAMIC_INGOT));
 }

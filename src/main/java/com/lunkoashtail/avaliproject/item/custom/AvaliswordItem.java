@@ -1,24 +1,37 @@
 package com.lunkoashtail.avaliproject.item.custom;
 
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.block.state.BlockState;
-import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
+import com.lunkoashtail.avaliproject.item.client.AvaliswordItemRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animatable.client.GeoRenderProvider;
+import software.bernie.geckolib.animatable.GeoItem;
+
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+
+import java.util.function.Consumer;
 
 public class AvaliswordItem extends Item implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     public String animationprocedure = "empty";
 
     public AvaliswordItem() {
-        super(new Item.Properties().durability(1996).rarity(Rarity.RARE));
+        super(new Item.Properties().durability(1996).rarity(Rarity.RARE)
+                .attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 8, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                        .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -2.4, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build()));
     }
 
     @Override
@@ -26,6 +39,19 @@ public class AvaliswordItem extends Item implements GeoItem {
         return false;
     }
 
+    @Override
+    public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
+        consumer.accept(new GeoRenderProvider() {
+            private AvaliswordItemRenderer renderer;
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
+                if (this.renderer == null)
+                    this.renderer = new AvaliswordItemRenderer();
+                return this.renderer;
+            }
+        });
+    }
 
     private PlayState idlePredicate(AnimationState event) {
         if (this.animationprocedure.equals("empty")) {
@@ -77,4 +103,9 @@ public class AvaliswordItem extends Item implements GeoItem {
         return 1.5f;
     }
 
+    @Override
+    public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
+        itemstack.hurtAndBreak(1, entity, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
+        return true;
+    }
 }
