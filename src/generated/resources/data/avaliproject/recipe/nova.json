@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avaliproject:nova_hilt"
+    },
+    "B": {
+      "item": "avaliproject:nova_main"
+    },
+    "C": {
+      "item": "avaliproject:nova_muzzle"
+    },
+    "D": {
+      "item": "avaliproject:nova_scope"
+    }
+  },
+  "pattern": [
+    " D ",
+    "ABC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:nova"
+  }
+}

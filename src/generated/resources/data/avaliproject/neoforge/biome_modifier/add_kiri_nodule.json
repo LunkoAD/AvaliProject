@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:savanna",
+    "minecraft:jungle"
+  ],
+  "features": "avaliproject:kiri_nodule_placed",
+  "step": "vegetal_decoration"
+}

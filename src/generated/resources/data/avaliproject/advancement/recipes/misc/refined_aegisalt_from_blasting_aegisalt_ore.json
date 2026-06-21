@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aegisalt_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:aegisalt_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:refined_aegisalt_from_blasting_aegisalt_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_aegisalt_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:refined_aegisalt_from_blasting_aegisalt_ore"
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_durasteel_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:durasteel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_nanite_injector": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:nanite_injector"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_protosteel_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:protosteel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:protogen_axe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_durasteel_ingot",
+      "has_protosteel_ingot",
+      "has_nanite_injector"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:protogen_axe"
+    ]
+  }
+}

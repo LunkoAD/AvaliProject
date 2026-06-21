@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "avaliproject:kiri_nodule"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:kiri_fruit"
+  }
+}

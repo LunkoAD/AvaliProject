@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:dark_forest"
+  ],
+  "features": "avaliproject:nakati_nodule_placed",
+  "step": "vegetal_decoration"
+}

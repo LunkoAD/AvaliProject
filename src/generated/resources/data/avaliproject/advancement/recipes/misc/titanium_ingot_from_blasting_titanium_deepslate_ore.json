@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:titanium_ingot_from_blasting_titanium_deepslate_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_titanium_deepslate_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:titanium_deepslate_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_titanium_deepslate_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:titanium_ingot_from_blasting_titanium_deepslate_ore"
+    ]
+  }
+}

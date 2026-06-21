@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_novulite_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:novulite_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:novulite_from_blasting_novulite_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_novulite_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:novulite_from_blasting_novulite_ore"
+    ]
+  }
+}

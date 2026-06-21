@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:orange_concrete"
+    },
+    "B": {
+      "item": "minecraft:white_concrete"
+    }
+  },
+  "pattern": [
+    "AAB",
+    "BAA",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:avali_pattern_block_1"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_durasteel_deepslate_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:durasteel_deepslate_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:durasteel_ingot_from_smelting_durasteel_deepslate_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_durasteel_deepslate_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:durasteel_ingot_from_smelting_durasteel_deepslate_ore"
+    ]
+  }
+}

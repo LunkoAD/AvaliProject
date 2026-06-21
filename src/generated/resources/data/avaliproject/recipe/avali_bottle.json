@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "avaliproject:aerogel"
+    }
+  },
+  "pattern": [
+    "C C",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:avali_bottle"
+  }
+}

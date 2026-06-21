@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avaliproject:storm_hilt"
+    },
+    "B": {
+      "item": "avaliproject:storm_core"
+    },
+    "C": {
+      "item": "avaliproject:storm_muzzle"
+    }
+  },
+  "pattern": [
+    "BC ",
+    "A  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:storm"
+  }
+}

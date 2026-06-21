@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:vilous_ceramic_ingot_from_smelting_vilous_clay"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vilous_clay": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:vilous_clay"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_vilous_clay"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:vilous_ceramic_ingot_from_smelting_vilous_clay"
+    ]
+  }
+}

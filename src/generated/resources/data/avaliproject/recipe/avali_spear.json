@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avaliproject:aerogel"
+    },
+    "C": {
+      "item": "avaliproject:aeromer"
+    },
+    "D": {
+      "item": "avaliproject:refined_aegisalt"
+    }
+  },
+  "pattern": [
+    "  A",
+    "DC ",
+    "C  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:avali_spear"
+  }
+}

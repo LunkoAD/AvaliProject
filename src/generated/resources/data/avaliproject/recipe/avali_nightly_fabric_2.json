@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:white_wool"
+    },
+    "B": {
+      "item": "minecraft:blue_wool"
+    }
+  },
+  "pattern": [
+    "BAA",
+    "ABB",
+    "BBA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:avali_nightly_fabric_2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avaliproject:qrc_muzzle"
+    },
+    "B": {
+      "item": "avaliproject:qrc_main"
+    },
+    "C": {
+      "item": "avaliproject:qrc_hilt"
+    }
+  },
+  "pattern": [
+    "ABC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:qrc"
+  }
+}

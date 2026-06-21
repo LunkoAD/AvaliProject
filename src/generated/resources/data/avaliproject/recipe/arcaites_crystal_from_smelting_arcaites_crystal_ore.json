@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "arcaites_crystal",
+  "ingredient": {
+    "item": "avaliproject:arcaites_crystal_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "avaliproject:arcaites_crystal"
+  }
+}

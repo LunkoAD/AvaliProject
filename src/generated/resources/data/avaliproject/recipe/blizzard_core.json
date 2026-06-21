@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:aerogel"
+    },
+    "B": {
+      "item": "avaliproject:aeromer"
+    },
+    "C": {
+      "item": "avaliproject:sync_crystal"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "ABA",
+    "BCB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:blizzard_core"
+  }
+}

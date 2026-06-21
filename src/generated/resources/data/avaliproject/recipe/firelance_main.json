@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "avaliproject:aeromer"
+    },
+    "C": {
+      "item": "avaliproject:sync_crystal"
+    },
+    "D": {
+      "item": "avaliproject:aerogel"
+    }
+  },
+  "pattern": [
+    "BB ",
+    "DCB",
+    "BB "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:firelance_main"
+  }
+}

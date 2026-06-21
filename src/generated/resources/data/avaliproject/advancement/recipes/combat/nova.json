@@ -1,0 +1,65 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "avaliproject:has_nova_hilt": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:nova_hilt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "avaliproject:has_nova_main": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:nova_main"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "avaliproject:has_nova_muzzle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:nova_muzzle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "avaliproject:has_nova_scope": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:nova_scope"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:nova"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "avaliproject:has_nova_hilt",
+      "avaliproject:has_nova_main",
+      "avaliproject:has_nova_muzzle",
+      "avaliproject:has_nova_scope"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:nova"
+    ]
+  }
+}

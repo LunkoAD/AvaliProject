@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aerogel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:aerogel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_aeromer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:aeromer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:avali_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_aerogel",
+      "has_aeromer"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:avali_sword"
+    ]
+  }
+}

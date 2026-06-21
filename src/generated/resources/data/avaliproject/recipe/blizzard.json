@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avaliproject:blizzard_hilt"
+    },
+    "B": {
+      "item": "avaliproject:blizzard_core"
+    },
+    "C": {
+      "item": "avaliproject:blizzard_muzzle"
+    }
+  },
+  "pattern": [
+    "BC ",
+    "A  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:blizzard"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:orange_wool"
+    },
+    "B": {
+      "item": "minecraft:yellow_wool"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "ABA",
+    "BAB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:soft_tapestry"
+  }
+}

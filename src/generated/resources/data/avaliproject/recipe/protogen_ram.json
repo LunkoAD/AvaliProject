@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:durasteel_ingot"
+    },
+    "B": {
+      "item": "minecraft:iron_nugget"
+    },
+    "C": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "CBC"
+  ],
+  "result": {
+    "count": 4,
+    "id": "avaliproject:protogen_ram"
+  }
+}

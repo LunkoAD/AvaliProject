@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "avaliproject:item/cybernetic_heart_music_disc"
+  }
+}

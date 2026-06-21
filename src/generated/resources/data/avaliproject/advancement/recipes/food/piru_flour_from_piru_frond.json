@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "avaliproject:has_piru_frond": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:piru_frond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:piru_flour_from_piru_frond"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "avaliproject:has_piru_frond"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:piru_flour_from_piru_frond"
+    ]
+  }
+}

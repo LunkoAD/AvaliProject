@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:sync_crystal"
+    },
+    "C": {
+      "item": "minecraft:flint"
+    },
+    "D": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "CAC",
+    "ADA",
+    "CAC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:avali_dance_music_disc"
+  }
+}

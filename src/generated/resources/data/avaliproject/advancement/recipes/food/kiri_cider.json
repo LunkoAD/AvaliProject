@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_avali_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:avali_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_kiri_fruit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:kiri_fruit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_nakati_bark": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:nakati_bark"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:kiri_cider"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_avali_bottle",
+      "has_nakati_bark",
+      "has_kiri_fruit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:kiri_cider"
+    ]
+  }
+}

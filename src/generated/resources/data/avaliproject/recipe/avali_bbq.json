@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:cooked_chicken"
+    },
+    "B": {
+      "item": "avaliproject:nakati_bark"
+    }
+  },
+  "pattern": [
+    "BA ",
+    "ABA",
+    " AB"
+  ],
+  "result": {
+    "count": 3,
+    "id": "avaliproject:avali_bbq"
+  }
+}

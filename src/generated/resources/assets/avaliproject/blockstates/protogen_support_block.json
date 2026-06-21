@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "avaliproject:block/protogen_support_block"
+    }
+  }
+}

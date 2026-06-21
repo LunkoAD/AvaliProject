@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:aeromer"
+    },
+    "B": {
+      "item": "avaliproject:woven_graphene"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "AAA",
+    "AB "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:nova_hilt"
+  }
+}

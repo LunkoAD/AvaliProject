@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "avaliproject:nakati_nodule"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:nakati_ovoid"
+  }
+}

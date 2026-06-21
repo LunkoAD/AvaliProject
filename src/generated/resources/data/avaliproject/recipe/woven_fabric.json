@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "avaliproject:fiber"
+    }
+  },
+  "pattern": [
+    "BB ",
+    "BB "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:woven_fabric"
+  }
+}

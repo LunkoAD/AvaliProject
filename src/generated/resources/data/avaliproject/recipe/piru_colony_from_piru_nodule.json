@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "avaliproject:piru_nodule"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:piru_colony"
+  }
+}

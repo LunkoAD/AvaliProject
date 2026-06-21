@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "avaliproject:kiri_fruit"
+    },
+    "C": {
+      "item": "avaliproject:piru_flour"
+    }
+  },
+  "pattern": [
+    "CBC",
+    "BCB",
+    "CBC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:piru_noodle"
+  }
+}

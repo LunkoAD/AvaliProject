@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avaliproject:aerogel"
+    },
+    "B": {
+      "item": "avaliproject:aeromer"
+    },
+    "C": {
+      "item": "avaliproject:woven_graphene"
+    }
+  },
+  "pattern": [
+    "ACC",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:avali_pickaxe"
+  }
+}

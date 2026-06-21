@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "vilous_ceramic",
+  "ingredient": {
+    "item": "avaliproject:vilous_clay"
+  },
+  "result": {
+    "count": 1,
+    "id": "avaliproject:vilous_ceramic_ingot"
+  }
+}

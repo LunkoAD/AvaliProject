@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aerogel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:aerogel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_aeromer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:aeromer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_refined_aegisalt": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:refined_aegisalt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:avali_spear"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_aerogel",
+      "has_aeromer",
+      "has_refined_aegisalt"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:avali_spear"
+    ]
+  }
+}

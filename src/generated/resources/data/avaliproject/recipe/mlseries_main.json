@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:aeromer"
+    },
+    "B": {
+      "item": "avaliproject:woven_graphene"
+    },
+    "C": {
+      "item": "avaliproject:sync_crystal"
+    },
+    "D": {
+      "item": "avaliproject:aerogel"
+    }
+  },
+  "pattern": [
+    "AA ",
+    "ACB",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:mlseries_main"
+  }
+}

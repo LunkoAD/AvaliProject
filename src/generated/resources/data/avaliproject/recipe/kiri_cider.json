@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:nakati_bark"
+    },
+    "B": {
+      "item": "avaliproject:avali_bottle"
+    },
+    "C": {
+      "item": "avaliproject:kiri_fruit"
+    }
+  },
+  "pattern": [
+    " A ",
+    "CBC",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:kiri_cider"
+  }
+}

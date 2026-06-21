@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_aegisalt": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:raw_aegisalt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:refined_aegisalt_from_smelting_raw_aegisalt"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_aegisalt"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:refined_aegisalt_from_smelting_raw_aegisalt"
+    ]
+  }
+}

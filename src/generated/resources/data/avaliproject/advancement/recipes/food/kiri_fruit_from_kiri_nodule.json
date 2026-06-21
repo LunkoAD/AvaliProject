@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_kiri_nodule": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:kiri_nodule"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:kiri_fruit_from_kiri_nodule"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_kiri_nodule"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:kiri_fruit_from_kiri_nodule"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aero_crystal_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:aero_crystal_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:aero_crystal_from_blasting_aero_crystal_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_aero_crystal_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:aero_crystal_from_blasting_aero_crystal_ore"
+    ]
+  }
+}

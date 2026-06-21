@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "avaliproject:block/avali_nightly_fabric_5"
+    }
+  }
+}

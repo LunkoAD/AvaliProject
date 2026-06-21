@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fiber": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:fiber"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:woven_fabric"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fiber"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:woven_fabric"
+    ]
+  }
+}

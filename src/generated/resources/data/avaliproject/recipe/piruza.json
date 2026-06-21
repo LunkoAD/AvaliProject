@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:spicy_jerky"
+    },
+    "B": {
+      "item": "avaliproject:kiri_fruit"
+    },
+    "C": {
+      "item": "minecraft:milk_bucket"
+    },
+    "D": {
+      "item": "avaliproject:piru_flour"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "ACA",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:piruza"
+  }
+}

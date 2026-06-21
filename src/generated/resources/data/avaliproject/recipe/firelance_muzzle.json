@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:aeromer"
+    },
+    "B": {
+      "item": "avaliproject:woven_graphene"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABB",
+    "A  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:firelance_muzzle"
+  }
+}

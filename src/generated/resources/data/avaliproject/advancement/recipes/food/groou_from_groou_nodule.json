@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_groou_nodule": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avaliproject:groou_nodule"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avaliproject:groou_from_groou_nodule"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_groou_nodule"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avaliproject:groou_from_groou_nodule"
+    ]
+  }
+}

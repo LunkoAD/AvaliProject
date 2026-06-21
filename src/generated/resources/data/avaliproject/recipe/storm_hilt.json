@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:aeromer"
+    },
+    "B": {
+      "item": "avaliproject:aerogel"
+    },
+    "C": {
+      "item": "avaliproject:woven_graphene"
+    }
+  },
+  "pattern": [
+    "A  ",
+    "AC ",
+    "ABC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:storm_hilt"
+  }
+}

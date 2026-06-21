@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avaliproject:mlseries_muzzle"
+    },
+    "B": {
+      "item": "avaliproject:mlseries_main"
+    },
+    "C": {
+      "item": "avaliproject:mlseries_hilt"
+    }
+  },
+  "pattern": [
+    "   ",
+    "ABC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:mlseries"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:egg"
+    },
+    "B": {
+      "item": "minecraft:milk_bucket"
+    },
+    "C": {
+      "item": "minecraft:sugar"
+    },
+    "D": {
+      "item": "avaliproject:kiri_fruit"
+    },
+    "U": {
+      "item": "avaliproject:piru_flour"
+    }
+  },
+  "pattern": [
+    "DAD",
+    "CBC",
+    "UUU"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:kirikiri_pie"
+  }
+}

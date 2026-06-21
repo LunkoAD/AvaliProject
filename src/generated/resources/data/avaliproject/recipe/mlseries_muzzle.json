@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:aeromer"
+    },
+    "B": {
+      "item": "avaliproject:aerogel"
+    }
+  },
+  "pattern": [
+    " AA",
+    "BAA",
+    " AA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:mlseries_muzzle"
+  }
+}

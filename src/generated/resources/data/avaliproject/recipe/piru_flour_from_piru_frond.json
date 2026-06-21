@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "avaliproject:piru_frond"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "avaliproject:piru_flour"
+  }
+}

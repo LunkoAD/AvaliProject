@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avaliproject:firelance_hilt"
+    },
+    "B": {
+      "item": "avaliproject:firelance_main"
+    },
+    "C": {
+      "item": "avaliproject:firelance_muzzle"
+    },
+    "D": {
+      "item": "avaliproject:firelance_scope"
+    }
+  },
+  "pattern": [
+    " D ",
+    "ABC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:firelance"
+  }
+}

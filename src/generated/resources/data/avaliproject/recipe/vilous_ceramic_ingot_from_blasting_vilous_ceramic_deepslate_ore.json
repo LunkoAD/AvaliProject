@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "vilous_ceramic",
+  "ingredient": {
+    "item": "avaliproject:vilous_ceramic_deepslate_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "avaliproject:vilous_ceramic_ingot"
+  }
+}

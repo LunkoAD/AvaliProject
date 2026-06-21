@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "avaliproject:woven_graphene"
+    },
+    "B": {
+      "item": "avaliproject:aeromer"
+    },
+    "C": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "ABC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avaliproject:nova_muzzle"
+  }
+}
