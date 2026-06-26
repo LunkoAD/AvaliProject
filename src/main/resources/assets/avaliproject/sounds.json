@@ -22,5 +22,37 @@
         "stream": true
       }
     ]
+  },
+  "bandage_wrap": {
+    "sounds": [
+      {
+        "name": "avaliproject:bandage/wrap",
+        "stream": false
+      }
+    ]
+  },
+  "bandage_success": {
+    "sounds": [
+      {
+        "name": "avaliproject:bandage/success",
+        "stream": false
+      }
+    ]
+  },
+  "syringe_stab": {
+    "sounds": [
+      {
+        "name": "avaliproject:syringe/stab",
+        "stream": false
+      }
+    ]
+  },
+  "syringe_inject": {
+    "sounds": [
+      {
+        "name": "avaliproject:syringe/inject",
+        "stream": false
+      }
+    ]
   }
 }

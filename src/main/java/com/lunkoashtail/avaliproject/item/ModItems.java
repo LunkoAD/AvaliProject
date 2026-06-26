@@ -314,6 +314,9 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BLIZZARD_MUZZLE = ITEMS.register("blizzard_muzzle",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> EXPIE_PLUSH = ITEMS.register("expie_plush",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BANDAGE = ITEMS.register("bandage", BandageItem::new);
 
 
     public static final DeferredItem<Item> QRC = ITEMS.register("qrc",
@@ -517,6 +520,63 @@ public class ModItems {
  //   public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(AvaliProject.MOD_ID);
  //   public static final DeferredItem<Item> AVALI_SWORD = REGISTRY.register("avali_sword", AvaliswordItem::new);
 
+
+    // Plushies
+    public static final DeferredItem<Item> AKITU_PLUSHIE = ITEMS.register("akitu_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> AMS_PLUSHIE = ITEMS.register("ams_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BOT_PLUSHIE = ITEMS.register("bot_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BROWN_BUNNY_PLUSHIE = ITEMS.register("brown_bunny_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BUNNY_PLUSHIE = ITEMS.register("bunny_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DAS_PLUSHIE = ITEMS.register("das_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FRIEND_PLUSH = ITEMS.register("friend_plush", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GORT_PLUSHIE = ITEMS.register("gort_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> JIMMY_PLUSHIE = ITEMS.register("jimmy_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MOFFEE_PLUSHIE = ITEMS.register("moffee_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ORANGE_PLUSHIE = ITEMS.register("orange_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PENTER_PLUSHIE = ITEMS.register("penter_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RED_FOX_PLUSHIE = ITEMS.register("red_fox_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ROBOT_PLUSHIE = ITEMS.register("robot_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SHARK_PLUSHIE = ITEMS.register("shark_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TACO_PLUSHIE = ITEMS.register("taco_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WEH_PLUSHIE = ITEMS.register("weh_plushie", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WICK_PLUSHIE = ITEMS.register("wick_plushie", () -> new Item(new Item.Properties()));
+
+    // Medical & survival items
+    public static final DeferredItem<Item> ALCOHOL = ITEMS.register("alcohol", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ANTI_DEPRESSANTS = ITEMS.register("anti_depressants", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ANTIBIOTICS = ITEMS.register("antibiotics", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ANTIRAD = ITEMS.register("antirad", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ANTISEPTIC = ITEMS.register("antiseptic", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ANTISERUM = ITEMS.register("antiserum", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BLOOD_BAG = ITEMS.register("blood_bag", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BRUISE_KIT = ITEMS.register("bruise_kit", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CANTEEN = ITEMS.register("canteen", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CHEST_DRAIN = ITEMS.register("chest_drain", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> EMPTY_BLOOD_BAG = ITEMS.register("empty_blood_bag", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FENTANYL = ITEMS.register("fentanyl", FentanylItem::new);
+    public static final DeferredItem<Item> FOLIAGE = ITEMS.register("foliage", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GEOFRUIT = ITEMS.register("geofruit", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> HEROIN = ITEMS.register("heroin", HeroinItem::new);
+    public static final DeferredItem<Item> LOCKPICKING_KIT = ITEMS.register("lockpicking_kit", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MANUAL_DEFIBRILLATOR = ITEMS.register("manual_defibrillator", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MED_KIT = ITEMS.register("med_kit", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MINDWIPE = ITEMS.register("mindwipe", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MORPHINE = ITEMS.register("morphine", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> NALOXONE = ITEMS.register("naloxone", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> OPIUM = ITEMS.register("opium", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PAINKILLERS = ITEMS.register("painkillers", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RELIEF_CREAM = ITEMS.register("relief_cream", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SALINE = ITEMS.register("saline", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SLEEPING_PILLS = ITEMS.register("sleeping_pills", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SODIUM_NITROPRUSSIDE = ITEMS.register("sodium_nitroprusside", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> STERILIZED_DRESSING = ITEMS.register("sterilized_dressing", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> STREPTOKINASE = ITEMS.register("streptokinase", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SYRINGE = ITEMS.register("syringe", SyringeItem::new);
+    public static final DeferredItem<Item> TOURNIQUET = ITEMS.register("tourniquet", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TRASH_BAG = ITEMS.register("trash_bag", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WATER_BOTTLE = ITEMS.register("water_bottle", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WOUND_GLUE = ITEMS.register("wound_glue", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

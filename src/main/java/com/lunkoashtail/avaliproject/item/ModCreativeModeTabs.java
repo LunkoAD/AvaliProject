@@ -210,6 +210,72 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FEMALE_NEVREAN_SPAWN_EGG);
                     }).build());
 
+    public static final Supplier<CreativeModeTab> EXPIE_ITEM_TAB = CREATIVE_MODE_TAB.register("expie_items_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.EXPIE_PLUSH.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "sergal_items_tab"))
+                    .title(Component.translatable("creativetab.avaliproject.expie_item"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.EXPIE_PLUSH);
+                        output.accept(ModItems.BANDAGE);
+
+                        // Plushies
+                        output.accept(ModItems.AKITU_PLUSHIE);
+                        output.accept(ModItems.AMS_PLUSHIE);
+                        output.accept(ModItems.BOT_PLUSHIE);
+                        output.accept(ModItems.BROWN_BUNNY_PLUSHIE);
+                        output.accept(ModItems.BUNNY_PLUSHIE);
+                        output.accept(ModItems.DAS_PLUSHIE);
+                        output.accept(ModItems.FRIEND_PLUSH);
+                        output.accept(ModItems.GORT_PLUSHIE);
+                        output.accept(ModItems.JIMMY_PLUSHIE);
+                        output.accept(ModItems.MOFFEE_PLUSHIE);
+                        output.accept(ModItems.ORANGE_PLUSHIE);
+                        output.accept(ModItems.PENTER_PLUSHIE);
+                        output.accept(ModItems.RED_FOX_PLUSHIE);
+                        output.accept(ModItems.ROBOT_PLUSHIE);
+                        output.accept(ModItems.SHARK_PLUSHIE);
+                        output.accept(ModItems.TACO_PLUSHIE);
+                        output.accept(ModItems.WEH_PLUSHIE);
+                        output.accept(ModItems.WICK_PLUSHIE);
+
+                        // Medical & survival items
+                        output.accept(ModItems.ALCOHOL);
+                        output.accept(ModItems.ANTI_DEPRESSANTS);
+                        output.accept(ModItems.ANTIBIOTICS);
+                        output.accept(ModItems.ANTIRAD);
+                        output.accept(ModItems.ANTISEPTIC);
+                        output.accept(ModItems.ANTISERUM);
+                        output.accept(ModItems.APPLE_JUICE);
+                        output.accept(ModItems.BLOOD_BAG);
+                        output.accept(ModItems.BRUISE_KIT);
+                        output.accept(ModItems.CANTEEN);
+                        output.accept(ModItems.CHEST_DRAIN);
+                        output.accept(ModItems.EMPTY_BLOOD_BAG);
+                        output.accept(ModItems.FENTANYL);
+                        output.accept(ModItems.FOLIAGE);
+                        output.accept(ModItems.GEOFRUIT);
+                        output.accept(ModItems.HEROIN);
+                        output.accept(ModItems.LOCKPICKING_KIT);
+                        output.accept(ModItems.MANUAL_DEFIBRILLATOR);
+                        output.accept(ModItems.MED_KIT);
+                        output.accept(ModItems.MINDWIPE);
+                        output.accept(ModItems.MORPHINE);
+                        output.accept(ModItems.NALOXONE);
+                        output.accept(ModItems.OPIUM);
+                        output.accept(ModItems.PAINKILLERS);
+                        output.accept(ModItems.RELIEF_CREAM);
+                        output.accept(ModItems.SALINE);
+                        output.accept(ModItems.SLEEPING_PILLS);
+                        output.accept(ModItems.SODIUM_NITROPRUSSIDE);
+                        output.accept(ModItems.STERILIZED_DRESSING);
+                        output.accept(ModItems.STREPTOKINASE);
+                        output.accept(ModItems.SYRINGE);
+                        output.accept(ModItems.TOURNIQUET);
+                        output.accept(ModItems.TRASH_BAG);
+                        output.accept(ModItems.WATER_BOTTLE);
+                        output.accept(ModItems.WOUND_GLUE);
+                    }).build());
+
     public static void register (IEventBus eventBus) {
         CREATIVE_MODE_TAB.register(eventBus);
     }

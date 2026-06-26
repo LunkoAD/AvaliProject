@@ -26,6 +26,14 @@ public class ModSounds {
     public static final Supplier<SoundEvent> CYBERNETIC_HEART = registerSoundEvent("cybernetic_heart");
     public static final ResourceKey<JukeboxSong> CYBERNETIC_HEART_KEY = createSong("cybernetic_heart");
 
+    // Bandage minigame sounds
+    public static final Supplier<SoundEvent> BANDAGE_WRAP    = registerSoundEvent("bandage_wrap");
+    public static final Supplier<SoundEvent> BANDAGE_SUCCESS = registerSoundEvent("bandage_success");
+
+    // Syringe minigame sounds
+    public static final Supplier<SoundEvent> SYRINGE_STAB   = registerSoundEvent("syringe_stab");
+    public static final Supplier<SoundEvent> SYRINGE_INJECT = registerSoundEvent("syringe_inject");
+
 
     private static ResourceKey<JukeboxSong> createSong(String name) {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));

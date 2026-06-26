@@ -1,6 +1,10 @@
 package com.lunkoashtail.avaliproject;
 
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.limb.ModAttachments;
+import com.lunkoashtail.avaliproject.network.LimbDataSyncPayload;
+import com.lunkoashtail.avaliproject.network.ReduceBleedPayload;
+import com.lunkoashtail.avaliproject.network.SyringeEffectPayload;
 import com.lunkoashtail.avaliproject.block.entity.ModBlockEntities;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.entity.client.*;
@@ -34,7 +38,11 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import com.lunkoashtail.avaliproject.command.BleedingCommand;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -49,9 +57,11 @@ public class AvaliProject {
 
     public AvaliProject(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::registerPayloads);
 
         NeoForge.EVENT_BUS.register(this);
 
+        ModAttachments.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -67,6 +77,24 @@ public class AvaliProject {
 
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    private void registerPayloads(RegisterPayloadHandlersEvent event) {
+        PayloadRegistrar registrar = event.registrar("1");
+        registrar.playToServer(
+                SyringeEffectPayload.TYPE,
+                SyringeEffectPayload.STREAM_CODEC,
+                SyringeEffectPayload::handle);
+
+        // Limb system packets
+        registrar.playToClient(
+                LimbDataSyncPayload.TYPE,
+                LimbDataSyncPayload.STREAM_CODEC,
+                LimbDataSyncPayload::handle);
+        registrar.playToServer(
+                ReduceBleedPayload.TYPE,
+                ReduceBleedPayload.STREAM_CODEC,
+                ReduceBleedPayload::handle);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -300,5 +328,10 @@ public class AvaliProject {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+    }
+
+    @SubscribeEvent
+    public void onRegisterCommands(RegisterCommandsEvent event) {
+        event.getDispatcher().register(BleedingCommand.build());
     }
 }

@@ -98,6 +98,65 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BLIZZARD_HILT.get());
         basicItem(ModItems.BLIZZARD_MUZZLE.get());
         basicItem(ModItems.BLIZZARD_CORE.get());
+        basicItem(ModItems.EXPIE_PLUSH.get());
+        basicItem(ModItems.BANDAGE.get());
+
+        // Plushies
+        basicItem(ModItems.AKITU_PLUSHIE.get());
+        basicItem(ModItems.AMS_PLUSHIE.get());
+        basicItem(ModItems.BOT_PLUSHIE.get());
+        basicItem(ModItems.BROWN_BUNNY_PLUSHIE.get());
+        basicItem(ModItems.BUNNY_PLUSHIE.get());
+        basicItem(ModItems.DAS_PLUSHIE.get());
+        basicItem(ModItems.FRIEND_PLUSH.get());
+        basicItem(ModItems.GORT_PLUSHIE.get());
+        basicItem(ModItems.JIMMY_PLUSHIE.get());
+        basicItem(ModItems.MOFFEE_PLUSHIE.get());
+        basicItem(ModItems.ORANGE_PLUSHIE.get());
+        basicItem(ModItems.PENTER_PLUSHIE.get());
+        basicItem(ModItems.RED_FOX_PLUSHIE.get());
+        basicItem(ModItems.ROBOT_PLUSHIE.get());
+        basicItem(ModItems.SHARK_PLUSHIE.get());
+        basicItem(ModItems.TACO_PLUSHIE.get());
+        basicItem(ModItems.WEH_PLUSHIE.get());
+        basicItem(ModItems.WICK_PLUSHIE.get());
+
+        // Medical & survival items
+        basicItem(ModItems.ALCOHOL.get());
+        basicItem(ModItems.ANTI_DEPRESSANTS.get());
+        basicItem(ModItems.ANTIBIOTICS.get());
+        basicItem(ModItems.ANTIRAD.get());
+        basicItem(ModItems.ANTISEPTIC.get());
+        basicItem(ModItems.ANTISERUM.get());
+        basicItem(ModItems.APPLE_JUICE.get());
+        basicItem(ModItems.BLOOD_BAG.get());
+        basicItem(ModItems.BRUISE_KIT.get());
+        basicItem(ModItems.CANTEEN.get());
+        basicItem(ModItems.CHEST_DRAIN.get());
+        basicItem(ModItems.EMPTY_BLOOD_BAG.get());
+        basicItem(ModItems.FENTANYL.get());
+        basicItem(ModItems.FOLIAGE.get());
+        basicItem(ModItems.GEOFRUIT.get());
+        basicItem(ModItems.HEROIN.get());
+        basicItem(ModItems.LOCKPICKING_KIT.get());
+        basicItem(ModItems.MANUAL_DEFIBRILLATOR.get());
+        basicItem(ModItems.MED_KIT.get());
+        basicItem(ModItems.MINDWIPE.get());
+        basicItem(ModItems.MORPHINE.get());
+        basicItem(ModItems.NALOXONE.get());
+        basicItem(ModItems.OPIUM.get());
+        basicItem(ModItems.PAINKILLERS.get());
+        basicItem(ModItems.RELIEF_CREAM.get());
+        basicItem(ModItems.SALINE.get());
+        basicItem(ModItems.SLEEPING_PILLS.get());
+        basicItem(ModItems.SODIUM_NITROPRUSSIDE.get());
+        basicItem(ModItems.STERILIZED_DRESSING.get());
+        basicItem(ModItems.STREPTOKINASE.get());
+        basicItem(ModItems.SYRINGE.get());
+        basicItem(ModItems.TOURNIQUET.get());
+        basicItem(ModItems.TRASH_BAG.get());
+        basicItem(ModItems.WATER_BOTTLE.get());
+        basicItem(ModItems.WOUND_GLUE.get());
 
         //Icons
         basicItem(ModItems.AVALI_ICON.get());
