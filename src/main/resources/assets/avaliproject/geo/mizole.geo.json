@@ -4,8 +4,8 @@
 		{
 			"description": {
 				"identifier": "geometry.unknown",
-				"texture_width": 128,
-				"texture_height": 128,
+				"texture_width": 92,
+				"texture_height": 92,
 				"visible_bounds_width": 4,
 				"visible_bounds_height": 2.5,
 				"visible_bounds_offset": [0, 0.75, 0]
@@ -18,7 +18,7 @@
 				{
 					"name": "body",
 					"parent": "Mizole",
-					"pivot": [0, 11, 11],
+					"pivot": [0, 11, -1],
 					"cubes": [
 						{"origin": [-3.5, 6, -6], "size": [7, 8, 10], "uv": [0, 0]},
 						{"origin": [-4.5, 10, -7], "size": [9, 5, 6], "uv": [35, 0]},

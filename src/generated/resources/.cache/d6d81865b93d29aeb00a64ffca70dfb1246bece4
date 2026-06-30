@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-26T12:28:03.5507599	Item Models: avaliproject
+// 1.21.1	2026-07-01T01:22:10.1356032	Item Models: avaliproject
 33b92ce253590c84bd7685ebfaf97bf4f7c8db3d assets/avaliproject/models/item/aerogel.json
 ba6e3a8b9a9ac590f537830754b3ae5c10a0d26a assets/avaliproject/models/item/aeromer.json
 e7e13c62c41df296eb17ea4df6541e15b4e03567 assets/avaliproject/models/item/aero_crystal.json
@@ -20,18 +20,19 @@ d34d8ebbc83feda4a27302144b68b907b2171e89 assets/avaliproject/models/item/arcaite
 dec8ae38e9fa7310b59d869b54b04e0219d7a564 assets/avaliproject/models/item/avali_drone.json
 03b454ef9847a04eb042cb601c1e16e7e28c69f4 assets/avaliproject/models/item/avali_drone_core.json
 95a924d63b3a8efe6b13ea3402a7d46b0d17986c assets/avaliproject/models/item/avali_drone_rotors.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/avali_drone_spawn_egg.json
 d8c4af45328ef3625c5ad2fe89ac8ee6ec9aa31c assets/avaliproject/models/item/avali_hoe.json
 09a92cca379395a0b2224d95bdc6f1556589aeb8 assets/avaliproject/models/item/avali_icon.json
 ebc69b90d40be2c9aad29b23510dc95b67e39af3 assets/avaliproject/models/item/avali_muffin.json
 8f4b43cac67511edd276c0052ff88c6c24178019 assets/avaliproject/models/item/avali_pickaxe.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/avali_spawn_egg.json
-d6df61486659c4fd70e8317a1376220d3096821e assets/avaliproject/models/item/avali_spear.json
 710af7b9999f3417e947a477d8bf8e7eef67a216 assets/avaliproject/models/item/avalon_taco.json
 a463857caba3e27b49564fcb89d3491cdca80a51 assets/avaliproject/models/item/bandage.json
 06f432b2c7015f12a61db79f50ba63999cf62269 assets/avaliproject/models/item/blizzard_core.json
 bcb626f1591a8adac736c39ce5e5c0b71481d0b1 assets/avaliproject/models/item/blizzard_hilt.json
 afe2f6e27f252b0cc5dc0894209491c5a1873c8e assets/avaliproject/models/item/blizzard_muzzle.json
 c2eaebf2c95d23cae307a37b106713323d4fb16e assets/avaliproject/models/item/blood_bag.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/bos_agudner_spawn_egg.json
 9b5e1c9c0ba9e583035be92bd357be6d68c0e046 assets/avaliproject/models/item/bot_plushie.json
 1ba44f64a5e15cd999773755afd825278c51c709 assets/avaliproject/models/item/brown_bunny_plushie.json
 58bf2d852d62851210a9353e505e8a658ca67fd6 assets/avaliproject/models/item/bruise_kit.json
@@ -46,6 +47,7 @@ cc8ab17a246b7556b2c5e7f2589aa3b7a8c14712 assets/avaliproject/models/item/duraste
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/eepuor_spawn_egg.json
 22f4c08f83298275edeedb8a1eecf5f8e9a0003f assets/avaliproject/models/item/empty_blood_bag.json
 10dc0a7e564e07e82db81d11365f3a20e2a6c2e1 assets/avaliproject/models/item/expie_plush.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/expie_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/female_nevrean_spawn_egg.json
 1a0a094f712951cfb694b7e8bfda99e1af9be3fa assets/avaliproject/models/item/fentanyl.json
 a6f9f0b9cfeadc8364c8308e7219edab41e604a5 assets/avaliproject/models/item/fiber.json
@@ -56,6 +58,7 @@ fe9196d9fbc15af7a4fdf017e9d909b8645dd366 assets/avaliproject/models/item/firelan
 f4864a6a44b3fd70ca8a0ec834a80f7f2849b2ff assets/avaliproject/models/item/foliage.json
 4af808f4a1d6a05a927832ebaa8c69bee4273248 assets/avaliproject/models/item/friend_plush.json
 7e05a603341f16775925c7deb6208662672bf9b8 assets/avaliproject/models/item/geofruit.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/goat_agudner_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/gohuntaki_spawn_egg.json
 41c5816af7b241e683017c7505c14ce90a1c9181 assets/avaliproject/models/item/gort_plushie.json
 88bd03023512058542c1b45d0d02b9799c979bb3 assets/avaliproject/models/item/groou.json
@@ -114,6 +117,7 @@ ced91dc0f57c25ee07f8f648d943d05e26c0f478 assets/avaliproject/models/item/protoge
 47e9cc1a631bae6ae5743e8c2a6f2e5b357a5d00 assets/avaliproject/models/item/qrc_hilt.json
 d0085bee9cf7cd7e26a35f1fc16672404bdc6d55 assets/avaliproject/models/item/qrc_main.json
 57d57822959c5950423a2cc97916b2701d6c0cfe assets/avaliproject/models/item/qrc_muzzle.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/avaliproject/models/item/rab_agudner_spawn_egg.json
 058cd8956fab995cb26335e9eda3dace5679c5d4 assets/avaliproject/models/item/raw_aegisalt.json
 6fe282166f5d90ceb31c6fee8d14bc654e8e18a6 assets/avaliproject/models/item/raw_durasteel.json
 f060321dcc5a91a5e75a8b3cfc8ad32e0223316b assets/avaliproject/models/item/raw_titanium.json

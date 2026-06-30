@@ -41,6 +41,10 @@ public class ModEventBusEvents {
         event.put(ModEntities.MALE_NEVREAN.get(), MaleNevreanEntity.createAttributes().build());
         event.put(ModEntities.CHRGAKBZ.get(), ChrgakbzEntity.createAttributes().build());
         event.put(ModEntities.AVALI_DRONE.get(), AvaliDroneEntity.createAttributes().build());
+        event.put(ModEntities.BOS_AGUDNER.get(), BosAgudnerEntity.createAttributes().build());
+        event.put(ModEntities.GOAT_AGUDNER.get(), GoatAgudnerEntity.createAttributes().build());
+        event.put(ModEntities.RAB_AGUDNER.get(), RabAgudnerEntity.createAttributes().build());
+        event.put(ModEntities.EXPIE.get(), ExpieEntity.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -87,5 +91,11 @@ public class ModEventBusEvents {
                 Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(ModEntities.CHRGAKBZ.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.BOS_AGUDNER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.GOAT_AGUDNER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.RAB_AGUDNER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }

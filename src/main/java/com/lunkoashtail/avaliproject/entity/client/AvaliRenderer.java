@@ -1,6 +1,9 @@
 package com.lunkoashtail.avaliproject.entity.client;
 
+import com.google.common.collect.Maps;
+import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.entity.custom.AvaliEntity;
+import net.minecraft.Util;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 
@@ -12,10 +15,25 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 
+import java.util.Map;
+
 public class AvaliRenderer extends GeoEntityRenderer<AvaliEntity> {
     public AvaliRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new AvaliModel());
         this.shadowRadius = 0.5f;
+    }
+
+    private static final Map<AvaliVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(AvaliVariant.class), map -> {
+                map.put(AvaliVariant.PENGUIN,
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/avali/avalipenguin.png"));
+                map.put(AvaliVariant.BLANK,
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/avali/avaliblank.png"));
+            });
+
+    @Override
+    public ResourceLocation getTextureLocation(AvaliEntity pEntity) {
+        return LOCATION_BY_VARIANT.get(pEntity.getVariant());
     }
 
     @Override

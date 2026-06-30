@@ -1,6 +1,11 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
+import com.lunkoashtail.avaliproject.entity.client.CaklerahVariant;
+import net.minecraft.Util;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.level.ServerLevelAccessor;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.animation.PlayState;
@@ -33,9 +38,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.tags.BlockTags;
@@ -52,6 +59,8 @@ import net.minecraft.core.BlockPos;
 import java.util.EnumSet;
 
 public class CaklerahEntity extends Monster implements GeoEntity {
+    private static final EntityDataAccessor<Integer> VARIANT =
+            SynchedEntityData.defineId(CaklerahEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(CaklerahEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(CaklerahEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(CaklerahEntity.class, EntityDataSerializers.STRING);
@@ -74,15 +83,15 @@ public class CaklerahEntity extends Monster implements GeoEntity {
         builder.define(SHOOT, false);
         builder.define(ANIMATION, "undefined");
         builder.define(TEXTURE, "caklerah");
+        builder.define(VARIANT, 0);
     }
 
-    public void setTexture(String texture) {
-        this.entityData.set(TEXTURE, texture);
-    }
+    public void setTexture(String texture) { this.entityData.set(TEXTURE, texture); }
+    public String getTexture() { return this.entityData.get(TEXTURE); }
 
-    public String getTexture() {
-        return this.entityData.get(TEXTURE);
-    }
+    private int getTypeVariant() { return this.entityData.get(VARIANT); }
+    public CaklerahVariant getVariant() { return CaklerahVariant.byId(this.getTypeVariant() & 255); }
+    private void setVariant(CaklerahVariant variant) { this.entityData.set(VARIANT, variant.getId() & 255); }
 
     @Override
     protected PathNavigation createNavigation(Level world) {
@@ -105,30 +114,20 @@ public class CaklerahEntity extends Monster implements GeoEntity {
             }
         });
         this.goalSelector.addGoal(4, new Goal() {
-            {
-                this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-            }
-
+            { this.setFlags(EnumSet.of(Goal.Flag.MOVE)); }
             public boolean canUse() {
-                if (CaklerahEntity.this.getTarget() != null && !CaklerahEntity.this.getMoveControl().hasWanted()) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return CaklerahEntity.this.getTarget() != null && !CaklerahEntity.this.getMoveControl().hasWanted();
             }
-
             @Override
             public boolean canContinueToUse() {
                 return CaklerahEntity.this.getMoveControl().hasWanted() && CaklerahEntity.this.getTarget() != null && CaklerahEntity.this.getTarget().isAlive();
             }
-
             @Override
             public void start() {
                 LivingEntity livingentity = CaklerahEntity.this.getTarget();
                 Vec3 vec3d = livingentity.getEyePosition(1);
                 CaklerahEntity.this.moveControl.setWantedPosition(vec3d.x, vec3d.y, vec3d.z, 1);
             }
-
             @Override
             public void tick() {
                 LivingEntity livingentity = CaklerahEntity.this.getTarget();
@@ -163,21 +162,28 @@ public class CaklerahEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public boolean causeFallDamage(float l, float d, DamageSource source) {
-        return false;
-    }
+    public boolean causeFallDamage(float l, float d, DamageSource source) { return false; }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putString("Texture", this.getTexture());
+        compound.putInt("Variant", this.getTypeVariant());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        if (compound.contains("Texture"))
-            this.setTexture(compound.getString("Texture"));
+        if (compound.contains("Texture")) this.setTexture(compound.getString("Texture"));
+        if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
+    }
+
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
+                                        @Nullable SpawnGroupData pSpawnGroupData) {
+        CaklerahVariant variant = Util.getRandom(CaklerahVariant.values(), this.random);
+        this.setVariant(variant);
+        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
     }
 
     @Override
@@ -192,13 +198,10 @@ public class CaklerahEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
-    }
+    protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {}
 
     @Override
-    public void setNoGravity(boolean ignored) {
-        super.setNoGravity(true);
-    }
+    public void setNoGravity(boolean ignored) { super.setNoGravity(true); }
 
     public void aiStep() {
         super.aiStep();
@@ -239,8 +242,7 @@ public class CaklerahEntity extends Monster implements GeoEntity {
 
     private PlayState procedurePredicate(AnimationState event) {
         if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED || (!this.animationprocedure.equals(prevAnim) && !this.animationprocedure.equals("empty"))) {
-            if (!this.animationprocedure.equals(prevAnim))
-                event.getController().forceAnimationReset();
+            if (!this.animationprocedure.equals(prevAnim)) event.getController().forceAnimationReset();
             event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
             if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {
                 this.animationprocedure = "empty";
@@ -263,13 +265,8 @@ public class CaklerahEntity extends Monster implements GeoEntity {
         }
     }
 
-    public String getSyncedAnimation() {
-        return this.entityData.get(ANIMATION);
-    }
-
-    public void setAnimation(String animation) {
-        this.entityData.set(ANIMATION, animation);
-    }
+    public String getSyncedAnimation() { return this.entityData.get(ANIMATION); }
+    public void setAnimation(String animation) { this.entityData.set(ANIMATION, animation); }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
@@ -278,7 +275,5 @@ public class CaklerahEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
-    }
+    public AnimatableInstanceCache getAnimatableInstanceCache() { return this.cache; }
 }

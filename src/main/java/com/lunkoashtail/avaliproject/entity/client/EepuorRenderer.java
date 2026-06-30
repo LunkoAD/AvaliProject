@@ -1,6 +1,9 @@
 package com.lunkoashtail.avaliproject.entity.client;
 
+import com.google.common.collect.Maps;
+import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.entity.custom.EepuorEntity;
+import net.minecraft.Util;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 
@@ -12,11 +15,30 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 
+import java.util.Map;
+
 public class EepuorRenderer extends GeoEntityRenderer<EepuorEntity> {
     public EepuorRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new EepuorModel());
         this.shadowRadius = 0.5f;
         this.addRenderLayer(new EepuorLayer(this));
+    }
+
+    private static final Map<EepuorVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(EepuorVariant.class), map -> {
+                map.put(EepuorVariant.GLOW,
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/eepuor/eepuorglow.png"));
+                map.put(EepuorVariant.CYAN,
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/eepuor/eepuor_cyan.png"));
+                map.put(EepuorVariant.SWAMP_GREEN,
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/eepuor/eepuor_swamp_green.png"));
+                map.put(EepuorVariant.PALE_DEEP,
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/eepuor/eepuor_pale_deep.png"));
+            });
+
+    @Override
+    public ResourceLocation getTextureLocation(EepuorEntity pEntity) {
+        return LOCATION_BY_VARIANT.get(pEntity.getVariant());
     }
 
     @Override

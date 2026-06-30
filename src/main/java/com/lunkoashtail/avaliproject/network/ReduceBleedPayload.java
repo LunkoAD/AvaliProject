@@ -1,6 +1,7 @@
 package com.lunkoashtail.avaliproject.network;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.item.ModItems;
 import com.lunkoashtail.avaliproject.limb.Limb;
 import com.lunkoashtail.avaliproject.limb.LimbData;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
@@ -10,6 +11,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
@@ -41,6 +43,14 @@ public record ReduceBleedPayload(int limbOrdinal, int amount) implements CustomP
         return TYPE;
     }
 
+    private static boolean tryConsumeBandage(ItemStack stack) {
+        if (stack.is(ModItems.BANDAGE.get())) {
+            stack.shrink(1);
+            return true;
+        }
+        return false;
+    }
+
     /** Server-side handler: apply reduction and sync updated data to client. */
     public static void handle(ReduceBleedPayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
@@ -52,6 +62,12 @@ public record ReduceBleedPayload(int limbOrdinal, int amount) implements CustomP
             Limb limb = limbs[payload.limbOrdinal()];
             LimbData data = serverPlayer.getData(ModAttachments.LIMB_DATA);
             data.reduceBleed(limb, payload.amount());
+
+            // Consume one bandage — check main hand, then off hand, then inventory.
+            if (!tryConsumeBandage(serverPlayer.getMainHandItem()))
+                if (!tryConsumeBandage(serverPlayer.getOffhandItem()))
+                    for (int i = 0; i < serverPlayer.getInventory().getContainerSize(); i++)
+                        if (tryConsumeBandage(serverPlayer.getInventory().getItem(i))) break;
 
             // Send the authoritative state back to the client.
             PacketDistributor.sendToPlayer(serverPlayer, LimbDataSyncPayload.from(data));

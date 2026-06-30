@@ -87,6 +87,20 @@ public class ModEntities {
             ENTITY_TYPES.register("avali_projectile", () -> EntityType.Builder.<AvaliProjectileEntity>of(AvaliProjectileEntity::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("avali_projectile"));
 
+    public static final Supplier<EntityType<BosAgudnerEntity>> BOS_AGUDNER =
+            ENTITY_TYPES.register("bos_agudner", () -> EntityType.Builder.of(BosAgudnerEntity::new, MobCategory.MONSTER)
+                    .sized(1.5f, 2.5f).build("bos_agudner"));
+    public static final Supplier<EntityType<GoatAgudnerEntity>> GOAT_AGUDNER =
+            ENTITY_TYPES.register("goat_agudner", () -> EntityType.Builder.of(GoatAgudnerEntity::new, MobCategory.CREATURE)
+                    .sized(1.25f, 1.75f).build("goat_agudner"));
+    public static final Supplier<EntityType<RabAgudnerEntity>> RAB_AGUDNER =
+            ENTITY_TYPES.register("rab_agudner", () -> EntityType.Builder.of(RabAgudnerEntity::new, MobCategory.CREATURE)
+                    .sized(0.8f, 1.2f).build("rab_agudner"));
+
+    public static final Supplier<EntityType<ExpieEntity>> EXPIE =
+            ENTITY_TYPES.register("expie", () -> EntityType.Builder.of(ExpieEntity::new, MobCategory.CREATURE)
+                    .sized(0.5f, 1.5f).build("expie"));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

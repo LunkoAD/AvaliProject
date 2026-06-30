@@ -1,6 +1,7 @@
 package com.lunkoashtail.avaliproject.limb;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.species.Species;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -33,6 +34,14 @@ public class ModAttachments {
             "limb_data",
             () -> AttachmentType.<LimbData>builder(LimbData::new)
                     .serialize(LimbData.CODEC)
+                    .copyOnDeath()
+                    .build()
+    );
+
+    public static final Supplier<AttachmentType<Species>> SPECIES = ATTACHMENT_TYPES.register(
+            "species",
+            () -> AttachmentType.<Species>builder(() -> Species.HUMAN)
+                    .serialize(Species.CODEC)
                     .copyOnDeath()
                     .build()
     );

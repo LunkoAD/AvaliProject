@@ -1,12 +1,16 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
+import com.lunkoashtail.avaliproject.entity.client.AvaliVariant;
+import net.minecraft.Util;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.DifficultyInstance;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.animation.PlayState;
@@ -44,6 +48,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 
 public class AvaliEntity extends Monster implements GeoEntity {
+    private static final EntityDataAccessor<Integer> VARIANT =
+            SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.STRING);
@@ -65,15 +71,15 @@ public class AvaliEntity extends Monster implements GeoEntity {
         builder.define(SHOOT, false);
         builder.define(ANIMATION, "undefined");
         builder.define(TEXTURE, "avalipenguin");
+        builder.define(VARIANT, 0);
     }
 
-    public void setTexture(String texture) {
-        this.entityData.set(TEXTURE, texture);
-    }
+    public void setTexture(String texture) { this.entityData.set(TEXTURE, texture); }
+    public String getTexture() { return this.entityData.get(TEXTURE); }
 
-    public String getTexture() {
-        return this.entityData.get(TEXTURE);
-    }
+    private int getTypeVariant() { return this.entityData.get(VARIANT); }
+    public AvaliVariant getVariant() { return AvaliVariant.byId(this.getTypeVariant() & 255); }
+    private void setVariant(AvaliVariant variant) { this.entityData.set(VARIANT, variant.getId() & 255); }
 
     @Override
     protected void registerGoals() {
@@ -117,8 +123,7 @@ public class AvaliEntity extends Monster implements GeoEntity {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (source.is(DamageTypes.FALL))
-            return false;
+        if (source.is(DamageTypes.FALL)) return false;
         return super.hurt(source, amount);
     }
 
@@ -126,13 +131,22 @@ public class AvaliEntity extends Monster implements GeoEntity {
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putString("Texture", this.getTexture());
+        compound.putInt("Variant", this.getTypeVariant());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        if (compound.contains("Texture"))
-            this.setTexture(compound.getString("Texture"));
+        if (compound.contains("Texture")) this.setTexture(compound.getString("Texture"));
+        if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
+    }
+
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
+                                        @Nullable SpawnGroupData pSpawnGroupData) {
+        AvaliVariant variant = Util.getRandom(AvaliVariant.values(), this.random);
+        this.setVariant(variant);
+        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
     }
 
     @Override
@@ -164,9 +178,7 @@ public class AvaliEntity extends Monster implements GeoEntity {
 
     private PlayState movementPredicate(AnimationState event) {
         if (this.animationprocedure.equals("empty")) {
-            if ((event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F))
-
-            ) {
+            if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
                 return event.setAndContinue(RawAnimation.begin().thenLoop("Walk"));
             }
             return event.setAndContinue(RawAnimation.begin().thenLoop("Idle"));
@@ -178,8 +190,7 @@ public class AvaliEntity extends Monster implements GeoEntity {
 
     private PlayState procedurePredicate(AnimationState event) {
         if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED || (!this.animationprocedure.equals(prevAnim) && !this.animationprocedure.equals("empty"))) {
-            if (!this.animationprocedure.equals(prevAnim))
-                event.getController().forceAnimationReset();
+            if (!this.animationprocedure.equals(prevAnim)) event.getController().forceAnimationReset();
             event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
             if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {
                 this.animationprocedure = "empty";
@@ -202,13 +213,8 @@ public class AvaliEntity extends Monster implements GeoEntity {
         }
     }
 
-    public String getSyncedAnimation() {
-        return this.entityData.get(ANIMATION);
-    }
-
-    public void setAnimation(String animation) {
-        this.entityData.set(ANIMATION, animation);
-    }
+    public String getSyncedAnimation() { return this.entityData.get(ANIMATION); }
+    public void setAnimation(String animation) { this.entityData.set(ANIMATION, animation); }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
@@ -217,7 +223,5 @@ public class AvaliEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
-    }
+    public AnimatableInstanceCache getAnimatableInstanceCache() { return this.cache; }
 }

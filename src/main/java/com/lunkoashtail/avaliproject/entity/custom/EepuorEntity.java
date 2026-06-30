@@ -1,6 +1,11 @@
 package com.lunkoashtail.avaliproject.entity.custom;
 
 import com.lunkoashtail.avaliproject.entity.ModEntities;
+import com.lunkoashtail.avaliproject.entity.client.EepuorVariant;
+import net.minecraft.Util;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.level.ServerLevelAccessor;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.animation.PlayState;
@@ -27,6 +32,8 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
@@ -44,6 +51,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 public class EepuorEntity extends Monster implements GeoEntity {
+    private static final EntityDataAccessor<Integer> VARIANT =
+            SynchedEntityData.defineId(EepuorEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(EepuorEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(EepuorEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(EepuorEntity.class, EntityDataSerializers.STRING);
@@ -64,16 +73,16 @@ public class EepuorEntity extends Monster implements GeoEntity {
         super.defineSynchedData(builder);
         builder.define(SHOOT, false);
         builder.define(ANIMATION, "undefined");
-        builder.define(TEXTURE, "eepuor");
+        builder.define(TEXTURE, "eepuorglow");
+        builder.define(VARIANT, 0);
     }
 
-    public void setTexture(String texture) {
-        this.entityData.set(TEXTURE, texture);
-    }
+    public void setTexture(String texture) { this.entityData.set(TEXTURE, texture); }
+    public String getTexture() { return this.entityData.get(TEXTURE); }
 
-    public String getTexture() {
-        return this.entityData.get(TEXTURE);
-    }
+    private int getTypeVariant() { return this.entityData.get(VARIANT); }
+    public EepuorVariant getVariant() { return EepuorVariant.byId(this.getTypeVariant() & 255); }
+    private void setVariant(EepuorVariant variant) { this.entityData.set(VARIANT, variant.getId() & 255); }
 
     @Override
     protected void registerGoals() {
@@ -110,13 +119,22 @@ public class EepuorEntity extends Monster implements GeoEntity {
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putString("Texture", this.getTexture());
+        compound.putInt("Variant", this.getTypeVariant());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        if (compound.contains("Texture"))
-            this.setTexture(compound.getString("Texture"));
+        if (compound.contains("Texture")) this.setTexture(compound.getString("Texture"));
+        if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
+    }
+
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
+                                        @Nullable SpawnGroupData pSpawnGroupData) {
+        EepuorVariant variant = Util.getRandom(EepuorVariant.values(), this.random);
+        this.setVariant(variant);
+        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
     }
 
     @Override
@@ -150,9 +168,7 @@ public class EepuorEntity extends Monster implements GeoEntity {
 
     private PlayState movementPredicate(AnimationState event) {
         if (this.animationprocedure.equals("empty")) {
-            if ((event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F))
-
-            ) {
+            if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
                 return event.setAndContinue(RawAnimation.begin().thenLoop("Walk"));
             }
             return event.setAndContinue(RawAnimation.begin().thenLoop("Idle"));
@@ -182,8 +198,7 @@ public class EepuorEntity extends Monster implements GeoEntity {
 
     private PlayState procedurePredicate(AnimationState event) {
         if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED || (!this.animationprocedure.equals(prevAnim) && !this.animationprocedure.equals("empty"))) {
-            if (!this.animationprocedure.equals(prevAnim))
-                event.getController().forceAnimationReset();
+            if (!this.animationprocedure.equals(prevAnim)) event.getController().forceAnimationReset();
             event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
             if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {
                 this.animationprocedure = "empty";
@@ -206,13 +221,8 @@ public class EepuorEntity extends Monster implements GeoEntity {
         }
     }
 
-    public String getSyncedAnimation() {
-        return this.entityData.get(ANIMATION);
-    }
-
-    public void setAnimation(String animation) {
-        this.entityData.set(ANIMATION, animation);
-    }
+    public String getSyncedAnimation() { return this.entityData.get(ANIMATION); }
+    public void setAnimation(String animation) { this.entityData.set(ANIMATION, animation); }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
@@ -222,7 +232,5 @@ public class EepuorEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
-    }
+    public AnimatableInstanceCache getAnimatableInstanceCache() { return this.cache; }
 }

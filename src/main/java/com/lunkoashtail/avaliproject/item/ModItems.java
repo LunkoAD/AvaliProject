@@ -355,15 +355,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> AVALI_SWORD = ITEMS.register("avali_sword", AvaliswordItem::new);
 
-    public static final DeferredItem<SwordItem> AVALI_SPEAR = ITEMS.register("avali_spear",
-            () -> new ModEffectSwordItem(ModToolTiers.AEROGEL, new Item.Properties()
-                    .attributes(SwordItem.createAttributes(ModToolTiers.AEROGEL, 8, -2.7f)), MobEffects.MOVEMENT_SLOWDOWN){
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.avaliproject.avali_spear.tooltip"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
+    public static final DeferredItem<Item> AVALI_SPEAR = ITEMS.register("avali_spear", AvaliSpearItem::new);
+
     public static final DeferredItem<SwordItem> PROTOGEN_SWORD = ITEMS.register("protogen_sword",
             () -> new SwordItem(ModToolTiers.HARDLIGHT, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.HARDLIGHT, 6, -1.4f))){
@@ -486,6 +479,21 @@ public class ModItems {
                     new Item.Properties()));
     public static final DeferredItem<Item> MALE_NEVREAN_SPAWN_EGG = ITEMS.register("male_nevrean_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.MALE_NEVREAN, 0xfbdd67, 0xccee0e,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> AVALI_DRONE_SPAWN_EGG = ITEMS.register("avali_drone_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.AVALI_DRONE, 0x1c2136, 0x3effff,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> EXPIE_SPAWN_EGG = ITEMS.register("expie_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.EXPIE, 0xe8c49a, 0xe55c1b,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> BOS_AGUDNER_SPAWN_EGG = ITEMS.register("bos_agudner_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.BOS_AGUDNER, 0x5c2e00, 0xcc3311,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> GOAT_AGUDNER_SPAWN_EGG = ITEMS.register("goat_agudner_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.GOAT_AGUDNER, 0xc4a882, 0x8b6914,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> RAB_AGUDNER_SPAWN_EGG = ITEMS.register("rab_agudner_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.RAB_AGUDNER, 0xe8e0d0, 0xc17f24,
                     new Item.Properties()));
 
     public static final DeferredItem<SwordItem> SERGAL_GREATSWORD = ITEMS.register("sergal_greatsword",

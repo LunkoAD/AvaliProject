@@ -23,11 +23,11 @@ public class ProtogenRenderer extends GeoEntityRenderer<ProtogenEntity> {
     private static final Map<ProtogenVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ProtogenVariant.class), map -> {
                 map.put(ProtogenVariant.BLUE,
-                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/protogen/protogenblue.png"));
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/protogen/protogen.png"));
                 map.put(ProtogenVariant.PURPLE,
-                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/protogen/protogenpurple.png"));
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/protogen/protogen.png"));
                 map.put(ProtogenVariant.GREEN,
-                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/protogen/protogengreen.png"));
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/protogen/protogen.png"));
             });
 
     @Override

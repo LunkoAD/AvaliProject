@@ -4,7 +4,9 @@ import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
 import com.lunkoashtail.avaliproject.network.LimbDataSyncPayload;
 import com.lunkoashtail.avaliproject.network.ReduceBleedPayload;
+import com.lunkoashtail.avaliproject.network.SpeciesSyncPayload;
 import com.lunkoashtail.avaliproject.network.SyringeEffectPayload;
+import com.lunkoashtail.avaliproject.species.Species;
 import com.lunkoashtail.avaliproject.block.entity.ModBlockEntities;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.entity.client.*;
@@ -39,10 +41,14 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import com.lunkoashtail.avaliproject.command.BleedingCommand;
+import com.lunkoashtail.avaliproject.command.SpeciesCommand;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.minecraft.server.level.ServerPlayer;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -95,6 +101,12 @@ public class AvaliProject {
                 ReduceBleedPayload.TYPE,
                 ReduceBleedPayload.STREAM_CODEC,
                 ReduceBleedPayload::handle);
+
+        // Species system packets
+        registrar.playToClient(
+                SpeciesSyncPayload.TYPE,
+                SpeciesSyncPayload.STREAM_CODEC,
+                SpeciesSyncPayload::handle);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -143,6 +155,10 @@ public class AvaliProject {
             EntityRenderers.register(ModEntities.AVALI_EXPLOSIVE.get(), AvaliExplosiveRenderer::new);
             EntityRenderers.register(ModEntities.AVALI_PROJECTILE.get(), AvaliProjectileRenderer::new);
             EntityRenderers.register(ModEntities.AVALI_DRONE.get(), AvaliDroneRenderer::new);
+            EntityRenderers.register(ModEntities.BOS_AGUDNER.get(), BosAgudnerRenderer::new);
+            EntityRenderers.register(ModEntities.GOAT_AGUDNER.get(), GoatAgudnerRenderer::new);
+            EntityRenderers.register(ModEntities.RAB_AGUDNER.get(), RabAgudnerRenderer::new);
+            EntityRenderers.register(ModEntities.EXPIE.get(), ExpieRenderer::new);
         }
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
@@ -333,5 +349,13 @@ public class AvaliProject {
     @SubscribeEvent
     public void onRegisterCommands(RegisterCommandsEvent event) {
         event.getDispatcher().register(BleedingCommand.build());
+        event.getDispatcher().register(SpeciesCommand.build());
+    }
+
+    @SubscribeEvent
+    public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        Species species = player.getData(ModAttachments.SPECIES);
+        PacketDistributor.sendToPlayer(player, new SpeciesSyncPayload(species.ordinal()));
     }
 }

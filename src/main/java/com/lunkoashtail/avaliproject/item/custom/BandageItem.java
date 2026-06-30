@@ -3,6 +3,7 @@ package com.lunkoashtail.avaliproject.item.custom;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
 import com.lunkoashtail.avaliproject.screen.custom.BandageMinigameScreen;
 import com.lunkoashtail.avaliproject.screen.custom.LimbSelectionScreen;
+import com.lunkoashtail.avaliproject.species.Species;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -24,8 +25,10 @@ public class BandageItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (level.isClientSide()) {
-            // Step 1 — player picks the limb they want to bandage.
-            // Step 2 — bandage minigame opens for that specific limb.
+            if (player.getData(ModAttachments.SPECIES) != Species.EXPIE) {
+                player.sendSystemMessage(Component.literal("You're not an expie"));
+                return InteractionResultHolder.fail(player.getItemInHand(hand));
+            }
             Minecraft.getInstance().setScreen(new LimbSelectionScreen(selectedLimb -> {
                 int bleed = player.getData(ModAttachments.LIMB_DATA).getBleed(selectedLimb);
                 Minecraft.getInstance().setScreen(new BandageMinigameScreen(selectedLimb, bleed));

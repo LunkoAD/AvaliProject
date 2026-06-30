@@ -24,11 +24,11 @@ public class PrimagenRenderer extends GeoEntityRenderer<PrimagenEntity> {
     private static final Map<PrimagenVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(PrimagenVariant.class), map -> {
                 map.put(PrimagenVariant.BLUE,
-                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/primagen/primagenblue.png"));
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/primagen/primagen.png"));
                 map.put(PrimagenVariant.PINK,
-                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/primagen/primagenpink.png"));
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/primagen/primagen.png"));
                 map.put(PrimagenVariant.BROWN,
-                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/primagen/primagenbrown.png"));
+                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/primagen/primagen.png"));
             });
 
     @Override

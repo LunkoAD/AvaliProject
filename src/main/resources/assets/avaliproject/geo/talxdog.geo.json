@@ -4,8 +4,8 @@
 		{
 			"description": {
 				"identifier": "geometry.unknown",
-				"texture_width": 128,
-				"texture_height": 128,
+				"texture_width": 72,
+				"texture_height": 72,
 				"visible_bounds_width": 3,
 				"visible_bounds_height": 2.5,
 				"visible_bounds_offset": [0, 0.75, 0]
@@ -61,7 +61,7 @@
 				{
 					"name": "tail",
 					"parent": "body",
-					"pivot": [0, 15.5, 11],
+					"pivot": [0, 15.5, 12],
 					"cubes": [
 						{"origin": [-1.5, 6.5, 11], "size": [3, 9, 2], "uv": [53, 51]}
 					]

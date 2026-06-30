@@ -1,0 +1,6 @@
+{
+	"parent": "avaliproject:displaysettings/avali_spear.item",
+	"textures": {
+		"layer0": "avaliproject:item/avali_spear"
+	}
+}

@@ -170,7 +170,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 //        basicItem(ModItems.AVALI_SWORD.get());
         basicItem(ModItems.PROTOGEN_SWORD.get());
         basicItem(ModItems.PROTOGEN_AXE.get());
-        basicItem(ModItems.AVALI_SPEAR.get());
+//        basicItem(ModItems.AVALI_SPEAR.get());
         basicItem(ModItems.SERGAL_GREATSWORD.get());
         basicItem(ModItems.SERGAL_LANCE.get());
         basicItem(ModItems.SERGAL_SWORD.get());
@@ -222,6 +222,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.FEMALE_NEVREAN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.MALE_NEVREAN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.CHRGAKBZ_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.AVALI_DRONE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.EXPIE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.BOS_AGUDNER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.GOAT_AGUDNER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.RAB_AGUDNER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     private void trimmedArmorItem(DeferredItem<ArmorItem> itemDeferredItem) {

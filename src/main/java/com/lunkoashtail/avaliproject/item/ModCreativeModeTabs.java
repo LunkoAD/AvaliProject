@@ -132,6 +132,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SKACIKKJRRBWCAK_SPAWN_EGG);
                         output.accept(ModItems.EEPUOR_SPAWN_EGG);
                         output.accept(ModItems.AVALI_SPAWN_EGG);
+                        output.accept(ModItems.AVALI_DRONE_SPAWN_EGG);
                         output.accept(ModItems.CAKLERAH_SPAWN_EGG);
                         output.accept(ModItems.CHRGAKBZ_SPAWN_EGG);
 
@@ -208,6 +209,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SPORE_SPAWN_EGG);
                         output.accept(ModItems.MALE_NEVREAN_SPAWN_EGG);
                         output.accept(ModItems.FEMALE_NEVREAN_SPAWN_EGG);
+                        output.accept(ModItems.BOS_AGUDNER_SPAWN_EGG);
+                        output.accept(ModItems.GOAT_AGUDNER_SPAWN_EGG);
+                        output.accept(ModItems.RAB_AGUDNER_SPAWN_EGG);
                     }).build());
 
     public static final Supplier<CreativeModeTab> EXPIE_ITEM_TAB = CREATIVE_MODE_TAB.register("expie_items_tab",
@@ -274,6 +278,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TRASH_BAG);
                         output.accept(ModItems.WATER_BOTTLE);
                         output.accept(ModItems.WOUND_GLUE);
+                        output.accept(ModItems.EXPIE_SPAWN_EGG);
                     }).build());
 
     public static void register (IEventBus eventBus) {
