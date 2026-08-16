@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "synccrystal=false": {
+    "model": {
+        "type": "minecraft:model",
+        "model": "ae2:item/quantum_entangled_singularity"
+      }
+    },
+    "synccrystal=true":
+    {
+      "model": {
+        "type": "minecraft:model",
+        "model": "avaliproject:item/aero_crystal_broken.png"
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ import com.lunkoashtail.avaliproject.entity.custom.AvaliEntity;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
 import com.lunkoashtail.avaliproject.pack.PerPlayerTrust;
 import com.lunkoashtail.avaliproject.screen.custom.AvaliSocialLines;
+import com.lunkoashtail.avaliproject.sound.ModSounds;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -15,7 +16,9 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.List;
@@ -73,15 +76,18 @@ public record AvaliSocializeInteractionPayload(int entityId, int actionOrdinal) 
 
             int rawDelta;
             List<String> lines;
+            boolean bad_interaction = false;
             switch (payload.actionOrdinal()) {
                 case ACTION_BE_RUDE -> {
                     rawDelta = -8;
                     lines = AvaliSocialLines.BE_RUDE;
+                    bad_interaction = true;
                 }
                 case ACTION_FLIRT -> {
                     boolean welcome = current.trust() >= FLIRT_TRUST_THRESHOLD;
                     rawDelta = welcome ? 6 : -6;
                     lines = welcome ? AvaliSocialLines.FLIRT : AvaliSocialLines.FLIRT_TOO_SOON;
+                    bad_interaction = !welcome;
                 }
                 case ACTION_HUG -> {
                     rawDelta = 10;
@@ -91,6 +97,7 @@ public record AvaliSocializeInteractionPayload(int entityId, int actionOrdinal) 
                     boolean landed = avali.getRandom().nextInt(100) < SLOW_RAISE_SUCCESS_CHANCE;
                     rawDelta = landed ? 2 : 0;
                     lines = landed ? linesFor(payload.actionOrdinal()) : AvaliSocialLines.FAILED;
+
                 }
                 default -> {
                     rawDelta = 0;
@@ -103,9 +110,8 @@ public record AvaliSocializeInteractionPayload(int entityId, int actionOrdinal) 
             int scaledDelta = (int) Math.round(rawDelta * multiplier);
             avali.getTrustMemory().put(player.getUUID(), current.withTrustDelta(scaledDelta, now));
 
-            boolean hug = payload.actionOrdinal() == ACTION_HUG;
-            avali.playHugOrSocializeFeedback(hug);
-            if (player.level() instanceof ServerLevel serverLevel && hug) {
+            avali.playHugOrSocializeFeedback(bad_interaction ? ACTION_BE_RUDE : payload.actionOrdinal());
+            if (player.level() instanceof ServerLevel serverLevel && payload.actionOrdinal() == ACTION_HUG) {
                 serverLevel.sendParticles(ParticleTypes.HEART, avali.getX(), avali.getY() + avali.getBbHeight() + 0.2, avali.getZ(),
                         6, 0.3, 0.2, 0.3, 0.02);
             }

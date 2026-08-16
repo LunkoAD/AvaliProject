@@ -21,7 +21,10 @@ import com.lunkoashtail.avaliproject.screen.custom.SyringeMinigameScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public final class ClientPayloadHandlers {
 
     private ClientPayloadHandlers() {}

@@ -4,8 +4,11 @@ import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.util.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -19,6 +22,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         super(output, lookupProvider, AvaliProject.MOD_ID, existingFileHelper);
     }
 
+
+
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -29,8 +34,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.THERMAL_CRYSTAL_ORE.get())
                 .add(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.DURASTEEL_ORE.get())
                 .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.TITANIUM_ORE.get())
@@ -67,7 +70,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LUME_ORE.get())
                 .add(ModBlocks.AERO_CRYSTAL_ORE.get())
                 .add(ModBlocks.THERMAL_CRYSTAL_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_ORE.get())
                 .add(ModBlocks.DURASTEEL_ORE.get())
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
@@ -80,7 +82,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LUME_DEEPSLATE_ORE.get())
                 .add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
                 .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
@@ -89,30 +90,41 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.AGATE_DEEPSLATE_ORE.get())
                 .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
 
-        tag(BlockTags.IRON_ORES)
-                .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get())
-                .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
-                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/aegisalt")))
                 .add(ModBlocks.AEGISALT_ORE.get())
-                .add(ModBlocks.VILOUS_CERAMIC_ORE.get())
-                .add(ModBlocks.DURASTEEL_ORE.get())
+                .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/vilousclay")))
+                .add(ModBlocks.VILOUS_CERAMIC_DEEPSLATE_ORE.get())
+                .add(ModBlocks.VILOUS_CERAMIC_ORE.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/durasteel")))
+                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.DURASTEEL_ORE.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/titanium")))
+                .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.get())
                 .add(ModBlocks.TITANIUM_ORE.get());
-        tag(BlockTags.EMERALD_ORES)
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/agate")))
                 .add(ModBlocks.AGATE_DEEPSLATE_ORE.get())
+                .add(ModBlocks.AGATE_ORE.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/novulite")))
                 .add(ModBlocks.NOVULITE_DEEPSLATE_ORE.get())
+                .add(ModBlocks.NOVULITE_ORE.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/lume")))
                 .add(ModBlocks.LUME_DEEPSLATE_ORE.get())
-                .add(ModBlocks.AGATE_ORE.get())
-                .add(ModBlocks.NOVULITE_ORE.get())
                 .add(ModBlocks.LUME_ORE.get());
-        tag(BlockTags.DIAMOND_ORES)
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/arcites")))
                 .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get());
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/aerocrystal")))
                 .add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
-                .add(ModBlocks.SYNC_CRYSTAL_ORE.get())
                 .add(ModBlocks.AERO_CRYSTAL_ORE.get());
-        tag(BlockTags.COAL_ORES)
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/thermalcrystal")))
                 .add(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE.get())
                 .add(ModBlocks.THERMAL_CRYSTAL_ORE.get());
         tag(BlockTags.BEACON_BASE_BLOCKS)
@@ -122,21 +134,21 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
 
         tag(ModTags.Blocks.NEEDS_AEROGEL_TOOL)
-                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
+                .addTag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/durasteel")))
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         tag(ModTags.Blocks.INCORRECT_FOR_AEROGEL_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
 
         tag(ModTags.Blocks.NEEDS_HARDLIGHT_TOOL)
-                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
+                .addTag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/durasteel")))
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         tag(ModTags.Blocks.INCORRECT_FOR_HARDLIGHT_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
 
         tag(ModTags.Blocks.NEEDS_CERAMIC_TOOL)
-                .add(ModBlocks.DURASTEEL_DEEPSLATE_ORE.get())
+                .addTag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/durasteel")))
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         tag(ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL)

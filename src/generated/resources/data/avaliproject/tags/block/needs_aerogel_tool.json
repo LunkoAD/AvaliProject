@@ -1,6 +1,6 @@
 {
   "values": [
-    "avaliproject:durasteel_deepslate_ore",
+    "#forge:ores/durasteel",
     "#minecraft:needs_diamond_tool"
   ]
 }

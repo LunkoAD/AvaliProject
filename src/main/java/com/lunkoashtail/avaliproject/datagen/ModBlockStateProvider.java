@@ -32,8 +32,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.LUME_BLOCK);
         blockWithItem(ModBlocks.LUME_ORE);
         blockWithItem(ModBlocks.LUME_DEEPSLATE_ORE);
-        blockWithItem(ModBlocks.SYNC_CRYSTAL_ORE);
-        blockWithItem(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.AERO_CRYSTAL_ORE);
         blockWithItem(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.AEGISALT_ORE);
@@ -80,6 +78,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_4);
         blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_5);
         blockWithItem(ModBlocks.AVALI_NIGHTLY_FABRIC_6);
+        blockWithItem(ModBlocks.VILOUS_CERAMIC_BLOCK);
 
         blockWithItem(ModBlocks.NANOLOOM);
 

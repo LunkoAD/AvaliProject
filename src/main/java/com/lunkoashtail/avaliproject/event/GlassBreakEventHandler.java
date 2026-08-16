@@ -2,6 +2,8 @@ package com.lunkoashtail.avaliproject.event;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.entity.custom.GlassShardEntity;
+import com.lunkoashtail.avaliproject.limb.ModAttachments;
+import com.lunkoashtail.avaliproject.species.Species;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,6 +21,8 @@ public class GlassBreakEventHandler {
     @SubscribeEvent
     public static void onGlassBreak(BlockEvent.BreakEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
+        if(event.getPlayer() == null) return;
+        if (event.getPlayer().getData(ModAttachments.SPECIES) != Species.EXPIE) return; //we only want glass shards if the player is playing as an Expie.
         if (!isGlass(event.getState())) return;
         if (level.random.nextFloat() >= SPAWN_CHANCE) return;
 

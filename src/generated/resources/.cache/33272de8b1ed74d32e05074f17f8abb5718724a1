@@ -1,15 +1,21 @@
-// 1.21.1	2026-06-30T22:42:13.9668516	Tags for minecraft:block mod id avaliproject
+// 1.21.1	2026-08-10T22:30:22.1022381	Tags for minecraft:block mod id avaliproject
 edb717ba8ce70db0f1c3d09fbaab29aed6d4e5ff data/avaliproject/tags/block/incorrect_for_aerogel_tool.json
 edb717ba8ce70db0f1c3d09fbaab29aed6d4e5ff data/avaliproject/tags/block/incorrect_for_ceramic_tool.json
 edb717ba8ce70db0f1c3d09fbaab29aed6d4e5ff data/avaliproject/tags/block/incorrect_for_hardlight_tool.json
-3ce6c0583a6dd2e87913ad72b695413c07b69c41 data/avaliproject/tags/block/needs_aerogel_tool.json
-3ce6c0583a6dd2e87913ad72b695413c07b69c41 data/avaliproject/tags/block/needs_ceramic_tool.json
-3ce6c0583a6dd2e87913ad72b695413c07b69c41 data/avaliproject/tags/block/needs_hardlight_tool.json
+0be91e802b906c8f4c6af4be78fdbd090d894b3d data/avaliproject/tags/block/needs_aerogel_tool.json
+0be91e802b906c8f4c6af4be78fdbd090d894b3d data/avaliproject/tags/block/needs_ceramic_tool.json
+0be91e802b906c8f4c6af4be78fdbd090d894b3d data/avaliproject/tags/block/needs_hardlight_tool.json
+95e93baf6ae44fb9ee94bcee9c865dc1872e6a0d data/forge/tags/block/ores/aegisalt.json
+cf4979251ba2cceea27075bb096b582a8dcc5954 data/forge/tags/block/ores/aerocrystal.json
+c5447d47566faafff4e5d8b0dbc5b8fac3f79ca6 data/forge/tags/block/ores/agate.json
+39f863375a96395f52e5ee29fbd7e63fa55be69b data/forge/tags/block/ores/arcites.json
+9bc7e46b5f42bd7a366052fb4a41a3d94b74feac data/forge/tags/block/ores/durasteel.json
+8b5a24fa55a44329347a10f0daeef128460937ca data/forge/tags/block/ores/lume.json
+4929fecf7f8337667de4ed8411f050a8aa0f9663 data/forge/tags/block/ores/novulite.json
+bc59a50730a61e71a6294dd3e4573cc9332ff05d data/forge/tags/block/ores/thermalcrystal.json
+bd8c87f87600bc94d31c693be69de57e06890dc3 data/forge/tags/block/ores/titanium.json
+8abeef986c717282a04dd59c02afc91dcd4a6391 data/forge/tags/block/ores/vilousclay.json
 f25da543da90fcaf4ad34c89597e92b461de1efa data/minecraft/tags/block/beacon_base_blocks.json
-bc59a50730a61e71a6294dd3e4573cc9332ff05d data/minecraft/tags/block/coal_ores.json
-3ff62e415521898396d06cb78b18075c64ca1068 data/minecraft/tags/block/diamond_ores.json
-1ad963d648446eff7c3c1ec5bbd6b016c26e27bc data/minecraft/tags/block/emerald_ores.json
-b5f87dddef8675fbed45b32968a403a625b674c0 data/minecraft/tags/block/iron_ores.json
-4b5f72692d762b596e7e445fe25c1b1bc29483c4 data/minecraft/tags/block/mineable/pickaxe.json
-667ca139497db285fca8f4058108661b104eb4d1 data/minecraft/tags/block/needs_diamond_tool.json
-c7fa31a7b2393b45092e02d3132e6f96b39dad84 data/minecraft/tags/block/needs_iron_tool.json
+7b1dd3fd704ceefe465eb2d120b1f8d5cadcd58a data/minecraft/tags/block/mineable/pickaxe.json
+a1f4114aa040dd15c394b09dac7e798823be9716 data/minecraft/tags/block/needs_diamond_tool.json
+1859f7994ce22a6edcacf92aac780a0ae9094619 data/minecraft/tags/block/needs_iron_tool.json

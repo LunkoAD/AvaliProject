@@ -409,8 +409,6 @@ public class AvaliProject {
             event.accept(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE);
             event.accept(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE);
             event.accept(ModBlocks.THERMAL_CRYSTAL_ORE);
-            event.accept(ModBlocks.SYNC_CRYSTAL_ORE);
-            event.accept(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE);
             event.accept(ModBlocks.AEGISALT_ORE);
             event.accept(ModBlocks.AEGISALT_DEEPSLATE_ORE);
             event.accept(ModBlocks.TITANIUM_ORE);

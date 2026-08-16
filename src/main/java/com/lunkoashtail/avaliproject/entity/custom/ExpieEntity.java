@@ -14,6 +14,8 @@ import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
 import com.lunkoashtail.avaliproject.client.ClientPayloadHandlers;
 import com.lunkoashtail.avaliproject.sound.ModSounds;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.animal.Animal;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -37,12 +39,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -50,7 +46,6 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -73,7 +68,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
-public class ExpieEntity extends Monster implements GeoEntity, Merchant {
+public class ExpieEntity extends Animal implements GeoEntity, Merchant {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final ExpieDialogueController dialogue = new ExpieDialogueController(this);
@@ -141,6 +136,11 @@ public class ExpieEntity extends Monster implements GeoEntity, Merchant {
     @Override
     public int getAmbientSoundInterval() {
         return super.getAmbientSoundInterval() * 10;
+    }
+
+    @Override
+    public boolean isFood(ItemStack itemStack) {
+        return false;
     }
 
     @Override
@@ -248,7 +248,7 @@ public class ExpieEntity extends Monster implements GeoEntity, Merchant {
                 (entityType, level, reason, pos, random) ->
                         pos.getY() < CAVE_MAX_Y
                                 && !level.canSeeSky(pos)
-                                && Monster.checkMonsterSpawnRules(entityType, level, reason, pos, random),
+                                && Animal.checkAnimalSpawnRules(entityType, level, reason, pos, random),
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
@@ -316,6 +316,11 @@ public class ExpieEntity extends Monster implements GeoEntity, Merchant {
                                          @Nullable SpawnGroupData spawnGroupData) {
         this.setVariant(Util.getRandom(ExpieVariant.values(), this.random));
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+    }
+
+    @Override
+    public @Nullable AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+        return null;
     }
 
 

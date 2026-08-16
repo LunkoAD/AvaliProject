@@ -58,10 +58,7 @@ public class ExpieDialogueController {
 
     private boolean hasNearbyMonster() {
         AABB area = expie.getBoundingBox().inflate(MONSTER_SCAN_RADIUS);
-        for (Monster monster : expie.level().getEntitiesOfClass(Monster.class, area)) {
-            if (monster != expie) return true;
-        }
-        return false;
+        return expie.level().getEntitiesOfClass(Monster.class, area).size() > 0;
     }
 
     private boolean trySay(Context context, Player player) {

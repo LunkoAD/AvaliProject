@@ -1,0 +1,59 @@
+{
+  "parent": "avol",
+  "acceleration_at_surface": 2.45,
+  "dimension_data": {
+    "allowed_transfer": "all",
+    "apply_gravity_correction_to_entities_in_dimension": true,
+    "atmosphere_composition": {
+      "21000": [
+        "low_density",
+        "drowning"
+      ]
+    },
+    "dimension_day_time_controller_name": "avol",
+    "dimension_transfer_height": 10000,
+    "entity_drag_multiplier": [
+      {
+        "altitude": 4000.0,
+        "slope": 0.0,
+        "value": 1.0
+      },
+      {
+        "altitude": 7000.0,
+        "slope": -6.0E-4,
+        "value": 0.0
+      }
+    ],
+    "linked_dimension": "avaliproject:avalon",
+    "render_universe_in_dimension": true
+  },
+  "name": "avalon",
+  "planet_extras": {
+    "light_source_name": "avol",
+    "has_clouds": false
+  },
+  "planet_texture": {
+    "type": "resloc",
+    "texture": "avaliproject:textures/enviroment/avalon/planet.png"
+  },
+  "position": {
+    "type": "circular_orbit_period",
+    "orbit_axis": {
+      "x": 0.0,
+      "y": 1.0,
+      "z": 0.0
+    },
+    "period_seconds": 11364.0
+  },
+  "priority": 1000,
+  "radius": 10000000.0,
+  "rotation": {
+    "type": "period",
+    "period_seconds": 1230.0,
+    "rotation_axis": {
+      "x": 0.0,
+      "y": -1.0,
+      "z": 0.0
+    }
+  }
+}

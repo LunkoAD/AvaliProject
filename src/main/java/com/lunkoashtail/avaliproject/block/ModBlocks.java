@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.block;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.custom.*;
+import com.lunkoashtail.avaliproject.block.fluid.ModFluids;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
@@ -9,11 +10,16 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
@@ -60,12 +66,6 @@ public class ModBlocks {
     public static final DeferredBlock<Block> AERO_CRYSTAL_DEEPSLATE_ORE = registerBlock("aero_crystal_deepslate_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 6),
                     BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
-    public static final DeferredBlock<Block> SYNC_CRYSTAL_DEEPSLATE_ORE = registerBlock("sync_crystal_deepslate_ore",
-            () -> new DropExperienceBlock(UniformInt.of(3, 6),
-                    BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
-    public static final DeferredBlock<Block> SYNC_CRYSTAL_ORE = registerBlock("sync_crystal_ore",
-            () -> new DropExperienceBlock(UniformInt.of(2, 4),
-                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<Block> DURASTEEL_DEEPSLATE_ORE = registerBlock("durasteel_deepslate_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 6),
                     BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
@@ -206,7 +206,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> NANOLOOM = registerBlock("nanoloom",
             () -> new NanoloomBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 
-
+    public static final DeferredBlock<Block> VILOUS_CERAMIC_BLOCK = registerBlock("vilous_ceramic_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.NETHER_BRICKS)));
 
 
     public static final DeferredBlock<Block> NAKATI_CROP_BLOCK = BLOCKS.register("nakati_crop_block",
@@ -228,6 +230,21 @@ public class ModBlocks {
     public static final DeferredBlock<Block> CONTAINER_CRATE = registerBlock("container_crate",
             () -> new ContainerCrateBlock(BlockBehaviour.Properties.of().strength(2.5f).sound(SoundType.WOOD)));
 
+    /*public static final DeferredBlock<Block> AMMONIA_BLOCK =
+            BLOCKS.register(
+                    ModFluids.AMMONIA.getId().getPath(),
+                    () -> new LiquidBlock(()-> (BaseFlowingFluid)ModFluids.AMMONIA.get(),
+                            BlockBehaviour.Properties.of()
+                                    .mapColor(MapColor.WATER)
+                                    .replaceable()
+                                    .noCollission()
+                                    .strength(100f)
+                                    .noLootTable()
+                                    .liquid()
+                                    .pushReaction(PushReaction.DESTROY)
+                                    .sound(SoundType.)
+                    )
+            );*/
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

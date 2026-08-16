@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "#minecraft:is_overworld",
+  "biomes": "#avaliproject:planet_avalon",
   "features": "avaliproject:lume_ores_placed",
   "step": "underground_ores"
 }

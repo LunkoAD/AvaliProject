@@ -36,8 +36,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModBlocks.DURASTEEL_ORE.get(),ModBlocks.DURASTEEL_DEEPSLATE_ORE.get(), ModItems.RAW_DURASTEEL);
         List<ItemLike> AERO_CRYSTAL_SMELTABLES = List.of(
                 ModBlocks.AERO_CRYSTAL_ORE, ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE);
-        List<ItemLike> SYNC_CRYSTAL_SMELTABLES = List.of(
-                ModBlocks.SYNC_CRYSTAL_ORE, ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE);
         List<ItemLike> THERMAL_CRYSTAL_SMELTABLES = List.of(
                 ModBlocks.THERMAL_CRYSTAL_ORE, ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE);
         List<ItemLike> AEGISALT_SMELTABLES = List.of(
@@ -348,6 +346,53 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_gold_nugget", has(Items.GOLD_NUGGET))
                 .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
                 .unlockedBy("has_durasteel_ingot", has(ModItems.DURASTEEL_INGOT))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SERGAL_LANCE.get())
+                .pattern("C")
+                .pattern("S")
+                .pattern("S")
+                .define('S', Items.STICK)
+                .define('C', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .unlockedBy("has_vilous_ceramic", has(ModItems.VILOUS_CERAMIC_INGOT))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.VILOUS_CERAMIC_BLOCK.get().asItem())
+                .pattern("CCC")
+                .pattern("CCC")
+                .pattern("CCC")
+                .define('C', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .unlockedBy("has_vilous_ceramic", has(ModItems.VILOUS_CERAMIC_INGOT))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.VILOUS_CERAMIC_INGOT.get().asItem(), 9)
+                .requires(ModBlocks.VILOUS_CERAMIC_BLOCK.asItem())
+                .unlockedBy("has_vilous_ceramic_block", has(ModBlocks.VILOUS_CERAMIC_BLOCK.asItem()))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SERGAL_MACE.get())
+                .pattern("CBC")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('S', Items.STICK)
+                .define('B', ModBlocks.VILOUS_CERAMIC_BLOCK.get().asItem())
+                .define('C', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .unlockedBy("has_vilous_ceramic_block", has(ModBlocks.VILOUS_CERAMIC_BLOCK.get().asItem()))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SERGAL_GREATSWORD.get())
+                .pattern("CC")
+                .pattern("CC")
+                .pattern(" S")
+                .define('S', Items.STICK)
+                .define('C', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .unlockedBy("has_vilous_ceramic", has(ModItems.VILOUS_CERAMIC_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SERGAL_SWORD.get())
+                .pattern("C")
+                .pattern("C")
+                .pattern("S")
+                .define('S', Items.STICK)
+                .define('C', ModItems.VILOUS_CERAMIC_INGOT.get())
+                .unlockedBy("has_vilous_ceramic", has(ModItems.VILOUS_CERAMIC_INGOT))
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.PROTOGEN_AXE.get())
@@ -998,8 +1043,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(recipeOutput, DURASTEEL_SMELTABLES, RecipeCategory.MISC, ModItems.DURASTEEL_INGOT.get(), 0.25f, 100, "Durasteel");
         oreSmelting(recipeOutput, AERO_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.AERO_CRYSTAL.get(), 0.25f, 200, "aero_crystal");
         oreBlasting(recipeOutput, AERO_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.AERO_CRYSTAL.get(), 0.25f, 100, "aero_crystal");
-        oreSmelting(recipeOutput, SYNC_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.SYNC_CRYSTAL.get(), 0.25f, 200, "sync_crystal");
-        oreBlasting(recipeOutput, SYNC_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.SYNC_CRYSTAL.get(), 0.25f, 100, "sync_crystal");
         oreSmelting(recipeOutput, THERMAL_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.THERMAL_CRYSTAL.get(), 0.25f, 200, "thermal_crystal");
         oreBlasting(recipeOutput, THERMAL_CRYSTAL_SMELTABLES, RecipeCategory.MISC, ModItems.THERMAL_CRYSTAL.get(), 0.25f, 100, "thermal_crystal");
         oreSmelting(recipeOutput, AEGISALT_SMELTABLES, RecipeCategory.MISC, ModItems.REFINED_AEGISALT.get(), 0.25f, 200, "refined_aegisalt");

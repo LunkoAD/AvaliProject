@@ -25,8 +25,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE);
                         output.accept(ModBlocks.THERMAL_CRYSTAL_ORE);
                         output.accept(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE);
-                        output.accept(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE);
-                        output.accept(ModBlocks.SYNC_CRYSTAL_ORE);
                         output.accept(ModBlocks.AERO_CRYSTAL_ORE);
                         output.accept(ModBlocks.AEGISALT_ORE);
                         output.accept(ModBlocks.AEGISALT_DEEPSLATE_ORE);

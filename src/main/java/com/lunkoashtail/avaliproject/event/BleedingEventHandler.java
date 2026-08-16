@@ -128,6 +128,7 @@ public class BleedingEventHandler {
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent.Pre event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        if (player.getData(ModAttachments.SPECIES) != Species.EXPIE) return;
 
         addPain(player, event.getNewDamage() * PAIN_PER_DAMAGE_POINT);
 

@@ -78,5 +78,69 @@
         "stream": false
       }
     ]
+  },
+  "avali.talk": {
+    "sounds": [
+      {
+        "name": "avaliproject:avali/talk1",
+        "stream": false
+      },
+      {
+        "name": "avaliproject:avali/talk2",
+        "stream": false
+      },
+      {
+        "name": "avaliproject:avali/talk3",
+        "stream": false
+      }
+    ]
+  },
+  "avali.happy": {
+    "sounds": [
+      {
+        "name": "avaliproject:avali/happy1",
+        "stream": false
+      },
+      {
+        "name": "avaliproject:avali/happy2",
+        "stream": false
+      },
+      {
+        "name": "avaliproject:avali/happy3",
+        "stream": false
+      },
+      {
+        "name": "avaliproject:avali/happy4",
+        "stream": false
+      }
+    ]
+  },
+  "avali.idle": {
+    "sounds": [
+      {
+        "name": "avaliproject:avali/idle1",
+        "stream": false
+      },
+      {
+        "name": "avaliproject:avali/idle2",
+        "stream": false
+      },
+      {
+        "name": "avaliproject:avali/idle3",
+        "stream": false
+      },
+      {
+        "name": "avaliproject:avali/idle4",
+        "stream": false
+      }
+    ]
+  },
+  "avali.surprise": {
+    "sounds": [
+      {
+        "name": "avaliproject:avali/surprise1",
+        "stream": false
+      }
+    ]
   }
 }

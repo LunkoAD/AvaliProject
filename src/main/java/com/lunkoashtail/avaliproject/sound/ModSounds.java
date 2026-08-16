@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.JukeboxSong;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.util.DeferredSoundType;
@@ -45,6 +46,11 @@ public class ModSounds {
     public static final Supplier<SoundEvent> EXPIE_CALL     = registerSoundEvent("expie_call");
     public static final Supplier<SoundEvent> EXPIE_INTERACT = registerSoundEvent("expie_interact");
 
+    //give avalis more life, and not parrots - @989onan
+    public static final Supplier<SoundEvent> AVALI_IDLE = registerSoundEvent("avali.idle");
+    public static final Supplier<SoundEvent> AVALI_HAPPY = registerSoundEvent("avali.happy");
+    public static final Supplier<SoundEvent> AVALI_SURPISE = registerSoundEvent("avali.surprise");
+    public static final Supplier<SoundEvent> AVALI_TALK = registerSoundEvent("avali.talk");
 
     private static ResourceKey<JukeboxSong> createSong(String name) {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));
@@ -54,6 +60,7 @@ public class ModSounds {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name);
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
     }
+
 
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);

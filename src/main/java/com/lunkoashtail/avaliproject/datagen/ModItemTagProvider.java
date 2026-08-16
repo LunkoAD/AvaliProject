@@ -136,8 +136,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE.asItem())
                 .add(ModBlocks.THERMAL_CRYSTAL_ORE.asItem())
                 .add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.asItem())
-                .add(ModBlocks.SYNC_CRYSTAL_DEEPSLATE_ORE.asItem())
-                .add(ModBlocks.SYNC_CRYSTAL_ORE.asItem())
                 .add(ModBlocks.AERO_CRYSTAL_ORE.asItem())
                 .add(ModBlocks.AEGISALT_ORE.asItem())
                 .add(ModBlocks.AEGISALT_DEEPSLATE_ORE.asItem())
