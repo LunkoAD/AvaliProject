@@ -100,6 +100,8 @@ public class RabAgudnerEntity extends Monster implements GeoEntity {
         if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
     }
 
+    @SuppressWarnings("deprecation")
+
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
                                         @Nullable SpawnGroupData pSpawnGroupData) {

@@ -1,0 +1,28 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 40,
+  "entity_action": {
+    "type": "neoorigins:area_of_effect",
+    "radius": 10,
+    "include_source": false,
+    "entity_condition": {
+      "type": "neoorigins:entity_type",
+      "entity_type": "#avaliproject:origin_hostiles"
+    },
+    "entity_action": {
+      "type": "neoorigins:apply_effect",
+      "effect": "minecraft:glowing",
+      "duration": 40,
+      "amplifier": 0,
+      "show_particles": false
+    }
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.arcane_resonance.name",
+  "description": "power.avaliproject.arcane_resonance.description"
+}

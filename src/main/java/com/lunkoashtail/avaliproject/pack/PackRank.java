@@ -74,6 +74,16 @@ public enum PackRank {
         return ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/gui/rank/" + id + ".png");
     }
 
+    public String displayName() {
+        String[] parts = id.split("_");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 2; i < parts.length; i++) {
+            if (i > 2) sb.append(' ');
+            sb.append(Character.toUpperCase(parts[i].charAt(0))).append(parts[i].substring(1));
+        }
+        return sb.toString();
+    }
+
     public static PackRank forXp(int xp) {
         PackRank result = RANK_01_E1_RECRUIT;
         for (PackRank rank : values()) {

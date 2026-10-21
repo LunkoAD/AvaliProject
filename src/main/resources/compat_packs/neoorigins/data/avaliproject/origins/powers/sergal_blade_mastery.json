@@ -1,0 +1,29 @@
+{
+  "type": "neoorigins:modify_damage",
+  "direction": "out",
+  "multiplier": 1.25,
+  "damage_type": "player",
+  "condition": {
+    "type": "neoorigins:equipped_item",
+    "equipment_slot": "mainhand",
+    "item_condition": {
+      "type": "neoorigins:or",
+      "conditions": [
+        {
+          "type": "neoorigins:ingredient",
+          "tag": "minecraft:swords"
+        },
+        {
+          "type": "neoorigins:ingredient",
+          "tag": "minecraft:axes"
+        },
+        {
+          "type": "neoorigins:ingredient",
+          "item": "minecraft:trident"
+        }
+      ]
+    }
+  },
+  "name": "power.avaliproject.sergal_blade_mastery.name",
+  "description": "power.avaliproject.sergal_blade_mastery.description"
+}

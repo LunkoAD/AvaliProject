@@ -11,7 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT)
 public class WeaponZoomHandler {
     private static final double ZOOM_DIVISOR = 3.0;
     private static final float ZOOM_STEP = 0.18f;

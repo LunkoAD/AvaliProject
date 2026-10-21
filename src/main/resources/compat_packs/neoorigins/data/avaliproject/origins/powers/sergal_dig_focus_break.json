@@ -1,0 +1,12 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "hit_dealt",
+  "entity_action": {
+    "type": "neoorigins:change_resource",
+    "resource": "avaliproject:sergal_dig_strain",
+    "change": 0,
+    "operation": "set"
+  },
+  "name": "power.avaliproject.sergal_dig_focus_break.name",
+  "description": "power.avaliproject.sergal_dig_focus_break.description"
+}

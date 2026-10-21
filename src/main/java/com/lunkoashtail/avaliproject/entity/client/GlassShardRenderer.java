@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.neoforged.neoforge.client.model.data.ModelData;
 import net.minecraft.resources.ResourceLocation;
 
 public class GlassShardRenderer extends EntityRenderer<GlassShardEntity> {
@@ -31,7 +32,7 @@ public class GlassShardRenderer extends EntityRenderer<GlassShardEntity> {
         poseStack.translate(-0.5, 0, -0.5);
 
         this.blockRenderer.renderSingleBlock(entity.getGlassState(), poseStack, bufferSource,
-                packedLight, OverlayTexture.NO_OVERLAY);
+                packedLight, OverlayTexture.NO_OVERLAY, ModelData.EMPTY, null);
 
         poseStack.popPose();
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);

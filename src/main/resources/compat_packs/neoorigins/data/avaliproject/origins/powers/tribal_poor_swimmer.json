@@ -1,0 +1,14 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "neoforge:swim_speed",
+  "amount": -0.3,
+  "operation": "add_multiplied_base",
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.tribal_poor_swimmer.name",
+  "description": "power.avaliproject.tribal_poor_swimmer.description"
+}

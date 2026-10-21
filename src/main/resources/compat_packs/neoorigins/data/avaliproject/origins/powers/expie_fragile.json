@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.max_health",
+  "amount": -4,
+  "operation": "add_value",
+  "name": "power.avaliproject.expie_fragile.name",
+  "description": "power.avaliproject.expie_fragile.description"
+}

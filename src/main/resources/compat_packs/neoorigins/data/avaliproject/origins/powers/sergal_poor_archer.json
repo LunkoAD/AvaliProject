@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:modify_damage",
+  "direction": "out",
+  "multiplier": 0.8,
+  "damage_type": "#minecraft:is_projectile",
+  "name": "power.avaliproject.sergal_poor_archer.name",
+  "description": "power.avaliproject.sergal_poor_archer.description"
+}

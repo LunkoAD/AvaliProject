@@ -1,0 +1,21 @@
+{
+  "type": "neoorigins:multiple",
+  "poison": {
+    "type": "neoorigins:modify_damage",
+    "direction": "in",
+    "damage_type": "magic",
+    "multiplier": 0.8,
+    "condition": {
+      "type": "neoorigins:status_effect",
+      "effect": "minecraft:poison"
+    }
+  },
+  "wither": {
+    "type": "neoorigins:modify_damage",
+    "direction": "in",
+    "damage_type": "wither",
+    "multiplier": 0.8
+  },
+  "name": "power.avaliproject.protogen_filters.name",
+  "description": "power.avaliproject.protogen_filters.description"
+}

@@ -1,0 +1,30 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effects": [
+    {
+      "effect": "minecraft:slowness",
+      "amplifier": 0
+    },
+    {
+      "effect": "minecraft:mining_fatigue",
+      "amplifier": 0
+    }
+  ],
+  "condition": {
+    "type": "neoorigins:or",
+    "conditions": [
+      {
+        "type": "neoorigins:in_water"
+      },
+      {
+        "type": "neoorigins:in_rain"
+      }
+    ]
+  },
+  "toggleable": false,
+  "ambient": true,
+  "show_particles": false,
+  "show_icon": false,
+  "name": "power.avaliproject.protogen_short_circuit.name",
+  "description": "power.avaliproject.protogen_short_circuit.description"
+}

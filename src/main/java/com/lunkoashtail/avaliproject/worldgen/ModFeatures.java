@@ -19,6 +19,13 @@ public class ModFeatures {
     public static final DeferredHolder<Feature<?>, CaveBlockFeature> CAVE_BLOCK_FEATURE =
             FEATURES.register("cave_block_feature", () -> new CaveBlockFeature(SimpleBlockConfiguration.CODEC));
 
+    public static final DeferredHolder<Feature<?>, WickerEnclaveNestFeature> WICKER_ENCLAVE_NEST_FEATURE =
+            FEATURES.register("wicker_enclave_nest", () -> new WickerEnclaveNestFeature(NoneFeatureConfiguration.CODEC));
+    public static final DeferredHolder<Feature<?>, BeachBurrowFeature> BEACH_BURROW_FEATURE =
+            FEATURES.register("beach_burrow", () -> new BeachBurrowFeature(NoneFeatureConfiguration.CODEC));
+    public static final DeferredHolder<Feature<?>, TropicalDenFeature> TROPICAL_DEN_FEATURE =
+            FEATURES.register("tropical_den", () -> new TropicalDenFeature(NoneFeatureConfiguration.CODEC));
+
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
     }

@@ -1,0 +1,16 @@
+{
+  "name": "origin.avaliproject.manokit_arcane.name",
+  "description": "origin.avaliproject.manokit_arcane.neoorigins_description",
+  "icon": "avaliproject:arcane_manokit_spawn_egg",
+  "impact": 2,
+  "order": 263,
+  "powers": [
+    "avaliproject:arcane_deep_delver",
+    "avaliproject:arcane_crystal_weight",
+    "avaliproject:arcane_heavy_gait",
+    "avaliproject:arcane_resonance",
+    "avaliproject:arcane_sun_ache",
+    "avaliproject:arcane_crystal_charge",
+    "avaliproject:arcane_chiming_steps"
+  ]
+}

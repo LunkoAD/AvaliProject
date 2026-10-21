@@ -1,0 +1,13 @@
+{
+  "type": "neoorigins:modify_damage",
+  "direction": "in",
+  "damage_type": "fall",
+  "multiplier": 0.5,
+  "condition": {
+    "type": "neoorigins:fall_distance",
+    "comparison": "<",
+    "compare_to": 6
+  },
+  "name": "power.avaliproject.wickerbeast_sure_footed.name",
+  "description": "power.avaliproject.wickerbeast_sure_footed.description"
+}

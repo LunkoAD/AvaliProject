@@ -2,58 +2,44 @@ package com.lunkoashtail.avaliproject.entity.client;
 
 import com.lunkoashtail.avaliproject.entity.custom.AvaliEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.renderer.GeoRenderer;
-import software.bernie.geckolib.renderer.layer.BlockAndItemGeoLayer;
 
-public class AvaliEquipmentLayer extends BlockAndItemGeoLayer<AvaliEntity> {
-    public AvaliEquipmentLayer(GeoRenderer<AvaliEntity> renderer) {
-        super(renderer);
+import java.util.Map;
+
+public class AvaliEquipmentLayer extends RenderLayer<AvaliEntity, AvaliModel> {
+    private static final Map<EquipmentSlot, String> SLOT_BONES = Map.of(
+            EquipmentSlot.HEAD, AvaliModel.HEAD,
+            EquipmentSlot.CHEST, AvaliModel.BODY,
+            EquipmentSlot.LEGS, AvaliModel.RIGHT_LEG,
+            EquipmentSlot.FEET, AvaliModel.RIGHT_FOOT);
+
+    private final ItemRenderer itemRenderer;
+
+    public AvaliEquipmentLayer(RenderLayerParent<AvaliEntity, AvaliModel> parent, ItemRenderer itemRenderer) {
+        super(parent);
+        this.itemRenderer = itemRenderer;
     }
 
     @Override
-    @Nullable
-    protected ItemStack getStackForBone(GeoBone bone, AvaliEntity animatable) {
-        ItemStack stack = switch (bone.getName()) {
-            case "rightarm" -> animatable.getItemBySlot(EquipmentSlot.MAINHAND);
-            case "leftarm" -> animatable.getItemBySlot(EquipmentSlot.OFFHAND);
-            case "head" -> animatable.getItemBySlot(EquipmentSlot.HEAD);
-            case "body" -> animatable.getItemBySlot(EquipmentSlot.CHEST);
-            case "rightthigh" -> animatable.getItemBySlot(EquipmentSlot.LEGS);
-            case "rightfoot" -> animatable.getItemBySlot(EquipmentSlot.FEET);
-            default -> ItemStack.EMPTY;
-        };
-        return stack.isEmpty() ? null : stack;
-    }
-
-    @Override
-    protected ItemDisplayContext getTransformTypeForStack(GeoBone bone, ItemStack stack, AvaliEntity animatable) {
-        return switch (bone.getName()) {
-            case "rightarm" -> ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
-            case "leftarm" -> ItemDisplayContext.THIRD_PERSON_LEFT_HAND;
-            default -> ItemDisplayContext.FIXED;
-        };
-    }
-
-    private static final float HAND_OFFSET = 0.85f;
-
-    @Override
-    protected void renderStackForBone(PoseStack poseStack, GeoBone bone, ItemStack stack, AvaliEntity animatable,
-                                       MultiBufferSource bufferSource, float partialTick, int packedLight, int packedOverlay) {
-        boolean isHandBone = bone.getName().equals("rightarm") || bone.getName().equals("leftarm");
-        if (isHandBone) {
+    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, AvaliEntity entity,
+                       float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+        for (Map.Entry<EquipmentSlot, String> entry : SLOT_BONES.entrySet()) {
+            ItemStack stack = entity.getItemBySlot(entry.getKey());
+            if (stack.isEmpty()) continue;
             poseStack.pushPose();
-            poseStack.translate(0, -HAND_OFFSET, 0);
-        }
-
-        super.renderStackForBone(poseStack, bone, stack, animatable, bufferSource, partialTick, packedLight, packedOverlay);
-
-        if (isHandBone) {
+            if (getParentModel().parts().translateTo(entry.getValue(), poseStack)) {
+                poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
+                itemRenderer.renderStatic(entity, stack, ItemDisplayContext.FIXED, false, poseStack, bufferSource,
+                        entity.level(), packedLight, OverlayTexture.NO_OVERLAY, entity.getId());
+            }
             poseStack.popPose();
         }
     }

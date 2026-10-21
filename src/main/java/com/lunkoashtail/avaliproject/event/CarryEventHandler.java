@@ -17,7 +17,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID)
 public class CarryEventHandler {
 
     private static final ResourceLocation CARRY_SPEED_MODIFIER_ID =

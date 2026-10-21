@@ -1,0 +1,12 @@
+{
+  "name": "origin.avaliproject.avali.name",
+  "description": "origin.avaliproject.avali.description",
+  "icon": {
+    "id": "avaliproject:avali_origin_icon"
+  },
+  "order": 210,
+  "impact": 1,
+  "powers": [
+    "avaliproject:avali_light_bones"
+  ]
+}

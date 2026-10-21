@@ -3,6 +3,8 @@ package com.lunkoashtail.avaliproject.entity.custom;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.entity.client.ProtogenVariant;
 import com.lunkoashtail.avaliproject.item.ModItems;
+import com.lunkoashtail.avaliproject.species.Species;
+import com.lunkoashtail.avaliproject.species.SpeciesSkins;
 import net.minecraft.world.entity.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.animation.RawAnimation;
@@ -40,13 +42,15 @@ import org.jetbrains.annotations.Nullable;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 
-public class ProtogenEntity extends Monster implements GeoEntity {
+public class ProtogenEntity extends Monster implements GeoEntity, CosmeticVariantTarget, SkinnedSpeciesEntity {
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(ProtogenEntity.class, EntityDataSerializers.INT);
 
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(ProtogenEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(ProtogenEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(ProtogenEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> SKIN = SynchedEntityData.defineId(ProtogenEntity.class, EntityDataSerializers.STRING);
+    private static final String SKIN_TAG = "Skin";
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private boolean swinging;
     private boolean lastloop;
@@ -192,6 +196,7 @@ public class ProtogenEntity extends Monster implements GeoEntity {
         builder.define(SHOOT, false);
         builder.define(ANIMATION, "undefined");
         builder.define(TEXTURE, "protogenblue");
+        builder.define(SKIN, "");
         builder.define(VARIANT, 0);
     }
     private int getTypeVariant() {
@@ -202,6 +207,11 @@ public class ProtogenEntity extends Monster implements GeoEntity {
         return ProtogenVariant.byId(this.getTypeVariant() & 255);
     }
 
+    @Override
+    public void setCosmeticVariant(int variantId) {
+        this.entityData.set(VARIANT, variantId & 255);
+    }
+
     private void setVariant(ProtogenVariant variant) {
         this.entityData.set(VARIANT, variant.getId() & 255);
     }
@@ -210,19 +220,38 @@ public class ProtogenEntity extends Monster implements GeoEntity {
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("Variant", this.getTypeVariant());
+        pCompound.putString(SKIN_TAG, this.getSkin());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.entityData.set(VARIANT, pCompound.getInt("Variant"));
+        this.setSkin(SpeciesSkins.knownOrRandom(Species.PROTOGEN, pCompound.getString(SKIN_TAG), this.random));
     }
+
+    @Override
+    public Species skinSpecies() {
+        return Species.PROTOGEN;
+    }
+
+    @Override
+    public String getSkin() {
+        return this.entityData.get(SKIN);
+    }
+
+    public void setSkin(String skin) {
+        this.entityData.set(SKIN, skin);
+    }
+
+    @SuppressWarnings("deprecation")
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
                                         @Nullable SpawnGroupData pSpawnGroupData) {
         ProtogenVariant variant = Util.getRandom(ProtogenVariant.values(), this.random);
         this.setVariant(variant);
+        this.setSkin(SpeciesSkins.random(Species.PROTOGEN, this.random));
         return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
     }
 }

@@ -8,7 +8,7 @@ license="All Rights Reserved"
 
 modId="avaliproject"
 
-version="1.2.1"
+version="1.5.1"
 
 displayName="The Galaxy Comes Alive"
 
@@ -16,11 +16,14 @@ displayURL="https://discord.gg/BcKmBkQeEw"
 
 logoFile="assets/avaliproject/textures/gui/logo.png"
 
-credits="Thanks to Loppan45, Entity0504, Djevra for their support and contribution!"
+credits="Thanks to Loppan45, Entity0504, Djevra, 989onan, FezateruTheFloatzel, despair_of_stars for their support and contribution!"
 
 authors="LunkoAshtail"
 
 description="Mod aimed to add content over multiple races, from avali to protogens, sergals and more..!"
+
+[[mixins]]
+config="avaliproject.mixins.json"
 
 [[dependencies.avaliproject]]
     modId="neoforge"
@@ -36,7 +39,7 @@ description="Mod aimed to add content over multiple races, from avali to protoge
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.yourmodid]]
+[[dependencies.avaliproject]]
 modId="geckolib"
 type="required"
 versionRange="[4.7,)"
@@ -63,6 +66,25 @@ side="BOTH"
 
 [[dependencies.avaliproject]]
     modId="computercraft"
+    type="optional"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.avaliproject]]
+    modId="curios"
+    type="optional"
+    versionRange="[9.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.avaliproject]]
+    modId="origins"
+    type="optional"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.avaliproject]]
+    modId="neoorigins"
     type="optional"
     ordering="AFTER"
     side="BOTH"

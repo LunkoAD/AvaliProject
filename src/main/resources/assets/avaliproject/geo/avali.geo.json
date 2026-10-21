@@ -3,185 +3,6641 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.unknown",
-				"texture_width": 128,
-				"texture_height": 128,
-				"visible_bounds_width": 5,
-				"visible_bounds_height": 3.5,
-				"visible_bounds_offset": [0, 1.25, 0]
+				"identifier": "geometry.fork_of_cynavali_v1.2.12_optimized",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 7,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [
+					0,
+					1,
+					0
+				]
 			},
 			"bones": [
 				{
-					"name": "Avali",
-					"pivot": [0, -1, 0]
-				},
-				{
-					"name": "body",
-					"parent": "Avali",
-					"pivot": [0, 8, 0],
-					"cubes": [
-						{"origin": [-3, 8, -3], "size": [6, 6, 6], "uv": [0, 36]},
-						{"origin": [-3.5, 14, -3.5], "size": [7, 6, 7], "uv": [29, 21]},
-						{"origin": [-4, 16.5, -4], "size": [8, 4, 4], "uv": [50, 57]},
-						{"origin": [-1.5, 20, -0.5], "size": [3, 3, 3], "pivot": [0, 20, -0.5], "rotation": [-5, 0, 0], "uv": [62, 66]}
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
 					]
 				},
 				{
-					"name": "basetail",
-					"parent": "body",
-					"pivot": [0, 9.5, 3],
+					"name": "Head",
+					"pivot": [
+						0,
+						23,
+						-0.5
+					],
+					"parent": "root"
+				},
+				{
+					"name": "Body",
+					"pivot": [
+						0,
+						24,
+						0
+					],
+					"parent": "root"
+				},
+				{
+					"name": "RightArm",
+					"pivot": [
+						-3.75,
+						21,
+						0.5
+					],
+					"parent": "root"
+				},
+				{
+					"name": "LeftArm",
+					"pivot": [
+						3.75,
+						21,
+						0.5
+					],
+					"parent": "root"
+				},
+				{
+					"name": "RightLeg",
+					"pivot": [
+						-1.9,
+						15,
+						0
+					],
+					"parent": "root"
+				},
+				{
+					"name": "LeftLeg",
+					"pivot": [
+						1.9,
+						15,
+						0
+					],
+					"parent": "root"
+				},
+				{
+					"name": "Neck",
+					"parent": "Body",
+					"pivot": [
+						0,
+						24,
+						0
+					],
 					"cubes": [
-						{"origin": [-1.5, 8, 3], "size": [3, 3, 9], "uv": [25, 45]},
-						{"origin": [-7.5, 10, 3], "size": [6, 0, 9], "pivot": [-1.5, 10, 6], "rotation": [0, 0, -35], "uv": [29, 35]},
-						{"origin": [1.5, 10, 3], "size": [6, 0, 9], "pivot": [1.5, 10, 6], "rotation": [0, 0, 35], "uv": [29, 35], "mirror": true}
+						{
+							"origin": [
+								-2,
+								22,
+								-1
+							],
+							"size": [
+								4,
+								3,
+								2
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										6,
+										58
+									],
+									"uv_size": [
+										8,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										58
+									],
+									"uv_size": [
+										4,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										18,
+										58
+									],
+									"uv_size": [
+										8,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										14,
+										58
+									],
+									"uv_size": [
+										4,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										6,
+										54
+									],
+									"uv_size": [
+										8,
+										4
+									]
+								},
+								"down": {
+									"uv": [
+										14,
+										58
+									],
+									"uv_size": [
+										8,
+										-4
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "endtail",
-					"parent": "basetail",
-					"pivot": [0, 10, 12],
+					"name": "Chest",
+					"parent": "Body",
+					"pivot": [
+						0,
+						24,
+						0
+					],
+					"rotation": [
+						350,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [-1, 9, 12], "size": [2, 2, 9], "uv": [50, 45]},
-						{"origin": [-5, 10, 13], "size": [10, 0, 19], "uv": [1, 0]}
+						{
+							"origin": [
+								-3,
+								19,
+								-2
+							],
+							"size": [
+								6,
+								4,
+								4
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										10,
+										74
+									],
+									"uv_size": [
+										12,
+										8
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										74
+									],
+									"uv_size": [
+										8,
+										8
+									]
+								},
+								"south": {
+									"uv": [
+										30,
+										74
+									],
+									"uv_size": [
+										12,
+										8
+									]
+								},
+								"west": {
+									"uv": [
+										22,
+										74
+									],
+									"uv_size": [
+										8,
+										8
+									]
+								},
+								"up": {
+									"uv": [
+										10,
+										66
+									],
+									"uv_size": [
+										12,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										22,
+										74
+									],
+									"uv_size": [
+										12,
+										-8
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "head",
-					"parent": "body",
-					"pivot": [0, 21, 1],
+					"name": "Feathers Chest",
+					"parent": "Chest",
+					"pivot": [
+						0,
+						23,
+						-2
+					],
+					"rotation": [
+						350,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [-3.5, 21, -3], "size": [7, 7, 7], "uv": [0, 21]},
-						{"origin": [-2.5, 28, 0.4], "size": [5, 0, 4], "pivot": [-1.5, 28, 0.4], "rotation": [12.5, 0, 0], "uv": [61, 11]},
-						{"origin": [-2.5, 28, 2.4], "size": [5, 0, 4], "pivot": [-1.5, 28, 2.4], "rotation": [12.5, 0, 0], "uv": [61, 11]},
-						{"origin": [-2.5, 28, 4], "size": [5, 0, 4], "pivot": [-1.5, 28, 4], "rotation": [-67.5, 0, 0], "uv": [61, 11]},
-						{"origin": [-2.5, 26, 4], "size": [5, 0, 4], "pivot": [-1.5, 26, 4], "rotation": [-67.5, 0, 0], "uv": [61, 11]},
-						{"origin": [-2.5, 21, -5], "size": [5, 3, 2], "uv": [47, 66]}
+						{
+							"origin": [
+								-2,
+								20,
+								-2
+							],
+							"size": [
+								4,
+								3,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										32,
+										54
+									],
+									"uv_size": [
+										8,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										32,
+										54
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										40,
+										54
+									],
+									"uv_size": [
+										8,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										40,
+										54
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										32,
+										54
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										40,
+										54
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "rightear",
-					"parent": "head",
-					"pivot": [-2.5, 27, 1],
-					"rotation": [-48.58146, 19.04903, -57.05431],
+					"name": "Torso",
+					"parent": "Body",
+					"pivot": [
+						0,
+						20.06,
+						-0.71
+					],
+					"rotation": [
+						10,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [-2.5, 33, 1], "size": [1, 4, 1], "uv": [20, 49]},
-						{"origin": [-2.5, 27, 1], "size": [2, 6, 1], "uv": [13, 49]},
-						{"origin": [-3.5, 33, 1], "size": [1, 4, 1], "pivot": [-2.5, 27, 1], "rotation": [0, -60, 0], "uv": [20, 49], "mirror": true},
-						{"origin": [-4.5, 27, 1], "size": [2, 6, 1], "pivot": [-2.5, 27, 1], "rotation": [0, -60, 0], "uv": [13, 49], "mirror": true}
+						{
+							"origin": [
+								-3,
+								14.06,
+								-2.71
+							],
+							"size": [
+								6,
+								6,
+								4
+							],
+							"inflate": -0.3,
+							"uv": {
+								"north": {
+									"uv": [
+										10,
+										92
+									],
+									"uv_size": [
+										12,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										92
+									],
+									"uv_size": [
+										8,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										30,
+										92
+									],
+									"uv_size": [
+										12,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										22,
+										92
+									],
+									"uv_size": [
+										8,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										10,
+										84
+									],
+									"uv_size": [
+										12,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										22,
+										92
+									],
+									"uv_size": [
+										12,
+										-8
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "leftear",
-					"parent": "head",
-					"pivot": [2.5, 27, 1],
-					"rotation": [-48.58146, -19.04903, 57.05431],
+					"name": "Pelvis",
+					"parent": "Torso",
+					"pivot": [
+						0,
+						15.06,
+						-1.71
+					],
+					"rotation": [
+						48,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [1.5, 33, 1], "size": [1, 4, 1], "uv": [20, 49], "mirror": true},
-						{"origin": [0.5, 27, 1], "size": [2, 6, 1], "uv": [13, 49], "mirror": true},
-						{"origin": [2.5, 33, 1], "size": [1, 4, 1], "pivot": [2.5, 27, 1], "rotation": [0, 60, 0], "uv": [20, 49]},
-						{"origin": [2.5, 27, 1], "size": [2, 6, 1], "pivot": [2.5, 27, 1], "rotation": [0, 60, 0], "uv": [13, 49]}
+						{
+							"origin": [
+								-2,
+								11.06,
+								-3.71
+							],
+							"size": [
+								4,
+								4,
+								6
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										14,
+										118
+									],
+									"uv_size": [
+										8,
+										8
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										118
+									],
+									"uv_size": [
+										12,
+										8
+									]
+								},
+								"south": {
+									"uv": [
+										34,
+										118
+									],
+									"uv_size": [
+										8,
+										8
+									]
+								},
+								"west": {
+									"uv": [
+										22,
+										118
+									],
+									"uv_size": [
+										12,
+										8
+									]
+								},
+								"up": {
+									"uv": [
+										14,
+										106
+									],
+									"uv_size": [
+										8,
+										12
+									]
+								},
+								"down": {
+									"uv": [
+										22,
+										118
+									],
+									"uv_size": [
+										8,
+										-12
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "rightsecondear",
-					"parent": "head",
-					"pivot": [-3, 24, -0.1],
-					"rotation": [-110.09923, 23.68475, 95.88102],
+					"name": "Tail 0",
+					"parent": "Pelvis",
+					"pivot": [
+						0,
+						12.06,
+						0.29
+					],
+					"rotation": [
+						17,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [-3, 29, -1.1], "size": [1, 4, 1], "uv": [69, 36]},
-						{"origin": [-3, 24, -1.1], "size": [2, 5, 1], "uv": [69, 29]},
-						{"origin": [-4, 29, -1.1], "size": [1, 4, 1], "pivot": [-3, 24, -0.1], "rotation": [0, 60, 0], "uv": [69, 36], "mirror": true},
-						{"origin": [-5, 24, -1.1], "size": [2, 5, 1], "pivot": [-3, 24, -0.1], "rotation": [0, 60, 0], "uv": [69, 29], "mirror": true}
+						{
+							"origin": [
+								-2,
+								8.06,
+								-1.71
+							],
+							"size": [
+								4,
+								6,
+								4
+							],
+							"inflate": -0.002,
+							"uv": {
+								"north": {
+									"uv": [
+										10,
+										136
+									],
+									"uv_size": [
+										8,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										136
+									],
+									"uv_size": [
+										8,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										26,
+										136
+									],
+									"uv_size": [
+										8,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										18,
+										136
+									],
+									"uv_size": [
+										8,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										10,
+										128
+									],
+									"uv_size": [
+										8,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										18,
+										136
+									],
+									"uv_size": [
+										8,
+										-8
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "leftsecondear",
-					"parent": "head",
-					"pivot": [3, 24, -0.1],
-					"rotation": [-110.09923, -23.68475, -95.88102],
+					"name": "Tail 1",
+					"parent": "Tail 0",
+					"pivot": [
+						0,
+						8.06,
+						1.79
+					],
+					"rotation": [
+						8,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [2, 29, -1.1], "size": [1, 4, 1], "uv": [69, 36], "mirror": true},
-						{"origin": [1, 24, -1.1], "size": [2, 5, 1], "uv": [69, 29], "mirror": true},
-						{"origin": [3, 29, -1.1], "size": [1, 4, 1], "pivot": [3, 24, -0.1], "rotation": [0, -60, 0], "uv": [69, 36]},
-						{"origin": [3, 24, -1.1], "size": [2, 5, 1], "pivot": [3, 24, -0.1], "rotation": [0, -60, 0], "uv": [69, 29]}
+						{
+							"origin": [
+								-1.5,
+								3.06,
+								-0.71
+							],
+							"size": [
+								3,
+								6,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										8,
+										156
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										156
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										20,
+										156
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										14,
+										156
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										8,
+										150
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										14,
+										156
+									],
+									"uv_size": [
+										6,
+										-6
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "rightarm",
-					"parent": "body",
-					"pivot": [-3.5, 18.5, 0],
-					"rotation": [0, 0, 90],
+					"name": "Tail 2",
+					"parent": "Tail 1",
+					"pivot": [
+						0,
+						3.06,
+						2.29
+					],
+					"rotation": [
+						8,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [-5, 7.5, -2], "size": [3, 11, 4], "uv": [32, 58]},
-						{"origin": [-4, 6.5, 2], "size": [0, 12, 3], "uv": [59, 29]},
-						{"origin": [-3, 6.5, 2], "size": [0, 12, 3], "uv": [59, 29]},
-						{"origin": [-3.5, 2.5, 1], "size": [0, 16, 6], "uv": [0, 49]}
+						{
+							"origin": [
+								-1,
+								-3.94,
+								0.29
+							],
+							"size": [
+								2,
+								8,
+								2
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										6,
+										174
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										174
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										14,
+										174
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										10,
+										174
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										6,
+										170
+									],
+									"uv_size": [
+										4,
+										4
+									]
+								},
+								"down": {
+									"uv": [
+										10,
+										174
+									],
+									"uv_size": [
+										4,
+										-4
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "leftarm",
-					"parent": "body",
-					"pivot": [3.5, 18.5, 0],
-					"rotation": [0, 0, -90],
+					"name": "Tail 3",
+					"parent": "Tail 2",
+					"pivot": [
+						0,
+						-2.94,
+						2.29
+					],
+					"rotation": [
+						8,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [2, 7.5, -2], "size": [3, 11, 4], "uv": [32, 58], "mirror": true},
-						{"origin": [4, 6.5, 2], "size": [0, 12, 3], "uv": [59, 29], "mirror": true},
-						{"origin": [3, 6.5, 2], "size": [0, 12, 3], "uv": [59, 29], "mirror": true},
-						{"origin": [3.5, 2.5, 1], "size": [0, 16, 6], "uv": [0, 49], "mirror": true}
+						{
+							"origin": [
+								-0.75,
+								-9.94,
+								0.79
+							],
+							"size": [
+								1.5,
+								7,
+								1.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										6,
+										196
+									],
+									"uv_size": [
+										4,
+										14
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										196
+									],
+									"uv_size": [
+										4,
+										14
+									]
+								},
+								"south": {
+									"uv": [
+										14,
+										196
+									],
+									"uv_size": [
+										4,
+										14
+									]
+								},
+								"west": {
+									"uv": [
+										10,
+										196
+									],
+									"uv_size": [
+										4,
+										14
+									]
+								},
+								"up": {
+									"uv": [
+										10,
+										196
+									],
+									"uv_size": [
+										-4,
+										-4
+									],
+									"uv_rotation": 180
+								},
+								"down": {
+									"uv": [
+										14,
+										192
+									],
+									"uv_size": [
+										-4,
+										4
+									],
+									"uv_rotation": 180
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "rightthigh",
-					"parent": "Avali",
-					"pivot": [-2.5, 12, 0],
+					"name": "Tail 4",
+					"parent": "Tail 3",
+					"pivot": [
+						0,
+						-9.94,
+						2.29
+					],
+					"rotation": [
+						8,
+						0,
+						0
+					],
 					"cubes": [
-						{"origin": [-4.5, 6, -2.5], "size": [4, 6, 5], "uv": [13, 58]}
+						{
+							"origin": [
+								-0.5,
+								-20.94,
+								1.29
+							],
+							"size": [
+								1,
+								12,
+								1
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										4,
+										214
+									],
+									"uv_size": [
+										2,
+										24
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										214
+									],
+									"uv_size": [
+										2,
+										24
+									]
+								},
+								"south": {
+									"uv": [
+										8,
+										214
+									],
+									"uv_size": [
+										2,
+										24
+									]
+								},
+								"west": {
+									"uv": [
+										6,
+										214
+									],
+									"uv_size": [
+										2,
+										24
+									]
+								},
+								"up": {
+									"uv": [
+										4,
+										212
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"down": {
+									"uv": [
+										6,
+										214
+									],
+									"uv_size": [
+										2,
+										-2
+									]
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "rightleg",
-					"parent": "rightthigh",
-					"pivot": [-2.5, 9, 2],
+					"name": "Feathers Tail 4 Left",
+					"parent": "Tail 4",
+					"pivot": [
+						0,
+						-10.94,
+						2.79
+					],
+					"rotation": [
+						0,
+						35,
+						0
+					],
 					"cubes": [
-						{"origin": [-4, 2, 0.5], "size": [3, 7, 3], "uv": [61, 0]}
+						{
+							"origin": [
+								0.1,
+								-26.94,
+								2.54
+							],
+							"size": [
+								10,
+								17,
+								0.125
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										40,
+										204
+									],
+									"uv_size": [
+										20,
+										34
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"south": {
+									"uv": [
+										20,
+										204
+									],
+									"uv_size": [
+										20,
+										34
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "rightfoot",
-					"parent": "rightleg",
-					"pivot": [-2, 2, 2.5],
+					"name": "Feathers Tail 4 Right",
+					"parent": "Tail 4",
+					"pivot": [
+						0,
+						-10.94,
+						2.79
+					],
+					"rotation": [
+						0,
+						325,
+						0
+					],
 					"cubes": [
-						{"origin": [-4, 0, -1.5], "size": [3, 2, 5], "uv": [58, 21]},
-						{"origin": [-3, 0, -3.5], "size": [1, 2, 2], "uv": [61, 16]},
-						{"origin": [-1.9, 0, -3.5], "size": [1, 2, 2], "uv": [61, 16]},
-						{"origin": [-4.1, 0, -3.5], "size": [1, 2, 2], "uv": [61, 16]}
+						{
+							"origin": [
+								-10.1,
+								-26.94,
+								2.54
+							],
+							"size": [
+								10,
+								17,
+								0.125
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										62,
+										204
+									],
+									"uv_size": [
+										20,
+										34
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"south": {
+									"uv": [
+										82,
+										204
+									],
+									"uv_size": [
+										20,
+										34
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "leftthigh",
-					"parent": "Avali",
-					"pivot": [2.5, 12, 0],
+					"name": "Feathers Tail 3 Right",
+					"parent": "Tail 3",
+					"pivot": [
+						0,
+						-3.94,
+						2.79
+					],
+					"rotation": [
+						0,
+						325,
+						0
+					],
 					"cubes": [
-						{"origin": [0.5, 6, -2.5], "size": [4, 6, 5], "uv": [13, 58], "mirror": true}
+						{
+							"origin": [
+								-8.1,
+								-13.94,
+								2.54
+							],
+							"size": [
+								8,
+								11,
+								0.125
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										170,
+										140
+									],
+									"uv_size": [
+										16,
+										22
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"south": {
+									"uv": [
+										186,
+										140
+									],
+									"uv_size": [
+										16,
+										22
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "leftleg",
-					"parent": "leftthigh",
-					"pivot": [2.5, 9, 2],
+					"name": "Feathers Tail 3 Left",
+					"parent": "Tail 3",
+					"pivot": [
+						0,
+						-3.94,
+						2.79
+					],
+					"rotation": [
+						0,
+						35,
+						0
+					],
 					"cubes": [
-						{"origin": [1, 2, 0.5], "size": [3, 7, 3], "uv": [61, 0], "mirror": true}
+						{
+							"origin": [
+								0.1,
+								-13.94,
+								2.54
+							],
+							"size": [
+								8,
+								11,
+								0.125
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										186,
+										116
+									],
+									"uv_size": [
+										16,
+										22
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"south": {
+									"uv": [
+										170,
+										116
+									],
+									"uv_size": [
+										16,
+										22
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								}
+							}
+						}
 					]
 				},
 				{
-					"name": "leftfoot",
-					"parent": "leftleg",
-					"pivot": [2, 2, 2.5],
+					"name": "Feathers Tail 2 Right",
+					"parent": "Tail 2",
+					"pivot": [
+						0,
+						2.06,
+						2.79
+					],
+					"rotation": [
+						0,
+						325,
+						0
+					],
 					"cubes": [
-						{"origin": [1, 0, -1.5], "size": [3, 2, 5], "uv": [58, 21], "mirror": true},
-						{"origin": [2, 0, -3.5], "size": [1, 2, 2], "uv": [61, 16], "mirror": true},
-						{"origin": [0.9, 0, -3.5], "size": [1, 2, 2], "uv": [61, 16], "mirror": true},
-						{"origin": [3.1, 0, -3.5], "size": [1, 2, 2], "uv": [61, 16], "mirror": true}
+						{
+							"origin": [
+								-6.09,
+								-5.94,
+								2.54
+							],
+							"size": [
+								6,
+								9,
+								0.125
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										172,
+										184
+									],
+									"uv_size": [
+										12,
+										18
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"south": {
+									"uv": [
+										184,
+										184
+									],
+									"uv_size": [
+										12,
+										18
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feathers Tail 2 Left",
+					"parent": "Tail 2",
+					"pivot": [
+						0,
+						2.06,
+						2.79
+					],
+					"rotation": [
+						0,
+						35,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.1,
+								-5.94,
+								2.54
+							],
+							"size": [
+								6,
+								9,
+								0.125
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										184,
+										164
+									],
+									"uv_size": [
+										12,
+										18
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"south": {
+									"uv": [
+										172,
+										164
+									],
+									"uv_size": [
+										12,
+										18
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									],
+									"uv_rotation": 180
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feathers Skirt Left 0",
+					"parent": "Tail 0",
+					"pivot": [
+						0.5,
+						11.06,
+						1.79
+					],
+					"rotation": [
+						2,
+						280,
+						20
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.5,
+								6.06,
+								-1.21
+							],
+							"size": [
+								0.1,
+								10,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"east": {
+									"uv": [
+										52,
+										180
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"west": {
+									"uv": [
+										46,
+										180
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feather Skirt Left 1",
+					"parent": "Feathers Skirt Left 0",
+					"pivot": [
+						0.5,
+						11.06,
+						-1.21
+					],
+					"rotation": [
+						0,
+						60,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.45,
+								6.06,
+								-7.11
+							],
+							"size": [
+								0.1,
+								10,
+								6
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"east": {
+									"uv": [
+										32,
+										180
+									],
+									"uv_size": [
+										12,
+										20
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"west": {
+									"uv": [
+										20,
+										180
+									],
+									"uv_size": [
+										12,
+										20
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feathers Skirt Right 0",
+					"parent": "Tail 0",
+					"pivot": [
+						-0.5,
+						11.06,
+						1.79
+					],
+					"rotation": [
+						358,
+						260,
+						340
+					],
+					"cubes": [
+						{
+							"origin": [
+								-0.5,
+								6.06,
+								1.79
+							],
+							"size": [
+								0.1,
+								10,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"east": {
+									"uv": [
+										60,
+										180
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"west": {
+									"uv": [
+										66,
+										180
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feather Skirt Right 1",
+					"parent": "Feathers Skirt Right 0",
+					"pivot": [
+						-0.5,
+						11.06,
+						4.79
+					],
+					"rotation": [
+						0,
+						300,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-0.55,
+								6.06,
+								4.69
+							],
+							"size": [
+								0.1,
+								10,
+								6
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"east": {
+									"uv": [
+										74,
+										180
+									],
+									"uv_size": [
+										12,
+										20
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"west": {
+									"uv": [
+										86,
+										180
+									],
+									"uv_size": [
+										12,
+										20
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Thigh Left",
+					"parent": "LeftLeg",
+					"pivot": [
+						2.15,
+						16,
+						-0.2
+					],
+					"rotation": [
+						345,
+						355,
+						354
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.65,
+								10,
+								-1.2
+							],
+							"size": [
+								3,
+								6,
+								5
+							],
+							"inflate": 0.25,
+							"uv": {
+								"north": {
+									"uv": [
+										150,
+										72
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										140,
+										72
+									],
+									"uv_size": [
+										10,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										166,
+										72
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										156,
+										72
+									],
+									"uv_size": [
+										10,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										150,
+										62
+									],
+									"uv_size": [
+										6,
+										10
+									]
+								},
+								"down": {
+									"uv": [
+										156,
+										72
+									],
+									"uv_size": [
+										6,
+										-10
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Calf Left",
+					"parent": "Thigh Left",
+					"pivot": [
+						2.15,
+						11,
+						-0.2
+					],
+					"rotation": [
+						52,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.65,
+								4.45,
+								-1.4
+							],
+							"size": [
+								3,
+								6,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										146,
+										116
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										140,
+										116
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										158,
+										116
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										152,
+										116
+									],
+									"uv_size": [
+										6,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										146,
+										110
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										152,
+										116
+									],
+									"uv_size": [
+										6,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Foot Left 1",
+					"parent": "Calf Left",
+					"pivot": [
+						2.15,
+						6,
+						0.8
+					],
+					"rotation": [
+						303,
+						5,
+						10
+					],
+					"cubes": [
+						{
+							"origin": [
+								0.95,
+								-2.4,
+								-0.49
+							],
+							"size": [
+								2,
+								8,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										124,
+										100
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										118,
+										100
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										134,
+										100
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										128,
+										100
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										124,
+										94
+									],
+									"uv_size": [
+										4,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										128,
+										100
+									],
+									"uv_size": [
+										4,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Toes Bottom Left",
+					"parent": "Foot Left 1",
+					"pivot": [
+						3.75,
+						-1.8,
+						1.8
+					],
+					"rotation": [
+						200,
+						1,
+						355
+					],
+					"cubes": [
+						{
+							"origin": [
+								2.05,
+								-2.8,
+								1.11
+							],
+							"size": [
+								2,
+								2,
+								5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										74,
+										70
+									],
+									"uv_size": [
+										4,
+										4
+									]
+								},
+								"east": {
+									"uv": [
+										64,
+										70
+									],
+									"uv_size": [
+										10,
+										4
+									]
+								},
+								"south": {
+									"uv": [
+										88,
+										70
+									],
+									"uv_size": [
+										4,
+										4
+									]
+								},
+								"west": {
+									"uv": [
+										78,
+										70
+									],
+									"uv_size": [
+										10,
+										4
+									]
+								},
+								"up": {
+									"uv": [
+										74,
+										60
+									],
+									"uv_size": [
+										4,
+										10
+									]
+								},
+								"down": {
+									"uv": [
+										78,
+										70
+									],
+									"uv_size": [
+										4,
+										-10
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Toes Bottom Left 1",
+					"parent": "Toes Bottom Left",
+					"pivot": [
+						3.75,
+						-1.3,
+						0.8
+					],
+					"rotation": [
+						0,
+						10,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								3.55,
+								-2.3,
+								1.44
+							],
+							"size": [
+								1,
+								1,
+								4
+							],
+							"inflate": 0.2,
+							"uv": {
+								"north": {
+									"uv": [
+										104,
+										90
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										96,
+										90
+									],
+									"uv_size": [
+										8,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										114,
+										90
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										106,
+										90
+									],
+									"uv_size": [
+										8,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										104,
+										82
+									],
+									"uv_size": [
+										2,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										106,
+										90
+									],
+									"uv_size": [
+										2,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Claw Left 1",
+					"parent": "Toes Bottom Left 1",
+					"pivot": [
+						4.25,
+						-1.45,
+						5.3
+					],
+					"rotation": [
+						0,
+						270,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								4.25,
+								-2.45,
+								5.3
+							],
+							"size": [
+								1,
+								1,
+								0.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										96,
+										82
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										96,
+										82
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										96,
+										82
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										96,
+										82
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										98,
+										84
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								},
+								"down": {
+									"uv": [
+										98,
+										84
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Toes Bottom Left 2",
+					"parent": "Toes Bottom Left",
+					"pivot": [
+						1.75,
+						-1.3,
+						0.8
+					],
+					"rotation": [
+						0,
+						350,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.45,
+								-2.3,
+								1.4
+							],
+							"size": [
+								1,
+								1,
+								4
+							],
+							"inflate": 0.2,
+							"uv": {
+								"north": {
+									"uv": [
+										104,
+										78
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										96,
+										78
+									],
+									"uv_size": [
+										8,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										114,
+										78
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										106,
+										78
+									],
+									"uv_size": [
+										8,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										104,
+										70
+									],
+									"uv_size": [
+										2,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										106,
+										78
+									],
+									"uv_size": [
+										2,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Claw Left 2",
+					"parent": "Toes Bottom Left 2",
+					"pivot": [
+						2.25,
+						-1.45,
+						5.3
+					],
+					"rotation": [
+						0,
+						270,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								2.25,
+								-2.45,
+								5.3
+							],
+							"size": [
+								1,
+								1,
+								0.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										96,
+										70
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										96,
+										70
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										96,
+										70
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										96,
+										70
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										98,
+										72
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								},
+								"down": {
+									"uv": [
+										98,
+										72
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Claw Left",
+					"parent": "Toes Bottom Left",
+					"pivot": [
+						3.35,
+						-1.6,
+						5.8
+					],
+					"rotation": [
+						0,
+						270,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								3.35,
+								-2.6,
+								5.8
+							],
+							"size": [
+								1,
+								1,
+								0.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										64,
+										60
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										64,
+										60
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										64,
+										60
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										64,
+										60
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										66,
+										62
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								},
+								"down": {
+									"uv": [
+										66,
+										62
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Foot Left 2",
+					"parent": "Foot Left 1",
+					"pivot": [
+						2.15,
+						6,
+						0.8
+					],
+					"rotation": [
+						0,
+						0,
+						350
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.51,
+								-2.4,
+								-0.47
+							],
+							"size": [
+								2,
+								8,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										102,
+										100
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										96,
+										100
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										112,
+										100
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										106,
+										100
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										102,
+										94
+									],
+									"uv_size": [
+										4,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										106,
+										100
+									],
+									"uv_size": [
+										4,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Thigh Right",
+					"parent": "RightLeg",
+					"pivot": [
+						-2.15,
+						16,
+						-0.2
+					],
+					"rotation": [
+						345,
+						5,
+						6
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.65,
+								10,
+								-1.2
+							],
+							"size": [
+								3,
+								6,
+								5
+							],
+							"inflate": 0.25,
+							"uv": {
+								"north": {
+									"uv": [
+										156,
+										96
+									],
+									"uv_size": [
+										-6,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										166,
+										96
+									],
+									"uv_size": [
+										-10,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										172,
+										96
+									],
+									"uv_size": [
+										-6,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										150,
+										96
+									],
+									"uv_size": [
+										-10,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										156,
+										86
+									],
+									"uv_size": [
+										-6,
+										10
+									]
+								},
+								"down": {
+									"uv": [
+										162,
+										96
+									],
+									"uv_size": [
+										-6,
+										-10
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Calf Right",
+					"parent": "Thigh Right",
+					"pivot": [
+						-2.15,
+						11,
+						-0.2
+					],
+					"rotation": [
+						52,
+						360,
+						360
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.65,
+								4.45,
+								-1.4
+							],
+							"size": [
+								3,
+								6,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										152,
+										136
+									],
+									"uv_size": [
+										-6,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										158,
+										136
+									],
+									"uv_size": [
+										-6,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										164,
+										136
+									],
+									"uv_size": [
+										-6,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										146,
+										136
+									],
+									"uv_size": [
+										-6,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										152,
+										130
+									],
+									"uv_size": [
+										-6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										158,
+										136
+									],
+									"uv_size": [
+										-6,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Foot Right 1",
+					"parent": "Calf Right",
+					"pivot": [
+						-2.15,
+						6,
+						0.8
+					],
+					"rotation": [
+						303,
+						355,
+						350
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.94,
+								-2.4,
+								-0.49
+							],
+							"size": [
+								2,
+								8,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										128,
+										124
+									],
+									"uv_size": [
+										-4,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										134,
+										124
+									],
+									"uv_size": [
+										-6,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										138,
+										124
+									],
+									"uv_size": [
+										-4,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										124,
+										124
+									],
+									"uv_size": [
+										-6,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										128,
+										118
+									],
+									"uv_size": [
+										-4,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										132,
+										124
+									],
+									"uv_size": [
+										-4,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Toes Bottom Right",
+					"parent": "Foot Right 1",
+					"pivot": [
+						-3.75,
+						-1.8,
+						1.8
+					],
+					"rotation": [
+						200,
+						359,
+						5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4.05,
+								-2.8,
+								1.11
+							],
+							"size": [
+								2,
+								2,
+								5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										78,
+										86
+									],
+									"uv_size": [
+										-4,
+										4
+									]
+								},
+								"east": {
+									"uv": [
+										88,
+										86
+									],
+									"uv_size": [
+										-10,
+										4
+									]
+								},
+								"south": {
+									"uv": [
+										92,
+										86
+									],
+									"uv_size": [
+										-4,
+										4
+									]
+								},
+								"west": {
+									"uv": [
+										74,
+										86
+									],
+									"uv_size": [
+										-10,
+										4
+									]
+								},
+								"up": {
+									"uv": [
+										78,
+										76
+									],
+									"uv_size": [
+										-4,
+										10
+									]
+								},
+								"down": {
+									"uv": [
+										82,
+										86
+									],
+									"uv_size": [
+										-4,
+										-10
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Toes Bottom Right 1",
+					"parent": "Toes Bottom Right",
+					"pivot": [
+						-3.75,
+						-1.3,
+						0.8
+					],
+					"rotation": [
+						0,
+						350,
+						360
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4.55,
+								-2.3,
+								1.44
+							],
+							"size": [
+								1,
+								1,
+								4
+							],
+							"inflate": 0.2,
+							"uv": {
+								"north": {
+									"uv": [
+										128,
+										90
+									],
+									"uv_size": [
+										-2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										136,
+										90
+									],
+									"uv_size": [
+										-8,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										138,
+										90
+									],
+									"uv_size": [
+										-2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										126,
+										90
+									],
+									"uv_size": [
+										-8,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										128,
+										82
+									],
+									"uv_size": [
+										-2,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										130,
+										90
+									],
+									"uv_size": [
+										-2,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Claw Left 11",
+					"parent": "Toes Bottom Right 1",
+					"pivot": [
+						-3.75,
+						-1.45,
+						5.3
+					],
+					"rotation": [
+						0,
+						270,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.75,
+								-2.45,
+								5.3
+							],
+							"size": [
+								1,
+								1,
+								0.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										118,
+										82
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										118,
+										82
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										118,
+										82
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										118,
+										82
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										120,
+										84
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								},
+								"down": {
+									"uv": [
+										120,
+										84
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Toes Bottom Right 2",
+					"parent": "Toes Bottom Right",
+					"pivot": [
+						-1.75,
+						-1.3,
+						0.8
+					],
+					"rotation": [
+						0,
+						10,
+						360
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.45,
+								-2.3,
+								1.4
+							],
+							"size": [
+								1,
+								1,
+								4
+							],
+							"inflate": 0.2,
+							"uv": {
+								"north": {
+									"uv": [
+										128,
+										78
+									],
+									"uv_size": [
+										-2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										136,
+										78
+									],
+									"uv_size": [
+										-8,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										138,
+										78
+									],
+									"uv_size": [
+										-2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										126,
+										78
+									],
+									"uv_size": [
+										-8,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										128,
+										70
+									],
+									"uv_size": [
+										-2,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										130,
+										78
+									],
+									"uv_size": [
+										-2,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Claw Right 2",
+					"parent": "Toes Bottom Right 2",
+					"pivot": [
+						-1.75,
+						-1.45,
+						5.3
+					],
+					"rotation": [
+						0,
+						270,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.75,
+								-2.45,
+								5.3
+							],
+							"size": [
+								1,
+								1,
+								0.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										118,
+										70
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										118,
+										70
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										118,
+										70
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										118,
+										70
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										120,
+										72
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								},
+								"down": {
+									"uv": [
+										120,
+										72
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Claw Right",
+					"parent": "Toes Bottom Right",
+					"pivot": [
+						-2.75,
+						-1.6,
+						5.8
+					],
+					"rotation": [
+						0,
+						270,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.75,
+								-2.6,
+								5.8
+							],
+							"size": [
+								1,
+								1,
+								0.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										64,
+										76
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"east": {
+									"uv": [
+										64,
+										76
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"south": {
+									"uv": [
+										64,
+										76
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"west": {
+									"uv": [
+										64,
+										76
+									],
+									"uv_size": [
+										2,
+										2
+									]
+								},
+								"up": {
+									"uv": [
+										66,
+										78
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								},
+								"down": {
+									"uv": [
+										66,
+										78
+									],
+									"uv_size": [
+										-2,
+										-2
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Foot Right 2",
+					"parent": "Foot Right 1",
+					"pivot": [
+						-2.15,
+						6,
+						0.8
+					],
+					"rotation": [
+						0,
+						0,
+						10
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.51,
+								-2.4,
+								-0.48
+							],
+							"size": [
+								2,
+								8,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										106,
+										124
+									],
+									"uv_size": [
+										-4,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										112,
+										124
+									],
+									"uv_size": [
+										-6,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										116,
+										124
+									],
+									"uv_size": [
+										-4,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										102,
+										124
+									],
+									"uv_size": [
+										-6,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										106,
+										118
+									],
+									"uv_size": [
+										-4,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										110,
+										124
+									],
+									"uv_size": [
+										-4,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Head root",
+					"parent": "Head",
+					"pivot": [
+						0,
+						24,
+						0
+					]
+				},
+				{
+					"name": "Feathers Crest Side",
+					"parent": "Head root",
+					"pivot": [
+						0,
+						33.5,
+						5.5
+					],
+					"rotation": [
+						210,
+						0,
+						180
+					],
+					"cubes": [
+						{
+							"origin": [
+								0,
+								25.5,
+								5.5
+							],
+							"size": [
+								0.1,
+								8,
+								7
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"east": {
+									"uv": [
+										174,
+										98
+									],
+									"uv_size": [
+										14,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"west": {
+									"uv": [
+										188,
+										98
+									],
+									"uv_size": [
+										14,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feathers Crest Back",
+					"parent": "Head root",
+					"pivot": [
+						0,
+						30,
+						2.5
+					],
+					"rotation": [
+						204,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.5,
+								30,
+								2.5
+							],
+							"size": [
+								7,
+								8,
+								0.1
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										174,
+										80
+									],
+									"uv_size": [
+										14,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"south": {
+									"uv": [
+										188,
+										80
+									],
+									"uv_size": [
+										14,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feathers Crest Top",
+					"parent": "Head root",
+					"pivot": [
+						0,
+						31,
+						-1.5
+					],
+					"rotation": [
+						26,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.5,
+								30.9,
+								-1.5
+							],
+							"size": [
+								7,
+								0.1,
+								8
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"up": {
+									"uv": [
+										188,
+										78
+									],
+									"uv_size": [
+										-14,
+										-16
+									],
+									"uv_rotation": 180
+								},
+								"down": {
+									"uv": [
+										202,
+										62
+									],
+									"uv_size": [
+										-14,
+										16
+									],
+									"uv_rotation": 180
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Ear Bottom Left",
+					"parent": "Head root",
+					"pivot": [
+						3,
+						26,
+						1
+					],
+					"rotation": [
+						140,
+						327,
+						145
+					],
+					"cubes": [
+						{
+							"origin": [
+								2,
+								18.5,
+								0
+							],
+							"size": [
+								3,
+								8,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										98,
+										38
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										92,
+										38
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										110,
+										38
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										104,
+										38
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										98,
+										32
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										104,
+										38
+									],
+									"uv_size": [
+										6,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Inner Ear Bottom Left",
+					"parent": "Ear Bottom Left",
+					"pivot": [
+						3,
+						26,
+						1
+					],
+					"cubes": [
+						{
+							"origin": [
+								2,
+								18.5,
+								0
+							],
+							"size": [
+								3,
+								8,
+								3
+							],
+							"inflate": -0.1,
+							"uv": {
+								"north": {
+									"uv": [
+										158,
+										14
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										152,
+										14
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										170,
+										14
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										164,
+										14
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										158,
+										8
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										164,
+										14
+									],
+									"uv_size": [
+										6,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Ear Bottom Right",
+					"parent": "Head root",
+					"pivot": [
+						-3,
+						26,
+						1
+					],
+					"rotation": [
+						140,
+						33,
+						215
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5,
+								18.5,
+								0
+							],
+							"size": [
+								3,
+								8,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										130,
+										38
+									],
+									"uv_size": [
+										-6,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										136,
+										38
+									],
+									"uv_size": [
+										-6,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										142,
+										38
+									],
+									"uv_size": [
+										-6,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										124,
+										38
+									],
+									"uv_size": [
+										-6,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										130,
+										32
+									],
+									"uv_size": [
+										-6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										136,
+										38
+									],
+									"uv_size": [
+										-6,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Inner Ear Botoom Right",
+					"parent": "Ear Bottom Right",
+					"pivot": [
+						-3,
+						26,
+						1
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5,
+								18.5,
+								0
+							],
+							"size": [
+								3,
+								8,
+								3
+							],
+							"inflate": -0.1,
+							"uv": {
+								"north": {
+									"uv": [
+										184,
+										14
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										178,
+										14
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										196,
+										14
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										190,
+										14
+									],
+									"uv_size": [
+										6,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										184,
+										8
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										190,
+										14
+									],
+									"uv_size": [
+										6,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Ear Top Left",
+					"parent": "Head root",
+					"pivot": [
+						3,
+						30,
+						0.5
+					],
+					"rotation": [
+						55,
+						320,
+						185
+					],
+					"cubes": [
+						{
+							"origin": [
+								2,
+								21,
+								-0.5
+							],
+							"size": [
+								3,
+								10,
+								4
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										100,
+										10
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"east": {
+									"uv": [
+										92,
+										10
+									],
+									"uv_size": [
+										8,
+										20
+									]
+								},
+								"south": {
+									"uv": [
+										114,
+										10
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"west": {
+									"uv": [
+										106,
+										10
+									],
+									"uv_size": [
+										8,
+										20
+									]
+								},
+								"up": {
+									"uv": [
+										100,
+										2
+									],
+									"uv_size": [
+										6,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										106,
+										10
+									],
+									"uv_size": [
+										6,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Inner Ear Top Left",
+					"parent": "Ear Top Left",
+					"pivot": [
+						3,
+						30,
+						0.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								2,
+								21,
+								-0.5
+							],
+							"size": [
+								3,
+								10,
+								4
+							],
+							"inflate": -0.1,
+							"uv": {
+								"north": {
+									"uv": [
+										152,
+										40
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"east": {
+									"uv": [
+										144,
+										40
+									],
+									"uv_size": [
+										8,
+										20
+									]
+								},
+								"south": {
+									"uv": [
+										166,
+										40
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"west": {
+									"uv": [
+										158,
+										40
+									],
+									"uv_size": [
+										8,
+										20
+									]
+								},
+								"up": {
+									"uv": [
+										152,
+										32
+									],
+									"uv_size": [
+										6,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										158,
+										40
+									],
+									"uv_size": [
+										6,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Ear Top Right",
+					"parent": "Head root",
+					"pivot": [
+						-3,
+						30,
+						0.5
+					],
+					"rotation": [
+						55,
+						40,
+						175
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5,
+								21,
+								-0.5
+							],
+							"size": [
+								3,
+								10,
+								4
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										136,
+										10
+									],
+									"uv_size": [
+										-6,
+										20
+									]
+								},
+								"east": {
+									"uv": [
+										144,
+										10
+									],
+									"uv_size": [
+										-8,
+										20
+									]
+								},
+								"south": {
+									"uv": [
+										150,
+										10
+									],
+									"uv_size": [
+										-6,
+										20
+									]
+								},
+								"west": {
+									"uv": [
+										130,
+										10
+									],
+									"uv_size": [
+										-8,
+										20
+									]
+								},
+								"up": {
+									"uv": [
+										136,
+										2
+									],
+									"uv_size": [
+										-6,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										142,
+										10
+									],
+									"uv_size": [
+										-6,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Inner Ear Top Right",
+					"parent": "Ear Top Right",
+					"pivot": [
+						-3,
+						30,
+						0.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5,
+								21,
+								-0.5
+							],
+							"size": [
+								3,
+								10,
+								4
+							],
+							"inflate": -0.1,
+							"uv": {
+								"north": {
+									"uv": [
+										182,
+										40
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"east": {
+									"uv": [
+										174,
+										40
+									],
+									"uv_size": [
+										8,
+										20
+									]
+								},
+								"south": {
+									"uv": [
+										196,
+										40
+									],
+									"uv_size": [
+										6,
+										20
+									]
+								},
+								"west": {
+									"uv": [
+										188,
+										40
+									],
+									"uv_size": [
+										8,
+										20
+									]
+								},
+								"up": {
+									"uv": [
+										182,
+										32
+									],
+									"uv_size": [
+										6,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										188,
+										40
+									],
+									"uv_size": [
+										6,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Skull Left",
+					"parent": "Head root",
+					"pivot": [
+						1.5,
+						23.99,
+						-4.5
+					],
+					"rotation": [
+						0,
+						310,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.5,
+								23.99,
+								-4.5
+							],
+							"size": [
+								4,
+								7,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										8,
+										10
+									],
+									"uv_size": [
+										8,
+										14
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										10
+									],
+									"uv_size": [
+										6,
+										14
+									]
+								},
+								"south": {
+									"uv": [
+										22,
+										10
+									],
+									"uv_size": [
+										8,
+										14
+									]
+								},
+								"west": {
+									"uv": [
+										16,
+										10
+									],
+									"uv_size": [
+										6,
+										14
+									]
+								},
+								"up": {
+									"uv": [
+										8,
+										4
+									],
+									"uv_size": [
+										8,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										16,
+										10
+									],
+									"uv_size": [
+										8,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Eye Left Normal",
+					"parent": "Skull Left",
+					"pivot": [
+						1.5,
+						29.99,
+						-4.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.5,
+								24.99,
+								-4.55
+							],
+							"size": [
+								4,
+								5,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										118,
+										150
+									],
+									"uv_size": [
+										8,
+										10
+									]
+								},
+								"east": {
+									"uv": [
+										118,
+										150
+									],
+									"uv_size": [
+										0,
+										10
+									]
+								},
+								"south": {
+									"uv": [
+										126,
+										150
+									],
+									"uv_size": [
+										8,
+										10
+									]
+								},
+								"west": {
+									"uv": [
+										126,
+										150
+									],
+									"uv_size": [
+										0,
+										10
+									]
+								},
+								"up": {
+									"uv": [
+										118,
+										150
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										126,
+										150
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Eye Glow Left Normal",
+					"parent": "Eye Left Normal",
+					"pivot": [
+						1.5,
+						29.99,
+						-4.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.5,
+								24.99,
+								-4.6
+							],
+							"size": [
+								4,
+								5,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										118,
+										162
+									],
+									"uv_size": [
+										8,
+										10
+									]
+								},
+								"east": {
+									"uv": [
+										118,
+										162
+									],
+									"uv_size": [
+										0,
+										10
+									]
+								},
+								"south": {
+									"uv": [
+										126,
+										162
+									],
+									"uv_size": [
+										8,
+										10
+									]
+								},
+								"west": {
+									"uv": [
+										126,
+										162
+									],
+									"uv_size": [
+										0,
+										10
+									]
+								},
+								"up": {
+									"uv": [
+										118,
+										162
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										126,
+										162
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Mouth Left 0 Normal",
+					"parent": "Skull Left",
+					"pivot": [
+						1.5,
+						26.99,
+						-4.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.5,
+								23.99,
+								-4.55
+							],
+							"size": [
+								2,
+								3,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										202,
+										206
+									],
+									"uv_size": [
+										4,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										202,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										206,
+										206
+									],
+									"uv_size": [
+										4,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										206,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										202,
+										206
+									],
+									"uv_size": [
+										4,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										206,
+										206
+									],
+									"uv_size": [
+										4,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Skull Right",
+					"parent": "Head root",
+					"pivot": [
+						-1.5,
+						23.99,
+						-4.5
+					],
+					"rotation": [
+						0,
+						50,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5.5,
+								23.99,
+								-4.5
+							],
+							"size": [
+								4,
+								7,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										68,
+										10
+									],
+									"uv_size": [
+										8,
+										14
+									]
+								},
+								"east": {
+									"uv": [
+										62,
+										10
+									],
+									"uv_size": [
+										6,
+										14
+									]
+								},
+								"south": {
+									"uv": [
+										82,
+										10
+									],
+									"uv_size": [
+										8,
+										14
+									]
+								},
+								"west": {
+									"uv": [
+										76,
+										10
+									],
+									"uv_size": [
+										6,
+										14
+									]
+								},
+								"up": {
+									"uv": [
+										68,
+										4
+									],
+									"uv_size": [
+										8,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										76,
+										10
+									],
+									"uv_size": [
+										8,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Eye Right Normal",
+					"parent": "Skull Right",
+					"pivot": [
+						-1.5,
+						29.99,
+						-4.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5.5,
+								24.99,
+								-4.55
+							],
+							"size": [
+								4,
+								5,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										102,
+										150
+									],
+									"uv_size": [
+										8,
+										10
+									]
+								},
+								"east": {
+									"uv": [
+										102,
+										150
+									],
+									"uv_size": [
+										0,
+										10
+									]
+								},
+								"south": {
+									"uv": [
+										110,
+										150
+									],
+									"uv_size": [
+										8,
+										10
+									]
+								},
+								"west": {
+									"uv": [
+										110,
+										150
+									],
+									"uv_size": [
+										0,
+										10
+									]
+								},
+								"up": {
+									"uv": [
+										102,
+										150
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										110,
+										150
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Eye Glow Right Normal",
+					"parent": "Eye Right Normal",
+					"pivot": [
+						-1.5,
+						29.99,
+						-4.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5.5,
+								24.99,
+								-4.6
+							],
+							"size": [
+								4,
+								5,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										102,
+										162
+									],
+									"uv_size": [
+										8,
+										10
+									]
+								},
+								"east": {
+									"uv": [
+										102,
+										162
+									],
+									"uv_size": [
+										0,
+										10
+									]
+								},
+								"south": {
+									"uv": [
+										110,
+										162
+									],
+									"uv_size": [
+										8,
+										10
+									]
+								},
+								"west": {
+									"uv": [
+										110,
+										162
+									],
+									"uv_size": [
+										0,
+										10
+									]
+								},
+								"up": {
+									"uv": [
+										102,
+										162
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										110,
+										162
+									],
+									"uv_size": [
+										8,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Mouth Right 0 Normal",
+					"parent": "Skull Right",
+					"pivot": [
+						-1.5,
+						26.99,
+						-4.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.5,
+								23.99,
+								-4.55
+							],
+							"size": [
+								2,
+								3,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										174,
+										206
+									],
+									"uv_size": [
+										4,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										174,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										178,
+										206
+									],
+									"uv_size": [
+										4,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										178,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										174,
+										206
+									],
+									"uv_size": [
+										4,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										178,
+										206
+									],
+									"uv_size": [
+										4,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Skull Back",
+					"parent": "Head root",
+					"pivot": [
+						0,
+						24,
+						-1.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4,
+								24,
+								-1.5
+							],
+							"size": [
+								8,
+								7,
+								4
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										10,
+										34
+									],
+									"uv_size": [
+										16,
+										14
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										34
+									],
+									"uv_size": [
+										8,
+										14
+									]
+								},
+								"south": {
+									"uv": [
+										34,
+										34
+									],
+									"uv_size": [
+										16,
+										14
+									]
+								},
+								"west": {
+									"uv": [
+										26,
+										34
+									],
+									"uv_size": [
+										8,
+										14
+									]
+								},
+								"up": {
+									"uv": [
+										10,
+										26
+									],
+									"uv_size": [
+										16,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										26,
+										34
+									],
+									"uv_size": [
+										16,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Skull Front",
+					"parent": "Head root",
+					"pivot": [
+						0,
+						24,
+						-1.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.5,
+								24,
+								-4.5
+							],
+							"size": [
+								3,
+								7,
+								4
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										40,
+										10
+									],
+									"uv_size": [
+										6,
+										14
+									]
+								},
+								"east": {
+									"uv": [
+										32,
+										10
+									],
+									"uv_size": [
+										8,
+										14
+									]
+								},
+								"south": {
+									"uv": [
+										54,
+										10
+									],
+									"uv_size": [
+										6,
+										14
+									]
+								},
+								"west": {
+									"uv": [
+										46,
+										10
+									],
+									"uv_size": [
+										8,
+										14
+									]
+								},
+								"up": {
+									"uv": [
+										40,
+										2
+									],
+									"uv_size": [
+										6,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										46,
+										10
+									],
+									"uv_size": [
+										6,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Snout",
+					"parent": "Head root",
+					"pivot": [
+						0,
+						24,
+						-4.5
+					],
+					"rotation": [
+						30,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.5,
+								24,
+								-4.5
+							],
+							"size": [
+								3,
+								3,
+								4
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										60,
+										34
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										52,
+										34
+									],
+									"uv_size": [
+										8,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										74,
+										34
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										66,
+										34
+									],
+									"uv_size": [
+										8,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										60,
+										26
+									],
+									"uv_size": [
+										6,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										66,
+										34
+									],
+									"uv_size": [
+										6,
+										-8
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Mouth Left 1 Normal",
+					"parent": "Snout",
+					"pivot": [
+						1.5,
+						27,
+						-4.5
+					],
+					"rotation": [
+						0,
+						270,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								1.47,
+								24,
+								-4.55
+							],
+							"size": [
+								1,
+								3,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										198,
+										206
+									],
+									"uv_size": [
+										2,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										198,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										200,
+										206
+									],
+									"uv_size": [
+										2,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										200,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										198,
+										206
+									],
+									"uv_size": [
+										2,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										200,
+										206
+									],
+									"uv_size": [
+										2,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Mouth Front Normal",
+					"parent": "Snout",
+					"pivot": [
+						0,
+						27,
+						-4.5
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.5,
+								24,
+								-4.55
+							],
+							"size": [
+								3,
+								3,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										186,
+										206
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										186,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										192,
+										206
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										192,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										186,
+										206
+									],
+									"uv_size": [
+										6,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										192,
+										206
+									],
+									"uv_size": [
+										6,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Mouth Right 1 Normal",
+					"parent": "Snout",
+					"pivot": [
+						-1.5,
+						27,
+						-4.5
+					],
+					"rotation": [
+						0,
+						90,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2.44,
+								24,
+								-4.55
+							],
+							"size": [
+								1,
+								3,
+								0
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										182,
+										206
+									],
+									"uv_size": [
+										2,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										182,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										184,
+										206
+									],
+									"uv_size": [
+										2,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										184,
+										206
+									],
+									"uv_size": [
+										0,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										182,
+										206
+									],
+									"uv_size": [
+										2,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										184,
+										206
+									],
+									"uv_size": [
+										2,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Left Arm Auxiliary",
+					"parent": "LeftArm",
+					"pivot": [
+						3.75,
+						22,
+						-0.5
+					]
+				},
+				{
+					"name": "Left Arm root",
+					"parent": "Left Arm Auxiliary",
+					"pivot": [
+						3.75,
+						22,
+						-0.5
+					]
+				},
+				{
+					"name": "Left Arm",
+					"parent": "Left Arm root",
+					"pivot": [
+						4.75,
+						21.11,
+						0.5
+					],
+					"rotation": [
+						15,
+						11,
+						343
+					],
+					"cubes": [
+						{
+							"origin": [
+								3.25,
+								17.11,
+								-1
+							],
+							"size": [
+								2,
+								6,
+								2
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										56,
+										46
+									],
+									"uv_size": [
+										4,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										52,
+										46
+									],
+									"uv_size": [
+										4,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										64,
+										46
+									],
+									"uv_size": [
+										4,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										60,
+										46
+									],
+									"uv_size": [
+										4,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										56,
+										42
+									],
+									"uv_size": [
+										4,
+										4
+									]
+								},
+								"down": {
+									"uv": [
+										60,
+										46
+									],
+									"uv_size": [
+										4,
+										-4
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feathers Wing Left",
+					"parent": "Left Arm",
+					"pivot": [
+						4.75,
+						22.11,
+						0.5
+					],
+					"rotation": [
+						10,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								4.75,
+								2.11,
+								-4.5
+							],
+							"size": [
+								0.1,
+								20,
+								12
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"east": {
+									"uv": [
+										70,
+										92
+									],
+									"uv_size": [
+										24,
+										40
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"west": {
+									"uv": [
+										46,
+										92
+									],
+									"uv_size": [
+										24,
+										40
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Left Forearm",
+					"parent": "Left Arm",
+					"pivot": [
+						4.74,
+						15.17,
+						-0.35
+					],
+					"rotation": [
+						337,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								3.24,
+								13.46,
+								-1.85
+							],
+							"size": [
+								2,
+								4,
+								2
+							],
+							"inflate": -0.001,
+							"uv": {
+								"north": {
+									"uv": [
+										50,
+										64
+									],
+									"uv_size": [
+										4,
+										8
+									]
+								},
+								"east": {
+									"uv": [
+										46,
+										64
+									],
+									"uv_size": [
+										4,
+										8
+									]
+								},
+								"south": {
+									"uv": [
+										58,
+										64
+									],
+									"uv_size": [
+										4,
+										8
+									]
+								},
+								"west": {
+									"uv": [
+										54,
+										64
+									],
+									"uv_size": [
+										4,
+										8
+									]
+								},
+								"up": {
+									"uv": [
+										50,
+										60
+									],
+									"uv_size": [
+										4,
+										4
+									]
+								},
+								"down": {
+									"uv": [
+										54,
+										64
+									],
+									"uv_size": [
+										4,
+										-4
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Left Hand",
+					"parent": "Left Forearm",
+					"pivot": [
+						2.74,
+						13.47,
+						-2.35
+					],
+					"cubes": [
+						{
+							"origin": [
+								2.74,
+								10.47,
+								-2.35
+							],
+							"size": [
+								3,
+								3,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										98,
+										62
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										92,
+										62
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										110,
+										62
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										104,
+										62
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										98,
+										56
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										104,
+										62
+									],
+									"uv_size": [
+										6,
+										-6
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Right Arm Auxiliary",
+					"parent": "RightArm",
+					"pivot": [
+						-3.75,
+						22,
+						-0.5
+					]
+				},
+				{
+					"name": "Right Arm root",
+					"parent": "Right Arm Auxiliary",
+					"pivot": [
+						-3.75,
+						22,
+						-0.5
+					]
+				},
+				{
+					"name": "Right Arm",
+					"parent": "Right Arm root",
+					"pivot": [
+						-4.75,
+						21.11,
+						0.5
+					],
+					"rotation": [
+						15,
+						349,
+						17
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5.25,
+								17.11,
+								-1
+							],
+							"size": [
+								2,
+								6,
+								2
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										78,
+										46
+									],
+									"uv_size": [
+										-4,
+										12
+									]
+								},
+								"east": {
+									"uv": [
+										82,
+										46
+									],
+									"uv_size": [
+										-4,
+										12
+									]
+								},
+								"south": {
+									"uv": [
+										86,
+										46
+									],
+									"uv_size": [
+										-4,
+										12
+									]
+								},
+								"west": {
+									"uv": [
+										74,
+										46
+									],
+									"uv_size": [
+										-4,
+										12
+									]
+								},
+								"up": {
+									"uv": [
+										78,
+										42
+									],
+									"uv_size": [
+										-4,
+										4
+									]
+								},
+								"down": {
+									"uv": [
+										82,
+										46
+									],
+									"uv_size": [
+										-4,
+										-4
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Feathers Wing Right",
+					"parent": "Right Arm",
+					"pivot": [
+						-4.75,
+						22.11,
+						0.5
+					],
+					"rotation": [
+						10,
+						360,
+						360
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4.85,
+								2.11,
+								-4.5
+							],
+							"size": [
+								0.1,
+								20,
+								12
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"east": {
+									"uv": [
+										70,
+										134
+									],
+									"uv_size": [
+										24,
+										40
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"west": {
+									"uv": [
+										46,
+										134
+									],
+									"uv_size": [
+										24,
+										40
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										0,
+										0
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Right Forearm",
+					"parent": "Right Arm",
+					"pivot": [
+						-4.74,
+						15.17,
+						-0.35
+					],
+					"rotation": [
+						337,
+						360,
+						360
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5.24,
+								13.46,
+								-1.85
+							],
+							"size": [
+								2,
+								4,
+								2
+							],
+							"inflate": -0.001,
+							"uv": {
+								"north": {
+									"uv": [
+										54,
+										80
+									],
+									"uv_size": [
+										-4,
+										8
+									]
+								},
+								"east": {
+									"uv": [
+										58,
+										80
+									],
+									"uv_size": [
+										-4,
+										8
+									]
+								},
+								"south": {
+									"uv": [
+										62,
+										80
+									],
+									"uv_size": [
+										-4,
+										8
+									]
+								},
+								"west": {
+									"uv": [
+										50,
+										80
+									],
+									"uv_size": [
+										-4,
+										8
+									]
+								},
+								"up": {
+									"uv": [
+										54,
+										76
+									],
+									"uv_size": [
+										-4,
+										4
+									]
+								},
+								"down": {
+									"uv": [
+										58,
+										80
+									],
+									"uv_size": [
+										-4,
+										-4
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Right Hand",
+					"parent": "Right Forearm",
+					"pivot": [
+						-5.74,
+						13.47,
+						-2.35
+					],
+					"cubes": [
+						{
+							"origin": [
+								-5.74,
+								10.47,
+								-2.35
+							],
+							"size": [
+								3,
+								3,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										124,
+										62
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"east": {
+									"uv": [
+										118,
+										62
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"south": {
+									"uv": [
+										136,
+										62
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"west": {
+									"uv": [
+										130,
+										62
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"up": {
+									"uv": [
+										124,
+										56
+									],
+									"uv_size": [
+										6,
+										6
+									]
+								},
+								"down": {
+									"uv": [
+										130,
+										62
+									],
+									"uv_size": [
+										6,
+										-6
+									]
+								}
+							}
+						}
 					]
 				}
 			]

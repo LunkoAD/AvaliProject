@@ -1,0 +1,19 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.attack_speed",
+  "amount": -0.1,
+  "operation": "add_multiplied_base",
+  "condition": {
+    "type": "neoorigins:not",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "mainhand",
+      "item_condition": {
+        "type": "neoorigins:ingredient",
+        "tag": "minecraft:axes"
+      }
+    }
+  },
+  "name": "power.avaliproject.wickerbeast_axe_rhythm.name",
+  "description": "power.avaliproject.wickerbeast_axe_rhythm.description"
+}

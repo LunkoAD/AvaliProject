@@ -27,10 +27,10 @@ public class MizoleModel extends GeoModel<MizoleEntity> {
     }
 
     @Override
-    public void setCustomAnimations(MizoleEntity animatable, long instanceId, AnimationState animationState) {
+    public void setCustomAnimations(MizoleEntity animatable, long instanceId, AnimationState<MizoleEntity> animationState) {
         GeoBone head = getAnimationProcessor().getBone("head");
         if (head != null) {
-            EntityModelData entityData = (EntityModelData) animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
             head.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
         }
     }

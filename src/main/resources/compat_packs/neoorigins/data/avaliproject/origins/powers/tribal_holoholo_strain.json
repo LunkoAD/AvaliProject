@@ -1,0 +1,54 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 20,
+  "entity_action": {
+    "type": "neoorigins:if_else",
+    "condition": {
+      "type": "neoorigins:resource",
+      "resource": "avaliproject:manokit_blessing",
+      "comparison": "<=",
+      "compare_to": 2
+    },
+    "if_action": {
+      "type": "neoorigins:and",
+      "actions": [
+        {
+          "type": "neoorigins:change_resource",
+          "resource": "avaliproject:manokit_blessing",
+          "change": 0,
+          "operation": "set"
+        },
+        {
+          "type": "neoorigins:toggle",
+          "power": "avaliproject:tribal_holoholo_form",
+          "value": false
+        },
+        {
+          "type": "neoorigins:apply_effect",
+          "effect": "minecraft:hunger",
+          "duration": 200,
+          "amplifier": 0,
+          "show_particles": false
+        }
+      ]
+    },
+    "else_action": {
+      "type": "neoorigins:change_resource",
+      "resource": "avaliproject:manokit_blessing",
+      "change": -2,
+      "operation": "add"
+    }
+  },
+  "condition": {
+    "type": "neoorigins:power_active",
+    "power": "avaliproject:tribal_holoholo_form"
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.tribal_holoholo_strain.name",
+  "description": "power.avaliproject.tribal_holoholo_strain.description"
+}

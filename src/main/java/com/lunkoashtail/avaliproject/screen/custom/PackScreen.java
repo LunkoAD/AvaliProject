@@ -1,6 +1,7 @@
 package com.lunkoashtail.avaliproject.screen.custom;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.client.PackHeadRenderer;
 import com.lunkoashtail.avaliproject.network.AvaliOpenAugmentPayload;
 import com.lunkoashtail.avaliproject.network.PackInvitePayload;
 import com.lunkoashtail.avaliproject.network.PackDataSyncPayload;
@@ -17,8 +18,12 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PackScreen extends Screen {
     private static final ResourceLocation GUI_TEXTURE =
@@ -30,8 +35,15 @@ public class PackScreen extends Screen {
     private static final float MIN_SCALE = 0.5f;
     private static final float MAX_SCALE = 2.0f;
 
+    private static final int HEAD_SIZE = 16;
+
+    private record RosterHead(PackRosterEntry entry, @Nullable LivingEntity dummy, int x, int y) {
+    }
+
     @Nullable
     private static PackScreen activeInstance;
+
+    private final List<RosterHead> heads = new ArrayList<>();
 
     private PackDataSyncPayload data;
     private int leftPos;
@@ -101,11 +113,12 @@ public class PackScreen extends Screen {
             rowY += 24;
         }
 
+        heads.clear();
         for (PackRosterEntry entry : data.roster()) {
             int y = rowY;
-            String label = (entry.isAvali() ? "* " : "@ ") + entry.name();
-            addRenderableWidget(Button.builder(Component.literal(label), b -> {})
-                    .bounds(rightX, y, 100, 16).build())
+            heads.add(new RosterHead(entry, PackHeadRenderer.createDummy(entry), rightX, y));
+            addRenderableWidget(Button.builder(Component.literal(entry.name()), b -> {})
+                    .bounds(rightX + HEAD_SIZE + 2, y, 100 - HEAD_SIZE - 2, 16).build())
                     .active = false;
             if (!entry.isAvali() && data.viewerIsLeader()) {
                 Button kick = Button.builder(Component.translatable("screen.avaliproject.pack.kick"),
@@ -148,13 +161,19 @@ public class PackScreen extends Screen {
         gfx.fill(leftX, barY, leftX + barW, barY + 8, 0xFF222222);
         gfx.fill(leftX, barY, leftX + (int) (barW * Math.min(1.0f, Math.max(0.0f, progress))), barY + 8, 0xFF00CFFF);
 
-        gfx.drawCenteredString(font, rankDisplayName(rank), leftX + barW / 2, barY + 12, 0xFFE0B080);
+        gfx.drawCenteredString(font, rank.displayName(),leftX + barW / 2, barY + 12, 0xFFE0B080);
         gfx.drawCenteredString(font, Component.translatable("screen.avaliproject.pack.lume_bits", data.lumeBits()).getString(),
                 leftX + barW / 2, barY + 26, 0xFF55FFFF);
 
         gfx.drawString(font, Component.translatable("screen.avaliproject.pack.roster"), rightX, topY - 12, 0xFFFFFFFF, false);
 
         gfx.pose().popPose();
+
+        int headSize = Math.round(HEAD_SIZE * scale);
+        for (RosterHead head : heads) {
+            PackHeadRenderer.render(gfx, head.entry(), head.dummy(),
+                    Math.round(head.x() * scale), Math.round(head.y() * scale), headSize);
+        }
     }
 
     @Override
@@ -173,16 +192,6 @@ public class PackScreen extends Screen {
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
         float scale = scaleFactor();
         return super.mouseDragged(mouseX / scale, mouseY / scale, button, dragX / scale, dragY / scale);
-    }
-
-    private static String rankDisplayName(PackRank rank) {
-        String[] parts = rank.id().split("_");
-        StringBuilder sb = new StringBuilder();
-        for (int i = 2; i < parts.length; i++) {
-            if (i > 2) sb.append(' ');
-            sb.append(Character.toUpperCase(parts[i].charAt(0))).append(parts[i].substring(1));
-        }
-        return sb.toString();
     }
 
     @Override

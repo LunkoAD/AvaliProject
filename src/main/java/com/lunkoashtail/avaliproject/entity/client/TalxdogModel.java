@@ -27,10 +27,10 @@ public class TalxdogModel extends GeoModel<TalxdogEntity> {
     }
 
     @Override
-    public void setCustomAnimations(TalxdogEntity animatable, long instanceId, AnimationState animationState) {
+    public void setCustomAnimations(TalxdogEntity animatable, long instanceId, AnimationState<TalxdogEntity> animationState) {
         GeoBone head = getAnimationProcessor().getBone("head");
         if (head != null) {
-            EntityModelData entityData = (EntityModelData) animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
             head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD);
             head.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
         }

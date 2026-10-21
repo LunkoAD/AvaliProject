@@ -1,0 +1,61 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 1200,
+  "cooldown_icon": "minecraft:sugar",
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:entity.rabbit.jump",
+        "volume": 1,
+        "pitch": 0.7
+      },
+      {
+        "type": "neoorigins:apply_effect",
+        "effects": [
+          {
+            "effect": "minecraft:speed",
+            "duration": 120,
+            "amplifier": 1,
+            "show_particles": false
+          },
+          {
+            "effect": "minecraft:jump_boost",
+            "duration": 120,
+            "amplifier": 1,
+            "show_particles": false
+          }
+        ]
+      },
+      {
+        "type": "neoorigins:delay",
+        "ticks": 120,
+        "action": {
+          "type": "neoorigins:apply_effect",
+          "effects": [
+            {
+              "effect": "minecraft:hunger",
+              "duration": 200,
+              "amplifier": 2,
+              "show_particles": false
+            },
+            {
+              "effect": "minecraft:mining_fatigue",
+              "duration": 200,
+              "amplifier": 0,
+              "show_particles": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "condition": {
+    "type": "neoorigins:relative_health",
+    "comparison": "<",
+    "compare_to": 0.5
+  },
+  "name": "power.avaliproject.expie_breakpoint.name",
+  "description": "power.avaliproject.expie_breakpoint.description"
+}

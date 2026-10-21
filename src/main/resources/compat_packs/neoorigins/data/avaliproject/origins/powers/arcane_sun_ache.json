@@ -1,0 +1,24 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effects": [
+    {
+      "effect": "avaliproject:dim_sight",
+      "amplifier": 0
+    }
+  ],
+  "condition": {
+    "type": "neoorigins:exposed_to_sun"
+  },
+  "toggleable": false,
+  "ambient": true,
+  "show_particles": false,
+  "show_icon": true,
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.arcane_sun_ache.name",
+  "description": "power.avaliproject.arcane_sun_ache.description"
+}

@@ -1,0 +1,54 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 160,
+  "cooldown_icon": "minecraft:rabbit_foot",
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:entity.goat.long_jump",
+        "volume": 1,
+        "pitch": 0.9
+      },
+      {
+        "type": "neoorigins:add_velocity",
+        "y": 0.42
+      },
+      {
+        "type": "neoorigins:dash",
+        "strength": 0.9,
+        "allow_vertical": false
+      },
+      {
+        "type": "neoorigins:delay",
+        "ticks": 12,
+        "action": {
+          "type": "neoorigins:and",
+          "actions": [
+            {
+              "type": "neoorigins:area_of_effect",
+              "radius": 2.5,
+              "include_source": false,
+              "entity_condition": {
+                "type": "neoorigins:living"
+              },
+              "entity_action": {
+                "type": "neoorigins:damage",
+                "amount": 5
+              }
+            },
+            {
+              "type": "neoorigins:pull_entities",
+              "radius": 2.5,
+              "strength": -1.4,
+              "include_players": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "name": "power.avaliproject.sergal_driving_leap.name",
+  "description": "power.avaliproject.sergal_driving_leap.description"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "origin.avaliproject.manokit_beachdweller.name",
+  "description": "origin.avaliproject.manokit_beachdweller.neoorigins_description",
+  "icon": "avaliproject:beachdweller_manokit_spawn_egg",
+  "impact": 2,
+  "order": 261,
+  "powers": [
+    "avaliproject:dweller_gills",
+    "avaliproject:dweller_tidal_swimmer",
+    "avaliproject:dweller_wet_hands",
+    "avaliproject:dweller_deep_sight",
+    "avaliproject:dweller_land_clumsy",
+    "avaliproject:dweller_sun_glare",
+    "avaliproject:dweller_tide_mend",
+    "avaliproject:dweller_undertow",
+    "avaliproject:dweller_drained",
+    "avaliproject:dweller_ebb"
+  ]
+}

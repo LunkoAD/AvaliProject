@@ -1,0 +1,101 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 60,
+  "cooldown_icon": "minecraft:amethyst_shard",
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:block.amethyst_block.resonate",
+        "volume": 1,
+        "pitch": 1.2
+      },
+      {
+        "type": "neoorigins:if_else",
+        "condition": {
+          "type": "neoorigins:sneaking"
+        },
+        "if_action": {
+          "type": "neoorigins:area_of_effect",
+          "radius": 4,
+          "include_source": true,
+          "entity_condition": {
+            "type": "neoorigins:entity_type",
+            "entity_type": "minecraft:player"
+          },
+          "entity_action": {
+            "type": "neoorigins:apply_effect",
+            "effect": "minecraft:strength",
+            "duration": 160,
+            "amplifier": 0,
+            "show_particles": false
+          }
+        },
+        "else_action": {
+          "type": "neoorigins:area_of_effect",
+          "radius": 4,
+          "include_source": true,
+          "entity_condition": {
+            "type": "neoorigins:entity_type",
+            "entity_type": "minecraft:player"
+          },
+          "entity_action": {
+            "type": "neoorigins:apply_effect",
+            "effect": "minecraft:speed",
+            "duration": 160,
+            "amplifier": 0,
+            "show_particles": false
+          }
+        }
+      },
+      {
+        "type": "neoorigins:if_else",
+        "condition": {
+          "type": "neoorigins:resource",
+          "resource": "avaliproject:manokit_blessing",
+          "comparison": "<=",
+          "compare_to": 50
+        },
+        "if_action": {
+          "type": "neoorigins:and",
+          "actions": [
+            {
+              "type": "neoorigins:apply_effect",
+              "effect": "minecraft:mining_fatigue",
+              "duration": 200,
+              "amplifier": 0,
+              "show_particles": false
+            },
+            {
+              "type": "neoorigins:damage",
+              "amount": 2,
+              "damage_type": "minecraft:magic"
+            },
+            {
+              "type": "neoorigins:spawn_particles",
+              "particle": "minecraft:electric_spark",
+              "count": 12,
+              "offset_y": 1,
+              "spread": {
+                "x": 0.4,
+                "y": 0.5,
+                "z": 0.4
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "resource_cost": "avaliproject:manokit_blessing",
+  "resource_cost_amount": 12,
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.arcane_crystal_charge.name",
+  "description": "power.avaliproject.arcane_crystal_charge.description"
+}

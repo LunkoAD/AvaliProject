@@ -37,6 +37,8 @@ import com.lunkoashtail.avaliproject.network.ShrapnelSlipPayload;
 import com.lunkoashtail.avaliproject.network.RemoveShrapnelPayload;
 import com.lunkoashtail.avaliproject.network.ResetDislocationPayload;
 import com.lunkoashtail.avaliproject.network.SpeciesSyncPayload;
+import com.lunkoashtail.avaliproject.network.SpeciesWardrobeSelectPayload;
+import com.lunkoashtail.avaliproject.network.SubspeciesSelectPayload;
 import com.lunkoashtail.avaliproject.network.SyringeEffectPayload;
 import com.lunkoashtail.avaliproject.network.TargetLimbDataSyncPayload;
 import com.lunkoashtail.avaliproject.network.SyringeLoadPayload;
@@ -56,7 +58,14 @@ import com.lunkoashtail.avaliproject.screen.ModMenuTypes;
 import com.lunkoashtail.avaliproject.screen.custom.NanoloomScreen;
 import com.lunkoashtail.avaliproject.sound.ModSounds;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.world.level.FoliageColor;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import com.lunkoashtail.avaliproject.block.entity.client.ProtogenMachineRenderer;
+import com.lunkoashtail.avaliproject.block.entity.client.ProtogenStationRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.level.block.Blocks;
@@ -71,6 +80,7 @@ import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -104,6 +114,9 @@ public class AvaliProject {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerPayloads);
 
+        com.lunkoashtail.avaliproject.compat.origins.OriginsCompat.init();
+        modEventBus.addListener(com.lunkoashtail.avaliproject.compat.origins.OriginsCompat::onAddPackFinders);
+
         NeoForge.EVENT_BUS.register(this);
 
         ModAttachments.register(modEventBus);
@@ -113,17 +126,21 @@ public class AvaliProject {
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModSounds.register(modEventBus);
+        com.lunkoashtail.avaliproject.effect.ModEffects.register(modEventBus);
 
         if (!ModList.get().isLoaded("geckolib")) {
             throw new IllegalStateException("Geckolib is not loaded! This mod requires Geckolib to function.");
         }
 
         ModBlockEntities.register(modEventBus);
+        com.lunkoashtail.avaliproject.loot.ModLootModifiers.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipeSerializers.register(modEventBus);
         com.lunkoashtail.avaliproject.worldgen.ModFeatures.register(modEventBus);
+        com.lunkoashtail.avaliproject.worldgen.ModTreeDecorators.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(EventPriority.LOWEST, com.lunkoashtail.avaliproject.item.DisabledContent::hideFromCreativeTabs);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -195,6 +212,22 @@ public class AvaliProject {
                 SpeciesSyncPayload.TYPE,
                 SpeciesSyncPayload.STREAM_CODEC,
                 SpeciesSyncPayload::handle);
+        registrar.playToServer(
+                SpeciesWardrobeSelectPayload.TYPE,
+                SpeciesWardrobeSelectPayload.STREAM_CODEC,
+                SpeciesWardrobeSelectPayload::handle);
+        registrar.playToServer(
+                com.lunkoashtail.avaliproject.network.CustomSkinUploadPayload.TYPE,
+                com.lunkoashtail.avaliproject.network.CustomSkinUploadPayload.STREAM_CODEC,
+                com.lunkoashtail.avaliproject.network.CustomSkinUploadPayload::handle);
+        registrar.playToClient(
+                com.lunkoashtail.avaliproject.network.CustomSkinSyncPayload.TYPE,
+                com.lunkoashtail.avaliproject.network.CustomSkinSyncPayload.STREAM_CODEC,
+                com.lunkoashtail.avaliproject.network.CustomSkinSyncPayload::handle);
+        registrar.playToServer(
+                SubspeciesSelectPayload.TYPE,
+                SubspeciesSelectPayload.STREAM_CODEC,
+                SubspeciesSelectPayload::handle);
 
         registrar.playToServer(
                 AvaliSocializeInteractionPayload.TYPE,
@@ -318,16 +351,24 @@ public class AvaliProject {
         if (ModList.get().isLoaded("computercraft")) {
             com.lunkoashtail.avaliproject.compat.cc.ComputerCraftCompat.init();
         }
+        if (ModList.get().isLoaded("curios")) {
+            com.lunkoashtail.avaliproject.compat.curios.CuriosCompat.init();
+        }
     }
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            com.lunkoashtail.avaliproject.client.CustomSkinFolder.ensureCreated();
             if (!ModList.get().isLoaded("geckolib")) {
                 throw new IllegalStateException("Geckolib is not loaded! This mod requires Geckolib to function.");
             }
+            event.enqueueWork(() -> ModBlocks.WOOD_SETS.forEach(set -> Sheets.addWoodType(set.woodType)));
+            BlockEntityRenderers.register(ModBlockEntities.SYNCH_POD_BE.get(), context -> new ProtogenMachineRenderer<>("synch_pod"));
+            BlockEntityRenderers.register(ModBlockEntities.GROWTH_VAT_BE.get(), context -> new ProtogenMachineRenderer<>("growth_vat"));
+            BlockEntityRenderers.register(ModBlockEntities.PROTOGEN_STATION_BE.get(), context -> new ProtogenStationRenderer());
             EntityRenderers.register(ModEntities.SKSCEEGEHKJA.get(), SksceegehkjaRenderer::new);
             EntityRenderers.register(ModEntities.SKACIKKJRRKBWCAK.get(), SkacikkjrrkbwcakRenderer::new);
             EntityRenderers.register(ModEntities.PROTOGEN.get(), ProtogenRenderer::new);
@@ -356,7 +397,31 @@ public class AvaliProject {
             EntityRenderers.register(ModEntities.RAB_AGUDNER.get(), RabAgudnerRenderer::new);
             EntityRenderers.register(ModEntities.EXPIE.get(), ExpieRenderer::new);
             EntityRenderers.register(ModEntities.GLASS_SHARD.get(), GlassShardRenderer::new);
+            EntityRenderers.register(ModEntities.WICKERBEAST.get(), SpeciesCreatureRenderer.provider("wickerbeast", 1.0f, 0.7f));
+            EntityRenderers.register(ModEntities.FELKIN.get(), SpeciesCreatureRenderer.provider("felkin", 1.0f, 0.7f));
+            EntityRenderers.register(ModEntities.NORTHERN_FELKIN.get(), SpeciesCreatureRenderer.provider("northern_felkin", 1.0f, 1.2f));
+            EntityRenderers.register(ModEntities.ZORGOIA.get(), SpeciesCreatureRenderer.provider("zorgoia", 1.0f, 1.5f));
+            EntityRenderers.register(ModEntities.DUTCH_ANGEL_DRAGON.get(), SpeciesCreatureRenderer.provider("dutch_angel_dragon", 1.0f, 1.0f));
+            EntityRenderers.register(ModEntities.GREATER_YINGLET.get(), SpeciesCreatureRenderer.provider("greater_yinglet", 1.0f, 0.4f));
+            EntityRenderers.register(ModEntities.BEACHDWELLER_MANOKIT.get(), ManokitRenderer.provider(ManokitVariant.BEACHDWELLER));
+            EntityRenderers.register(ModEntities.TRIBAL_MANOKIT.get(), ManokitRenderer.provider(ManokitVariant.TRIBAL));
+            EntityRenderers.register(ModEntities.ARCANE_MANOKIT.get(), ManokitRenderer.provider(ManokitVariant.ARCANE));
         }
+
+        @SubscribeEvent
+        public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+            event.register((state, level, pos, tintIndex) -> level != null && pos != null
+                            ? BiomeColors.getAverageFoliageColor(level, pos)
+                            : FoliageColor.getDefaultColor(),
+                    ModBlocks.PALM_LEAVES.get(), ModBlocks.PASSION_FRUIT_LEAVES.get(), ModBlocks.PAPAYA_LEAVES.get());
+        }
+
+        @SubscribeEvent
+        public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
+            event.register((stack, tintIndex) -> FoliageColor.getDefaultColor(),
+                    ModBlocks.PALM_LEAVES.get(), ModBlocks.PASSION_FRUIT_LEAVES.get(), ModBlocks.PAPAYA_LEAVES.get());
+        }
+
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.NANOLOOM_MENU.get(), NanoloomScreen::new);
@@ -554,8 +619,18 @@ public class AvaliProject {
     public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         Species species = player.getData(ModAttachments.SPECIES);
-        PacketDistributor.sendToPlayer(player, new SpeciesSyncPayload(species.ordinal()));
+        com.lunkoashtail.avaliproject.species.SpeciesUtil.sync(player);
         DiplomacyData diplomacy = player.getData(ModAttachments.DIPLOMACY_DATA);
         PacketDistributor.sendToPlayer(player, new DiplomacySyncPayload(diplomacy.renown()));
+        for (ServerPlayer other : player.server.getPlayerList().getPlayers()) {
+            com.lunkoashtail.avaliproject.network.CustomSkinSyncPayload.sendAll(other, player);
+            if (other != player) com.lunkoashtail.avaliproject.network.CustomSkinSyncPayload.sendAll(player, other);
+        }
+    }
+
+    @SubscribeEvent
+    public void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        com.lunkoashtail.avaliproject.network.CustomSkinUploadPayload.forget(player.getUUID());
     }
 }

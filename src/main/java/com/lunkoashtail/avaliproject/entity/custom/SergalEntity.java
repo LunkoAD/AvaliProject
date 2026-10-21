@@ -3,6 +3,8 @@ package com.lunkoashtail.avaliproject.entity.custom;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.entity.client.SergalVariant;
 import com.lunkoashtail.avaliproject.item.ModItems;
+import com.lunkoashtail.avaliproject.species.Species;
+import com.lunkoashtail.avaliproject.species.SpeciesSkins;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.animation.PlayState;
@@ -45,7 +47,9 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 
-public class SergalEntity extends Monster implements GeoEntity {
+import java.util.Locale;
+
+public class SergalEntity extends Monster implements GeoEntity, CosmeticVariantTarget, SkinnedSpeciesEntity {
 
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(SergalEntity.class, EntityDataSerializers.INT);
@@ -54,6 +58,8 @@ public class SergalEntity extends Monster implements GeoEntity {
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(SergalEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(SergalEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(SergalEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> SKIN = SynchedEntityData.defineId(SergalEntity.class, EntityDataSerializers.STRING);
+    private static final String SKIN_TAG = "Skin";
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private boolean swinging;
     private boolean lastloop;
@@ -72,6 +78,7 @@ public class SergalEntity extends Monster implements GeoEntity {
         builder.define(SHOOT, false);
         builder.define(ANIMATION, "undefined");
         builder.define(TEXTURE, "sergal_grey");
+        builder.define(SKIN, "");
         builder.define(VARIANT, 0);
 
     }
@@ -211,6 +218,11 @@ public class SergalEntity extends Monster implements GeoEntity {
         return SergalVariant.byId(this.getTypeVariant() & 255);
     }
 
+    @Override
+    public void setCosmeticVariant(int variantId) {
+        this.entityData.set(VARIANT, variantId & 255);
+    }
+
     private void setVariant(SergalVariant variant) {
         this.entityData.set(VARIANT, variant.getId() & 255);
     }
@@ -219,19 +231,40 @@ public class SergalEntity extends Monster implements GeoEntity {
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("Variant", this.getTypeVariant());
+        pCompound.putString(SKIN_TAG, this.getSkin());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.entityData.set(VARIANT, pCompound.getInt("Variant"));
+        String skin = pCompound.contains(SKIN_TAG) ? pCompound.getString(SKIN_TAG)
+                : this.getVariant().name().toLowerCase(Locale.ROOT);
+        this.setSkin(SpeciesSkins.knownOrRandom(Species.SERGAL, skin, this.random));
     }
+
+    @Override
+    public Species skinSpecies() {
+        return Species.SERGAL;
+    }
+
+    @Override
+    public String getSkin() {
+        return this.entityData.get(SKIN);
+    }
+
+    public void setSkin(String skin) {
+        this.entityData.set(SKIN, skin);
+    }
+
+    @SuppressWarnings("deprecation")
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
                                         @Nullable SpawnGroupData pSpawnGroupData) {
         SergalVariant variant = Util.getRandom(SergalVariant.values(), this.random);
         this.setVariant(variant);
+        this.setSkin(SpeciesSkins.random(Species.SERGAL, this.random));
         return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
     }
 }

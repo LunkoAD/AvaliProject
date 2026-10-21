@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.movement_speed",
+  "amount": 0.15,
+  "operation": "add_multiplied_base",
+  "name": "power.avaliproject.sergal_swift.name",
+  "description": "power.avaliproject.sergal_swift.description"
+}

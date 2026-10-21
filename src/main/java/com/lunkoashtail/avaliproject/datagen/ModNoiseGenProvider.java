@@ -3,7 +3,6 @@ package com.lunkoashtail.avaliproject.datagen;
 import com.google.common.collect.ImmutableList;
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
-//import com.lunkoashtail.avaliproject.block.fluid.Ammonia;
 import com.lunkoashtail.avaliproject.datagen.avalon.AvalonBiomes;
 import com.lunkoashtail.avaliproject.datagen.avalon.AvalonTags;
 import net.minecraft.client.Minecraft;
@@ -41,8 +40,6 @@ public class ModNoiseGenProvider extends NoiseRouterData {
                 new NoiseSettings(-64, 384, 1, 1),
                 Blocks.STONE.defaultBlockState(),
                 Blocks.WATER.defaultBlockState(),
-                //we need a custom fluid for ammonia please thank you - @989onan
-                //ModBlocks.AMMONIA_BLOCK.get().defaultBlockState(),
                 NoiseRouterData.overworld(DensityRegistry, pNoiseParameters,true,false),
                 SurfaceRuleData.overworld(),
                 (new OverworldBiomeBuilder()).spawnTarget(),

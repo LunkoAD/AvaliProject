@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:modify_damage",
+  "direction": "in",
+  "damage_type": "#minecraft:is_fire",
+  "multiplier": 1.3,
+  "name": "power.avaliproject.wickerbeast_dry_hide.name",
+  "description": "power.avaliproject.wickerbeast_dry_hide.description"
+}

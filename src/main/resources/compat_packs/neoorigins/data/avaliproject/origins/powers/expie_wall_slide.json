@@ -1,0 +1,38 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effects": [
+    {
+      "effect": "minecraft:slow_falling",
+      "amplifier": 0
+    }
+  ],
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:sneaking"
+      },
+      {
+        "type": "neoorigins:collided_horizontally"
+      },
+      {
+        "type": "neoorigins:not",
+        "condition": {
+          "type": "neoorigins:on_ground"
+        }
+      },
+      {
+        "type": "neoorigins:not",
+        "condition": {
+          "type": "neoorigins:in_water"
+        }
+      }
+    ]
+  },
+  "toggleable": false,
+  "ambient": true,
+  "show_particles": false,
+  "show_icon": false,
+  "name": "power.avaliproject.expie_wall_slide.name",
+  "description": "power.avaliproject.expie_wall_slide.description"
+}

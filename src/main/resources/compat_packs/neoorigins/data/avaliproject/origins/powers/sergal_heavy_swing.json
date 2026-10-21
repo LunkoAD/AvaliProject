@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.attack_speed",
+  "amount": -0.1,
+  "operation": "add_multiplied_base",
+  "name": "power.avaliproject.sergal_heavy_swing.name",
+  "description": "power.avaliproject.sergal_heavy_swing.description"
+}

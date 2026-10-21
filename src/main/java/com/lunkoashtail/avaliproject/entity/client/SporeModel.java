@@ -27,10 +27,10 @@ public class SporeModel extends GeoModel<SporeEntity> {
     }
 
     @Override
-    public void setCustomAnimations(SporeEntity animatable, long instanceId, AnimationState animationState) {
+    public void setCustomAnimations(SporeEntity animatable, long instanceId, AnimationState<SporeEntity> animationState) {
         GeoBone head = getAnimationProcessor().getBone("head");
         if (head != null) {
-            EntityModelData entityData = (EntityModelData) animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
             head.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
         }
     }

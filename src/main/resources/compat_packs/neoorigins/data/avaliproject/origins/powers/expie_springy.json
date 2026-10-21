@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.jump_strength",
+  "amount": 0.17,
+  "operation": "add_value",
+  "name": "power.avaliproject.expie_springy.name",
+  "description": "power.avaliproject.expie_springy.description"
+}

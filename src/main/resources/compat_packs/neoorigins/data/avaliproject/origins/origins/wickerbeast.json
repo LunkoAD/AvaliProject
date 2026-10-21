@@ -1,0 +1,21 @@
+{
+  "name": "origin.avaliproject.wickerbeast.name",
+  "description": "origin.avaliproject.wickerbeast.neoorigins_description",
+  "icon": "avaliproject:wickerbeast_origin_icon",
+  "impact": 2,
+  "order": 240,
+  "powers": [
+    "avaliproject:wickerbeast_large_frame",
+    "avaliproject:wickerbeast_sturdy",
+    "avaliproject:wickerbeast_runner",
+    "avaliproject:wickerbeast_spring",
+    "avaliproject:wickerbeast_bite",
+    "avaliproject:wickerbeast_dark_eyes",
+    "avaliproject:wickerbeast_sure_footed",
+    "avaliproject:wickerbeast_heavy_swimmer",
+    "avaliproject:wickerbeast_dry_hide",
+    "avaliproject:wickerbeast_big_appetite",
+    "avaliproject:wickerbeast_axe_rhythm",
+    "avaliproject:wickerbeast_tail_whip"
+  ]
+}

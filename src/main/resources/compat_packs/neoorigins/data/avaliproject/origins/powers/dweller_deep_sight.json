@@ -1,0 +1,32 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effects": [
+    {
+      "effect": "minecraft:night_vision",
+      "amplifier": 0
+    }
+  ],
+  "condition": {
+    "type": "neoorigins:or",
+    "conditions": [
+      {
+        "type": "neoorigins:submerged_in_water"
+      },
+      {
+        "type": "neoorigins:night"
+      }
+    ]
+  },
+  "toggleable": false,
+  "ambient": true,
+  "show_particles": false,
+  "show_icon": false,
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.dweller_deep_sight.name",
+  "description": "power.avaliproject.dweller_deep_sight.description"
+}

@@ -1,0 +1,29 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 40,
+  "entity_action": {
+    "type": "neoorigins:apply_effect",
+    "effect": "minecraft:weakness",
+    "duration": 30,
+    "amplifier": 0,
+    "show_particles": false
+  },
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:health",
+        "comparison": "<",
+        "compare_to": 8
+      },
+      {
+        "type": "neoorigins:not",
+        "condition": {
+          "type": "neoorigins:sprinting"
+        }
+      }
+    ]
+  },
+  "name": "power.avaliproject.expie_panic.name",
+  "description": "power.avaliproject.expie_panic.description"
+}

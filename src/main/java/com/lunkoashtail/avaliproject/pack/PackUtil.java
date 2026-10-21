@@ -1,9 +1,11 @@
 package com.lunkoashtail.avaliproject.pack;
 
+import com.lunkoashtail.avaliproject.entity.client.ManokitVariant;
 import com.lunkoashtail.avaliproject.entity.custom.AvaliEntity;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
 import com.lunkoashtail.avaliproject.network.PackDataSyncPayload;
+import com.lunkoashtail.avaliproject.species.Species;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -71,12 +73,17 @@ public class PackUtil {
         MinecraftServer server = level.getServer();
         List<PackRosterEntry> roster = new ArrayList<>();
         for (UUID member : record.getMemberUUIDs()) {
-            roster.add(PackRosterEntry.forPlayer(member, resolvePlayerName(server, member), isOnline(server, member)));
+            ServerPlayer memberPlayer = server.getPlayerList().getPlayer(member);
+            Species species = memberPlayer != null ? memberPlayer.getData(ModAttachments.SPECIES) : Species.HUMAN;
+            roster.add(PackRosterEntry.forPlayer(member, resolvePlayerName(server, member), memberPlayer != null, species,
+                    memberPlayer != null ? memberPlayer.getData(ModAttachments.MANOKIT_SUBSPECIES) : ManokitVariant.DEFAULT,
+                    memberPlayer != null ? memberPlayer.getData(ModAttachments.SPECIES_COSMETICS).choice(species).orElse("") : ""));
         }
         for (AvaliEntity avali : ownedAvali(level, allMembers)) {
             int trust = avali.getOwnerUUID() != null ? avali.getTrustMemory().get(avali.getOwnerUUID()).trust() : 0;
             roster.add(PackRosterEntry.forAvali(avali.getUUID(), avali.getDisplayName().getString(),
-                    avali.isMale(), avali.isBaby(), (int) avali.getHealth(), (int) avali.getMaxHealth(), trust));
+                    avali.isMale(), avali.isBaby(), (int) avali.getHealth(), (int) avali.getMaxHealth(), trust,
+                    avali.getTexture()));
         }
 
         int lumeBits = 0;

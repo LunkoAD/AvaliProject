@@ -34,6 +34,7 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.EntityType;
+import net.neoforged.neoforge.fluids.FluidType;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -201,7 +202,7 @@ public class ChrgakbzEntity extends Animal implements GeoEntity {
     }
 
     @Override
-    public boolean isPushedByFluid() {
+    public boolean isPushedByFluid(FluidType type) {
         return false;
     }
 

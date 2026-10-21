@@ -1,0 +1,68 @@
+{
+  "type": "neoorigins:multiple",
+  "scale": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.scale",
+    "amount": -0.333,
+    "operation": "add_multiplied_total",
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:tribal_holoholo_form"
+    },
+    "power_condition": {
+      "type": "neoorigins:origin",
+      "layer": "neoorigins:origin",
+      "origin": "avaliproject:manokit"
+    },
+    "power_condition_mode": "ALLOW"
+  },
+  "speed": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.movement_speed",
+    "amount": 0.5,
+    "operation": "add_multiplied_base",
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:tribal_holoholo_form"
+    },
+    "power_condition": {
+      "type": "neoorigins:origin",
+      "layer": "neoorigins:origin",
+      "origin": "avaliproject:manokit"
+    },
+    "power_condition_mode": "ALLOW"
+  },
+  "mining": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:player.block_break_speed",
+    "amount": -1,
+    "operation": "add_multiplied_total",
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:tribal_holoholo_form"
+    },
+    "power_condition": {
+      "type": "neoorigins:origin",
+      "layer": "neoorigins:origin",
+      "origin": "avaliproject:manokit"
+    },
+    "power_condition_mode": "ALLOW"
+  },
+  "weapons": {
+    "type": "neoorigins:modify_damage",
+    "direction": "out",
+    "multiplier": 0,
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:tribal_holoholo_form"
+    },
+    "power_condition": {
+      "type": "neoorigins:origin",
+      "layer": "neoorigins:origin",
+      "origin": "avaliproject:manokit"
+    },
+    "power_condition_mode": "ALLOW"
+  },
+  "name": "power.avaliproject.tribal_holoholo_body.name",
+  "description": "power.avaliproject.tribal_holoholo_body.description"
+}

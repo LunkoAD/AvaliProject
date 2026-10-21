@@ -1,0 +1,20 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.movement_speed",
+  "amount": 0.1,
+  "operation": "add_multiplied_base",
+  "condition": {
+    "type": "neoorigins:not",
+    "condition": {
+      "type": "neoorigins:in_water"
+    }
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.tribal_trail_legs.name",
+  "description": "power.avaliproject.tribal_trail_legs.description"
+}

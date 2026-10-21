@@ -28,8 +28,19 @@
     "avaliproject:detailed_protogen_block",
     "avaliproject:alt_protogen_support_block",
     "avaliproject:protogen_support_block",
+    "avaliproject:synch_pod",
+    "avaliproject:growth_vat",
+    "avaliproject:protogen_research_station",
+    "avaliproject:protogen_mining_station",
+    "avaliproject:protogen_farming_station",
+    "avaliproject:protogen_generator",
+    "avaliproject:nutrient_paste",
+    "avaliproject:embryo",
+    "avaliproject:dna",
+    "avaliproject:protogen_augment",
     "avaliproject:novulite_deepslate_ore",
     "avaliproject:novulite_block",
-    "avaliproject:novulite_ore"
+    "avaliproject:novulite_ore",
+    "avaliproject:protogen_serum"
   ]
 }

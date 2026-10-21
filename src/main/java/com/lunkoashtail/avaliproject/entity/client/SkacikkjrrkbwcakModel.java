@@ -27,10 +27,10 @@ public class SkacikkjrrkbwcakModel extends GeoModel<SkacikkjrrkbwcakEntity> {
     }
 
     @Override
-    public void setCustomAnimations(SkacikkjrrkbwcakEntity animatable, long instanceId, AnimationState animationState) {
+    public void setCustomAnimations(SkacikkjrrkbwcakEntity animatable, long instanceId, AnimationState<SkacikkjrrkbwcakEntity> animationState) {
         GeoBone head = getAnimationProcessor().getBone("head");
         if (head != null) {
-            EntityModelData entityData = (EntityModelData) animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
             head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD);
             head.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
         }

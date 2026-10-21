@@ -2,7 +2,9 @@ package com.lunkoashtail.avaliproject.network;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.client.ClientPayloadHandlers;
+import com.lunkoashtail.avaliproject.entity.client.ManokitVariant;
 import com.lunkoashtail.avaliproject.pack.PackRosterEntry;
+import com.lunkoashtail.avaliproject.species.Species;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -31,6 +33,9 @@ public record PackDataSyncPayload(String packName, String leaderName, boolean vi
                 ByteBufCodecs.INT.encode(buf, entry.health());
                 ByteBufCodecs.INT.encode(buf, entry.maxHealth());
                 ByteBufCodecs.INT.encode(buf, entry.trust());
+                ByteBufCodecs.VAR_INT.encode(buf, entry.species().ordinal());
+                ByteBufCodecs.VAR_INT.encode(buf, entry.subspecies().ordinal());
+                ByteBufCodecs.STRING_UTF8.encode(buf, entry.skin());
             },
             buf -> new PackRosterEntry(
                     UUIDUtil.STREAM_CODEC.decode(buf),
@@ -41,7 +46,10 @@ public record PackDataSyncPayload(String packName, String leaderName, boolean vi
                     ByteBufCodecs.BOOL.decode(buf),
                     ByteBufCodecs.INT.decode(buf),
                     ByteBufCodecs.INT.decode(buf),
-                    ByteBufCodecs.INT.decode(buf))
+                    ByteBufCodecs.INT.decode(buf),
+                    Species.values()[ByteBufCodecs.VAR_INT.decode(buf)],
+                    ManokitVariant.values()[ByteBufCodecs.VAR_INT.decode(buf)],
+                    ByteBufCodecs.STRING_UTF8.decode(buf))
     );
 
     public static final StreamCodec<ByteBuf, PackDataSyncPayload> STREAM_CODEC = StreamCodec.of(

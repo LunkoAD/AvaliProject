@@ -11,7 +11,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID)
 public class ExpieMoodEventHandler {
     private static final double WITNESS_RADIUS = 20.0;
     private static final float WITNESS_DEATH_MOOD_LOSS = 15f;

@@ -1,0 +1,29 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effects": [
+    {
+      "effect": "minecraft:regeneration",
+      "amplifier": 0
+    }
+  ],
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:relative_health",
+        "comparison": ">",
+        "compare_to": 0.5
+      },
+      {
+        "type": "neoorigins:out_of_combat",
+        "ticks": 100
+      }
+    ]
+  },
+  "toggleable": false,
+  "ambient": true,
+  "show_particles": false,
+  "show_icon": false,
+  "name": "power.avaliproject.expie_warm_blood.name",
+  "description": "power.avaliproject.expie_warm_blood.description"
+}

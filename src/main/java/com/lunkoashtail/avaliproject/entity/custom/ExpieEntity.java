@@ -9,6 +9,8 @@ import com.lunkoashtail.avaliproject.entity.ai.ExpieFaceInteractorGoal;
 import com.lunkoashtail.avaliproject.entity.ai.ExpieFollowPlayerGoal;
 import com.lunkoashtail.avaliproject.entity.ai.ExpieSleepCurlGoal;
 import com.lunkoashtail.avaliproject.entity.client.ExpieVariant;
+import com.lunkoashtail.avaliproject.species.Species;
+import com.lunkoashtail.avaliproject.species.SpeciesSkins;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
@@ -68,7 +70,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
-public class ExpieEntity extends Animal implements GeoEntity, Merchant {
+public class ExpieEntity extends Animal implements GeoEntity, Merchant, CosmeticVariantTarget, SkinnedSpeciesEntity {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final ExpieDialogueController dialogue = new ExpieDialogueController(this);
@@ -76,6 +78,9 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant {
     public ExpieDialogueController getDialogue() { return this.dialogue; }
     public float getMoodValue() { return this.getData(ModAttachments.EXPIE_MOOD).get(); }
 
+    private static final EntityDataAccessor<String> SKIN =
+            SynchedEntityData.defineId(ExpieEntity.class, EntityDataSerializers.STRING);
+    private static final String SKIN_TAG = "Skin";
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(ExpieEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<String> ANIMATION =
@@ -260,6 +265,7 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant {
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(VARIANT, 0);
+        builder.define(SKIN, "");
         builder.define(ANIMATION, "undefined");
         builder.define(SLEEPING_NEAR_PLAYER, false);
         builder.define(HELD_PLUSH, ItemStack.EMPTY);
@@ -268,7 +274,16 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant {
 
     private int getTypeVariant() { return this.entityData.get(VARIANT); }
     public ExpieVariant getVariant() { return ExpieVariant.byId(this.getTypeVariant() & 255); }
+    @Override
+    public void setCosmeticVariant(int variantId) { this.entityData.set(VARIANT, variantId & 255); }
+
     private void setVariant(ExpieVariant variant) { this.entityData.set(VARIANT, variant.getId() & 255); }
+
+    @Override
+    public Species skinSpecies() { return Species.EXPIE; }
+    @Override
+    public String getSkin() { return this.entityData.get(SKIN); }
+    public void setSkin(String skin) { this.entityData.set(SKIN, skin); }
 
     public boolean isSleepingNearPlayer() { return this.entityData.get(SLEEPING_NEAR_PLAYER); }
     public void setSleepingNearPlayer(boolean value) { this.entityData.set(SLEEPING_NEAR_PLAYER, value); }
@@ -284,6 +299,7 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant {
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putInt("Variant", this.getTypeVariant());
+        compound.putString(SKIN_TAG, this.getSkin());
         UUID clingyTarget = this.getClingyTarget();
         if (clingyTarget != null) compound.putUUID("ClingyTarget", clingyTarget);
         compound.putLong("LastHugTick", this.lastHugTick);
@@ -294,6 +310,9 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant {
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
+        String skin = compound.contains(SKIN_TAG) ? compound.getString(SKIN_TAG)
+                : this.getVariant() == ExpieVariant.WHITE ? "white" : "normal";
+        this.setSkin(SpeciesSkins.knownOrRandom(Species.EXPIE, skin, this.random));
         if (compound.hasUUID("ClingyTarget")) this.setClingyTarget(compound.getUUID("ClingyTarget"));
         if (compound.contains("LastHugTick")) this.lastHugTick = compound.getLong("LastHugTick");
         if (compound.contains("HeldPlush")) {
@@ -315,6 +334,7 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant {
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType,
                                          @Nullable SpawnGroupData spawnGroupData) {
         this.setVariant(Util.getRandom(ExpieVariant.values(), this.random));
+        this.setSkin(SpeciesSkins.random(Species.EXPIE, this.random));
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
@@ -512,9 +532,6 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant {
         double horizSpeed = this.getDeltaMovement().horizontalDistanceSqr();
         boolean isMoving = horizSpeed > 0.001;
 
-        if (pose == Pose.FALL_FLYING) {
-            return event.setAndContinue(RawAnimation.begin().thenLoop("animation.Expie.Swimming"));
-        }
         if (pose == Pose.SWIMMING) {
             if (this.isSwimming()) {
                 return event.setAndContinue(RawAnimation.begin().thenLoop("animation.Expie.Swimming"));

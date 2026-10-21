@@ -1,6 +1,6 @@
 {
   "values": [
-    "#forge:ores/durasteel",
+    "#c:ores/durasteel",
     "#minecraft:needs_diamond_tool"
   ]
 }

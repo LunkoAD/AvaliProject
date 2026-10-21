@@ -1,0 +1,10 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "mod_exhaustion",
+  "modifier": {
+    "operation": "multiplication",
+    "value": 1.2
+  },
+  "name": "power.avaliproject.wickerbeast_big_appetite.name",
+  "description": "power.avaliproject.wickerbeast_big_appetite.description"
+}

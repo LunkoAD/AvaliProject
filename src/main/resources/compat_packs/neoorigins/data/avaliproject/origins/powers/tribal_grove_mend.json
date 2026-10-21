@@ -1,0 +1,50 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 60,
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:heal",
+        "amount": 1
+      },
+      {
+        "type": "neoorigins:change_resource",
+        "resource": "avaliproject:manokit_blessing",
+        "change": -2,
+        "operation": "add"
+      }
+    ]
+  },
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:on_block",
+        "block_condition": {
+          "type": "neoorigins:in_tag",
+          "tag": "avaliproject:tribal_mend_ground"
+        }
+      },
+      {
+        "type": "neoorigins:relative_health",
+        "comparison": "<",
+        "compare_to": 1
+      },
+      {
+        "type": "neoorigins:resource",
+        "resource": "avaliproject:manokit_blessing",
+        "comparison": ">=",
+        "compare_to": 2
+      }
+    ]
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.tribal_grove_mend.name",
+  "description": "power.avaliproject.tribal_grove_mend.description"
+}

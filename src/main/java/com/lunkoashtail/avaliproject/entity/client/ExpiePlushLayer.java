@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.entity.client;
 
 import com.lunkoashtail.avaliproject.entity.custom.ExpieEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -36,6 +37,7 @@ public class ExpiePlushLayer extends BlockAndItemGeoLayer<ExpieEntity> {
                                        MultiBufferSource bufferSource, float partialTick, int packedLight, int packedOverlay) {
         poseStack.pushPose();
         poseStack.translate(0, CHEST_UP, CHEST_FORWARD);
+        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
         super.renderStackForBone(poseStack, bone, stack, animatable, bufferSource, partialTick, packedLight, packedOverlay);
         poseStack.popPose();
     }

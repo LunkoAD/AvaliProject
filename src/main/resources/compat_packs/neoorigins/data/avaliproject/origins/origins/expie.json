@@ -1,0 +1,20 @@
+{
+  "name": "origin.avaliproject.expie.name",
+  "description": "origin.avaliproject.expie.neoorigins_description",
+  "icon": "avaliproject:expie_origin_icon",
+  "impact": 2,
+  "order": 200,
+  "powers": [
+    "avaliproject:expie_small_frame",
+    "avaliproject:expie_springy",
+    "avaliproject:expie_wall_slide",
+    "avaliproject:expie_warm_blood",
+    "avaliproject:expie_low_light_eyes",
+    "avaliproject:expie_fragile",
+    "avaliproject:expie_poor_swimmer",
+    "avaliproject:expie_sinker",
+    "avaliproject:expie_panic",
+    "avaliproject:expie_carnivore",
+    "avaliproject:expie_breakpoint"
+  ]
+}

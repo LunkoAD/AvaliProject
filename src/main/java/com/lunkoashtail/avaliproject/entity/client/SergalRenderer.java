@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.entity.client;
 
 import com.google.common.collect.Maps;
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.client.SpeciesCosmeticTextures;
 import com.lunkoashtail.avaliproject.entity.custom.SergalEntity;
 import net.minecraft.Util;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -19,6 +20,7 @@ public class SergalRenderer extends GeoEntityRenderer<SergalEntity> {
     public SergalRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new SergalModel());
         this.shadowRadius = 0.5f;
+        this.addRenderLayer(new SpeciesHeldItemLayer<>(this));
     }
 
     private static final Map<SergalVariant, ResourceLocation> LOCATION_BY_VARIANT =
@@ -51,7 +53,8 @@ public class SergalRenderer extends GeoEntityRenderer<SergalEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(SergalEntity pEntity) {
-        return LOCATION_BY_VARIANT.get(pEntity.getVariant());
+        return SpeciesCosmeticTextures.resolve(pEntity, SpeciesCosmeticTextures.skinOr(pEntity.skinSpecies(), pEntity.getSkin(),
+                LOCATION_BY_VARIANT.get(pEntity.getVariant())));
     }
 
     @Override
@@ -65,5 +68,11 @@ public class SergalRenderer extends GeoEntityRenderer<SergalEntity> {
         this.scaleHeight = scale;
         this.scaleWidth = scale;
         super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, color);
+    }
+
+    @Override
+    protected void applyRotations(SergalEntity animatable, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTick, float nativeScale) {
+        super.applyRotations(animatable, poseStack, ageInTicks, rotationYaw, partialTick, nativeScale);
+        HumanoidPoser.applyBodyRotations(animatable, poseStack, partialTick, 1.0F, true);
     }
 }

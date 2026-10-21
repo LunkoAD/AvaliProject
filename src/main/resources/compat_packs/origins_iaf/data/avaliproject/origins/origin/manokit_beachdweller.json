@@ -1,0 +1,10 @@
+{
+  "name": "origin.avaliproject.manokit_beachdweller.name",
+  "description": "origin.avaliproject.manokit_beachdweller.description",
+  "icon": {
+    "id": "avaliproject:beachdweller_manokit_spawn_egg"
+  },
+  "order": 261,
+  "impact": 0,
+  "powers": []
+}

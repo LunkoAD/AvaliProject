@@ -35,8 +35,26 @@
     "avaliproject:novulite_ore",
     "avaliproject:novulite_block",
     "avaliproject:agate_block",
+    "avaliproject:carnelian_block",
+    "avaliproject:jadeite_block",
     "avaliproject:alt_protogen_support_block",
     "avaliproject:alt_detailed_protogen_block",
-    "avaliproject:alt_avali_fabric_block"
+    "avaliproject:alt_avali_fabric_block",
+    "avaliproject:crystalithium_ore",
+    "avaliproject:crystalithium_deepslate_ore",
+    "avaliproject:moonstone_ore",
+    "avaliproject:moonstone_deepslate_ore",
+    "avaliproject:sunstone_ore",
+    "avaliproject:sunstone_deepslate_ore",
+    "avaliproject:larimar_ore",
+    "avaliproject:larimar_deepslate_ore",
+    "avaliproject:coral_cultivation_block",
+    "avaliproject:moonlit_offering_altar",
+    "avaliproject:synch_pod",
+    "avaliproject:growth_vat",
+    "avaliproject:protogen_research_station",
+    "avaliproject:protogen_mining_station",
+    "avaliproject:protogen_farming_station",
+    "avaliproject:protogen_generator"
   ]
 }

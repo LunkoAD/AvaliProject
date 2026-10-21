@@ -1,0 +1,34 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 600,
+  "cooldown_icon": "minecraft:goat_horn",
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:entity.allay.ambient_with_item",
+        "volume": 1,
+        "pitch": 1.4
+      },
+      {
+        "type": "neoorigins:area_of_effect",
+        "radius": 12,
+        "include_source": true,
+        "entity_condition": {
+          "type": "neoorigins:entity_type",
+          "entity_type": "minecraft:player"
+        },
+        "entity_action": {
+          "type": "neoorigins:apply_effect",
+          "effect": "minecraft:speed",
+          "duration": 160,
+          "amplifier": 0,
+          "show_particles": false
+        }
+      }
+    ]
+  },
+  "name": "power.avaliproject.avali_pack_ping.name",
+  "description": "power.avaliproject.avali_pack_ping.description"
+}

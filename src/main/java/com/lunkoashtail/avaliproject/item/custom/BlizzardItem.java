@@ -77,9 +77,9 @@ public class BlizzardItem extends Item implements GeoItem, HitscanWeapon {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-        AnimationController procedureController = new AnimationController(this, "procedureController", 0, this::procedurePredicate);
+        AnimationController<BlizzardItem> procedureController = new AnimationController<>(this, "procedureController", 0, this::procedurePredicate);
         data.add(procedureController);
-        AnimationController idleController = new AnimationController(this, "idleController", 0, this::idlePredicate);
+        AnimationController<BlizzardItem> idleController = new AnimationController<>(this, "idleController", 0, this::idlePredicate);
         data.add(idleController);
     }
 

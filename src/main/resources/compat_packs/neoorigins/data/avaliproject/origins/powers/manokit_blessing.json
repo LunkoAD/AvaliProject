@@ -1,0 +1,18 @@
+{
+  "type": "neoorigins:resource",
+  "min": 0,
+  "max": 100,
+  "start_value": 100,
+  "regen_rate": 1,
+  "regen_interval": 20,
+  "regen_condition": {
+    "type": "neoorigins:out_of_combat",
+    "ticks": 200
+  },
+  "hud_render": {
+    "label": "Blessing",
+    "color": "#4FD6C8"
+  },
+  "name": "power.avaliproject.manokit_blessing.name",
+  "description": "power.avaliproject.manokit_blessing.description"
+}

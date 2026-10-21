@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:modify_damage",
+  "direction": "in",
+  "damage_type": "#minecraft:is_freezing",
+  "multiplier": 0.6,
+  "name": "power.avaliproject.avali_cold_hardy.name",
+  "description": "power.avaliproject.avali_cold_hardy.description"
+}

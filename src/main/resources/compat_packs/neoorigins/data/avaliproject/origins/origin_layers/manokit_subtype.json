@@ -1,0 +1,34 @@
+{
+  "order": 3,
+  "name": "origin_layer.avaliproject.manokit_subtype",
+  "origins": [
+    {
+      "origin": "avaliproject:manokit_beachdweller",
+      "condition": {
+        "type": "neoorigins:origin",
+        "layer": "neoorigins:origin",
+        "origin": "avaliproject:manokit"
+      }
+    },
+    {
+      "origin": "avaliproject:manokit_tribal",
+      "condition": {
+        "type": "neoorigins:origin",
+        "layer": "neoorigins:origin",
+        "origin": "avaliproject:manokit"
+      }
+    },
+    {
+      "origin": "avaliproject:manokit_arcane",
+      "condition": {
+        "type": "neoorigins:origin",
+        "layer": "neoorigins:origin",
+        "origin": "avaliproject:manokit"
+      }
+    }
+  ],
+  "allow_random": false,
+  "auto_choose": false,
+  "hidden": false,
+  "enabled": true
+}

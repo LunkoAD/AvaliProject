@@ -1,0 +1,79 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 4,
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:if_else",
+        "condition": {
+          "type": "neoorigins:resource",
+          "resource": "avaliproject:manokit_blessing",
+          "comparison": "<=",
+          "compare_to": 0
+        },
+        "if_action": {
+          "type": "neoorigins:toggle",
+          "power": "avaliproject:dweller_drained",
+          "value": true
+        }
+      },
+      {
+        "type": "neoorigins:if_else",
+        "condition": {
+          "type": "neoorigins:and",
+          "conditions": [
+            {
+              "type": "neoorigins:power_active",
+              "power": "avaliproject:dweller_drained"
+            },
+            {
+              "type": "neoorigins:resource",
+              "resource": "avaliproject:manokit_blessing",
+              "comparison": ">=",
+              "compare_to": 30
+            }
+          ]
+        },
+        "if_action": {
+          "type": "neoorigins:toggle",
+          "power": "avaliproject:dweller_drained",
+          "value": false
+        }
+      },
+      {
+        "type": "neoorigins:if_else",
+        "condition": {
+          "type": "neoorigins:and",
+          "conditions": [
+            {
+              "type": "neoorigins:power_active",
+              "power": "avaliproject:dweller_drained"
+            },
+            {
+              "type": "neoorigins:in_water"
+            },
+            {
+              "type": "neoorigins:not",
+              "condition": {
+                "type": "neoorigins:on_ground"
+              }
+            }
+          ]
+        },
+        "if_action": {
+          "type": "neoorigins:add_velocity",
+          "y": -0.04
+        }
+      }
+    ]
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.dweller_ebb.name",
+  "description": "power.avaliproject.dweller_ebb.description"
+}

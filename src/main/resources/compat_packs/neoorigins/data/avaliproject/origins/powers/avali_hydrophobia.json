@@ -1,0 +1,22 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 20,
+  "entity_action": {
+    "type": "neoorigins:damage",
+    "amount": 1,
+    "damage_type": "minecraft:on_fire"
+  },
+  "condition": {
+    "type": "neoorigins:or",
+    "conditions": [
+      {
+        "type": "neoorigins:in_water"
+      },
+      {
+        "type": "neoorigins:in_rain"
+      }
+    ]
+  },
+  "name": "power.avaliproject.avali_hydrophobia.name",
+  "description": "power.avaliproject.avali_hydrophobia.description"
+}

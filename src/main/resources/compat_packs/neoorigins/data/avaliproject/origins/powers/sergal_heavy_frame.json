@@ -1,0 +1,305 @@
+{
+  "type": "neoorigins:multiple",
+  "chest_1": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -0.3,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 1
+      }
+    }
+  },
+  "legs_1": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -0.3,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 1
+      }
+    }
+  },
+  "chest_2": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -0.6,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 2
+      }
+    }
+  },
+  "legs_2": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -0.6,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 2
+      }
+    }
+  },
+  "chest_3": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -0.9,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 3
+      }
+    }
+  },
+  "legs_3": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -0.9,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 3
+      }
+    }
+  },
+  "chest_4": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -1.2,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 4
+      }
+    }
+  },
+  "legs_4": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -1.2,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 4
+      }
+    }
+  },
+  "chest_5": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -1.5,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 5
+      }
+    }
+  },
+  "legs_5": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -1.5,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 5
+      }
+    }
+  },
+  "chest_6": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -1.8,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 6
+      }
+    }
+  },
+  "legs_6": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -1.8,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 6
+      }
+    }
+  },
+  "chest_7": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -2.1,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 7
+      }
+    }
+  },
+  "legs_7": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -2.1,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 7
+      }
+    }
+  },
+  "chest_8": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -2.4,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 8
+      }
+    }
+  },
+  "legs_8": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -2.4,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 8
+      }
+    }
+  },
+  "chest_9": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -2.7,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 9
+      }
+    }
+  },
+  "legs_9": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -2.7,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": "==",
+        "compare_to": 9
+      }
+    }
+  },
+  "chest_10": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -3,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": ">=",
+        "compare_to": 10
+      }
+    }
+  },
+  "legs_10": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.armor",
+    "amount": -3,
+    "operation": "add_value",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "legs",
+      "item_condition": {
+        "type": "neoorigins:armor_value",
+        "comparison": ">=",
+        "compare_to": 10
+      }
+    }
+  },
+  "name": "power.avaliproject.sergal_heavy_frame.name",
+  "description": "power.avaliproject.sergal_heavy_frame.description"
+}

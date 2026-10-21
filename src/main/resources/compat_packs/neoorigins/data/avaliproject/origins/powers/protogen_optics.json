@@ -1,0 +1,21 @@
+{
+  "type": "neoorigins:enhanced_vision",
+  "exposure": 0.35,
+  "power_condition": {
+    "type": "neoorigins:not",
+    "condition": {
+      "type": "neoorigins:or",
+      "conditions": [
+        {
+          "type": "neoorigins:in_water"
+        },
+        {
+          "type": "neoorigins:in_rain"
+        }
+      ]
+    }
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.protogen_optics.name",
+  "description": "power.avaliproject.protogen_optics.description"
+}

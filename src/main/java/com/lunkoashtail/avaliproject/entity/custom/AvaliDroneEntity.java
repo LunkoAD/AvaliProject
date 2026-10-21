@@ -129,7 +129,7 @@ public class AvaliDroneEntity extends TamableAnimal implements RangedAttackMob, 
         this.goalSelector.addGoal(3, new HoverWanderGoal());
         this.goalSelector.addGoal(4, new OwnerHurtByTargetGoal(this));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Monster.class, true, false) {
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Monster.class, true, false) {
             @Override
             public boolean canUse() {
                 return !AvaliDroneEntity.this.isTame() && super.canUse();

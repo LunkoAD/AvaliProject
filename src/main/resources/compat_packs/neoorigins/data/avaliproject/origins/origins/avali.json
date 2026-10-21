@@ -1,0 +1,22 @@
+{
+  "name": "origin.avaliproject.avali.name",
+  "description": "origin.avaliproject.avali.neoorigins_description",
+  "icon": "avaliproject:avali_origin_icon",
+  "impact": 2,
+  "order": 210,
+  "powers": [
+    "avaliproject:avali_small_frame",
+    "avaliproject:avali_glide",
+    "avaliproject:avali_cold_hardy",
+    "avaliproject:avali_snow_stride",
+    "avaliproject:avali_keen_hearing",
+    "avaliproject:avali_rest_regen",
+    "avaliproject:avali_hydrophobia",
+    "avaliproject:avali_water_bottle_burn",
+    "avaliproject:avali_heat_weakness",
+    "avaliproject:avali_fast_metabolism",
+    "avaliproject:avali_carnivore",
+    "avaliproject:avali_delicate_claws",
+    "avaliproject:avali_pack_ping"
+  ]
+}

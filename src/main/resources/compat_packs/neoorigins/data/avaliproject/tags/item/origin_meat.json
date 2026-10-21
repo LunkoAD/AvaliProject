@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:meat",
+    {
+      "id": "#c:foods/raw_meat",
+      "required": false
+    },
+    {
+      "id": "#c:foods/cooked_meat",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "type": "neoorigins:multiple",
+  "damage": {
+    "type": "neoorigins:modify_damage",
+    "direction": "out",
+    "multiplier": 5,
+    "damage_type": "player",
+    "condition": {
+      "type": "neoorigins:not",
+      "condition": {
+        "type": "neoorigins:equipped_item",
+        "equipment_slot": "mainhand"
+      }
+    }
+  },
+  "slow": {
+    "type": "neoorigins:action_on_hit",
+    "action": "target_effect",
+    "effect": "minecraft:slowness",
+    "duration": 40,
+    "amplifier": 0,
+    "damage_type": "minecraft:player_attack",
+    "power_condition": {
+      "type": "neoorigins:not",
+      "condition": {
+        "type": "neoorigins:equipped_item",
+        "equipment_slot": "mainhand"
+      }
+    },
+    "power_condition_mode": "ALLOW"
+  },
+  "name": "power.avaliproject.wickerbeast_bite.name",
+  "description": "power.avaliproject.wickerbeast_bite.description"
+}

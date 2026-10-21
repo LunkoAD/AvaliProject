@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.item;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.block.WoodSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -144,6 +145,18 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.DETAILED_PROTOGEN_BLOCK);
                         output.accept(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK);
                         output.accept(ModBlocks.PROTOGEN_SUPPORT_BLOCK);
+                        output.accept(ModItems.SYNCH_POD);
+                        output.accept(ModItems.GROWTH_VAT);
+                        output.accept(ModItems.PROTOGEN_RESEARCH_STATION);
+                        output.accept(ModItems.PROTOGEN_MINING_STATION);
+                        output.accept(ModItems.PROTOGEN_FARMING_STATION);
+                        output.accept(ModItems.PROTOGEN_GENERATOR);
+                        output.accept(ModItems.NUTRIENT_PASTE);
+                        output.accept(ModItems.EMBRYO);
+                        output.accept(ModItems.DNA);
+                        output.accept(ModItems.PROTOGEN_AUGMENT);
+                        output.accept(ModItems.AVALI_AUGMENT);
+                        output.accept(ModItems.EXPIE_AUGMENT);
                         output.accept(ModBlocks.NOVULITE_DEEPSLATE_ORE);
                         output.accept(ModBlocks.NOVULITE_BLOCK);
                         output.accept(ModBlocks.NOVULITE_ORE);
@@ -264,6 +277,81 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLOWPLANT_FRUIT);
                         output.accept(ModBlocks.CONTAINER_CRATE);
                         output.accept(ModItems.EXPIE_SPAWN_EGG);
+
+                        output.accept(ModBlocks.CRYSTALITHIUM_ORE);
+                        output.accept(ModBlocks.CRYSTALITHIUM_DEEPSLATE_ORE);
+                        output.accept(ModItems.CRYSTALITHIUM_CRYSTAL);
+                        output.accept(ModItems.WICKER_HORN_FRAGMENT);
+                        output.accept(ModItems.CLAW_SHARD);
+                        output.accept(ModItems.MANE_TUFT);
+                        output.accept(ModItems.WICKER_EGG);
+                        output.accept(ModItems.CRYSTALITHIUM_TRINKET);
+                        output.accept(ModItems.WICKERBEAST_SPAWN_EGG);
+
+                        output.accept(ModItems.FELKIN_HIDE);
+                        output.accept(ModItems.FELKIN_SPAWN_EGG);
+                        output.accept(ModItems.NORTHERN_FELKIN_SPAWN_EGG);
+
+                        output.accept(ModItems.ZORGOIA_SPAWN_EGG);
+
+                        output.accept(ModItems.DUTCH_ANGEL_DRAGON_SPAWN_EGG);
+
+                        output.accept(ModItems.GREATER_YINGLET_SPAWN_EGG);
+
+                        output.accept(ModBlocks.CORAL_CULTIVATION_BLOCK);
+                        output.accept(ModBlocks.MOONLIT_OFFERING_ALTAR);
+                        output.accept(ModBlocks.SEA_GLASS);
+                        output.accept(ModBlocks.CARNELIAN_BLOCK);
+                        output.accept(ModBlocks.JADEITE_BLOCK);
+                        for (WoodSet set : ModBlocks.WOOD_SETS) {
+                            set.all().stream()
+                                    .filter(block -> block != set.sign && block != set.wallSign && block != set.hangingSign && block != set.wallHangingSign)
+                                    .forEach(output::accept);
+                            output.accept(set.signItem);
+                            output.accept(set.hangingSignItem);
+                        }
+                        output.accept(ModBlocks.PALM_LEAVES);
+                        output.accept(ModBlocks.PASSION_FRUIT_LEAVES);
+                        output.accept(ModBlocks.PAPAYA_LEAVES);
+                        output.accept(ModBlocks.MOONSTONE_ORE);
+                        output.accept(ModBlocks.MOONSTONE_DEEPSLATE_ORE);
+                        output.accept(ModBlocks.SUNSTONE_ORE);
+                        output.accept(ModBlocks.SUNSTONE_DEEPSLATE_ORE);
+                        output.accept(ModBlocks.LARIMAR_ORE);
+                        output.accept(ModBlocks.LARIMAR_DEEPSLATE_ORE);
+                        output.accept(ModItems.COCONUT);
+                        output.accept(ModItems.OPEN_COCONUT);
+                        output.accept(ModItems.PASSION_FRUIT);
+                        output.accept(ModItems.PAPAYA);
+                        output.accept(ModItems.DRAGON_FRUIT);
+                        output.accept(ModItems.OPEN_DRAGON_FRUIT);
+                        output.accept(ModItems.SHELL);
+                        output.accept(ModItems.CORAL_PIECE);
+                        output.accept(ModBlocks.DRIFTWOOD);
+                        output.accept(ModItems.PEARL);
+                        output.accept(ModItems.BLACK_PEARL);
+                        output.accept(ModItems.BONE_JEWELRY);
+                        output.accept(ModItems.PENDANT);
+                        output.accept(ModItems.MANOKIT_TRINKET);
+                        output.accept(ModItems.MOONSTONE);
+                        output.accept(ModItems.SUNSTONE);
+                        output.accept(ModItems.LARIMAR);
+                        output.accept(ModItems.ABALONE_SHARD);
+                        output.accept(ModItems.SEA_OPAL);
+                        output.accept(ModItems.JADEITE);
+                        output.accept(ModItems.CARNELIAN);
+                        output.accept(ModItems.AMMOLITE);
+                        output.accept(ModItems.BEACHDWELLER_MANOKIT_SPAWN_EGG);
+                        output.accept(ModItems.TRIBAL_MANOKIT_SPAWN_EGG);
+                        output.accept(ModItems.ARCANE_MANOKIT_SPAWN_EGG);
+
+                        output.accept(ModItems.HUMAN_SERUM);
+                        output.accept(ModItems.EXPIE_SERUM);
+                        output.accept(ModItems.AVALI_SERUM);
+                        output.accept(ModItems.SERGAL_SERUM);
+                        output.accept(ModItems.PROTOGEN_SERUM);
+                        output.accept(ModItems.WICKERBEAST_SERUM);
+                        output.accept(ModItems.MANOKIT_SERUM);
                     }).build());
 
     public static void register(IEventBus eventBus) {

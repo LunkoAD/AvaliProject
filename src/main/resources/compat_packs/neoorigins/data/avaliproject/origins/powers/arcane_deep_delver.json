@@ -1,0 +1,19 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:player.block_break_speed",
+  "amount": 0.2,
+  "operation": "add_multiplied_base",
+  "condition": {
+    "type": "neoorigins:height",
+    "comparison": "<",
+    "compare_to": 48
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.arcane_deep_delver.name",
+  "description": "power.avaliproject.arcane_deep_delver.description"
+}

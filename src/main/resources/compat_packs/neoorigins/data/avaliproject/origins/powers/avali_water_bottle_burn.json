@@ -1,0 +1,24 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "item_use_finish",
+  "item_condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:ingredient",
+        "item": "minecraft:potion"
+      },
+      {
+        "type": "neoorigins:nbt",
+        "nbt": "{Potion:\"minecraft:water\"}"
+      }
+    ]
+  },
+  "entity_action": {
+    "type": "neoorigins:damage",
+    "amount": 3,
+    "damage_type": "minecraft:on_fire"
+  },
+  "name": "power.avaliproject.avali_water_bottle_burn.name",
+  "description": "power.avaliproject.avali_water_bottle_burn.description"
+}

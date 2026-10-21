@@ -2,18 +2,22 @@ package com.lunkoashtail.avaliproject.datagen;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.block.WoodSet;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -100,7 +104,24 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BLIZZARD_MUZZLE.get());
         basicItem(ModItems.BLIZZARD_CORE.get());
         basicItem(ModItems.RAILGUN.get());
-        basicItem(ModItems.EXPIE_PLUSH.get());
+        getBuilder(ModItems.EXPIE_PLUSH.getId().getPath())
+                .customLoader(SeparateTransformsModelBuilder::begin)
+                .base(nested().parent(getExistingFile(modLoc("block/expie_plush"))))
+                .perspective(ItemDisplayContext.GUI, nested().parent(getExistingFile(mcLoc("item/generated")))
+                        .texture("layer0", modLoc("item/expie_plush")))
+                .end();
+        basicItem(ModItems.NUTRIENT_PASTE.get());
+        basicItem(ModItems.EMBRYO.get());
+        basicItem(ModItems.DNA.get());
+        basicItem(ModItems.PROTOGEN_AUGMENT.get());
+        basicItem(ModItems.AVALI_AUGMENT.get());
+        basicItem(ModItems.EXPIE_AUGMENT.get());
+        protogenMachineItem(ModItems.SYNCH_POD, "synch_pod/synch_pod_classic", 0.18F, 4.0F, 0.08F);
+        protogenMachineItem(ModItems.GROWTH_VAT, "growth_vat/growth_vat_classic", 0.16F, 6.0F, 0.07F);
+        protogenMachineItem(ModItems.PROTOGEN_RESEARCH_STATION, "protogen_research_station", 0.4F, 4.8F, 0.25F);
+        protogenMachineItem(ModItems.PROTOGEN_MINING_STATION, "protogen_mining_station", 0.45F, 5.4F, 0.3F);
+        protogenMachineItem(ModItems.PROTOGEN_FARMING_STATION, "protogen_farming_station", 0.45F, 5.4F, 0.3F);
+        protogenMachineItem(ModItems.PROTOGEN_GENERATOR, "protogen_generator", 0.3F, 4.8F, 0.2F);
         basicItem(ModItems.DRESSING.get());
         basicItem(ModItems.RIPPED_DRESSING.get());
 
@@ -245,6 +266,81 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.BOS_AGUDNER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.GOAT_AGUDNER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.RAB_AGUDNER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+        basicItem(ModItems.CRYSTALITHIUM_CRYSTAL.get());
+        basicItem(ModItems.WICKER_HORN_FRAGMENT.get());
+        basicItem(ModItems.CLAW_SHARD.get());
+        basicItem(ModItems.MANE_TUFT.get());
+        basicItem(ModItems.CRYSTALITHIUM_TRINKET.get());
+        basicItem(ModItems.FELKIN_HIDE.get());
+        basicItem(ModItems.COCONUT.get());
+        basicItem(ModItems.PASSION_FRUIT.get());
+        basicItem(ModItems.PAPAYA.get());
+        basicItem(ModItems.OPEN_COCONUT.get());
+        basicItem(ModItems.DRAGON_FRUIT.get());
+        basicItem(ModItems.OPEN_DRAGON_FRUIT.get());
+        for (WoodSet set : ModBlocks.WOOD_SETS) {
+            fenceItem(set.fence, set.planks);
+            buttonItem(set.button, set.planks);
+            basicItem(set.signItem.get());
+            basicItem(set.hangingSignItem.get());
+        }
+        basicItem(ModItems.SHELL.get());
+        basicItem(ModItems.CORAL_PIECE.get());
+        basicItem(ModItems.PEARL.get());
+        basicItem(ModItems.BLACK_PEARL.get());
+        basicItem(ModItems.PENDANT.get());
+        basicItem(ModItems.MANOKIT_TRINKET.get());
+        basicItem(ModItems.BONE_JEWELRY.get());
+        basicItem(ModItems.MOONSTONE.get());
+        basicItem(ModItems.SUNSTONE.get());
+        basicItem(ModItems.LARIMAR.get());
+        basicItem(ModItems.ABALONE_SHARD.get());
+        basicItem(ModItems.SEA_OPAL.get());
+        basicItem(ModItems.JADEITE.get());
+        basicItem(ModItems.CARNELIAN.get());
+        basicItem(ModItems.AMMOLITE.get());
+
+        withExistingParent(ModItems.WICKERBEAST_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.FELKIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.NORTHERN_FELKIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.ZORGOIA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.DUTCH_ANGEL_DRAGON_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.GREATER_YINGLET_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.BEACHDWELLER_MANOKIT_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.TRIBAL_MANOKIT_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.ARCANE_MANOKIT_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+        basicItem(ModItems.HUMAN_SERUM.get());
+        basicItem(ModItems.EXPIE_SERUM.get());
+        basicItem(ModItems.AVALI_SERUM.get());
+        basicItem(ModItems.SERGAL_SERUM.get());
+        basicItem(ModItems.PROTOGEN_SERUM.get());
+        basicItem(ModItems.WICKERBEAST_SERUM.get());
+        basicItem(ModItems.MANOKIT_SERUM.get());
+
+        for (DeferredItem<Item> icon : ModItems.ORIGIN_ICONS) {
+            String path = icon.getId().getPath();
+            withExistingParent(path, mcLoc("item/generated"))
+                    .texture("layer0", modLoc("origin/" + path.substring(0, path.length() - "_origin_icon".length())));
+        }
+    }
+
+    private void protogenMachineItem(DeferredItem<Item> item, String particle, float guiScale, float guiDrop, float handScale) {
+        String name = item.getId().getPath();
+        getBuilder(name)
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"))
+                .texture("particle", modLoc("block/" + particle))
+                .transforms()
+                .transform(ItemDisplayContext.GUI).rotation(30, 225, 0).translation(0, -guiDrop, 0).scale(guiScale).end()
+                .transform(ItemDisplayContext.FIXED).rotation(0, 180, 0).translation(0, -guiDrop, 0).scale(guiScale).end()
+                .transform(ItemDisplayContext.GROUND).translation(0, 3, 0).scale(handScale).end()
+                .transform(ItemDisplayContext.HEAD).translation(0, 13, 0).scale(handScale * 2).end()
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(75, 45, 0).translation(0, 2.5F, 0).scale(handScale).end()
+                .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND).rotation(75, 45, 0).translation(0, 2.5F, 0).scale(handScale).end()
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(0, 45, 0).translation(0, 0, 0).scale(handScale * 1.5F).end()
+                .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND).rotation(0, 225, 0).translation(0, 0, 0).scale(handScale * 1.5F).end()
+                .end();
     }
 
     private void trimmedArmorItem(DeferredItem<ArmorItem> itemDeferredItem) {

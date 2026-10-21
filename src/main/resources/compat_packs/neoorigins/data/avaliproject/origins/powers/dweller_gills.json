@@ -1,0 +1,11 @@
+{
+  "type": "neoorigins:water_breathing",
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.dweller_gills.name",
+  "description": "power.avaliproject.dweller_gills.description"
+}

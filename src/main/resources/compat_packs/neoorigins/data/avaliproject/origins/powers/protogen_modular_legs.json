@@ -1,0 +1,46 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 20,
+  "cooldown_icon": "minecraft:piston",
+  "entity_action": {
+    "type": "neoorigins:if_else",
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:protogen_brace_mode"
+    },
+    "if_action": {
+      "type": "neoorigins:and",
+      "actions": [
+        {
+          "type": "neoorigins:toggle",
+          "power": "avaliproject:protogen_brace_mode",
+          "value": false
+        },
+        {
+          "type": "neoorigins:play_sound",
+          "sound": "minecraft:block.piston.contract",
+          "volume": 0.6,
+          "pitch": 1.4
+        }
+      ]
+    },
+    "else_action": {
+      "type": "neoorigins:and",
+      "actions": [
+        {
+          "type": "neoorigins:toggle",
+          "power": "avaliproject:protogen_brace_mode",
+          "value": true
+        },
+        {
+          "type": "neoorigins:play_sound",
+          "sound": "minecraft:block.piston.extend",
+          "volume": 0.6,
+          "pitch": 0.8
+        }
+      ]
+    }
+  },
+  "name": "power.avaliproject.protogen_modular_legs.name",
+  "description": "power.avaliproject.protogen_modular_legs.description"
+}

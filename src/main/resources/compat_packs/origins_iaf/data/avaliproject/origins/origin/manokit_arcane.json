@@ -1,0 +1,10 @@
+{
+  "name": "origin.avaliproject.manokit_arcane.name",
+  "description": "origin.avaliproject.manokit_arcane.description",
+  "icon": {
+    "id": "avaliproject:arcane_manokit_spawn_egg"
+  },
+  "order": 263,
+  "impact": 0,
+  "powers": []
+}

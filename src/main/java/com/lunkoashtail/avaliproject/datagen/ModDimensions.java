@@ -94,8 +94,6 @@ public class ModDimensions {
         HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
 
-        //create a generator based on the default ad astra noise. - @989onan
-        //we cannot reference these directly, due to the no data gen files nature of ad astra release files. - @989onan
 
         NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(
@@ -143,5 +141,4 @@ public class ModDimensions {
         context.register(AVALON_KEY, new LevelStem(dimTypes.getOrThrow(ModDimensions.AVALON), noiseBasedChunkGenerator));
     }
 
-    //public static final RegistryObject<Level> AVALON_LEVEL = LEVELS.register("avalon", () -> );
 }

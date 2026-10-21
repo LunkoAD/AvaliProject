@@ -45,13 +45,6 @@ public class EntityAnimationFactory {
                     syncable.animationprocedure = animation;
                 }
             }
-            if (event.getEntity() instanceof AvaliEntity syncable) {
-                String animation = syncable.getSyncedAnimation();
-                if (!animation.equals("undefined")) {
-                    syncable.setAnimation("undefined");
-                    syncable.animationprocedure = animation;
-                }
-            }
             if (event.getEntity() instanceof SergalEntity syncable) {
                 String animation = syncable.getSyncedAnimation();
                 if (!animation.equals("undefined")) {

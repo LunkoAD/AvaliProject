@@ -1,0 +1,10 @@
+{
+  "name": "origin.avaliproject.manokit_tribal.name",
+  "description": "origin.avaliproject.manokit_tribal.description",
+  "icon": {
+    "id": "avaliproject:tribal_manokit_spawn_egg"
+  },
+  "order": 262,
+  "impact": 0,
+  "powers": []
+}

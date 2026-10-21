@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.entity.client;
 
 import com.google.common.collect.Maps;
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.client.SpeciesCosmeticTextures;
 import com.lunkoashtail.avaliproject.entity.custom.ProtogenEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
@@ -18,6 +19,7 @@ public class ProtogenRenderer extends GeoEntityRenderer<ProtogenEntity> {
     public ProtogenRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ProtogenModel());
         this.shadowRadius = 0.5f;
+        this.addRenderLayer(new SpeciesHeldItemLayer<>(this));
     }
 
     private static final Map<ProtogenVariant, ResourceLocation> LOCATION_BY_VARIANT =
@@ -32,7 +34,8 @@ public class ProtogenRenderer extends GeoEntityRenderer<ProtogenEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(ProtogenEntity pEntity) {
-        return LOCATION_BY_VARIANT.get(pEntity.getVariant());
+        return SpeciesCosmeticTextures.resolve(pEntity, SpeciesCosmeticTextures.skinOr(pEntity.skinSpecies(), pEntity.getSkin(),
+                LOCATION_BY_VARIANT.get(pEntity.getVariant())));
     }
 
     @Override
@@ -47,5 +50,10 @@ public class ProtogenRenderer extends GeoEntityRenderer<ProtogenEntity> {
         this.scaleWidth = scale;
         super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, color);
     }
-}
 
+    @Override
+    protected void applyRotations(ProtogenEntity animatable, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTick, float nativeScale) {
+        super.applyRotations(animatable, poseStack, ageInTicks, rotationYaw, partialTick, nativeScale);
+        HumanoidPoser.applyBodyRotations(animatable, poseStack, partialTick, 1.0F, true);
+    }
+}

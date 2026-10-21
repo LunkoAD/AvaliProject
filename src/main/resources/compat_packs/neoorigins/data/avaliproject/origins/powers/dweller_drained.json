@@ -1,0 +1,13 @@
+{
+  "type": "neoorigins:toggle",
+  "default": false,
+  "hidden": true,
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.dweller_drained.name",
+  "description": "power.avaliproject.dweller_drained.description"
+}

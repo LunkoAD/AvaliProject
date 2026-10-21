@@ -2,6 +2,7 @@ package com.lunkoashtail.avaliproject.datagen;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.block.WoodSet;
 import com.lunkoashtail.avaliproject.creativetab.GalaxyCategory;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.core.HolderLookup;
@@ -11,6 +12,9 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import com.lunkoashtail.avaliproject.util.ModTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -50,8 +54,79 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pamhc", "cheesemild")))
                 .add(ModItems.SERGAL_CHEESE.get());
 
+        for (WoodSet set : ModBlocks.WOOD_SETS) {
+            set.logs().forEach(block -> tag(set.logsItemTag).add(block.asItem()));
+            tag(ItemTags.LOGS_THAT_BURN).addTag(set.logsItemTag);
+            tag(ItemTags.PLANKS).add(set.planks.asItem());
+            tag(ItemTags.WOODEN_STAIRS).add(set.stairs.asItem());
+            tag(ItemTags.WOODEN_SLABS).add(set.slab.asItem());
+            tag(ItemTags.WOODEN_FENCES).add(set.fence.asItem());
+            tag(ItemTags.FENCE_GATES).add(set.fenceGate.asItem());
+            tag(ItemTags.WOODEN_BUTTONS).add(set.button.asItem());
+            tag(ItemTags.WOODEN_PRESSURE_PLATES).add(set.pressurePlate.asItem());
+            tag(ItemTags.SIGNS).add(set.signItem.get());
+            tag(ItemTags.HANGING_SIGNS).add(set.hangingSignItem.get());
+            set.all().stream()
+                    .filter(block -> block != set.sign && block != set.wallSign && block != set.hangingSign && block != set.wallHangingSign)
+                    .forEach(block -> tag(GalaxyCategory.MANOKIT.tag()).add(block.asItem()));
+            tag(GalaxyCategory.MANOKIT.tag()).add(set.signItem.get()).add(set.hangingSignItem.get());
+        }
+        tag(ItemTags.LEAVES)
+                .add(ModBlocks.PALM_LEAVES.asItem())
+                .add(ModBlocks.PASSION_FRUIT_LEAVES.asItem())
+                .add(ModBlocks.PAPAYA_LEAVES.asItem());
+
+        tag(ModTags.Items.TROPICAL_FRUITS)
+                .add(ModItems.COCONUT.get())
+                .add(ModItems.PASSION_FRUIT.get())
+                .add(ModItems.PAPAYA.get())
+                .add(ModItems.OPEN_COCONUT.get())
+                .add(ModItems.DRAGON_FRUIT.get())
+                .add(ModItems.OPEN_DRAGON_FRUIT.get());
+        tag(ModTags.Items.MANOKIT_GEMS)
+                .add(ModItems.MOONSTONE.get())
+                .add(ModItems.SUNSTONE.get())
+                .add(ModItems.LARIMAR.get())
+                .add(ModItems.SEA_OPAL.get())
+                .add(ModItems.JADEITE.get())
+                .add(ModItems.CARNELIAN.get())
+                .add(ModItems.AMMOLITE.get())
+                .add(ModItems.ABALONE_SHARD.get())
+                .add(ModItems.PEARL.get())
+                .add(ModItems.BLACK_PEARL.get());
+        tag(ModTags.Items.FELKIN_FOOD)
+                .add(Items.WHEAT)
+                .add(Items.HAY_BLOCK)
+                .add(Items.APPLE)
+                .add(Items.CARROT);
+
+        tag(ModTags.Items.ZORGOIA_FOOD)
+                .add(Items.BEEF)
+                .add(Items.PORKCHOP)
+                .add(Items.MUTTON)
+                .add(Items.CHICKEN)
+                .add(Items.RABBIT);
+
+        tag(ModTags.Items.DUTCH_ANGEL_DRAGON_FOOD)
+                .add(Items.APPLE)
+                .add(Items.SWEET_BERRIES)
+                .add(Items.GLOW_BERRIES)
+                .add(Items.MELON_SLICE);
+
+        tag(CURIOS_NECKLACE)
+                .add(ModItems.PENDANT.get())
+                .add(ModItems.MANOKIT_TRINKET.get());
+        tag(CURIOS_CHARM).add(ModItems.CRYSTALITHIUM_TRINKET.get());
+
         addGalaxyCategoryTags();
     }
+
+    private static TagKey<Item> curiosSlot(String slot) {
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", slot));
+    }
+
+    public static final TagKey<Item> CURIOS_NECKLACE = curiosSlot("necklace");
+    public static final TagKey<Item> CURIOS_CHARM = curiosSlot("charm");
 
     private void addGalaxyCategoryTags() {
         tag(GalaxyCategory.AVALI.tag())
@@ -166,7 +241,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.GROOU_NODULE.asItem())
                 .add(ModBlocks.KIRI_NODULE.asItem())
                 .add(ModBlocks.NAKATI_NODULE.asItem())
-                .add(ModBlocks.PIRU_NODULE.asItem());
+                .add(ModBlocks.PIRU_NODULE.asItem())
+                .add(ModItems.AVALI_SERUM.get())
+                .add(ModItems.AVALI_AUGMENT.get());
 
         tag(GalaxyCategory.PROTOGEN.tag())
                 .add(ModItems.ARCAITES_CRYSTAL.get())
@@ -197,9 +274,20 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.DETAILED_PROTOGEN_BLOCK.asItem())
                 .add(ModBlocks.ALT_PROTOGEN_SUPPORT_BLOCK.asItem())
                 .add(ModBlocks.PROTOGEN_SUPPORT_BLOCK.asItem())
+                .add(ModItems.SYNCH_POD.get())
+                .add(ModItems.GROWTH_VAT.get())
+                .add(ModItems.PROTOGEN_RESEARCH_STATION.get())
+                .add(ModItems.PROTOGEN_MINING_STATION.get())
+                .add(ModItems.PROTOGEN_FARMING_STATION.get())
+                .add(ModItems.PROTOGEN_GENERATOR.get())
+                .add(ModItems.NUTRIENT_PASTE.get())
+                .add(ModItems.EMBRYO.get())
+                .add(ModItems.DNA.get())
+                .add(ModItems.PROTOGEN_AUGMENT.get())
                 .add(ModBlocks.NOVULITE_DEEPSLATE_ORE.asItem())
                 .add(ModBlocks.NOVULITE_BLOCK.asItem())
-                .add(ModBlocks.NOVULITE_ORE.asItem());
+                .add(ModBlocks.NOVULITE_ORE.asItem())
+                .add(ModItems.PROTOGEN_SERUM.get());
 
         tag(GalaxyCategory.SERGAL.tag())
                 .add(ModItems.AGATE.get())
@@ -229,7 +317,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.VILOUS_CERAMIC_ORE.asItem())
                 .add(ModBlocks.AGATE_ORE.asItem())
                 .add(ModBlocks.AGATE_DEEPSLATE_ORE.asItem())
-                .add(ModBlocks.AGATE_BLOCK.asItem());
+                .add(ModBlocks.AGATE_BLOCK.asItem())
+                .add(ModItems.SERGAL_SERUM.get());
 
         tag(GalaxyCategory.EXPIE.tag())
                 .add(ModItems.EXPIE_PLUSH.get())
@@ -302,7 +391,77 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.NUMBERRY.get())
                 .add(ModItems.GLOWPLANT_FRUIT.get())
                 .add(ModBlocks.CONTAINER_CRATE.asItem())
-                .add(ModItems.EXPIE_SPAWN_EGG.get());
+                .add(ModItems.EXPIE_SPAWN_EGG.get())
+                .add(ModItems.EXPIE_SERUM.get())
+                .add(ModItems.EXPIE_AUGMENT.get());
+
+        tag(GalaxyCategory.WICKERBEASTS.tag())
+                .add(ModBlocks.CRYSTALITHIUM_ORE.asItem())
+                .add(ModBlocks.CRYSTALITHIUM_DEEPSLATE_ORE.asItem())
+                .add(ModItems.CRYSTALITHIUM_CRYSTAL.get())
+                .add(ModItems.WICKER_HORN_FRAGMENT.get())
+                .add(ModItems.CLAW_SHARD.get())
+                .add(ModItems.MANE_TUFT.get())
+                .add(ModItems.WICKER_EGG.get())
+                .add(ModItems.CRYSTALITHIUM_TRINKET.get())
+                .add(ModItems.WICKERBEAST_SPAWN_EGG.get())
+                .add(ModItems.WICKERBEAST_SERUM.get());
+
+        tag(GalaxyCategory.FELKIN.tag())
+                .add(ModItems.FELKIN_HIDE.get())
+                .add(ModItems.FELKIN_SPAWN_EGG.get())
+                .add(ModItems.NORTHERN_FELKIN_SPAWN_EGG.get());
+
+        tag(GalaxyCategory.ZORGOIA.tag())
+                .add(ModItems.ZORGOIA_SPAWN_EGG.get());
+
+        tag(GalaxyCategory.DUTCH_ANGEL_DRAGON.tag())
+                .add(ModItems.DUTCH_ANGEL_DRAGON_SPAWN_EGG.get());
+
+        tag(GalaxyCategory.YINGLET.tag())
+                .add(ModItems.GREATER_YINGLET_SPAWN_EGG.get());
+
+        tag(GalaxyCategory.MANOKIT.tag())
+                .add(ModBlocks.CORAL_CULTIVATION_BLOCK.asItem())
+                .add(ModBlocks.MOONLIT_OFFERING_ALTAR.asItem())
+                .add(ModBlocks.SEA_GLASS.asItem())
+                .add(ModBlocks.CARNELIAN_BLOCK.asItem())
+                .add(ModBlocks.JADEITE_BLOCK.asItem())
+                .add(ModBlocks.PALM_LEAVES.asItem())
+                .add(ModBlocks.PASSION_FRUIT_LEAVES.asItem())
+                .add(ModBlocks.PAPAYA_LEAVES.asItem())
+                .add(ModBlocks.MOONSTONE_ORE.asItem())
+                .add(ModBlocks.MOONSTONE_DEEPSLATE_ORE.asItem())
+                .add(ModBlocks.SUNSTONE_ORE.asItem())
+                .add(ModBlocks.SUNSTONE_DEEPSLATE_ORE.asItem())
+                .add(ModBlocks.LARIMAR_ORE.asItem())
+                .add(ModBlocks.LARIMAR_DEEPSLATE_ORE.asItem())
+                .add(ModItems.COCONUT.get())
+                .add(ModItems.PASSION_FRUIT.get())
+                .add(ModItems.PAPAYA.get())
+                .add(ModItems.OPEN_COCONUT.get())
+                .add(ModItems.DRAGON_FRUIT.get())
+                .add(ModItems.OPEN_DRAGON_FRUIT.get())
+                .add(ModItems.SHELL.get())
+                .add(ModItems.CORAL_PIECE.get())
+                .add(ModBlocks.DRIFTWOOD.asItem())
+                .add(ModItems.PEARL.get())
+                .add(ModItems.BLACK_PEARL.get())
+                .add(ModItems.BONE_JEWELRY.get())
+                .add(ModItems.PENDANT.get())
+                .add(ModItems.MANOKIT_TRINKET.get())
+                .add(ModItems.MOONSTONE.get())
+                .add(ModItems.SUNSTONE.get())
+                .add(ModItems.LARIMAR.get())
+                .add(ModItems.ABALONE_SHARD.get())
+                .add(ModItems.SEA_OPAL.get())
+                .add(ModItems.JADEITE.get())
+                .add(ModItems.CARNELIAN.get())
+                .add(ModItems.AMMOLITE.get())
+                .add(ModItems.BEACHDWELLER_MANOKIT_SPAWN_EGG.get())
+                .add(ModItems.TRIBAL_MANOKIT_SPAWN_EGG.get())
+                .add(ModItems.ARCANE_MANOKIT_SPAWN_EGG.get())
+                .add(ModItems.MANOKIT_SERUM.get());
 
         tag(EXPIE_MEDICAL_TAG)
                 .add(ModItems.ALCOHOL.get())

@@ -1,0 +1,10 @@
+{
+  "type": "neoorigins:enhanced_vision",
+  "exposure": 0.4,
+  "power_condition": {
+    "type": "neoorigins:sneaking"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.expie_low_light_eyes.name",
+  "description": "power.avaliproject.expie_low_light_eyes.description"
+}

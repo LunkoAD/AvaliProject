@@ -47,8 +47,6 @@ public class AvalonBiomes {
 
     public static void bootstrap(BootstrapContext<Biome> context) {
 
-        //we are copying from existing biomes for now.
-        //TODO: Avalon cities should spawn avalon buildings that are "villages" but bigger and cooler. - @989onan
         BiomeGenerationSettings.Builder biomeBuilder =
                 new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
         context.register(PERMAFROST_FORESTS, AvalonGenerators.taiga(biomeBuilder));

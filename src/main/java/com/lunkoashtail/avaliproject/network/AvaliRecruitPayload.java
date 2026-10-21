@@ -5,6 +5,7 @@ import com.lunkoashtail.avaliproject.diplomacy.DiplomacyData;
 import com.lunkoashtail.avaliproject.entity.custom.AvaliEntity;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
+import com.lunkoashtail.avaliproject.pack.PackProgression;
 import com.lunkoashtail.avaliproject.pack.PackRecord;
 import com.lunkoashtail.avaliproject.pack.PackSavedData;
 import com.lunkoashtail.avaliproject.pack.PackUtil;
@@ -60,6 +61,7 @@ public record AvaliRecruitPayload(int entityId) implements CustomPacketPayload {
             removeLumeBits(player, cost);
             avali.recruit(player);
             player.setData(ModAttachments.DIPLOMACY_DATA, diplomacy.addRenown(5));
+            PackProgression.awardUncapped(player, PackProgression.XP_RECRUIT);
             player.displayClientMessage(Component.translatable("message.avaliproject.avali.recruited"), true);
         });
     }

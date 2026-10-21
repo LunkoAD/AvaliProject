@@ -1,0 +1,22 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 80,
+  "entity_action": {
+    "type": "neoorigins:area_of_effect",
+    "radius": 16,
+    "include_source": false,
+    "entity_condition": {
+      "type": "neoorigins:entity_type",
+      "entity_type": "#avaliproject:origin_hostiles"
+    },
+    "entity_action": {
+      "type": "neoorigins:apply_effect",
+      "effect": "minecraft:glowing",
+      "duration": 30,
+      "amplifier": 0,
+      "show_particles": false
+    }
+  },
+  "name": "power.avaliproject.avali_keen_hearing.name",
+  "description": "power.avaliproject.avali_keen_hearing.description"
+}

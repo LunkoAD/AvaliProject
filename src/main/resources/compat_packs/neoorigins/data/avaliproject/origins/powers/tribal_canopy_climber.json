@@ -1,0 +1,72 @@
+{
+  "type": "neoorigins:wall_climbing",
+  "power_condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:origin",
+        "layer": "neoorigins:origin",
+        "origin": "avaliproject:manokit"
+      },
+      {
+        "type": "neoorigins:and",
+        "conditions": [
+          {
+            "type": "neoorigins:not",
+            "condition": {
+              "type": "neoorigins:in_water"
+            }
+          },
+          {
+            "type": "neoorigins:or",
+            "conditions": [
+              {
+                "type": "neoorigins:block_collision",
+                "offset_x": 0.5,
+                "offset_y": 0,
+                "offset_z": 0,
+                "block_condition": {
+                  "type": "neoorigins:in_tag",
+                  "tag": "avaliproject:tribal_climbable"
+                }
+              },
+              {
+                "type": "neoorigins:block_collision",
+                "offset_x": -0.5,
+                "offset_y": 0,
+                "offset_z": 0,
+                "block_condition": {
+                  "type": "neoorigins:in_tag",
+                  "tag": "avaliproject:tribal_climbable"
+                }
+              },
+              {
+                "type": "neoorigins:block_collision",
+                "offset_x": 0,
+                "offset_y": 0,
+                "offset_z": 0.5,
+                "block_condition": {
+                  "type": "neoorigins:in_tag",
+                  "tag": "avaliproject:tribal_climbable"
+                }
+              },
+              {
+                "type": "neoorigins:block_collision",
+                "offset_x": 0,
+                "offset_y": 0,
+                "offset_z": -0.5,
+                "block_condition": {
+                  "type": "neoorigins:in_tag",
+                  "tag": "avaliproject:tribal_climbable"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.tribal_canopy_climber.name",
+  "description": "power.avaliproject.tribal_canopy_climber.description"
+}

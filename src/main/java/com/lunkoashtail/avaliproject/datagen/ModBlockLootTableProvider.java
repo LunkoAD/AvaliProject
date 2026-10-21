@@ -1,6 +1,7 @@
 package com.lunkoashtail.avaliproject.datagen;
 
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.block.WoodSet;
 import com.lunkoashtail.avaliproject.block.custom.GroouCropBlock;
 import com.lunkoashtail.avaliproject.block.custom.KiriCropBlock;
 import com.lunkoashtail.avaliproject.block.custom.NakatiCropBlock;
@@ -13,6 +14,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
@@ -21,6 +23,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -29,6 +32,9 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import java.util.Set;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
+    private static final float[] FRUIT_CHANCES = {0.1F, 0.125F, 0.15F, 0.2F, 0.25F};
+    private static final float[] STICK_CHANCES = {0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
+
     protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }
@@ -153,6 +159,71 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 createSingleItemTable(ModItems.SCRAP_METAL.get())
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))));
 
+        add(ModBlocks.CRYSTALITHIUM_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.CRYSTALITHIUM_ORE.get(), ModItems.CRYSTALITHIUM_CRYSTAL.get(), 1, 2));
+        add(ModBlocks.CRYSTALITHIUM_DEEPSLATE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.CRYSTALITHIUM_DEEPSLATE_ORE.get(), ModItems.CRYSTALITHIUM_CRYSTAL.get(), 1, 3));
+        add(ModBlocks.MOONSTONE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.MOONSTONE_ORE.get(), ModItems.MOONSTONE.get(), 1, 2));
+        add(ModBlocks.MOONSTONE_DEEPSLATE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.MOONSTONE_DEEPSLATE_ORE.get(), ModItems.MOONSTONE.get(), 1, 3));
+        add(ModBlocks.SUNSTONE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.SUNSTONE_ORE.get(), ModItems.SUNSTONE.get(), 1, 2));
+        add(ModBlocks.SUNSTONE_DEEPSLATE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.SUNSTONE_DEEPSLATE_ORE.get(), ModItems.SUNSTONE.get(), 1, 3));
+        add(ModBlocks.LARIMAR_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.LARIMAR_ORE.get(), ModItems.LARIMAR.get(), 1, 1));
+        add(ModBlocks.LARIMAR_DEEPSLATE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.LARIMAR_DEEPSLATE_ORE.get(), ModItems.LARIMAR.get(), 1, 2));
+
+        dropSelf(ModBlocks.SEA_GLASS.get());
+        dropSelf(ModBlocks.CARNELIAN_BLOCK.get());
+        dropSelf(ModBlocks.JADEITE_BLOCK.get());
+        dropSelf(ModBlocks.CORAL_CULTIVATION_BLOCK.get());
+        dropSelf(ModBlocks.MOONLIT_OFFERING_ALTAR.get());
+        dropSelf(ModBlocks.SYNCH_POD.get());
+        dropSelf(ModBlocks.GROWTH_VAT.get());
+        dropSelf(ModBlocks.PROTOGEN_RESEARCH_STATION.get());
+        dropSelf(ModBlocks.PROTOGEN_MINING_STATION.get());
+        dropSelf(ModBlocks.PROTOGEN_FARMING_STATION.get());
+        dropSelf(ModBlocks.PROTOGEN_GENERATOR.get());
+
+        HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        add(ModBlocks.SHELL_COVER.get(), block -> LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SHELL.get())
+                                .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))))));
+
+        for (WoodSet set : ModBlocks.WOOD_SETS) {
+            set.all().stream()
+                    .filter(block -> block != set.slab && block != set.wallSign && block != set.wallHangingSign)
+                    .forEach(block -> dropSelf(block.get()));
+            add(set.slab.get(), this::createSlabItemTable);
+        }
+        dropSelf(ModBlocks.WICKER_EGG.get());
+        dropSelf(ModBlocks.EXPIE_PLUSH.get());
+        dropSelf(ModBlocks.DRIFTWOOD.get());
+        dropSelf(ModBlocks.COCONUT.get());
+
+        dropOther(ModBlocks.PASSION_FRUIT_SAPLING.get(), ModItems.PASSION_FRUIT.get());
+        dropOther(ModBlocks.PAPAYA_SAPLING.get(), ModItems.PAPAYA.get());
+
+        add(ModBlocks.PALM_LEAVES.get(), this::createStickOnlyLeavesDrops);
+        add(ModBlocks.PASSION_FRUIT_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.PASSION_FRUIT_SAPLING.get(), FRUIT_CHANCES));
+        add(ModBlocks.PAPAYA_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.PAPAYA_SAPLING.get(), FRUIT_CHANCES));
+    }
+
+    private LootTable.Builder createStickOnlyLeavesDrops(Block leaves) {
+        HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .when(HAS_SHEARS.or(hasSilkTouch()))
+                        .add(LootItem.lootTableItem(leaves)))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .when(HAS_SHEARS.or(hasSilkTouch()).invert())
+                        .add(applyExplosionDecay(leaves, LootItem.lootTableItem(Items.STICK)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                .when(BonusLevelTableCondition.bonusLevelFlatChance(enchantments.getOrThrow(Enchantments.FORTUNE), STICK_CHANCES))));
     }
 
     private LootTable.Builder createFoliageAndFruitTable(Item fruit) {

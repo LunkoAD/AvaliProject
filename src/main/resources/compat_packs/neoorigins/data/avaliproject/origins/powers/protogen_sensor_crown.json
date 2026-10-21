@@ -1,0 +1,10 @@
+{
+  "type": "neoorigins:restrict_armor",
+  "restrictions": [
+    {
+      "slot": "head"
+    }
+  ],
+  "name": "power.avaliproject.protogen_sensor_crown.name",
+  "description": "power.avaliproject.protogen_sensor_crown.description"
+}

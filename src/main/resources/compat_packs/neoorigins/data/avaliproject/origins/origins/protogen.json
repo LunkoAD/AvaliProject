@@ -1,0 +1,20 @@
+{
+  "name": "origin.avaliproject.protogen.name",
+  "description": "origin.avaliproject.protogen.neoorigins_description",
+  "icon": "avaliproject:protogen_origin_icon",
+  "impact": 2,
+  "order": 230,
+  "powers": [
+    "avaliproject:protogen_optics",
+    "avaliproject:protogen_chassis",
+    "avaliproject:protogen_filters",
+    "avaliproject:protogen_conductive",
+    "avaliproject:protogen_brace_mode",
+    "avaliproject:protogen_modular_legs",
+    "avaliproject:protogen_stride",
+    "avaliproject:protogen_brace",
+    "avaliproject:protogen_short_circuit",
+    "avaliproject:protogen_sensor_crown",
+    "avaliproject:protogen_scan"
+  ]
+}

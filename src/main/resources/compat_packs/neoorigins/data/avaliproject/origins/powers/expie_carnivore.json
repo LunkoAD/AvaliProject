@@ -1,0 +1,7 @@
+{
+  "type": "neoorigins:food_restriction",
+  "mode": "whitelist",
+  "item_tag": "avaliproject:origin_meat",
+  "name": "power.avaliproject.expie_carnivore.name",
+  "description": "power.avaliproject.expie_carnivore.description"
+}

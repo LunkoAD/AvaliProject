@@ -12,15 +12,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID)
 public class ModEventBusEvents {
-    @SubscribeEvent
-    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-    }
 
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -54,6 +50,15 @@ public class ModEventBusEvents {
         event.put(ModEntities.GOAT_AGUDNER.get(), GoatAgudnerEntity.createAttributes().build());
         event.put(ModEntities.RAB_AGUDNER.get(), RabAgudnerEntity.createAttributes().build());
         event.put(ModEntities.EXPIE.get(), ExpieEntity.createAttributes().build());
+        event.put(ModEntities.WICKERBEAST.get(), WickerbeastEntity.createAttributes().build());
+        event.put(ModEntities.FELKIN.get(), FelkinEntity.createAttributes().build());
+        event.put(ModEntities.NORTHERN_FELKIN.get(), NorthernFelkinEntity.createAttributes().build());
+        event.put(ModEntities.ZORGOIA.get(), ZorgoiaEntity.createAttributes().build());
+        event.put(ModEntities.DUTCH_ANGEL_DRAGON.get(), DutchAngelDragonEntity.createAttributes().build());
+        event.put(ModEntities.GREATER_YINGLET.get(), GreaterYingletEntity.createAttributes().build());
+        event.put(ModEntities.BEACHDWELLER_MANOKIT.get(), AbstractManokitEntity.createAttributes().build());
+        event.put(ModEntities.TRIBAL_MANOKIT.get(), AbstractManokitEntity.createAttributes().build());
+        event.put(ModEntities.ARCANE_MANOKIT.get(), AbstractManokitEntity.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -105,6 +110,19 @@ public class ModEventBusEvents {
         event.register(ModEntities.GOAT_AGUDNER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(ModEntities.RAB_AGUDNER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
+        event.register(ModEntities.WICKERBEAST.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.FELKIN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.GREATER_YINGLET.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.BEACHDWELLER_MANOKIT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.TRIBAL_MANOKIT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.ARCANE_MANOKIT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 
         ExpieEntity.init(event);

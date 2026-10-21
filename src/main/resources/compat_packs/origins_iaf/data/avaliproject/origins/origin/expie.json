@@ -1,0 +1,12 @@
+{
+  "name": "origin.avaliproject.expie.name",
+  "description": "origin.avaliproject.expie.description",
+  "icon": {
+    "id": "avaliproject:expie_origin_icon"
+  },
+  "order": 200,
+  "impact": 1,
+  "powers": [
+    "avaliproject:expie_nimble"
+  ]
+}

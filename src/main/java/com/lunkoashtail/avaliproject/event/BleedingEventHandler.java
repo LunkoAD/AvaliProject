@@ -9,7 +9,6 @@ import com.lunkoashtail.avaliproject.limb.PainData;
 import com.lunkoashtail.avaliproject.network.LimbConditionsSyncPayload;
 import com.lunkoashtail.avaliproject.network.LimbDataSyncPayload;
 import com.lunkoashtail.avaliproject.network.PainSyncPayload;
-import com.lunkoashtail.avaliproject.network.SpeciesSyncPayload;
 import com.lunkoashtail.avaliproject.species.Species;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -49,7 +48,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID)
 public class BleedingEventHandler {
 
     private static final float MIN_DAMAGE_FOR_BLEED     = 2.0f;
@@ -82,7 +81,7 @@ public class BleedingEventHandler {
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        PacketDistributor.sendToPlayer(player, new SpeciesSyncPayload(player.getData(ModAttachments.SPECIES).ordinal()));
+        com.lunkoashtail.avaliproject.species.SpeciesUtil.sync(player);
         PacketDistributor.sendToPlayer(player, LimbDataSyncPayload.from(player.getData(ModAttachments.LIMB_DATA)));
         PacketDistributor.sendToPlayer(player, PainSyncPayload.from(player.getData(ModAttachments.PAIN_DATA)));
     }

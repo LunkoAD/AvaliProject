@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:modify_damage",
+  "direction": "in",
+  "damage_type": "#minecraft:is_fire",
+  "multiplier": 1.4,
+  "name": "power.avaliproject.avali_heat_weakness.name",
+  "description": "power.avaliproject.avali_heat_weakness.description"
+}

@@ -2,7 +2,13 @@ package com.lunkoashtail.avaliproject.datagen;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.block.WoodSet;
 import com.lunkoashtail.avaliproject.block.custom.GroouCropBlock;
+import com.lunkoashtail.avaliproject.block.custom.ProtogenColor;
+import com.lunkoashtail.avaliproject.block.custom.ShellCoverBlock;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.*;
+import net.minecraft.core.Direction;
 import com.lunkoashtail.avaliproject.block.custom.KiriCropBlock;
 import com.lunkoashtail.avaliproject.block.custom.NakatiCropBlock;
 import com.lunkoashtail.avaliproject.block.custom.PiruCropBlock;
@@ -17,6 +23,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
@@ -122,6 +129,110 @@ public class ModBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(ModBlocks.GEOTREE.get()).forAllStates(state ->
                 new ConfiguredModel[]{new ConfiguredModel(
                         state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER ? geotreeBottom : geotreeTop)});
+
+        blockWithItem(ModBlocks.CRYSTALITHIUM_ORE);
+        blockWithItem(ModBlocks.CRYSTALITHIUM_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.MOONSTONE_ORE);
+        blockWithItem(ModBlocks.MOONSTONE_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.SUNSTONE_ORE);
+        blockWithItem(ModBlocks.SUNSTONE_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.LARIMAR_ORE);
+        blockWithItem(ModBlocks.LARIMAR_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.CORAL_CULTIVATION_BLOCK);
+        blockWithItem(ModBlocks.MOONLIT_OFFERING_ALTAR);
+
+        simpleBlockWithItem(ModBlocks.SEA_GLASS.get(), models().withExistingParent("sea_glass", mcLoc("block/carpet"))
+                .texture("wool", modLoc("block/sea_glass")).renderType("translucent"));
+        blockWithItem(ModBlocks.CARNELIAN_BLOCK);
+        blockWithItem(ModBlocks.JADEITE_BLOCK);
+
+        getVariantBuilder(ModBlocks.SHELL_COVER.get()).forAllStatesExcept(state -> {
+            String type = state.getValue(ShellCoverBlock.TYPE).getSerializedName();
+            return new ConfiguredModel[]{new ConfiguredModel(models()
+                    .withExistingParent("shell_cover_" + type, mcLoc("block/carpet"))
+                    .texture("wool", modLoc("block/shell_cover_" + type))
+                    .renderType("cutout"))};
+        }, ShellCoverBlock.WATERLOGGED);
+
+        ModBlocks.WOOD_SETS.forEach(this::woodSet);
+
+        leaves(ModBlocks.PALM_LEAVES);
+        leaves(ModBlocks.PASSION_FRUIT_LEAVES);
+        leaves(ModBlocks.PAPAYA_LEAVES);
+
+        fruitSapling(ModBlocks.PASSION_FRUIT_SAPLING, "jungle_sapling");
+        fruitSapling(ModBlocks.PAPAYA_SAPLING, "acacia_sapling");
+
+        simpleBlockWithItem(ModBlocks.DRIFTWOOD.get(), models().withExistingParent("driftwood", mcLoc("block/mangrove_roots"))
+                .renderType("cutout"));
+
+        simpleBlock(ModBlocks.COCONUT.get(), models().withExistingParent("coconut", mcLoc("block/block"))
+                .texture("top", modLoc("block/coconut_top"))
+                .texture("side", modLoc("block/coconut_side"))
+                .texture("particle", modLoc("block/coconut_side"))
+                .element().from(4, 0, 4).to(12, 8, 12)
+                .allFaces((direction, face) -> face.texture(direction == Direction.UP ? "#top" : "#side")
+                        .uvs(0, 0, 16, 16).cullface(direction == Direction.DOWN ? Direction.DOWN : null))
+                .end());
+
+        simpleBlock(ModBlocks.WICKER_EGG.get(), models().getExistingFile(modLoc("block/wicker_egg")));
+        horizontalBlock(ModBlocks.EXPIE_PLUSH.get(), models().getExistingFile(modLoc("block/expie_plush")));
+        protogenMachine(ModBlocks.SYNCH_POD, "synch_pod");
+        protogenMachine(ModBlocks.GROWTH_VAT, "growth_vat");
+        protogenStation(ModBlocks.PROTOGEN_RESEARCH_STATION);
+        protogenStation(ModBlocks.PROTOGEN_MINING_STATION);
+        protogenStation(ModBlocks.PROTOGEN_FARMING_STATION);
+        protogenStation(ModBlocks.PROTOGEN_GENERATOR);
+    }
+
+    private void protogenStation(DeferredBlock<Block> block) {
+        String name = block.getId().getPath();
+        simpleBlock(block.get(), models().getBuilder(name).texture("particle", modLoc("block/" + name)));
+    }
+
+    private void protogenMachine(DeferredBlock<Block> block, String name) {
+        VariantBlockStateBuilder builder = getVariantBuilder(block.get());
+        for (ProtogenColor color : ProtogenColor.values()) {
+            String variant = name + "_" + color.getSerializedName();
+            builder.partialState().with(ProtogenColor.PROPERTY, color)
+                    .modelForState().modelFile(models().getBuilder(variant)
+                            .texture("particle", modLoc("block/" + name + "/" + variant)))
+                    .addModel();
+        }
+    }
+
+    private void woodSet(WoodSet set) {
+        ResourceLocation planks = modLoc("block/" + set.name + "_planks");
+        ResourceLocation log = modLoc("block/" + set.name + "_log");
+
+        logBlock((RotatedPillarBlock) set.log.get());
+        blockItem(set.log);
+        axisBlock((RotatedPillarBlock) set.wood.get(), log, log);
+        blockItem(set.wood);
+
+        blockWithItem(set.planks);
+        stairsBlock((StairBlock) set.stairs.get(), planks);
+        blockItem(set.stairs);
+        slabBlock((SlabBlock) set.slab.get(), planks, planks);
+        blockItem(set.slab);
+        fenceBlock((FenceBlock) set.fence.get(), planks);
+        fenceGateBlock((FenceGateBlock) set.fenceGate.get(), planks);
+        blockItem(set.fenceGate);
+        buttonBlock((ButtonBlock) set.button.get(), planks);
+        pressurePlateBlock((PressurePlateBlock) set.pressurePlate.get(), planks);
+        blockItem(set.pressurePlate);
+        signBlock((StandingSignBlock) set.sign.get(), (WallSignBlock) set.wallSign.get(), planks);
+        hangingSignBlock((CeilingHangingSignBlock) set.hangingSign.get(), (WallHangingSignBlock) set.wallHangingSign.get(), log);
+    }
+
+    private void leaves(DeferredBlock<?> block) {
+        simpleBlockWithItem(block.get(), models().withExistingParent(block.getId().getPath(), mcLoc("block/leaves"))
+                .texture("all", mcLoc("block/dark_oak_leaves")).renderType("cutout_mipped"));
+    }
+
+    private void fruitSapling(DeferredBlock<?> block, String vanillaSapling) {
+        simpleBlock(block.get(), models().cross(block.getId().getPath(),
+                mcLoc("block/" + vanillaSapling)).renderType("cutout"));
     }
 
 

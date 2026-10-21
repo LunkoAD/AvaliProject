@@ -4,6 +4,7 @@ import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.diplomacy.DiplomacyData;
 import com.lunkoashtail.avaliproject.entity.custom.AvaliEntity;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
+import com.lunkoashtail.avaliproject.pack.PackProgression;
 import com.lunkoashtail.avaliproject.pack.PackRecord;
 import com.lunkoashtail.avaliproject.pack.PackSavedData;
 import com.lunkoashtail.avaliproject.pack.PackUtil;
@@ -51,6 +52,7 @@ public record AvaliRecruitProposalAcceptPayload(int entityId) implements CustomP
             avali.recruit(player);
             DiplomacyData diplomacy = player.getData(ModAttachments.DIPLOMACY_DATA);
             player.setData(ModAttachments.DIPLOMACY_DATA, diplomacy.addRenown(5));
+            PackProgression.awardUncapped(player, PackProgression.XP_RECRUIT);
             player.displayClientMessage(Component.translatable("message.avaliproject.avali.recruited"), true);
         });
     }

@@ -1,7 +1,9 @@
 package com.lunkoashtail.avaliproject.component;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -51,6 +53,12 @@ public class ModDataComponents {
             DATA_COMPONENTS.register("fluid_amount", () -> DataComponentType.<FluidAmount>builder()
                     .persistent(FluidAmount.CODEC)
                     .networkSynchronized(FluidAmount.STREAM_CODEC)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> TRINKET_GEM =
+            DATA_COMPONENTS.register("trinket_gem", () -> DataComponentType.<String>builder()
+                    .persistent(Codec.STRING)
+                    .networkSynchronized(ByteBufCodecs.STRING_UTF8)
                     .build());
 
     public static void register(IEventBus eventBus) {

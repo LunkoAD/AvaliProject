@@ -9,6 +9,14 @@
     "avaliproject:arcaites_crystal_ore",
     "avaliproject:novulite_ore",
     "avaliproject:agate_ore",
-    "avaliproject:aegisalt_ore"
+    "avaliproject:aegisalt_ore",
+    "avaliproject:crystalithium_ore",
+    "avaliproject:crystalithium_deepslate_ore",
+    "avaliproject:moonstone_ore",
+    "avaliproject:moonstone_deepslate_ore",
+    "avaliproject:sunstone_ore",
+    "avaliproject:sunstone_deepslate_ore",
+    "avaliproject:larimar_ore",
+    "avaliproject:larimar_deepslate_ore"
   ]
 }

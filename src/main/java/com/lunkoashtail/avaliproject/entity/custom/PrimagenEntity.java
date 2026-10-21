@@ -217,6 +217,7 @@ public class PrimagenEntity extends Monster implements GeoEntity {
         super.readAdditionalSaveData(pCompound);
         this.entityData.set(VARIANT, pCompound.getInt("Variant"));
     }
+    @SuppressWarnings("deprecation")
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,
                                         @Nullable SpawnGroupData pSpawnGroupData) {

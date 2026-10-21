@@ -14,7 +14,7 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 
 
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT)
 public class ModKeybindings {
 
      
@@ -39,10 +39,18 @@ public class ModKeybindings {
             "key.categories.avaliproject"
     );
 
+    public static final KeyMapping OPEN_SPECIES_WARDROBE = new KeyMapping(
+            "key.avaliproject.open_species_wardrobe",
+            InputConstants.Type.KEYSYM,
+            InputConstants.KEY_G,
+            "key.categories.avaliproject"
+    );
+
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(OPEN_LIMB_WHEEL);
         event.register(OPEN_PACK_GUI);
         event.register(OPEN_CARRY_GUI);
+        event.register(OPEN_SPECIES_WARDROBE);
     }
 }

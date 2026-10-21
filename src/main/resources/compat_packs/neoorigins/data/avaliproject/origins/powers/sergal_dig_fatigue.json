@@ -1,0 +1,103 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 20,
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:if_else_list",
+        "actions": [
+          {
+            "condition": {
+              "type": "neoorigins:or",
+              "conditions": [
+                {
+                  "type": "neoorigins:moving"
+                },
+                {
+                  "type": "neoorigins:not",
+                  "condition": {
+                    "type": "neoorigins:out_of_combat",
+                    "ticks": 60
+                  }
+                }
+              ]
+            },
+            "action": {
+              "type": "neoorigins:and",
+              "actions": [
+                {
+                  "type": "neoorigins:change_resource",
+                  "resource": "avaliproject:sergal_dig_strain",
+                  "change": 0,
+                  "operation": "set"
+                },
+                {
+                  "type": "neoorigins:change_resource",
+                  "resource": "avaliproject:sergal_dig_window",
+                  "change": 0,
+                  "operation": "set"
+                }
+              ]
+            }
+          },
+          {
+            "condition": {
+              "type": "neoorigins:resource",
+              "resource": "avaliproject:sergal_dig_window",
+              "comparison": ">=",
+              "compare_to": 1
+            },
+            "action": {
+              "type": "neoorigins:and",
+              "actions": [
+                {
+                  "type": "neoorigins:change_resource",
+                  "resource": "avaliproject:sergal_dig_window",
+                  "change": -1,
+                  "operation": "add"
+                },
+                {
+                  "type": "neoorigins:change_resource",
+                  "resource": "avaliproject:sergal_dig_strain",
+                  "change": 1,
+                  "operation": "add"
+                }
+              ]
+            }
+          },
+          {
+            "condition": {
+              "type": "neoorigins:constant",
+              "value": true
+            },
+            "action": {
+              "type": "neoorigins:change_resource",
+              "resource": "avaliproject:sergal_dig_strain",
+              "change": 0,
+              "operation": "set"
+            }
+          }
+        ]
+      },
+      {
+        "type": "neoorigins:if_else",
+        "condition": {
+          "type": "neoorigins:resource",
+          "resource": "avaliproject:sergal_dig_strain",
+          "comparison": ">=",
+          "compare_to": 30
+        },
+        "if_action": {
+          "type": "neoorigins:apply_effect",
+          "effect": "minecraft:mining_fatigue",
+          "duration": 40,
+          "amplifier": 0,
+          "show_particles": false
+        }
+      }
+    ]
+  },
+  "name": "power.avaliproject.sergal_dig_fatigue.name",
+  "description": "power.avaliproject.sergal_dig_fatigue.description"
+}

@@ -1,0 +1,52 @@
+{
+  "type": "neoorigins:multiple",
+  "mining": {
+    "type": "neoorigins:underwater_mining_speed",
+    "power_condition": {
+      "type": "neoorigins:and",
+      "conditions": [
+        {
+          "type": "neoorigins:origin",
+          "layer": "neoorigins:origin",
+          "origin": "avaliproject:manokit"
+        },
+        {
+          "type": "neoorigins:or",
+          "conditions": [
+            {
+              "type": "neoorigins:in_water"
+            },
+            {
+              "type": "neoorigins:in_rain"
+            }
+          ]
+        }
+      ]
+    },
+    "power_condition_mode": "ALLOW"
+  },
+  "attack": {
+    "type": "neoorigins:modify_damage",
+    "direction": "out",
+    "multiplier": 1.2,
+    "condition": {
+      "type": "neoorigins:or",
+      "conditions": [
+        {
+          "type": "neoorigins:in_water"
+        },
+        {
+          "type": "neoorigins:in_rain"
+        }
+      ]
+    },
+    "power_condition": {
+      "type": "neoorigins:origin",
+      "layer": "neoorigins:origin",
+      "origin": "avaliproject:manokit"
+    },
+    "power_condition_mode": "ALLOW"
+  },
+  "name": "power.avaliproject.dweller_wet_hands.name",
+  "description": "power.avaliproject.dweller_wet_hands.description"
+}

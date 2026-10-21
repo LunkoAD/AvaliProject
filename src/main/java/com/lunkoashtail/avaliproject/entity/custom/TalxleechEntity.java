@@ -94,7 +94,7 @@ public class TalxleechEntity extends Monster implements GeoEntity {
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, Player.class, true, false));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
     }
 
     @Override
@@ -126,6 +126,8 @@ public class TalxleechEntity extends Monster implements GeoEntity {
         if (compound.contains("Texture")) this.setTexture(compound.getString("Texture"));
         if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
     }
+
+    @SuppressWarnings("deprecation")
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,

@@ -1,0 +1,14 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.movement_speed",
+  "amount": -0.15,
+  "operation": "add_multiplied_base",
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.arcane_heavy_gait.name",
+  "description": "power.avaliproject.arcane_heavy_gait.description"
+}

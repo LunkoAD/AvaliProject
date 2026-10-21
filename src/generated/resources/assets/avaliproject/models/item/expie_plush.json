@@ -1,6 +1,14 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "avaliproject:item/expie_plush"
+  "base": {
+    "parent": "avaliproject:block/expie_plush"
+  },
+  "loader": "neoforge:separate_transforms",
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "avaliproject:item/expie_plush"
+      }
+    }
   }
 }

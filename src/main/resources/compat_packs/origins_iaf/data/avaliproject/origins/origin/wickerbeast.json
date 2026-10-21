@@ -1,0 +1,14 @@
+{
+  "name": "origin.avaliproject.wickerbeast.name",
+  "description": "origin.avaliproject.wickerbeast.description",
+  "icon": {
+    "id": "avaliproject:wickerbeast_origin_icon"
+  },
+  "order": 240,
+  "impact": 2,
+  "powers": [
+    "avaliproject:wickerbeast_sturdy",
+    "avaliproject:wickerbeast_digger",
+    "avaliproject:wickerbeast_stride"
+  ]
+}

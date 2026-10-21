@@ -1,0 +1,30 @@
+{
+  "type": "neoorigins:multiple",
+  "lightning": {
+    "type": "neoorigins:modify_damage",
+    "direction": "in",
+    "damage_type": "#minecraft:is_lightning",
+    "multiplier": 1.5
+  },
+  "magic": {
+    "type": "neoorigins:modify_damage",
+    "direction": "in",
+    "damage_type": "magic",
+    "multiplier": 1.5,
+    "condition": {
+      "type": "neoorigins:not",
+      "condition": {
+        "type": "neoorigins:status_effect",
+        "effect": "minecraft:poison"
+      }
+    }
+  },
+  "indirect_magic": {
+    "type": "neoorigins:modify_damage",
+    "direction": "in",
+    "damage_type": "indirectMagic",
+    "multiplier": 1.5
+  },
+  "name": "power.avaliproject.protogen_conductive.name",
+  "description": "power.avaliproject.protogen_conductive.description"
+}

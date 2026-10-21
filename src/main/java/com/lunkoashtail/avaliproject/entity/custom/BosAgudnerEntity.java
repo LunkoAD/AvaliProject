@@ -73,7 +73,7 @@ public class BosAgudnerEntity extends Monster implements GeoEntity {
             }
         });
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, true, false));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.8));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(6, new FloatGoal(this));

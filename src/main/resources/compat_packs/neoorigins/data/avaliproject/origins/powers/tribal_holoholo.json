@@ -1,0 +1,61 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 20,
+  "cooldown_icon": "minecraft:rabbit_hide",
+  "entity_action": {
+    "type": "neoorigins:if_else",
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:tribal_holoholo_form"
+    },
+    "if_action": {
+      "type": "neoorigins:and",
+      "actions": [
+        {
+          "type": "neoorigins:toggle",
+          "power": "avaliproject:tribal_holoholo_form",
+          "value": false
+        },
+        {
+          "type": "neoorigins:play_sound",
+          "sound": "minecraft:entity.fox.sniff",
+          "volume": 0.8,
+          "pitch": 0.8
+        }
+      ]
+    },
+    "else_action": {
+      "type": "neoorigins:if_else",
+      "condition": {
+        "type": "neoorigins:resource",
+        "resource": "avaliproject:manokit_blessing",
+        "comparison": ">=",
+        "compare_to": 5
+      },
+      "if_action": {
+        "type": "neoorigins:and",
+        "actions": [
+          {
+            "type": "neoorigins:toggle",
+            "power": "avaliproject:tribal_holoholo_form",
+            "value": true
+          },
+          {
+            "type": "neoorigins:play_sound",
+            "sound": "minecraft:entity.fox.ambient",
+            "volume": 0.8,
+            "pitch": 1.3
+          }
+        ]
+      }
+    }
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.tribal_holoholo.name",
+  "description": "power.avaliproject.tribal_holoholo.description"
+}

@@ -5,6 +5,7 @@ import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.custom.*;
 import com.lunkoashtail.avaliproject.sound.ModSounds;
+import com.lunkoashtail.avaliproject.species.Species;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
@@ -319,7 +320,7 @@ public class ModItems {
     public static final DeferredItem<Item> BLIZZARD_MUZZLE = ITEMS.register("blizzard_muzzle",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> EXPIE_PLUSH = ITEMS.register("expie_plush",
-            () -> new Item(new Item.Properties()));
+            () -> new BlockItem(ModBlocks.EXPIE_PLUSH.get(), new Item.Properties()));
     public static final DeferredItem<Item> DRESSING = ITEMS.register("dressing", DressingItem::new);
     public static final DeferredItem<Item> RIPPED_DRESSING = ITEMS.register("ripped_dressing",
             () -> new Item(new Item.Properties().stacksTo(16)));
@@ -588,6 +589,129 @@ public class ModItems {
             () -> new ItemNameBlockItem(ModBlocks.HYDREED.get(), new Item.Properties()));
     public static final DeferredItem<Item> GLOWPLANT_FRUIT = ITEMS.register("glowplant_fruit",
             () -> new ItemNameBlockItem(ModBlocks.GLOWPLANT.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> CRYSTALITHIUM_CRYSTAL = ITEMS.register("crystalithium_crystal", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WICKER_HORN_FRAGMENT = ITEMS.register("wicker_horn_fragment", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CLAW_SHARD = ITEMS.register("claw_shard", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MANE_TUFT = ITEMS.register("mane_tuft", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WICKER_EGG = ITEMS.register("wicker_egg",
+            () -> new BlockItem(ModBlocks.WICKER_EGG.get(), new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> SYNCH_POD = ITEMS.register("synch_pod",
+            () -> new ProtogenMachineItem(ModBlocks.SYNCH_POD.get(), new Item.Properties(), "synch_pod", "animation.synch_pod.occupied"));
+    public static final DeferredItem<Item> GROWTH_VAT = ITEMS.register("growth_vat",
+            () -> new ProtogenMachineItem(ModBlocks.GROWTH_VAT.get(), new Item.Properties(), "growth_vat", "animation.growth_vat.stage_3"));
+    public static final DeferredItem<Item> PROTOGEN_RESEARCH_STATION = ITEMS.register("protogen_research_station",
+            () -> new ProtogenMachineItem(ModBlocks.PROTOGEN_RESEARCH_STATION.get(), new Item.Properties(), "protogen_research_station", "animation.protogen_research_station.active"));
+    public static final DeferredItem<Item> PROTOGEN_MINING_STATION = ITEMS.register("protogen_mining_station",
+            () -> new ProtogenMachineItem(ModBlocks.PROTOGEN_MINING_STATION.get(), new Item.Properties(), "protogen_mining_station", "animation.protogen_mining_station.active"));
+    public static final DeferredItem<Item> PROTOGEN_FARMING_STATION = ITEMS.register("protogen_farming_station",
+            () -> new ProtogenMachineItem(ModBlocks.PROTOGEN_FARMING_STATION.get(), new Item.Properties(), "protogen_farming_station", "animation.protogen_farming_station.growing"));
+    public static final DeferredItem<Item> PROTOGEN_GENERATOR = ITEMS.register("protogen_generator",
+            () -> new ProtogenMachineItem(ModBlocks.PROTOGEN_GENERATOR.get(), new Item.Properties(), "protogen_generator", "animation.protogen_generator.on"));
+    public static final DeferredItem<Item> NUTRIENT_PASTE = ITEMS.register("nutrient_paste",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.NUTRIENT_PASTE)));
+    public static final DeferredItem<Item> EMBRYO = ITEMS.register("embryo", () -> new Item(new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> DNA = ITEMS.register("dna", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PROTOGEN_AUGMENT = ITEMS.register("protogen_augment",
+            () -> new AugmentItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> AVALI_AUGMENT = ITEMS.register("avali_augment",
+            () -> new AugmentItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> EXPIE_AUGMENT = ITEMS.register("expie_augment",
+            () -> new AugmentItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> CRYSTALITHIUM_TRINKET = ITEMS.register("crystalithium_trinket",
+            () -> new TrinketItem("tooltip.avaliproject.crystalithium_trinket", new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> FELKIN_HIDE = ITEMS.register("felkin_hide", () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> COCONUT = ITEMS.register("coconut",
+            () -> new CoconutItem(ModBlocks.COCONUT.get(), new Item.Properties()));
+    public static final DeferredItem<Item> OPEN_COCONUT = ITEMS.register("open_coconut",
+            () -> new DrinkableFoodItem(new Item.Properties().food(ModFoodProperties.COCONUT)));
+    public static final DeferredItem<Item> DRAGON_FRUIT = ITEMS.register("dragon_fruit",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> OPEN_DRAGON_FRUIT = ITEMS.register("open_dragon_fruit",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRAGON_FRUIT)));
+    public static final DeferredItem<Item> PASSION_FRUIT = ITEMS.register("passion_fruit",
+            () -> new ItemNameBlockItem(ModBlocks.PASSION_FRUIT_SAPLING.get(), new Item.Properties().food(ModFoodProperties.PASSION_FRUIT)));
+    public static final DeferredItem<Item> PAPAYA = ITEMS.register("papaya",
+            () -> new ItemNameBlockItem(ModBlocks.PAPAYA_SAPLING.get(), new Item.Properties().food(ModFoodProperties.PAPAYA)));
+    public static final DeferredItem<Item> SHELL = ITEMS.register("shell",
+            () -> new ItemNameBlockItem(ModBlocks.SHELL_COVER.get(), new Item.Properties()));
+    public static final DeferredItem<Item> CORAL_PIECE = ITEMS.register("coral_piece", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PEARL = ITEMS.register("pearl", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BLACK_PEARL = ITEMS.register("black_pearl", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> PENDANT = ITEMS.register("pendant",
+            () -> new TrinketItem("tooltip.avaliproject.pendant", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> MANOKIT_TRINKET = ITEMS.register("manokit_trinket",
+            () -> new TrinketItem("tooltip.avaliproject.manokit_trinket", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> BONE_JEWELRY = ITEMS.register("bone_jewelry", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MOONSTONE = ITEMS.register("moonstone", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SUNSTONE = ITEMS.register("sunstone", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LARIMAR = ITEMS.register("larimar", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ABALONE_SHARD = ITEMS.register("abalone_shard", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SEA_OPAL = ITEMS.register("sea_opal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> JADEITE = ITEMS.register("jadeite", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CARNELIAN = ITEMS.register("carnelian", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> AMMOLITE = ITEMS.register("ammolite", () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> WICKERBEAST_SPAWN_EGG = ITEMS.register("wickerbeast_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.WICKERBEAST, 0x2b3a4a, 0x3fb8b0,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> FELKIN_SPAWN_EGG = ITEMS.register("felkin_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.FELKIN, 0xc8894a, 0x5b3a1f,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> NORTHERN_FELKIN_SPAWN_EGG = ITEMS.register("northern_felkin_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.NORTHERN_FELKIN, 0xe8e4dc, 0x6b5a4a,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> ZORGOIA_SPAWN_EGG = ITEMS.register("zorgoia_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.ZORGOIA, 0x3a3a44, 0xc94f4f,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> DUTCH_ANGEL_DRAGON_SPAWN_EGG = ITEMS.register("dutch_angel_dragon_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.DUTCH_ANGEL_DRAGON, 0xf4e9f7, 0x9fc6ef,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> GREATER_YINGLET_SPAWN_EGG = ITEMS.register("greater_yinglet_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.GREATER_YINGLET, 0xd8b878, 0x8a6a48,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> BEACHDWELLER_MANOKIT_SPAWN_EGG = ITEMS.register("beachdweller_manokit_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.BEACHDWELLER_MANOKIT, 0x2fb5a8, 0xf2e6c9,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> TRIBAL_MANOKIT_SPAWN_EGG = ITEMS.register("tribal_manokit_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.TRIBAL_MANOKIT, 0x3fa7d6, 0x7a4b2a,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> ARCANE_MANOKIT_SPAWN_EGG = ITEMS.register("arcane_manokit_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.ARCANE_MANOKIT, 0x6a4fc4, 0x9ff0ff,
+                    new Item.Properties()));
+
+    public static final DeferredItem<Item> HUMAN_SERUM = ITEMS.register("human_serum",
+            () -> new SpeciesSerumItem(Species.HUMAN, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> EXPIE_SERUM = ITEMS.register("expie_serum",
+            () -> new SpeciesSerumItem(Species.EXPIE, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> AVALI_SERUM = ITEMS.register("avali_serum",
+            () -> new SpeciesSerumItem(Species.AVALI, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> SERGAL_SERUM = ITEMS.register("sergal_serum",
+            () -> new SpeciesSerumItem(Species.SERGAL, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> PROTOGEN_SERUM = ITEMS.register("protogen_serum",
+            () -> new SpeciesSerumItem(Species.PROTOGEN, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> WICKERBEAST_SERUM = ITEMS.register("wickerbeast_serum",
+            () -> new SpeciesSerumItem(Species.WICKERBEAST, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> MANOKIT_SERUM = ITEMS.register("manokit_serum",
+            () -> new SpeciesSerumItem(Species.MANOKIT, new Item.Properties().stacksTo(16)));
+
+
+    public static final DeferredItem<Item> EXPIE_ORIGIN_ICON = ITEMS.register("expie_origin_icon",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> AVALI_ORIGIN_ICON = ITEMS.register("avali_origin_icon",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> SERGAL_ORIGIN_ICON = ITEMS.register("sergal_origin_icon",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> PROTOGEN_ORIGIN_ICON = ITEMS.register("protogen_origin_icon",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> WICKERBEAST_ORIGIN_ICON = ITEMS.register("wickerbeast_origin_icon",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> MANOKIT_ORIGIN_ICON = ITEMS.register("manokit_origin_icon",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final List<DeferredItem<Item>> ORIGIN_ICONS = List.of(
+            EXPIE_ORIGIN_ICON, AVALI_ORIGIN_ICON, SERGAL_ORIGIN_ICON, PROTOGEN_ORIGIN_ICON, WICKERBEAST_ORIGIN_ICON, MANOKIT_ORIGIN_ICON);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

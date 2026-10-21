@@ -111,6 +111,8 @@
     "avaliproject:groou_nodule",
     "avaliproject:kiri_nodule",
     "avaliproject:nakati_nodule",
-    "avaliproject:piru_nodule"
+    "avaliproject:piru_nodule",
+    "avaliproject:avali_serum",
+    "avaliproject:avali_augment"
   ]
 }

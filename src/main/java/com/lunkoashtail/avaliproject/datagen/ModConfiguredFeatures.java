@@ -2,6 +2,24 @@ package com.lunkoashtail.avaliproject.datagen;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.block.custom.ShellCoverBlock;
+import com.lunkoashtail.avaliproject.worldgen.CoconutDecorator;
+import com.lunkoashtail.avaliproject.block.custom.ShellType;
+import net.minecraft.core.Direction;
+import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.BendingTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -49,7 +67,25 @@ public class ModConfiguredFeatures {
 
 
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_CRYSTALITHIUM_ORES_KEY = registerKey("crystalithium_ores");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_MOONSTONE_ORES_KEY = registerKey("moonstone_ores");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SUNSTONE_ORES_KEY = registerKey("sunstone_ores");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LARIMAR_ORES_KEY = registerKey("larimar_ores");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHELL_PATCH_KEY = registerKey("shell_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHELL_PATCH_UNDERWATER_KEY = registerKey("shell_patch_underwater");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE_KEY = registerKey("palm_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PASSION_FRUIT_TREE_KEY = registerKey("passion_fruit_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PAPAYA_TREE_KEY = registerKey("papaya_tree");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WICKER_ENCLAVE_NEST_KEY = registerKey("wicker_enclave_nest");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BEACH_BURROW_KEY = registerKey("beach_burrow");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TROPICAL_DEN_KEY = registerKey("tropical_den");
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        bootstrapSpeciesContent(context);
+        bootstrapFootprints(context);
 
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -116,6 +152,75 @@ public class ModConfiguredFeatures {
         register(context, GLOWPLANT_KEY, com.lunkoashtail.avaliproject.worldgen.ModFeatures.CAVE_BLOCK_FEATURE.get(),
                 new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.GLOWPLANT.get())));
 
+    }
+
+    private static void bootstrapSpeciesContent(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+
+        register(context, OVERWORLD_CRYSTALITHIUM_ORES_KEY, Feature.ORE, new OreConfiguration(List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.CRYSTALITHIUM_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.CRYSTALITHIUM_DEEPSLATE_ORE.get().defaultBlockState())), 8));
+        register(context, OVERWORLD_MOONSTONE_ORES_KEY, Feature.ORE, new OreConfiguration(List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.MOONSTONE_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.MOONSTONE_DEEPSLATE_ORE.get().defaultBlockState())), 6));
+        register(context, OVERWORLD_SUNSTONE_ORES_KEY, Feature.ORE, new OreConfiguration(List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.SUNSTONE_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.SUNSTONE_DEEPSLATE_ORE.get().defaultBlockState())), 6));
+        register(context, OVERWORLD_LARIMAR_ORES_KEY, Feature.ORE, new OreConfiguration(List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.LARIMAR_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.LARIMAR_DEEPSLATE_ORE.get().defaultBlockState())), 4));
+
+        BlockPredicate shellFloor = BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                Blocks.SAND, Blocks.GRAVEL, Blocks.DIRT, Blocks.SANDSTONE, Blocks.PRISMARINE);
+        register(context, SHELL_PATCH_KEY, Feature.RANDOM_PATCH, new RandomPatchConfiguration(24, 6, 2,
+                PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(shellStates(false)),
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, shellFloor))));
+        register(context, SHELL_PATCH_UNDERWATER_KEY, Feature.RANDOM_PATCH, new RandomPatchConfiguration(24, 6, 2,
+                PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(shellStates(true)),
+                        BlockPredicate.allOf(BlockPredicate.matchesFluids(Fluids.WATER), shellFloor))));
+
+        register(context, PALM_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.PALM.log.get()),
+                new BendingTrunkPlacer(5, 2, 0, 3, UniformInt.of(1, 2)),
+                BlockStateProvider.simple(ModBlocks.PALM_LEAVES.get()),
+                new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(1, 0, 1))
+                .dirt(BlockStateProvider.simple(Blocks.SAND)).ignoreVines()
+                .decorators(List.of(new CoconutDecorator(0.6F))).build());
+        register(context, PASSION_FRUIT_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.PASSION_FRUIT.log.get()),
+                new StraightTrunkPlacer(4, 2, 0),
+                BlockStateProvider.simple(ModBlocks.PASSION_FRUIT_LEAVES.get()),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1))
+                .ignoreVines().build());
+        register(context, PAPAYA_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.PAPAYA.log.get()),
+                new StraightTrunkPlacer(5, 2, 1),
+                BlockStateProvider.simple(ModBlocks.PAPAYA_LEAVES.get()),
+                new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(1, 0, 1))
+                .ignoreVines().build());
+    }
+
+    private static void bootstrapFootprints(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        register(context, WICKER_ENCLAVE_NEST_KEY, com.lunkoashtail.avaliproject.worldgen.ModFeatures.WICKER_ENCLAVE_NEST_FEATURE.get(),
+                net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE);
+        register(context, BEACH_BURROW_KEY, com.lunkoashtail.avaliproject.worldgen.ModFeatures.BEACH_BURROW_FEATURE.get(),
+                net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE);
+        register(context, TROPICAL_DEN_KEY, com.lunkoashtail.avaliproject.worldgen.ModFeatures.TROPICAL_DEN_FEATURE.get(),
+                net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE);
+    }
+
+    private static BlockStateProvider shellStates(boolean waterlogged) {
+        SimpleWeightedRandomList.Builder<BlockState> states = SimpleWeightedRandomList.builder();
+        for (ShellType type : ShellType.values()) {
+            states.add(ModBlocks.SHELL_COVER.get().defaultBlockState()
+                    .setValue(ShellCoverBlock.TYPE, type)
+                    .setValue(ShellCoverBlock.WATERLOGGED, waterlogged), 1);
+        }
+        return new WeightedStateProvider(states);
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

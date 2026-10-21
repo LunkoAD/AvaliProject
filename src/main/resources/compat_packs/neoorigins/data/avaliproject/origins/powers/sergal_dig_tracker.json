@@ -1,0 +1,12 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "block_break",
+  "entity_action": {
+    "type": "neoorigins:change_resource",
+    "resource": "avaliproject:sergal_dig_window",
+    "change": 5,
+    "operation": "set"
+  },
+  "name": "power.avaliproject.sergal_dig_tracker.name",
+  "description": "power.avaliproject.sergal_dig_tracker.description"
+}

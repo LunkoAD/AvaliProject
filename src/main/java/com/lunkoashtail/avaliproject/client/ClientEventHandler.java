@@ -6,6 +6,7 @@ import com.lunkoashtail.avaliproject.creativetab.GalaxyCreativeScreen;
 import com.lunkoashtail.avaliproject.network.CarryOpenPayload;
 import com.lunkoashtail.avaliproject.network.PackOpenPayload;
 import com.lunkoashtail.avaliproject.screen.custom.LimbSelectionScreen;
+import com.lunkoashtail.avaliproject.screen.custom.SpeciesWardrobeScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.player.LocalPlayer;
@@ -25,7 +26,7 @@ import org.lwjgl.glfw.GLFW;
 
 
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT)
 public class ClientEventHandler {
 
     @SubscribeEvent
@@ -44,6 +45,9 @@ public class ClientEventHandler {
         }
         if (ModKeybindings.OPEN_CARRY_GUI.consumeClick()) {
             PacketDistributor.sendToServer(new CarryOpenPayload());
+        }
+        if (ModKeybindings.OPEN_SPECIES_WARDROBE.consumeClick()) {
+            mc.setScreen(new SpeciesWardrobeScreen());
         }
     }
 

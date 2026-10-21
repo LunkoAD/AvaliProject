@@ -1,0 +1,66 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 100,
+  "cooldown_icon": "minecraft:heart_of_the_sea",
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:block.conduit.activate",
+        "volume": 0.8,
+        "pitch": 1.4
+      },
+      {
+        "type": "neoorigins:if_else",
+        "condition": {
+          "type": "neoorigins:or",
+          "conditions": [
+            {
+              "type": "neoorigins:in_water"
+            },
+            {
+              "type": "neoorigins:in_rain"
+            }
+          ]
+        },
+        "if_action": {
+          "type": "neoorigins:area_of_effect",
+          "radius": 3,
+          "include_source": true,
+          "entity_condition": {
+            "type": "neoorigins:entity_type",
+            "entity_type": "minecraft:player"
+          },
+          "entity_action": {
+            "type": "neoorigins:heal",
+            "amount": 4
+          }
+        },
+        "else_action": {
+          "type": "neoorigins:area_of_effect",
+          "radius": 3,
+          "include_source": true,
+          "entity_condition": {
+            "type": "neoorigins:entity_type",
+            "entity_type": "minecraft:player"
+          },
+          "entity_action": {
+            "type": "neoorigins:heal",
+            "amount": 2
+          }
+        }
+      }
+    ]
+  },
+  "resource_cost": "avaliproject:manokit_blessing",
+  "resource_cost_amount": 33,
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.dweller_tide_mend.name",
+  "description": "power.avaliproject.dweller_tide_mend.description"
+}

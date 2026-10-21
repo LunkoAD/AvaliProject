@@ -23,7 +23,7 @@ import net.neoforged.neoforge.client.event.RenderGuiEvent;
 
 
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT)
 public class BleedingHudOverlay {
 
     private static final int ICON_SIZE = 16;

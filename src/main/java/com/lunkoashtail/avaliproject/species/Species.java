@@ -7,7 +7,9 @@ public enum Species {
     EXPIE,
     AVALI,
     SERGAL,
-    PROTOGEN;
+    PROTOGEN,
+    WICKERBEAST,
+    MANOKIT;
 
     public static final Codec<Species> CODEC = Codec.STRING.xmap(Species::fromName, Species::name);
 
@@ -23,6 +25,8 @@ public enum Species {
         return switch (this) {
             case AVALI -> 0xB19CD9;
             case EXPIE -> 0xF4D63A;
+            case WICKERBEAST -> 0x1F5F5B;
+            case MANOKIT -> 0x2FB5A8;
             default -> 0xAA0000;
         };
     }
@@ -31,6 +35,8 @@ public enum Species {
         return switch (this) {
             case AVALI -> "pale violet";
             case EXPIE -> "yellow";
+            case WICKERBEAST -> "dark teal";
+            case MANOKIT -> "sea teal";
             default -> "red";
         };
     }

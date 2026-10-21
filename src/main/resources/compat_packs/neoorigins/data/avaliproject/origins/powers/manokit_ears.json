@@ -1,0 +1,22 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 100,
+  "entity_action": {
+    "type": "neoorigins:area_of_effect",
+    "radius": 8,
+    "include_source": false,
+    "entity_condition": {
+      "type": "neoorigins:entity_type",
+      "entity_type": "#avaliproject:origin_hostiles"
+    },
+    "entity_action": {
+      "type": "neoorigins:apply_effect",
+      "effect": "minecraft:glowing",
+      "duration": 15,
+      "amplifier": 0,
+      "show_particles": false
+    }
+  },
+  "name": "power.avaliproject.manokit_ears.name",
+  "description": "power.avaliproject.manokit_ears.description"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "neoorigins:toggle",
+  "default": false,
+  "hidden": true,
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.tribal_holoholo_form.name",
+  "description": "power.avaliproject.tribal_holoholo_form.description"
+}

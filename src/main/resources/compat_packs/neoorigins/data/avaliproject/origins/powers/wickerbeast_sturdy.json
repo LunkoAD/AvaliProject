@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.knockback_resistance",
+  "amount": 0.2,
+  "operation": "add_value",
+  "name": "power.avaliproject.wickerbeast_sturdy.name",
+  "description": "power.avaliproject.wickerbeast_sturdy.description"
+}

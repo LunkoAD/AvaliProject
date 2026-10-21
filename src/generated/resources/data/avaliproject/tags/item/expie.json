@@ -70,6 +70,8 @@
     "avaliproject:numberry",
     "avaliproject:glowplant_fruit",
     "avaliproject:container_crate",
-    "avaliproject:expie_spawn_egg"
+    "avaliproject:expie_spawn_egg",
+    "avaliproject:expie_serum",
+    "avaliproject:expie_augment"
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "origin.avaliproject.protogen.name",
+  "description": "origin.avaliproject.protogen.description",
+  "icon": {
+    "id": "avaliproject:protogen_origin_icon"
+  },
+  "order": 230,
+  "impact": 2,
+  "powers": [
+    "avaliproject:protogen_plating"
+  ]
+}

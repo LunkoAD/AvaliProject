@@ -1,0 +1,8 @@
+{
+  "type": "origins:attribute",
+  "modifier": {
+    "attribute": "minecraft:player.block_break_speed",
+    "value": 0.1,
+    "operation": "add_multiplied_base"
+  }
+}

@@ -108,6 +108,42 @@ public class ModEntities {
                     .vehicleAttachment(new Vec3(0.0, 0.85, -0.2))
                     .build("expie"));
 
+    public static final Supplier<EntityType<WickerbeastEntity>> WICKERBEAST =
+            ENTITY_TYPES.register("wickerbeast", () -> EntityType.Builder.of(WickerbeastEntity::new, MobCategory.CREATURE)
+                    .sized(0.9f, 2.5f).build("wickerbeast"));
+    public static final Supplier<EntityType<FelkinEntity>> FELKIN =
+            ENTITY_TYPES.register("felkin", () -> EntityType.Builder.of(FelkinEntity::new, MobCategory.CREATURE)
+                    .sized(1.3f, 1.6f)
+                    .passengerAttachments(1.45f)
+                    .build("felkin"));
+    public static final Supplier<EntityType<NorthernFelkinEntity>> NORTHERN_FELKIN =
+            ENTITY_TYPES.register("northern_felkin", () -> EntityType.Builder.of(NorthernFelkinEntity::new, MobCategory.CREATURE)
+                    .sized(1.6f, 3.2f)
+                    .passengerAttachments(2.85f)
+                    .build("northern_felkin"));
+    public static final Supplier<EntityType<ZorgoiaEntity>> ZORGOIA =
+            ENTITY_TYPES.register("zorgoia", () -> EntityType.Builder.of(ZorgoiaEntity::new, MobCategory.CREATURE)
+                    .sized(1.9f, 5.0f)
+                    .passengerAttachments(2.8f)
+                    .build("zorgoia"));
+    public static final Supplier<EntityType<DutchAngelDragonEntity>> DUTCH_ANGEL_DRAGON =
+            ENTITY_TYPES.register("dutch_angel_dragon", () -> EntityType.Builder.of(DutchAngelDragonEntity::new, MobCategory.CREATURE)
+                    .sized(1.3f, 2.3f)
+                    .passengerAttachments(2.25f)
+                    .build("dutch_angel_dragon"));
+    public static final Supplier<EntityType<GreaterYingletEntity>> GREATER_YINGLET =
+            ENTITY_TYPES.register("greater_yinglet", () -> EntityType.Builder.of(GreaterYingletEntity::new, MobCategory.CREATURE)
+                    .sized(0.6f, 1.7f).build("greater_yinglet"));
+    public static final Supplier<EntityType<BeachdwellerManokitEntity>> BEACHDWELLER_MANOKIT =
+            ENTITY_TYPES.register("beachdweller_manokit", () -> EntityType.Builder.of(BeachdwellerManokitEntity::new, MobCategory.CREATURE)
+                    .sized(0.7f, 1.5f).build("beachdweller_manokit"));
+    public static final Supplier<EntityType<TribalManokitEntity>> TRIBAL_MANOKIT =
+            ENTITY_TYPES.register("tribal_manokit", () -> EntityType.Builder.of(TribalManokitEntity::new, MobCategory.CREATURE)
+                    .sized(0.6f, 1.8f).build("tribal_manokit"));
+    public static final Supplier<EntityType<ArcaneManokitEntity>> ARCANE_MANOKIT =
+            ENTITY_TYPES.register("arcane_manokit", () -> EntityType.Builder.of(ArcaneManokitEntity::new, MobCategory.CREATURE)
+                    .sized(0.7f, 1.75f).build("arcane_manokit"));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

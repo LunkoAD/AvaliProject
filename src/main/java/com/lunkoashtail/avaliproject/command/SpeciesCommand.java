@@ -1,8 +1,8 @@
 package com.lunkoashtail.avaliproject.command;
 
-import com.lunkoashtail.avaliproject.limb.ModAttachments;
-import com.lunkoashtail.avaliproject.network.SpeciesSyncPayload;
+import com.lunkoashtail.avaliproject.entity.client.ManokitVariant;
 import com.lunkoashtail.avaliproject.species.Species;
+import com.lunkoashtail.avaliproject.species.SpeciesUtil;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
@@ -11,7 +11,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -23,6 +22,11 @@ public class SpeciesCommand {
                     Arrays.stream(Species.values())
                             .map(s -> s.name().toLowerCase())
                             .collect(Collectors.toList()),
+                    builder);
+
+    private static final SuggestionProvider<CommandSourceStack> SUBSPECIES_SUGGESTIONS =
+            (ctx, builder) -> SharedSuggestionProvider.suggest(
+                    Arrays.stream(ManokitVariant.values()).map(ManokitVariant::id).collect(Collectors.toList()),
                     builder);
 
     public static LiteralArgumentBuilder<CommandSourceStack> build() {
@@ -39,7 +43,24 @@ public class SpeciesCommand {
                                             () -> Component.literal("Species set to " + species.name().toLowerCase() + "."),
                                             false);
                                     return 1;
-                                })))
+                                })
+                                .then(Commands.argument("subspecies", StringArgumentType.word())
+                                        .suggests(SUBSPECIES_SUGGESTIONS)
+                                        .executes(ctx -> {
+                                            Species species = Species.fromName(StringArgumentType.getString(ctx, "name"));
+                                            if (species != Species.MANOKIT) {
+                                                ctx.getSource().sendFailure(Component.literal("Only manokit has subspecies."));
+                                                return 0;
+                                            }
+                                            ManokitVariant subspecies = ManokitVariant.byId(StringArgumentType.getString(ctx, "subspecies"));
+                                            ServerPlayer player = ctx.getSource().getPlayerOrException();
+                                            SpeciesUtil.applyInternalSubspecies(player, subspecies);
+                                            applySpecies(player, species);
+                                            ctx.getSource().sendSuccess(
+                                                    () -> Component.literal("Species set to manokit (" + subspecies.id() + ")."),
+                                                    false);
+                                            return 1;
+                                        }))))
                 .then(Commands.literal("reset")
                         .executes(ctx -> {
                             ServerPlayer player = ctx.getSource().getPlayerOrException();
@@ -52,7 +73,6 @@ public class SpeciesCommand {
     }
 
     private static void applySpecies(ServerPlayer player, Species species) {
-        player.setData(ModAttachments.SPECIES, species);
-        PacketDistributor.sendToPlayer(player, new SpeciesSyncPayload(species.ordinal()));
+        SpeciesUtil.setSpecies(player, species);
     }
 }

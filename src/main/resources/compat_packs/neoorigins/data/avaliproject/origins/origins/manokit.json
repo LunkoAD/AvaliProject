@@ -1,0 +1,15 @@
+{
+  "name": "origin.avaliproject.manokit.name",
+  "description": "origin.avaliproject.manokit.neoorigins_description",
+  "icon": "avaliproject:manokit_origin_icon",
+  "impact": 2,
+  "order": 260,
+  "powers": [
+    "avaliproject:manokit_small_frame",
+    "avaliproject:manokit_bite",
+    "avaliproject:manokit_ears",
+    "avaliproject:manokit_soft_landing",
+    "avaliproject:manokit_diet",
+    "avaliproject:manokit_blessing"
+  ]
+}

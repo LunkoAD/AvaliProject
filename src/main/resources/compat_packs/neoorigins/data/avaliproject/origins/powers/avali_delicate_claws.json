@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:player.block_break_speed",
+  "amount": -0.15,
+  "operation": "add_multiplied_base",
+  "name": "power.avaliproject.avali_delicate_claws.name",
+  "description": "power.avaliproject.avali_delicate_claws.description"
+}

@@ -2,12 +2,15 @@ package com.lunkoashtail.avaliproject.limb;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.diplomacy.DiplomacyData;
+import com.lunkoashtail.avaliproject.entity.client.ManokitVariant;
 import com.lunkoashtail.avaliproject.entity.ExpieMoodData;
 import com.lunkoashtail.avaliproject.pack.AugmentInventoryData;
 import com.lunkoashtail.avaliproject.pack.AvaliTrustMemory;
 import com.lunkoashtail.avaliproject.pack.PackMembership;
 import com.lunkoashtail.avaliproject.pack.PackRankData;
+import com.lunkoashtail.avaliproject.species.CustomSkins;
 import com.lunkoashtail.avaliproject.species.Species;
+import com.lunkoashtail.avaliproject.species.SpeciesCosmeticData;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -52,7 +55,31 @@ public class ModAttachments {
                     .build()
     );
 
-    public static final Supplier<AttachmentType<LimbConditions>> LIMB_CONDITIONS = ATTACHMENT_TYPES.register(
+    public static final Supplier<AttachmentType<ManokitVariant>> MANOKIT_SUBSPECIES = ATTACHMENT_TYPES.register(
+            "manokit_subspecies",
+            () -> AttachmentType.<ManokitVariant>builder(() -> ManokitVariant.DEFAULT)
+                    .serialize(ManokitVariant.CODEC)
+                    .copyOnDeath()
+                    .build()
+    );
+
+    public static final Supplier<AttachmentType<SpeciesCosmeticData>> SPECIES_COSMETICS = ATTACHMENT_TYPES.register(
+            "species_cosmetics",
+            () -> AttachmentType.<SpeciesCosmeticData>builder(() -> SpeciesCosmeticData.EMPTY)
+                    .serialize(SpeciesCosmeticData.CODEC)
+                    .copyOnDeath()
+                    .build()
+    );
+
+    public static final Supplier<AttachmentType<CustomSkins.Data>> CUSTOM_SKINS = ATTACHMENT_TYPES.register(
+            "custom_skins",
+            () -> AttachmentType.<CustomSkins.Data>builder(() -> CustomSkins.Data.EMPTY)
+                    .serialize(CustomSkins.Data.CODEC)
+                    .copyOnDeath()
+                    .build()
+    );
+
+    public static final Supplier<AttachmentType<LimbConditions>> LIMB_CONDITIONS =ATTACHMENT_TYPES.register(
             "limb_conditions",
             () -> AttachmentType.<LimbConditions>builder(LimbConditions::new)
                     .serialize(LimbConditions.CODEC)

@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.step_height",
+  "amount": 1,
+  "operation": "add_value",
+  "name": "power.avaliproject.sergal_high_step.name",
+  "description": "power.avaliproject.sergal_high_step.description"
+}

@@ -34,6 +34,11 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> TRANSFORMABLE_ITEMS = createTag("transformable_items");
+        public static final TagKey<Item> TROPICAL_FRUITS = createTag("tropical_fruits");
+        public static final TagKey<Item> MANOKIT_GEMS = createTag("manokit_gems");
+        public static final TagKey<Item> FELKIN_FOOD = createTag("felkin_food");
+        public static final TagKey<Item> ZORGOIA_FOOD = createTag("zorgoia_food");
+        public static final TagKey<Item> DUTCH_ANGEL_DRAGON_FOOD = createTag("dutch_angel_dragon_food");
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, name));

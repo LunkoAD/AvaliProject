@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.jump_strength",
+  "amount": 0.05,
+  "operation": "add_value",
+  "name": "power.avaliproject.wickerbeast_spring.name",
+  "description": "power.avaliproject.wickerbeast_spring.description"
+}

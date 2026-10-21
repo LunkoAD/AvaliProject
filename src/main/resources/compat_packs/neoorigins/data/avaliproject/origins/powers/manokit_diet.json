@@ -1,0 +1,14 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "mod_food_nutrition",
+  "condition": {
+    "type": "neoorigins:food_item_in_tag",
+    "tag": "#avaliproject:manokit_half_foods"
+  },
+  "modifier": {
+    "operation": "multiplication",
+    "value": 0.5
+  },
+  "name": "power.avaliproject.manokit_diet.name",
+  "description": "power.avaliproject.manokit_diet.description"
+}

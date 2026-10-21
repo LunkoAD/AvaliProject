@@ -1,0 +1,15 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.armor",
+  "amount": 4,
+  "operation": "add_value",
+  "condition": {
+    "type": "neoorigins:not",
+    "condition": {
+      "type": "neoorigins:equipped_item",
+      "equipment_slot": "chest"
+    }
+  },
+  "name": "power.avaliproject.protogen_chassis.name",
+  "description": "power.avaliproject.protogen_chassis.description"
+}

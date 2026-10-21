@@ -1,0 +1,58 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 400,
+  "cooldown_icon": "minecraft:spyglass",
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:execute_command",
+        "command": "kill @e[type=minecraft:block_display,tag=avaliproject_scan,distance=..24]"
+      },
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:block.beacon.activate",
+        "volume": 0.6,
+        "pitch": 1.8
+      },
+      {
+        "type": "neoorigins:area_of_effect",
+        "radius": 8,
+        "include_source": false,
+        "entity_condition": {
+          "type": "neoorigins:living"
+        },
+        "entity_action": {
+          "type": "neoorigins:apply_effect",
+          "effect": "minecraft:glowing",
+          "duration": 120,
+          "amplifier": 0,
+          "show_particles": false
+        }
+      },
+      {
+        "type": "neoorigins:area_of_effect",
+        "radius": 8,
+        "block_condition": {
+          "type": "neoorigins:in_tag",
+          "tag": "c:ores"
+        },
+        "block_action": {
+          "type": "neoorigins:execute_command",
+          "command": "execute align xyz run summon minecraft:block_display ~ ~ ~ {block_state:{Name:\"minecraft:light_blue_stained_glass\"},Glowing:1b,glow_color_override:5636095,Tags:[\"avaliproject_scan\"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.01f,-0.01f,-0.01f],scale:[1.02f,1.02f,1.02f]}}"
+        }
+      },
+      {
+        "type": "neoorigins:delay",
+        "ticks": 120,
+        "action": {
+          "type": "neoorigins:execute_command",
+          "command": "kill @e[type=minecraft:block_display,tag=avaliproject_scan,distance=..24]"
+        }
+      }
+    ]
+  },
+  "hunger_cost": 3,
+  "name": "power.avaliproject.protogen_scan.name",
+  "description": "power.avaliproject.protogen_scan.description"
+}

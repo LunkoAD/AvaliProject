@@ -1,0 +1,25 @@
+{
+  "type": "neoorigins:multiple",
+  "mining": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:player.block_break_speed",
+    "amount": 0.15,
+    "operation": "add_multiplied_base",
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:protogen_brace_mode"
+    }
+  },
+  "speed": {
+    "type": "neoorigins:attribute_modifier",
+    "attribute": "minecraft:generic.movement_speed",
+    "amount": -0.1,
+    "operation": "add_multiplied_base",
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:protogen_brace_mode"
+    }
+  },
+  "name": "power.avaliproject.protogen_brace.name",
+  "description": "power.avaliproject.protogen_brace.description"
+}

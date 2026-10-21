@@ -11,6 +11,9 @@ import com.lunkoashtail.avaliproject.limb.ModAttachments;
 import com.lunkoashtail.avaliproject.network.AvaliSocializeInteractionPayload;
 import com.lunkoashtail.avaliproject.network.AvaliTrustSyncPayload;
 import com.lunkoashtail.avaliproject.pack.AvaliTrustMemory;
+import com.lunkoashtail.avaliproject.pack.PackProgression;
+import com.lunkoashtail.avaliproject.species.Species;
+import com.lunkoashtail.avaliproject.species.SpeciesSkins;
 import com.lunkoashtail.avaliproject.sound.ModSounds;
 import net.minecraft.Util;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,14 +32,6 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.DifficultyInstance;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.util.GeckoLibUtil;
-import software.bernie.geckolib.animation.RawAnimation;
-import software.bernie.geckolib.animation.PlayState;
-import software.bernie.geckolib.animation.AnimationState;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animatable.GeoEntity;
 
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
@@ -73,7 +68,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.BlockPos;
 import java.util.UUID;
 
-public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
+public class AvaliEntity extends TamableAnimal implements Merchant {
     private static final int BASE_RECRUIT_COST = 50;
     private static final int MAINHAND_SLOT = 0, OFFHAND_SLOT = 1, HEAD_SLOT = 2, CHEST_SLOT = 3, LEGS_SLOT = 4, FEET_SLOT = 5;
 
@@ -82,13 +77,10 @@ public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
     private static final EntityDataAccessor<Boolean> MALE =
             SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(AvaliEntity.class, EntityDataSerializers.STRING);
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private boolean swinging;
     private boolean lastloop;
     private long lastSwing;
-    public String animationprocedure = "empty";
 
     @Nullable
     private SimpleContainer equipmentContainer;
@@ -117,8 +109,7 @@ public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(SHOOT, false);
-        builder.define(ANIMATION, "undefined");
-        builder.define(TEXTURE, "avalipenguin");
+        builder.define(TEXTURE, "cynavali");
         builder.define(VARIANT, 0);
         builder.define(MALE, true);
     }
@@ -226,6 +217,7 @@ public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
         if (this.tradingPlayer instanceof ServerPlayer serverPlayer) {
             DiplomacyData diplomacy = serverPlayer.getData(ModAttachments.DIPLOMACY_DATA);
             serverPlayer.setData(ModAttachments.DIPLOMACY_DATA, diplomacy.addRenown(2));
+            PackProgression.award(serverPlayer, PackProgression.XP_TRADE);
         }
     }
 
@@ -311,7 +303,7 @@ public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
     protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
         super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
         ItemStack feathers = new ItemStack(Items.FEATHER);
-        feathers.setCount((int)(serverLevel.random.nextFloat()*5f)); //random 0-4 feathers
+        feathers.setCount((int)(serverLevel.random.nextFloat()*5f));
         this.spawnAtLocation(feathers);
     }
 
@@ -353,6 +345,7 @@ public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         if (compound.contains("Texture")) this.setTexture(compound.getString("Texture"));
+        this.setTexture(SpeciesSkins.knownOrRandom(Species.AVALI, this.getTexture(), this.random));
         if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
         if (compound.contains("Male")) this.setMale(compound.getBoolean("Male"));
     }
@@ -362,6 +355,7 @@ public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
                                         @Nullable SpawnGroupData pSpawnGroupData) {
         AvaliVariant variant = Util.getRandom(AvaliVariant.values(), this.random);
         this.setVariant(variant);
+        this.setTexture(SpeciesSkins.random(Species.AVALI, this.random));
         this.setMale(this.random.nextBoolean());
         this.setCustomName(Component.literal(AvaliNames.random(this.random)));
         this.setCustomNameVisible(true);
@@ -435,34 +429,6 @@ public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
         return builder;
     }
 
-    private PlayState movementPredicate(AnimationState event) {
-        if (this.animationprocedure.equals("empty")) {
-            if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
-                return event.setAndContinue(RawAnimation.begin().thenLoop("Walk"));
-            }
-            return event.setAndContinue(RawAnimation.begin().thenLoop("Idle"));
-        }
-        return PlayState.STOP;
-    }
-
-    String prevAnim = "empty";
-
-    private PlayState procedurePredicate(AnimationState event) {
-        if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED || (!this.animationprocedure.equals(prevAnim) && !this.animationprocedure.equals("empty"))) {
-            if (!this.animationprocedure.equals(prevAnim)) event.getController().forceAnimationReset();
-            event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
-            if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {
-                this.animationprocedure = "empty";
-                event.getController().forceAnimationReset();
-            }
-        } else if (animationprocedure.equals("empty")) {
-            prevAnim = "empty";
-            return PlayState.STOP;
-        }
-        prevAnim = this.animationprocedure;
-        return PlayState.CONTINUE;
-    }
-
     @Override
     protected void tickDeath() {
         ++this.deathTime;
@@ -471,16 +437,4 @@ public class AvaliEntity extends TamableAnimal implements GeoEntity, Merchant {
             this.dropExperience(this);
         }
     }
-
-    public String getSyncedAnimation() { return this.entityData.get(ANIMATION); }
-    public void setAnimation(String animation) { this.entityData.set(ANIMATION, animation); }
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-        data.add(new AnimationController<>(this, "movement", 4, this::movementPredicate));
-        data.add(new AnimationController<>(this, "procedure", 4, this::procedurePredicate));
-    }
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() { return this.cache; }
 }

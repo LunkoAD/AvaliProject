@@ -1,0 +1,24 @@
+{
+  "name": "origin.avaliproject.sergal.name",
+  "description": "origin.avaliproject.sergal.neoorigins_description",
+  "icon": "avaliproject:sergal_origin_icon",
+  "impact": 2,
+  "order": 220,
+  "powers": [
+    "avaliproject:sergal_tall_frame",
+    "avaliproject:sergal_high_step",
+    "avaliproject:sergal_strong_legs",
+    "avaliproject:sergal_swift",
+    "avaliproject:sergal_blade_mastery",
+    "avaliproject:sergal_marked_prey",
+    "avaliproject:sergal_heavy_frame",
+    "avaliproject:sergal_heavy_swing",
+    "avaliproject:sergal_dig_window",
+    "avaliproject:sergal_dig_strain",
+    "avaliproject:sergal_dig_tracker",
+    "avaliproject:sergal_dig_fatigue",
+    "avaliproject:sergal_dig_focus_break",
+    "avaliproject:sergal_poor_archer",
+    "avaliproject:sergal_driving_leap"
+  ]
+}

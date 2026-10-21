@@ -1,0 +1,24 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 60,
+  "entity_action": {
+    "type": "neoorigins:heal",
+    "amount": 1
+  },
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:out_of_combat",
+        "ticks": 200
+      },
+      {
+        "type": "neoorigins:relative_health",
+        "comparison": "<",
+        "compare_to": 1
+      }
+    ]
+  },
+  "name": "power.avaliproject.avali_rest_regen.name",
+  "description": "power.avaliproject.avali_rest_regen.description"
+}

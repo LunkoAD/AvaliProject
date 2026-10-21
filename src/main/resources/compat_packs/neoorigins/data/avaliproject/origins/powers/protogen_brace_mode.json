@@ -1,0 +1,7 @@
+{
+  "type": "neoorigins:toggle",
+  "default": false,
+  "hidden": true,
+  "name": "power.avaliproject.protogen_brace_mode.name",
+  "description": "power.avaliproject.protogen_brace_mode.description"
+}

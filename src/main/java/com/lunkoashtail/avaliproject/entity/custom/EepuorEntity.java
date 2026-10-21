@@ -97,7 +97,7 @@ public class EepuorEntity extends Monster implements GeoEntity {
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new FloatGoal(this));
-        this.targetSelector.addGoal(6, new NearestAttackableTargetGoal(this, Player.class, false, false));
+        this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Player.class, false, false));
     }
 
     protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
@@ -128,6 +128,8 @@ public class EepuorEntity extends Monster implements GeoEntity {
         if (compound.contains("Texture")) this.setTexture(compound.getString("Texture"));
         if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
     }
+
+    @SuppressWarnings("deprecation")
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,

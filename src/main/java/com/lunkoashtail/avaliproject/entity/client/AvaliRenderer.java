@@ -1,52 +1,49 @@
 package com.lunkoashtail.avaliproject.entity.client;
 
-import com.google.common.collect.Maps;
 import com.lunkoashtail.avaliproject.AvaliProject;
+import com.lunkoashtail.avaliproject.client.SpeciesCosmeticTextures;
+import com.lunkoashtail.avaliproject.entity.client.geo.GeoModelLoader;
 import com.lunkoashtail.avaliproject.entity.custom.AvaliEntity;
-import net.minecraft.Util;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
-
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.MultiBufferSource;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.lunkoashtail.avaliproject.species.Species;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.phys.Vec3;
 
-import java.util.Map;
+public class AvaliRenderer extends MobRenderer<AvaliEntity, AvaliModel> {
+    private static final float SHADOW_RADIUS = 0.5F;
+    private static final float RENDER_SCALE = 0.65F;
+    private static final ResourceLocation MODEL =
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "geo/avali.geo.json");
+    private static final ResourceLocation TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/avali/avali_cynavali.png");
 
-public class AvaliRenderer extends GeoEntityRenderer<AvaliEntity> {
-    public AvaliRenderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new AvaliModel());
-        this.shadowRadius = 0.5f;
-        this.addRenderLayer(new AvaliEquipmentLayer(this));
-    }
-
-    private static final Map<AvaliVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(AvaliVariant.class), map -> {
-                map.put(AvaliVariant.PENGUIN,
-                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/avali/avalipenguin.png"));
-                map.put(AvaliVariant.BLANK,
-                        ResourceLocation.fromNamespaceAndPath(AvaliProject.MOD_ID, "textures/entity/avali/avaliblank.png"));
-            });
-
-    @Override
-    public ResourceLocation getTextureLocation(AvaliEntity pEntity) {
-        return LOCATION_BY_VARIANT.get(pEntity.getVariant());
+    public AvaliRenderer(EntityRendererProvider.Context context) {
+        super(context, new AvaliModel(GeoModelLoader.load(context.getResourceManager(), MODEL)), SHADOW_RADIUS);
+        this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
+        this.addLayer(new AvaliEquipmentLayer(this, context.getItemRenderer()));
     }
 
     @Override
-    public RenderType getRenderType(AvaliEntity animatable, ResourceLocation texture, MultiBufferSource bufferSource, float partialTick) {
-        return RenderType.entityTranslucent(getTextureLocation(animatable));
+    public ResourceLocation getTextureLocation(AvaliEntity entity) {
+        return SpeciesCosmeticTextures.resolve(entity, SpeciesCosmeticTextures.skinOr(Species.AVALI, entity.getTexture(), TEXTURE));
     }
 
     @Override
-    public void preRender(PoseStack poseStack, AvaliEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int color) {
-        float scale = 0.65f;
-        this.scaleHeight = scale;
-        this.scaleWidth = scale;
-        super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, color);
+    protected void scale(AvaliEntity entity, PoseStack poseStack, float partialTick) {
+        poseStack.scale(RENDER_SCALE, RENDER_SCALE, RENDER_SCALE);
+    }
+
+    @Override
+    protected void setupRotations(AvaliEntity entity, PoseStack poseStack, float bob, float yBodyRot, float partialTick, float scale) {
+        super.setupRotations(entity, poseStack, bob, yBodyRot, partialTick, scale);
+        HumanoidPoser.applyBodyRotations(entity, poseStack, partialTick, RENDER_SCALE, true);
+    }
+
+    @Override
+    public Vec3 getRenderOffset(AvaliEntity entity, float partialTick) {
+        return HumanoidPoser.crouchOffset(entity, getModel().poser().hasTorso(), RENDER_SCALE);
     }
 }

@@ -46,7 +46,6 @@ public class ModSounds {
     public static final Supplier<SoundEvent> EXPIE_CALL     = registerSoundEvent("expie_call");
     public static final Supplier<SoundEvent> EXPIE_INTERACT = registerSoundEvent("expie_interact");
 
-    //give avalis more life, and not parrots - @989onan
     public static final Supplier<SoundEvent> AVALI_IDLE = registerSoundEvent("avali.idle");
     public static final Supplier<SoundEvent> AVALI_HAPPY = registerSoundEvent("avali.happy");
     public static final Supplier<SoundEvent> AVALI_SURPISE = registerSoundEvent("avali.surprise");

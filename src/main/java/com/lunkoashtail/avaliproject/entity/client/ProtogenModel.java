@@ -11,6 +11,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.resources.ResourceLocation;
 
 public class ProtogenModel extends GeoModel<ProtogenEntity> {
+    private final GeoHumanoidPoser poser = new GeoHumanoidPoser(false, false);
+
     @Override
     public ResourceLocation getAnimationResource(ProtogenEntity entity) {
         return ResourceLocation.parse("avaliproject:animations/protogen.animation.json");
@@ -27,11 +29,12 @@ public class ProtogenModel extends GeoModel<ProtogenEntity> {
     }
 
     @Override
-    public void setCustomAnimations(ProtogenEntity animatable, long instanceId, AnimationState animationState) {
+    public void setCustomAnimations(ProtogenEntity animatable, long instanceId, AnimationState<ProtogenEntity> animationState) {
+        float lean = poser.apply(getAnimationProcessor(), animatable, animationState);
         GeoBone head = getAnimationProcessor().getBone("head");
         if (head != null) {
-            EntityModelData entityData = (EntityModelData) animationState.getData(DataTickets.ENTITY_MODEL_DATA);
-            head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD);
+            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD + lean);
             head.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
         }
     }

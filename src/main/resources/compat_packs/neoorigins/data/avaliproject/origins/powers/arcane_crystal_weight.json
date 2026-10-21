@@ -1,0 +1,14 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.knockback_resistance",
+  "amount": 0.25,
+  "operation": "add_value",
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.arcane_crystal_weight.name",
+  "description": "power.avaliproject.arcane_crystal_weight.description"
+}

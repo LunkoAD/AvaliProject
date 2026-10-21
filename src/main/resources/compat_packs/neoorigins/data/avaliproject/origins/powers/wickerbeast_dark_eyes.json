@@ -1,0 +1,20 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effects": [
+    {
+      "effect": "minecraft:night_vision",
+      "amplifier": 0
+    }
+  ],
+  "condition": {
+    "type": "neoorigins:light_level",
+    "comparison": "<=",
+    "compare_to": 4
+  },
+  "toggleable": false,
+  "ambient": true,
+  "show_particles": false,
+  "show_icon": false,
+  "name": "power.avaliproject.wickerbeast_dark_eyes.name",
+  "description": "power.avaliproject.wickerbeast_dark_eyes.description"
+}

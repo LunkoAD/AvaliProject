@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "neoforge:swim_speed",
+  "amount": -0.4,
+  "operation": "add_multiplied_base",
+  "name": "power.avaliproject.expie_poor_swimmer.name",
+  "description": "power.avaliproject.expie_poor_swimmer.description"
+}

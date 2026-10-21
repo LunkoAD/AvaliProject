@@ -142,7 +142,7 @@ public class CaklerahEntity extends Monster implements GeoEntity {
                 }
             }
         });
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, Player.class, true, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true, true));
         this.targetSelector.addGoal(6, new HurtByTargetGoal(this).setAlertOthers());
     }
 
@@ -177,6 +177,8 @@ public class CaklerahEntity extends Monster implements GeoEntity {
         if (compound.contains("Texture")) this.setTexture(compound.getString("Texture"));
         if (compound.contains("Variant")) this.entityData.set(VARIANT, compound.getInt("Variant"));
     }
+
+    @SuppressWarnings("deprecation")
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType,

@@ -1,0 +1,8 @@
+{
+  "type": "origins:attribute",
+  "modifier": {
+    "attribute": "minecraft:generic.step_height",
+    "value": 0.5,
+    "operation": "add_value"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:foods/bread",
+      "required": false
+    },
+    {
+      "id": "#c:foods/vegetable",
+      "required": false
+    },
+    "minecraft:bread",
+    "minecraft:carrot",
+    "minecraft:potato",
+    "minecraft:baked_potato",
+    "minecraft:beetroot"
+  ]
+}

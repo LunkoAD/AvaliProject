@@ -1,0 +1,12 @@
+{
+  "name": "origin.avaliproject.sergal.name",
+  "description": "origin.avaliproject.sergal.description",
+  "icon": {
+    "id": "avaliproject:sergal_origin_icon"
+  },
+  "order": 220,
+  "impact": 2,
+  "powers": [
+    "avaliproject:sergal_strength"
+  ]
+}

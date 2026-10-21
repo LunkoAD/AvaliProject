@@ -1,0 +1,21 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "neoforge:swim_speed",
+  "amount": 0.6,
+  "operation": "add_multiplied_base",
+  "condition": {
+    "type": "neoorigins:not",
+    "condition": {
+      "type": "neoorigins:power_active",
+      "power": "avaliproject:dweller_drained"
+    }
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.dweller_tidal_swimmer.name",
+  "description": "power.avaliproject.dweller_tidal_swimmer.description"
+}

@@ -23,5 +23,14 @@ public class ModFoodProperties {
     public static final FoodProperties PIRU_FROND = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
     public static final FoodProperties SERGAL_CHEESE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
     public static final FoodProperties PROTOGEN_RAM = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
+    public static final FoodProperties NUTRIENT_PASTE = new FoodProperties.Builder().nutrition(4).saturationModifier(0.6f).build();
     public static final FoodProperties GEOFRUIT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build();
+    public static final FoodProperties COCONUT = new FoodProperties.Builder().nutrition(4).saturationModifier(0.4f)
+            .effect(() -> new MobEffectInstance(MobEffects.SATURATION, 2), 1.0f).build();
+    public static final FoodProperties PAPAYA = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100), 1.0f).build();
+    public static final FoodProperties PASSION_FRUIT = new FoodProperties.Builder().nutrition(2).saturationModifier(0.3f).fast()
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200), 1.0f).build();
+    public static final FoodProperties DRAGON_FRUIT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.35f)
+            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200), 1.0f).build();
 }

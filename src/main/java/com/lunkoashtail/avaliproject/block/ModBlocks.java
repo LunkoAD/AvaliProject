@@ -4,6 +4,7 @@ import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.custom.*;
 import com.lunkoashtail.avaliproject.block.fluid.ModFluids;
 import com.lunkoashtail.avaliproject.item.ModItems;
+import com.lunkoashtail.avaliproject.worldgen.ModTreeGrowers;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
@@ -18,6 +19,7 @@ import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
 import java.util.function.Supplier;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
@@ -198,6 +200,12 @@ public class ModBlocks {
     public static final DeferredBlock<Block> AGATE_BLOCK = registerBlock("agate_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+    public static final DeferredBlock<Block> CARNELIAN_BLOCK = registerBlock("carnelian_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE)
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+    public static final DeferredBlock<Block> JADEITE_BLOCK = registerBlock("jadeite_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
     public static final DeferredBlock<Block> NOVULITE_BLOCK = registerBlock("novulite_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
@@ -230,21 +238,102 @@ public class ModBlocks {
     public static final DeferredBlock<Block> CONTAINER_CRATE = registerBlock("container_crate",
             () -> new ContainerCrateBlock(BlockBehaviour.Properties.of().strength(2.5f).sound(SoundType.WOOD)));
 
-    /*public static final DeferredBlock<Block> AMMONIA_BLOCK =
-            BLOCKS.register(
-                    ModFluids.AMMONIA.getId().getPath(),
-                    () -> new LiquidBlock(()-> (BaseFlowingFluid)ModFluids.AMMONIA.get(),
-                            BlockBehaviour.Properties.of()
-                                    .mapColor(MapColor.WATER)
-                                    .replaceable()
-                                    .noCollission()
-                                    .strength(100f)
-                                    .noLootTable()
-                                    .liquid()
-                                    .pushReaction(PushReaction.DESTROY)
-                                    .sound(SoundType.)
-                    )
-            );*/
+    public static final DeferredBlock<Block> CRYSTALITHIUM_ORE = registerBlock("crystalithium_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 5),
+                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> CRYSTALITHIUM_DEEPSLATE_ORE = registerBlock("crystalithium_deepslate_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 6),
+                    BlockBehaviour.Properties.of().strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+
+    public static final DeferredBlock<Block> MOONSTONE_ORE = registerBlock("moonstone_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 4),
+                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> MOONSTONE_DEEPSLATE_ORE = registerBlock("moonstone_deepslate_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 6),
+                    BlockBehaviour.Properties.of().strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+    public static final DeferredBlock<Block> SUNSTONE_ORE = registerBlock("sunstone_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 4),
+                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> SUNSTONE_DEEPSLATE_ORE = registerBlock("sunstone_deepslate_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 6),
+                    BlockBehaviour.Properties.of().strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+    public static final DeferredBlock<Block> LARIMAR_ORE = registerBlock("larimar_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 6),
+                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> LARIMAR_DEEPSLATE_ORE = registerBlock("larimar_deepslate_ore",
+            () -> new DropExperienceBlock(UniformInt.of(4, 7),
+                    BlockBehaviour.Properties.of().strength(4.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+
+    public static final DeferredBlock<Block> SEA_GLASS = registerBlock("sea_glass",
+            () -> new SeaGlassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).strength(0.3F)
+                    .sound(SoundType.GLASS).noOcclusion().pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> CORAL_CULTIVATION_BLOCK = registerBlock("coral_cultivation_block",
+            () -> new CoralCultivationBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+                    .strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.CORAL_BLOCK).lightLevel(state -> 6).noOcclusion()));
+    public static final DeferredBlock<Block> MOONLIT_OFFERING_ALTAR = registerBlock("moonlit_offering_altar",
+            () -> new MoonlitOfferingAltarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ)
+                    .strength(2.0f).requiresCorrectToolForDrops().sound(SoundType.CALCITE).lightLevel(state -> 4).noOcclusion()));
+    public static final DeferredBlock<Block> SHELL_COVER = BLOCKS.register("shell_cover",
+            () -> new ShellCoverBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(0.2f)
+                    .sound(SoundType.BONE_BLOCK).noCollission().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final WoodSet PALM = new WoodSet("palm", MapColor.SAND, MapColor.COLOR_BROWN);
+    public static final WoodSet PASSION_FRUIT = new WoodSet("passion_fruit", MapColor.COLOR_PURPLE, MapColor.TERRACOTTA_BROWN);
+    public static final WoodSet PAPAYA = new WoodSet("papaya", MapColor.COLOR_ORANGE, MapColor.TERRACOTTA_LIGHT_GRAY);
+    public static final List<WoodSet> WOOD_SETS = List.of(PALM, PASSION_FRUIT, PAPAYA);
+
+    public static final DeferredBlock<Block> PALM_LEAVES = registerBlock("palm_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_OAK_LEAVES)));
+    public static final DeferredBlock<Block> COCONUT = BLOCKS.register("coconut",
+            () -> new CoconutBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(1.0F)
+                    .sound(SoundType.WOOD).noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> PASSION_FRUIT_LEAVES = registerBlock("passion_fruit_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_OAK_LEAVES)));
+    public static final DeferredBlock<Block> PASSION_FRUIT_SAPLING = BLOCKS.register("passion_fruit_sapling",
+            () -> new FruitSaplingBlock(ModTreeGrowers.PASSION_FRUIT, false, BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING)));
+
+    public static final DeferredBlock<Block> PAPAYA_LEAVES = registerBlock("papaya_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_OAK_LEAVES)));
+    public static final DeferredBlock<Block> PAPAYA_SAPLING = BLOCKS.register("papaya_sapling",
+            () -> new FruitSaplingBlock(ModTreeGrowers.PAPAYA, false, BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING)));
+
+    public static final DeferredBlock<Block> DRIFTWOOD = registerBlock("driftwood",
+            () -> new MangroveRootsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_ROOTS)));
+
+    public static final DeferredBlock<Block> EXPIE_PLUSH = BLOCKS.register("expie_plush",
+            () -> new ExpiePlushBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(0.3F)
+                    .sound(SoundType.WOOL).noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> WICKER_EGG = BLOCKS.register("wicker_egg",
+            () -> new WickerEggBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).strength(0.5F)
+                    .sound(SoundType.DECORATED_POT).noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> SYNCH_POD = BLOCKS.register("synch_pod",
+            () -> new SynchPodBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F)
+                    .requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().lightLevel(state -> 7)));
+
+    public static final DeferredBlock<Block> GROWTH_VAT = BLOCKS.register("growth_vat",
+            () -> new GrowthVatBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F)
+                    .requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().lightLevel(state -> 7)));
+
+    public static final DeferredBlock<Block> PROTOGEN_RESEARCH_STATION = BLOCKS.register("protogen_research_station",
+            () -> new ProtogenStationBlock("idle", "active", 32, 24, 16, protogenStationProperties()));
+
+    public static final DeferredBlock<Block> PROTOGEN_MINING_STATION = BLOCKS.register("protogen_mining_station",
+            () -> new ProtogenStationBlock("idle", "active", 16, 24, 16, protogenStationProperties()));
+
+    public static final DeferredBlock<Block> PROTOGEN_FARMING_STATION = BLOCKS.register("protogen_farming_station",
+            () -> new ProtogenStationBlock("idle", "growing", 16, 24, 16, protogenStationProperties()));
+
+    public static final DeferredBlock<Block> PROTOGEN_GENERATOR = BLOCKS.register("protogen_generator",
+            () -> new ProtogenStationBlock("off", "on", 48, 32, 32, protogenStationProperties()));
+
+
+    private static BlockBehaviour.Properties protogenStationProperties() {
+        return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F).requiresCorrectToolForDrops()
+                .sound(SoundType.METAL).noOcclusion().lightLevel(state -> state.getValue(ProtogenStationBlock.ACTIVE) ? 10 : 5);
+    }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

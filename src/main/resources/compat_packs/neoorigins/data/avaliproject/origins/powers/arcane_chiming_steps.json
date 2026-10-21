@@ -1,0 +1,44 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 10,
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:block.amethyst_block.step",
+        "volume": 0.35,
+        "pitch": 1.2
+      },
+      {
+        "type": "neoorigins:emit_game_event",
+        "event": "minecraft:step"
+      }
+    ]
+  },
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:moving"
+      },
+      {
+        "type": "neoorigins:on_ground"
+      },
+      {
+        "type": "neoorigins:not",
+        "condition": {
+          "type": "neoorigins:sneaking"
+        }
+      }
+    ]
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.arcane_chiming_steps.name",
+  "description": "power.avaliproject.arcane_chiming_steps.description"
+}

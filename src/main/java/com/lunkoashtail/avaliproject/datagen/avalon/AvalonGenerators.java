@@ -64,21 +64,16 @@ public class AvalonGenerators {
     }
 
 
-    //freeze the land, add ores, and add clay/dirt. - @989onan
-    //finally, add avalon ores - @989onan
 
 
     public static Biome taiga(BiomeGenerationSettings.Builder biomeBuilder) {
         boolean pIsCold = true;
         MobSpawnSettings.Builder spawnbuilder = new MobSpawnSettings.Builder();
-        //BiomeDefaultFeatures.farmAnimals(builder);
-//        mobspawnsettings$builder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 8, 4, 4)).addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 4, 2, 3)).addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4));
-        //BiomeDefaultFeatures.commonSpawns(mobspawnsettings$builder);
         float f = pIsCold ? -0.5F : 0.25F;
         BiomeDefaultFeatures.addTaigaTrees(biomeBuilder);
         AvalonAllGen(biomeBuilder);
 
-        return biome(true, f, pIsCold ? 0.4F : 0.8F, pIsCold ? 4020182 : 4159204, 329011, (Integer)null, (Integer)null, spawnbuilder, biomeBuilder, Musics.GAME);//TODO: WE NEED MUSIC - @989onan
+        return biome(true, f, pIsCold ? 0.4F : 0.8F, pIsCold ? 4020182 : 4159204, 329011, (Integer)null, (Integer)null, spawnbuilder, biomeBuilder, Musics.GAME);
     }
 
     public static Biome plains(HolderGetter<PlacedFeature> pPlacedFeatures, HolderGetter<ConfiguredWorldCarver<?>> pWorldCarvers) {
@@ -91,12 +86,11 @@ public class AvalonGenerators {
         BiomeDefaultFeatures.addSnowyTrees(biomegenerationsettings$builder);
 
         float f = 0.0F;
-        return biome(true, f, 0.5F,  4020182 ,329011, (Integer)null, (Integer)null, mobspawnsettings$builder, biomegenerationsettings$builder, Musics.GAME);//TODO: WE NEED MUSIC - @989onan
+        return biome(true, f, 0.5F,  4020182 ,329011, (Integer)null, (Integer)null, mobspawnsettings$builder, biomegenerationsettings$builder, Musics.GAME);
     }
 
     private static Biome biome(boolean pHasPrecipitation, float pTemperature, float pDownfall, int pWaterColor, int pWaterFogColor, @javax.annotation.Nullable Integer pGrassColorOverride, @javax.annotation.Nullable Integer pFoliageColorOverride, MobSpawnSettings.Builder pMobSpawnSettings, BiomeGenerationSettings.Builder pGenerationSettings, @Nullable Music pBackgroundMusic) {
         BiomeSpecialEffects.Builder biomespecialeffects$builder = (new BiomeSpecialEffects.Builder()).waterColor(pWaterColor).waterFogColor(pWaterFogColor).fogColor(12638463).skyColor(calculateSkyColor(pTemperature)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(pBackgroundMusic);
-        //pMobSpawnSettings.addSpawn(MobCategory.CREATURE, settingsAvali);
 
         if (pGrassColorOverride != null) {
             biomespecialeffects$builder.grassColorOverride(pGrassColorOverride);

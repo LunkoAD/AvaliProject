@@ -10,6 +10,7 @@ import software.bernie.geckolib.model.data.EntityModelData;
 import net.minecraft.util.Mth;
 
 public class ExpieModel extends GeoModel<ExpieEntity> {
+    private final GeoHumanoidPoser poser = new GeoHumanoidPoser(true, true);
 
     private static final float CLING_BODY_ROT_X   = -12f * Mth.DEG_TO_RAD;
     private static final float CLING_ARM_ROT_X    = 135f * Mth.DEG_TO_RAD;
@@ -44,7 +45,7 @@ public class ExpieModel extends GeoModel<ExpieEntity> {
     public void setCustomAnimations(ExpieEntity animatable, long instanceId, AnimationState<ExpieEntity> animationState) {
         GeoBone head = getAnimationProcessor().getBone("head");
         if (head != null) {
-            EntityModelData entityData = (EntityModelData) animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
             head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD);
             head.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
         }
@@ -65,6 +66,8 @@ public class ExpieModel extends GeoModel<ExpieEntity> {
         } else if (!animatable.getHeldPlush().isEmpty()) {
             setBoneRotation("rightarm", HOLD_ARM_ROT_X, 0f, -HOLD_ARM_ROT_Z);
             setBoneRotation("leftarm", HOLD_ARM_ROT_X, 0f, HOLD_ARM_ROT_Z);
+        } else {
+            poser.apply(getAnimationProcessor(), animatable, animationState);
         }
     }
 

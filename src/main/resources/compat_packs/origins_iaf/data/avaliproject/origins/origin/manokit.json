@@ -1,0 +1,13 @@
+{
+  "name": "origin.avaliproject.manokit.name",
+  "description": "origin.avaliproject.manokit.description",
+  "icon": {
+    "id": "avaliproject:manokit_origin_icon"
+  },
+  "order": 260,
+  "impact": 1,
+  "powers": [
+    "avaliproject:manokit_gills",
+    "avaliproject:manokit_swimmer"
+  ]
+}

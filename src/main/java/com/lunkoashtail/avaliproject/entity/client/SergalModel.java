@@ -11,6 +11,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.resources.ResourceLocation;
 
 public class SergalModel extends GeoModel<SergalEntity> {
+    private final GeoHumanoidPoser poser = new GeoHumanoidPoser(false, false);
+
     @Override
     public ResourceLocation getAnimationResource(SergalEntity entity) {
         return ResourceLocation.parse("avaliproject:animations/sergal.animation.json");
@@ -27,13 +29,13 @@ public class SergalModel extends GeoModel<SergalEntity> {
     }
 
     @Override
-    public void setCustomAnimations(SergalEntity animatable, long instanceId, AnimationState animationState) {
+    public void setCustomAnimations(SergalEntity animatable, long instanceId, AnimationState<SergalEntity> animationState) {
+        float lean = poser.apply(getAnimationProcessor(), animatable, animationState);
         GeoBone head = getAnimationProcessor().getBone("head");
         if (head != null) {
-            EntityModelData entityData = (EntityModelData) animationState.getData(DataTickets.ENTITY_MODEL_DATA);
-            head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD);
+            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD + lean);
             head.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
         }
-
     }
 }

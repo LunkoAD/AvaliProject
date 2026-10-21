@@ -1,6 +1,8 @@
 {
   "values": [
     "avaliproject:agate_block",
+    "avaliproject:carnelian_block",
+    "avaliproject:jadeite_block",
     "avaliproject:lume_block",
     "avaliproject:novulite_block"
   ]

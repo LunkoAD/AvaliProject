@@ -23,6 +23,13 @@ repositories {
     mavenCentral()
     maven { url "https://maven.modrinth.com" }
     maven {
+        name = 'Curios'
+        url = 'https://maven.theillusivec4.top/'
+        content {
+            includeGroup('top.theillusivec4.curios')
+        }
+    }
+    maven {
         name = 'GeckoLib'
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
         content {
@@ -94,7 +101,9 @@ dependencies {
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
-    implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"}
+    implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+}
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [

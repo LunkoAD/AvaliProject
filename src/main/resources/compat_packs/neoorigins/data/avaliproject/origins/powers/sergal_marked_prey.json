@@ -1,0 +1,9 @@
+{
+  "type": "neoorigins:action_on_hit",
+  "action": "target_effect",
+  "effect": "minecraft:glowing",
+  "duration": 200,
+  "amplifier": 0,
+  "name": "power.avaliproject.sergal_marked_prey.name",
+  "description": "power.avaliproject.sergal_marked_prey.description"
+}

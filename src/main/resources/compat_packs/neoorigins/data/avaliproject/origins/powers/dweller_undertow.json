@@ -1,0 +1,62 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 500,
+  "cooldown_icon": "minecraft:nautilus_shell",
+  "entity_action": {
+    "type": "neoorigins:if_else",
+    "condition": {
+      "type": "neoorigins:in_water"
+    },
+    "if_action": {
+      "type": "neoorigins:and",
+      "actions": [
+        {
+          "type": "neoorigins:play_sound",
+          "sound": "minecraft:entity.dolphin.swim",
+          "volume": 1,
+          "pitch": 0.8
+        },
+        {
+          "type": "neoorigins:dash",
+          "strength": 1.6,
+          "allow_vertical": true
+        },
+        {
+          "type": "neoorigins:delay",
+          "ticks": 6,
+          "action": {
+            "type": "neoorigins:pull_entities",
+            "radius": 3,
+            "strength": 0.9,
+            "include_players": false,
+            "entity_condition": {
+              "type": "neoorigins:living"
+            }
+          }
+        }
+      ]
+    },
+    "else_action": {
+      "type": "neoorigins:and",
+      "actions": [
+        {
+          "type": "neoorigins:add_velocity",
+          "y": 0.35
+        },
+        {
+          "type": "neoorigins:dash",
+          "strength": 0.3,
+          "allow_vertical": false
+        }
+      ]
+    }
+  },
+  "power_condition": {
+    "type": "neoorigins:origin",
+    "layer": "neoorigins:origin",
+    "origin": "avaliproject:manokit"
+  },
+  "power_condition_mode": "ALLOW",
+  "name": "power.avaliproject.dweller_undertow.name",
+  "description": "power.avaliproject.dweller_undertow.description"
+}

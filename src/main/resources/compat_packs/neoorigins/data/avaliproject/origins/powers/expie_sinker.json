@@ -1,0 +1,24 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 2,
+  "entity_action": {
+    "type": "neoorigins:add_velocity",
+    "y": -0.02
+  },
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:in_water"
+      },
+      {
+        "type": "neoorigins:not",
+        "condition": {
+          "type": "neoorigins:on_ground"
+        }
+      }
+    ]
+  },
+  "name": "power.avaliproject.expie_sinker.name",
+  "description": "power.avaliproject.expie_sinker.description"
+}

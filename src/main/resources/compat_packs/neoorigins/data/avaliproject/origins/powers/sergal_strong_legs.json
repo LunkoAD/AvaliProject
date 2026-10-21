@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.jump_strength",
+  "amount": 0.2,
+  "operation": "add_value",
+  "name": "power.avaliproject.sergal_strong_legs.name",
+  "description": "power.avaliproject.sergal_strong_legs.description"
+}

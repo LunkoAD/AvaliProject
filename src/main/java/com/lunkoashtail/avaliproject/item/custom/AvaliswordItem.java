@@ -85,9 +85,9 @@ public class AvaliswordItem extends Item implements GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-        AnimationController procedureController = new AnimationController(this, "procedureController", 0, this::procedurePredicate);
+        AnimationController<AvaliswordItem> procedureController = new AnimationController<>(this, "procedureController", 0, this::procedurePredicate);
         data.add(procedureController);
-        AnimationController idleController = new AnimationController(this, "idleController", 0, this::idlePredicate);
+        AnimationController<AvaliswordItem> idleController = new AnimationController<>(this, "idleController", 0, this::idlePredicate);
         data.add(idleController);
     }
 
@@ -97,7 +97,7 @@ public class AvaliswordItem extends Item implements GeoItem {
     }
 
     @Override
-    public int getEnchantmentValue() {
+    public int getEnchantmentValue(ItemStack stack) {
         return 20;
     }
 

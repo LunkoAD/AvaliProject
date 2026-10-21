@@ -1,0 +1,8 @@
+{
+  "type": "origins:attribute",
+  "modifier": {
+    "attribute": "minecraft:generic.fall_damage_multiplier",
+    "value": -0.25,
+    "operation": "add_multiplied_base"
+  }
+}
