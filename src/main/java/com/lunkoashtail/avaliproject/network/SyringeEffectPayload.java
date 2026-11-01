@@ -95,13 +95,18 @@ public record SyringeEffectPayload(int handOrdinal, int drugTypeOrdinal, float i
         int amplifier = amount >= 300f ? 1 : 0;
         float scale = amount / 250f;
 
+        com.lunkoashtail.avaliproject.vitals.Vitals vitals = player.getData(ModAttachments.VITALS);
         switch (drugType) {
             case FENTANYL -> {
+                vitals.add(com.lunkoashtail.avaliproject.vitals.Vitals.Stat.OPIOID, amount * 0.3f);
+                vitals.add(com.lunkoashtail.avaliproject.vitals.Vitals.Stat.ANALGESIA, amount * 0.3f);
                 player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, (int) (400 * scale), amplifier));
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int) (900 * scale), amplifier));
                 player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, (int) (80 * scale), 0));
             }
             case HEROIN -> {
+                vitals.add(com.lunkoashtail.avaliproject.vitals.Vitals.Stat.OPIOID, amount * 0.2f);
+                vitals.add(com.lunkoashtail.avaliproject.vitals.Vitals.Stat.ANALGESIA, amount * 0.25f);
                 player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, (int) (300 * scale), amplifier));
                 player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, (int) (450 * scale), amplifier));
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int) (600 * scale), amplifier));

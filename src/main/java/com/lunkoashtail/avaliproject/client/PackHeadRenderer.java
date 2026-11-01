@@ -62,6 +62,10 @@ public final class PackHeadRenderer {
             PlayerFaceRenderer.draw(gfx, skinOf(entry.id()), x, y, size);
             return;
         }
+        renderHead(gfx, dummy, x, y, size);
+    }
+
+    public static void renderHead(GuiGraphics gfx, LivingEntity dummy, int x, int y, int size) {
         dummy.yBodyRot = FACING_YAW;
         dummy.yBodyRotO = FACING_YAW;
         dummy.yHeadRot = FACING_YAW;

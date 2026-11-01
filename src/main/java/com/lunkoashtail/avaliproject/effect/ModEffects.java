@@ -13,6 +13,7 @@ public final class ModEffects {
 
     public static final Holder<MobEffect> DIM_SIGHT = MOB_EFFECTS.register("dim_sight", DimSightEffect::new);
     public static final Holder<MobEffect> PACK_LOSS = MOB_EFFECTS.register("pack_loss", PackLossEffect::new);
+    public static final Holder<MobEffect> ANTIDEPRESSANT = MOB_EFFECTS.register("antidepressant", AntidepressantEffect::new);
 
     private ModEffects() {
     }

@@ -3,7 +3,11 @@ package com.lunkoashtail.avaliproject.screen;
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.screen.custom.AugmentMenu;
 import com.lunkoashtail.avaliproject.screen.custom.AvaliEquipMenu;
+import com.lunkoashtail.avaliproject.screen.custom.GrowthVatMenu;
 import com.lunkoashtail.avaliproject.screen.custom.NanoloomMenu;
+import com.lunkoashtail.avaliproject.screen.custom.ProtogenGeneratorMenu;
+import com.lunkoashtail.avaliproject.screen.custom.ProtogenStationMenu;
+import com.lunkoashtail.avaliproject.screen.custom.SynchPodMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -26,6 +30,18 @@ public class ModMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<AugmentMenu>> AUGMENT_MENU =
             registerMenuType("augment_menu", AugmentMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ProtogenGeneratorMenu>> PROTOGEN_GENERATOR_MENU =
+            registerMenuType("protogen_generator_menu", ProtogenGeneratorMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ProtogenStationMenu>> PROTOGEN_STATION_MENU =
+            registerMenuType("protogen_station_menu", ProtogenStationMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<GrowthVatMenu>> GROWTH_VAT_MENU =
+            registerMenuType("growth_vat_menu", GrowthVatMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<SynchPodMenu>> SYNCH_POD_MENU =
+            registerMenuType("synch_pod_menu", SynchPodMenu::new);
 
     private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name,
                                                                                                               IContainerFactory<T> factory) {

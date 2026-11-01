@@ -183,6 +183,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         protogenStation(ModBlocks.PROTOGEN_MINING_STATION);
         protogenStation(ModBlocks.PROTOGEN_FARMING_STATION);
         protogenStation(ModBlocks.PROTOGEN_GENERATOR);
+        simpleBlock(ModBlocks.MACHINE_PART.get(), models().getBuilder("protogen_machine_part")
+                .texture("particle", modLoc("block/protogen_support_block")));
     }
 
     private void protogenStation(DeferredBlock<Block> block) {

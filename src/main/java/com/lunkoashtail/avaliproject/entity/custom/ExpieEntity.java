@@ -44,6 +44,15 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import com.lunkoashtail.avaliproject.util.ModTags;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.Parrot;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.decoration.HangingEntity;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
@@ -121,6 +130,8 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant, Cosmetic
         super.registerGoals();
         this.goalSelector.addGoal(0, new ExpieFaceInteractorGoal(this));
         this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Monster.class, 10f, 1.0, 1.35,
+                monster -> !this.isPassenger()));
         this.goalSelector.addGoal(1, new ExpieSleepCurlGoal(this));
         this.goalSelector.addGoal(2, new ExpieFollowPlayerGoal(this));
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8));
@@ -175,9 +186,19 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant, Cosmetic
     private static final float HUG_MOOD_GAIN = 8f;
     private static final float PLUSH_GIFT_MOOD_GAIN = 10f;
 
+    private static final double MOOD_SIMULATION_RANGE = 30.0;
+    private static final float WILD_MOOD_BASELINE = 20f;
+    private static final float WILD_MOOD_DRIFT = 0.5f;
+    private static final int DESPAIR_GRACE_TICKS = 20 * 60 * 10;
+    private static final int COMFORT_RADIUS = 6;
+    private static final int COMFORT_SATURATION = 8;
+    private static final float COMFORT_MOOD_FLOOR_PER_POINT = 10f;
+    private static final float SKY_COMFORT = 2f;
+
     private void tickMood() {
         if (this.level().isClientSide()) return;
         if (this.level().getGameTime() % MOOD_TICK_INTERVAL != 0) return;
+        if (!this.level().hasNearbyAlivePlayer(this.getX(), this.getY(), this.getZ(), MOOD_SIMULATION_RANGE)) return;
 
         ExpieMoodData mood = this.getData(ModAttachments.EXPIE_MOOD);
 
@@ -186,18 +207,54 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant, Cosmetic
         }
 
         UUID clingyTarget = this.getClingyTarget();
-        boolean bondedNearby = clingyTarget != null
-                && this.level().getPlayerByUUID(clingyTarget) instanceof Player bonded
-                && this.distanceToSqr(bonded) <= PROXIMITY_RANGE * PROXIMITY_RANGE;
-        mood.add(bondedNearby ? PROXIMITY_MOOD_GAIN : -ISOLATION_MOOD_LOSS);
+        if (clingyTarget == null) {
+            float current = mood.get();
+            if (current < WILD_MOOD_BASELINE) {
+                mood.set(Math.min(WILD_MOOD_BASELINE, current + WILD_MOOD_DRIFT));
+            }
+        } else {
+            boolean bondedNearby = this.level().getPlayerByUUID(clingyTarget) instanceof Player bonded
+                    && this.distanceToSqr(bonded) <= PROXIMITY_RANGE * PROXIMITY_RANGE;
+            mood.add(bondedNearby ? PROXIMITY_MOOD_GAIN : -ISOLATION_MOOD_LOSS);
 
-        if (this.lastHugTick != 0 && this.level().getGameTime() - this.lastHugTick > NO_HUG_GRACE_TICKS) {
-            mood.add(-LONG_NO_HUG_MOOD_LOSS);
+            if (this.lastHugTick != 0 && this.level().getGameTime() - this.lastHugTick > NO_HUG_GRACE_TICKS) {
+                mood.add(-LONG_NO_HUG_MOOD_LOSS);
+            }
         }
 
-        if (mood.isAtRockBottom()) {
+        float comfort = this.comfortScore();
+        if (comfort > 0) {
+            float floor = Math.min(WILD_MOOD_BASELINE, ExpieMoodData.MIN_MOOD + comfort * COMFORT_MOOD_FLOOR_PER_POINT);
+            if (mood.get() < floor) mood.set(floor);
+        }
+
+        if (mood.isAtRockBottom() && this.tickCount > DESPAIR_GRACE_TICKS && clingyTarget != null) {
             this.dieOfDespair();
         }
+    }
+
+    private float comfortScore() {
+        BlockPos origin = this.blockPosition();
+        float score = this.level().canSeeSky(origin.above()) ? SKY_COMFORT : 0f;
+        int blocks = 0;
+        for (BlockPos pos : BlockPos.betweenClosed(origin.offset(-COMFORT_RADIUS, -2, -COMFORT_RADIUS),
+                origin.offset(COMFORT_RADIUS, 3, COMFORT_RADIUS))) {
+            if (this.level().getBlockState(pos).is(ModTags.Blocks.EXPIE_COMFORT) && ++blocks >= COMFORT_SATURATION) break;
+        }
+        score += blocks * 0.5f;
+        AABB area = this.getBoundingBox().inflate(COMFORT_RADIUS);
+        for (Entity entity : this.level().getEntities(this, area)) {
+            if (entity instanceof HangingEntity || entity instanceof Cat || entity instanceof Parrot
+                    || (entity instanceof Wolf wolf && wolf.isTame()) || entity instanceof ExpieEntity) {
+                score += 1f;
+            }
+        }
+        return score;
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+        return this.getClingyTarget() == null && this.getHeldPlush().isEmpty() && !this.hasCustomName();
     }
 
     @Override
@@ -253,7 +310,8 @@ public class ExpieEntity extends Animal implements GeoEntity, Merchant, Cosmetic
                 (entityType, level, reason, pos, random) ->
                         pos.getY() < CAVE_MAX_Y
                                 && !level.canSeeSky(pos)
-                                && Animal.checkAnimalSpawnRules(entityType, level, reason, pos, random),
+                                && level.getFluidState(pos).isEmpty()
+                                && level.getBlockState(pos.below()).isValidSpawn(level, pos.below(), entityType),
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 

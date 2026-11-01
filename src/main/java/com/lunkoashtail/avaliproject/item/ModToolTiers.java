@@ -1,6 +1,7 @@
 package com.lunkoashtail.avaliproject.item;
 
 import com.lunkoashtail.avaliproject.util.ModTags;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.SimpleTier;
@@ -12,4 +13,6 @@ public class ModToolTiers {
             1996, 9f, 4f, 20, () -> Ingredient.of(ModItems.PROTOSTEEL_INGOT));
     public static final Tier CERAMIC = new SimpleTier(ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL,
             1996, 8f, 5f, 20, () -> Ingredient.of(ModItems.VILOUS_CERAMIC_INGOT));
+    public static final Tier TITANIUM = new SimpleTier(BlockTags.INCORRECT_FOR_IRON_TOOL,
+            750, 7f, 2.5f, 16, () -> Ingredient.of(ModItems.TITANIUM_INGOT));
 }

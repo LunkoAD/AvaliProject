@@ -1059,6 +1059,72 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(recipeOutput, AEGISALT_SMELTABLES, RecipeCategory.MISC, ModItems.REFINED_AEGISALT.get(), 0.25f, 100, "refined_aegisalt");
         oreSmelting(recipeOutput, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 200, "titanium");
         oreBlasting(recipeOutput, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 100, "titanium");
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_SWORD.get())
+                .pattern("T")
+                .pattern("T")
+                .pattern("S")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TITANIUM_PICKAXE.get())
+                .pattern("TTT")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TITANIUM_AXE.get())
+                .pattern("TT")
+                .pattern("TS")
+                .pattern(" S")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TITANIUM_SHOVEL.get())
+                .pattern("T")
+                .pattern("S")
+                .pattern("S")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
+                .pattern("TT")
+                .pattern(" S")
+                .pattern(" S")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())
+                .pattern("TTT")
+                .pattern("T T")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_CHESTPLATE.get())
+                .pattern("T T")
+                .pattern("TTT")
+                .pattern("TTT")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_LEGGINGS.get())
+                .pattern("TTT")
+                .pattern("T T")
+                .pattern("T T")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
+                .pattern("T T")
+                .pattern("T T")
+                .define('T', ModItems.TITANIUM_INGOT.get())
+                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .save(recipeOutput);
         oreSmelting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 200, "lume_bit");
         oreBlasting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 100, "lume_bit");
         oreSmelting(recipeOutput, AGATE_SMELTABLES, RecipeCategory.MISC, ModItems.AGATE.get(), 0.25f, 200, "agate");
@@ -1186,6 +1252,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         buildSpeciesContentRecipes(recipeOutput);
 
         SpecialRecipeBuilder.special(BiochemRecipe::new).save(recipeOutput, "avaliproject:biochem");
+        SpecialRecipeBuilder.special(com.lunkoashtail.avaliproject.recipe.custom.FilterWaterRecipe::new)
+                .save(recipeOutput, "avaliproject:filter_water");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.COMBAT_PEN.get())
+                .requires(ModItems.SYRINGE.get())
+                .requires(Items.SUGAR)
+                .requires(Items.GLOWSTONE_DUST)
+                .requires(Items.REDSTONE)
+                .requires(Items.IRON_NUGGET)
+                .unlockedBy("has_syringe", has(ModItems.SYRINGE))
+                .save(recipeOutput);
         SpecialRecipeBuilder.special(OpiumRecipe::new).save(recipeOutput, "avaliproject:opium");
         SpecialRecipeBuilder.special(MorphineRecipe::new).save(recipeOutput, "avaliproject:morphine");
         SpecialRecipeBuilder.special(SalineRecipe::new).save(recipeOutput, "avaliproject:saline");

@@ -11,10 +11,10 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class BloodBagItem extends Item {
+public class BloodBagItem extends MedicalItem {
 
     public BloodBagItem() {
-        super(new Item.Properties().stacksTo(1));
+        super(com.lunkoashtail.avaliproject.vitals.MedicalAction.BLOOD_BAG, new Item.Properties().stacksTo(1));
     }
 
     @Override

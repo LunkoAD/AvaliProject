@@ -88,7 +88,7 @@ public class ModBiomeModifiers {
 
         context.register(ADD_EXPIE_SPAWN, new BiomeModifiers.AddSpawnsBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                List.of(new MobSpawnSettings.SpawnerData(ModEntities.EXPIE.get(), 20, 1, 2))));
+                List.of(new MobSpawnSettings.SpawnerData(ModEntities.EXPIE.get(), 45, 1, 2))));
 
         context.register(ADD_CONTAINER_CRATE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),

@@ -537,17 +537,18 @@ public class ModItems {
     public static final DeferredItem<Item> WICK_PLUSHIE = ITEMS.register("wick_plushie", () -> new Item(new Item.Properties()));
 
     
-    public static final DeferredItem<Item> ALCOHOL = ITEMS.register("alcohol", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> ANTI_DEPRESSANTS = ITEMS.register("anti_depressants", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> ANTIBIOTICS = ITEMS.register("antibiotics", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> ANTIRAD = ITEMS.register("antirad", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> ANTISEPTIC = ITEMS.register("antiseptic", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> ANTISERUM = ITEMS.register("antiserum", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ALCOHOL = ITEMS.register("alcohol", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.ALCOHOL, com.lunkoashtail.avaliproject.vitals.MedicalAction.ALCOHOL_DRINK, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> ANTI_DEPRESSANTS = ITEMS.register("anti_depressants", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.ANTI_DEPRESSANTS, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> ANTIBIOTICS = ITEMS.register("antibiotics", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.ANTIBIOTICS, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> ANTIRAD = ITEMS.register("antirad", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.ANTIRAD, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> ANTISEPTIC = ITEMS.register("antiseptic", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.ANTISEPTIC, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> ANTISERUM = ITEMS.register("antiserum", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.ANTISERUM, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new SimpleDrinkableItem(new Item.Properties().stacksTo(16)
+            .food(new net.minecraft.world.food.FoodProperties.Builder().nutrition(2).saturationModifier(0.2f).alwaysEdible().build())));
     public static final DeferredItem<Item> BLOOD_BAG = ITEMS.register("blood_bag", BloodBagItem::new);
-    public static final DeferredItem<Item> BRUISE_KIT = ITEMS.register("bruise_kit", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BRUISE_KIT = ITEMS.register("bruise_kit", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.BRUISE_KIT, new Item.Properties().stacksTo(16)));
     public static final DeferredItem<Item> CANTEEN = ITEMS.register("canteen", CanteenItem::new);
-    public static final DeferredItem<Item> CHEST_DRAIN = ITEMS.register("chest_drain", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> CHEST_DRAIN = ITEMS.register("chest_drain", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.CHEST_DRAIN, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> EMPTY_BLOOD_BAG = ITEMS.register("empty_blood_bag", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> FENTANYL = ITEMS.register("fentanyl", FentanylItem::new);
     public static final DeferredItem<Item> FOLIAGE = ITEMS.register("foliage", () -> new Item(new Item.Properties()));
@@ -555,30 +556,31 @@ public class ModItems {
             () -> new ItemNameBlockItem(ModBlocks.GEOTREE.get(), new Item.Properties().food(ModFoodProperties.GEOFRUIT)));
     public static final DeferredItem<Item> HEROIN = ITEMS.register("heroin", HeroinItem::new);
     public static final DeferredItem<Item> LOCKPICKING_KIT = ITEMS.register("lockpicking_kit", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> MANUAL_DEFIBRILLATOR = ITEMS.register("manual_defibrillator", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> MED_KIT = ITEMS.register("med_kit", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> MINDWIPE = ITEMS.register("mindwipe", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> MORPHINE = ITEMS.register("morphine", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> NALOXONE = ITEMS.register("naloxone", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> OPIUM = ITEMS.register("opium", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MANUAL_DEFIBRILLATOR = ITEMS.register("manual_defibrillator", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.MANUAL_DEFIBRILLATOR, new Item.Properties().durability(20)));
+    public static final DeferredItem<Item> MED_KIT = ITEMS.register("med_kit", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.MED_KIT, new Item.Properties().durability(3)));
+    public static final DeferredItem<Item> MINDWIPE = ITEMS.register("mindwipe", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.MINDWIPE, new Item.Properties().stacksTo(8)));
+    public static final DeferredItem<Item> MORPHINE = ITEMS.register("morphine", MorphineItem::new);
+    public static final DeferredItem<Item> NALOXONE = ITEMS.register("naloxone", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.NALOXONE, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> OPIUM = ITEMS.register("opium", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.OPIUM, new Item.Properties().stacksTo(16)));
     public static final DeferredItem<Item> PAINKILLERS = ITEMS.register("painkillers", PainkillersItem::new);
-    public static final DeferredItem<Item> RELIEF_CREAM = ITEMS.register("relief_cream", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> SALINE = ITEMS.register("saline", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> SLEEPING_PILLS = ITEMS.register("sleeping_pills", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> SODIUM_NITROPRUSSIDE = ITEMS.register("sodium_nitroprusside", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RELIEF_CREAM = ITEMS.register("relief_cream", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.RELIEF_CREAM, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> SALINE = ITEMS.register("saline", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.SALINE, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> SLEEPING_PILLS = ITEMS.register("sleeping_pills", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.SLEEPING_PILLS, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> SODIUM_NITROPRUSSIDE = ITEMS.register("sodium_nitroprusside", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.SODIUM_NITROPRUSSIDE, new Item.Properties().stacksTo(16)));
     public static final DeferredItem<Item> STERILIZED_DRESSING = ITEMS.register("sterilized_dressing", DressingItem::new);
-    public static final DeferredItem<Item> STREPTOKINASE = ITEMS.register("streptokinase", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> STREPTOKINASE = ITEMS.register("streptokinase", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.STREPTOKINASE, new Item.Properties().stacksTo(16)));
     public static final DeferredItem<Item> SYRINGE = ITEMS.register("syringe", SyringeItem::new);
-    public static final DeferredItem<Item> TOURNIQUET = ITEMS.register("tourniquet", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TOURNIQUET = ITEMS.register("tourniquet", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.TOURNIQUET, new Item.Properties().stacksTo(8)));
     public static final DeferredItem<Item> TRASH_BAG = ITEMS.register("trash_bag", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> WATER_BOTTLE = ITEMS.register("water_bottle", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> WOUND_GLUE = ITEMS.register("wound_glue", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WATER_BOTTLE = ITEMS.register("water_bottle", () -> new SimpleDrinkableItem(new Item.Properties()
+            .food(new net.minecraft.world.food.FoodProperties.Builder().nutrition(0).saturationModifier(0f).alwaysEdible().build())));
+    public static final DeferredItem<Item> WOUND_GLUE = ITEMS.register("wound_glue", () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.WOUND_GLUE, new Item.Properties().stacksTo(16)));
 
     public static final DeferredItem<Item> CHUNK_OF_PLASTIC = ITEMS.register("chunk_of_plastic", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FLEXIGLASS = ITEMS.register("flexiglass", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BUNDLE_OF_WIRES = ITEMS.register("bundle_of_wires", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> CIRCUIT_BOARD = ITEMS.register("circuit_board", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> AUTO_INJECTOR = ITEMS.register("auto_injector", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> AUTO_INJECTOR = ITEMS.register("auto_injector", () -> new AutoinjectorItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> SCRAP_METAL = ITEMS.register("scrap_metal", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SCRAP_CUBE = ITEMS.register("scrap_cube", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SCRAP_TUBE = ITEMS.register("scrap_tube", () -> new Item(new Item.Properties()));
@@ -657,9 +659,6 @@ public class ModItems {
     public static final DeferredItem<Item> WICKERBEAST_SPAWN_EGG = ITEMS.register("wickerbeast_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.WICKERBEAST, 0x2b3a4a, 0x3fb8b0,
                     new Item.Properties()));
-    public static final DeferredItem<Item> FELKIN_SPAWN_EGG = ITEMS.register("felkin_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.FELKIN, 0xc8894a, 0x5b3a1f,
-                    new Item.Properties()));
     public static final DeferredItem<Item> NORTHERN_FELKIN_SPAWN_EGG = ITEMS.register("northern_felkin_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.NORTHERN_FELKIN, 0xe8e4dc, 0x6b5a4a,
                     new Item.Properties()));
@@ -712,6 +711,38 @@ public class ModItems {
             () -> new Item(new Item.Properties().stacksTo(1)));
     public static final List<DeferredItem<Item>> ORIGIN_ICONS = List.of(
             EXPIE_ORIGIN_ICON, AVALI_ORIGIN_ICON, SERGAL_ORIGIN_ICON, PROTOGEN_ORIGIN_ICON, WICKERBEAST_ORIGIN_ICON, MANOKIT_ORIGIN_ICON);
+
+    public static final DeferredItem<SwordItem> TITANIUM_SWORD = ITEMS.register("titanium_sword",
+            () -> new SwordItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.TITANIUM, 3, -2.4f))));
+    public static final DeferredItem<PickaxeItem> TITANIUM_PICKAXE = ITEMS.register("titanium_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(PickaxeItem.createAttributes(ModToolTiers.TITANIUM, 1.0f, -2.8f))));
+    public static final DeferredItem<AxeItem> TITANIUM_AXE = ITEMS.register("titanium_axe",
+            () -> new AxeItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(AxeItem.createAttributes(ModToolTiers.TITANIUM, 6.0f, -3.1f))));
+    public static final DeferredItem<ShovelItem> TITANIUM_SHOVEL = ITEMS.register("titanium_shovel",
+            () -> new ShovelItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(ShovelItem.createAttributes(ModToolTiers.TITANIUM, 1.5f, -3.0f))));
+    public static final DeferredItem<HoeItem> TITANIUM_HOE = ITEMS.register("titanium_hoe",
+            () -> new HoeItem(ModToolTiers.TITANIUM, new Item.Properties()
+                    .attributes(HoeItem.createAttributes(ModToolTiers.TITANIUM, -2.5f, -0.5f))));
+
+    public static final DeferredItem<ArmorItem> TITANIUM_HELMET = ITEMS.register("titanium_helmet",
+            () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.HELMET, new Item.Properties()
+                    .durability(ArmorItem.Type.HELMET.getDurability(ModArmorMaterials.TITANIUM_DURABILITY_MULTIPLIER))));
+    public static final DeferredItem<ArmorItem> TITANIUM_CHESTPLATE = ITEMS.register("titanium_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()
+                    .durability(ArmorItem.Type.CHESTPLATE.getDurability(ModArmorMaterials.TITANIUM_DURABILITY_MULTIPLIER))));
+    public static final DeferredItem<ArmorItem> TITANIUM_LEGGINGS = ITEMS.register("titanium_leggings",
+            () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()
+                    .durability(ArmorItem.Type.LEGGINGS.getDurability(ModArmorMaterials.TITANIUM_DURABILITY_MULTIPLIER))));
+    public static final DeferredItem<ArmorItem> TITANIUM_BOOTS = ITEMS.register("titanium_boots",
+            () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.BOOTS, new Item.Properties()
+                    .durability(ArmorItem.Type.BOOTS.getDurability(ModArmorMaterials.TITANIUM_DURABILITY_MULTIPLIER))));
+
+    public static final DeferredItem<Item> COMBAT_PEN = ITEMS.register("combat_pen",
+            () -> new MedicalItem(com.lunkoashtail.avaliproject.vitals.MedicalAction.COMBAT_PEN, new Item.Properties().stacksTo(8)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

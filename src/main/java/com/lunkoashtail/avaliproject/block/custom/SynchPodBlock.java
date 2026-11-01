@@ -4,6 +4,7 @@ import com.lunkoashtail.avaliproject.block.entity.custom.SynchPodBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -25,6 +26,12 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class SynchPodBlock extends BaseEntityBlock {
@@ -55,9 +62,23 @@ public class SynchPodBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction facing = context.getHorizontalDirection().getOpposite();
+        if (!MachinePartBlock.canPlace(context, this, facing)) return null;
         return defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
-                .setValue(ProtogenColor.PROPERTY, ProtogenColor.random(context.getLevel().getRandom()));
+                .setValue(ProtogenColor.PROPERTY, ProtogenColor.CLASSIC);
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        MachineFootprint footprint = MachineFootprint.of(this);
+        return footprint == null ? Shapes.block() : footprint.cellShape(0);
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        MachinePartBlock.placeParts(level, pos, state);
     }
 
     @Override
@@ -75,17 +96,29 @@ public class SynchPodBlock extends BaseEntityBlock {
         if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
+        if (!(level.getBlockEntity(pos) instanceof SynchPodBlockEntity pod)) {
+            return InteractionResult.CONSUME;
+        }
         if (player.isSecondaryUseActive()) {
-            level.setBlock(pos, state.cycle(OCCUPIED), Block.UPDATE_ALL);
-            level.playSound(null, pos, SoundEvents.BEACON_POWER_SELECT, SoundSource.BLOCKS, 0.6F, 1.4F);
-        } else {
             boolean open = !state.getValue(OPEN);
             level.setBlock(pos, state.setValue(OPEN, open), Block.UPDATE_ALL);
             level.playSound(null, pos, open ? SoundEvents.IRON_TRAPDOOR_OPEN : SoundEvents.IRON_TRAPDOOR_CLOSE,
                     SoundSource.BLOCKS, 1.0F, 0.8F);
             level.gameEvent(player, open ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
+            if (open) pod.release();
+        } else if (player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.openMenu(pod, pos);
         }
         return InteractionResult.CONSUME;
+    }
+
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (!state.is(newState.getBlock())) {
+            if (level.getBlockEntity(pos) instanceof SynchPodBlockEntity pod) pod.release();
+            MachinePartBlock.removeParts(level, pos, state);
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
     @Nullable

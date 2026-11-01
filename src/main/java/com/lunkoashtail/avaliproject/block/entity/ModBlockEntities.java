@@ -7,7 +7,8 @@ import com.lunkoashtail.avaliproject.block.entity.custom.ContainerCrateBlockEnti
 import com.lunkoashtail.avaliproject.block.entity.custom.GrowthVatBlockEntity;
 import com.lunkoashtail.avaliproject.block.entity.custom.MoonlitOfferingAltarBlockEntity;
 import com.lunkoashtail.avaliproject.block.entity.custom.NanoloomBlockEntity;
-import com.lunkoashtail.avaliproject.block.entity.custom.ProtogenStationBlockEntity;
+import com.lunkoashtail.avaliproject.block.entity.custom.ProtogenGeneratorBlockEntity;
+import com.lunkoashtail.avaliproject.block.entity.custom.ProtogenWorkStationBlockEntity;
 import com.lunkoashtail.avaliproject.block.entity.custom.SynchPodBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -41,11 +42,14 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("growth_vat_be", () -> BlockEntityType.Builder.of(
                     GrowthVatBlockEntity::new, ModBlocks.GROWTH_VAT.get()).build(null));
 
-        public static final Supplier<BlockEntityType<ProtogenStationBlockEntity>> PROTOGEN_STATION_BE =
+        public static final Supplier<BlockEntityType<ProtogenWorkStationBlockEntity>> PROTOGEN_STATION_BE =
             BLOCK_ENTITIES.register("protogen_station_be", () -> BlockEntityType.Builder.of(
-                    ProtogenStationBlockEntity::new, ModBlocks.PROTOGEN_RESEARCH_STATION.get(),
-                    ModBlocks.PROTOGEN_MINING_STATION.get(), ModBlocks.PROTOGEN_FARMING_STATION.get(),
-                    ModBlocks.PROTOGEN_GENERATOR.get()).build(null));
+                    ProtogenWorkStationBlockEntity::new, ModBlocks.PROTOGEN_RESEARCH_STATION.get(),
+                    ModBlocks.PROTOGEN_MINING_STATION.get(), ModBlocks.PROTOGEN_FARMING_STATION.get()).build(null));
+
+        public static final Supplier<BlockEntityType<ProtogenGeneratorBlockEntity>> PROTOGEN_GENERATOR_BE =
+            BLOCK_ENTITIES.register("protogen_generator_be", () -> BlockEntityType.Builder.of(
+                    ProtogenGeneratorBlockEntity::new, ModBlocks.PROTOGEN_GENERATOR.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

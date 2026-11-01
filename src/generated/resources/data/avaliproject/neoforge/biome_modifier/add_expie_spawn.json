@@ -5,6 +5,6 @@
     "type": "avaliproject:expie",
     "maxCount": 2,
     "minCount": 1,
-    "weight": 20
+    "weight": 45
   }
 }

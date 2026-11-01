@@ -311,28 +311,33 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> SYNCH_POD = BLOCKS.register("synch_pod",
             () -> new SynchPodBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F)
-                    .requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().lightLevel(state -> 7)));
+                    .requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().pushReaction(PushReaction.BLOCK).lightLevel(state -> 7)));
 
     public static final DeferredBlock<Block> GROWTH_VAT = BLOCKS.register("growth_vat",
             () -> new GrowthVatBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F)
-                    .requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().lightLevel(state -> 7)));
+                    .requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().pushReaction(PushReaction.BLOCK).lightLevel(state -> 7)));
 
     public static final DeferredBlock<Block> PROTOGEN_RESEARCH_STATION = BLOCKS.register("protogen_research_station",
-            () -> new ProtogenStationBlock("idle", "active", 32, 24, 16, protogenStationProperties()));
+            () -> new ProtogenStationBlock(StationKind.RESEARCH, "idle", "active", 32, 24, 16, protogenStationProperties()));
 
     public static final DeferredBlock<Block> PROTOGEN_MINING_STATION = BLOCKS.register("protogen_mining_station",
-            () -> new ProtogenStationBlock("idle", "active", 16, 24, 16, protogenStationProperties()));
+            () -> new ProtogenStationBlock(StationKind.MINING, "idle", "active", 16, 24, 16, protogenStationProperties()));
 
     public static final DeferredBlock<Block> PROTOGEN_FARMING_STATION = BLOCKS.register("protogen_farming_station",
-            () -> new ProtogenStationBlock("idle", "growing", 16, 24, 16, protogenStationProperties()));
+            () -> new ProtogenStationBlock(StationKind.FARMING, "idle", "growing", 16, 24, 16, protogenStationProperties()));
 
     public static final DeferredBlock<Block> PROTOGEN_GENERATOR = BLOCKS.register("protogen_generator",
-            () -> new ProtogenStationBlock("off", "on", 48, 32, 32, protogenStationProperties()));
+            () -> new ProtogenStationBlock(StationKind.GENERATOR, "off", "on", 48, 32, 32, protogenStationProperties()));
 
+
+    public static final DeferredBlock<Block> MACHINE_PART = BLOCKS.register("protogen_machine_part",
+            () -> new MachinePartBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F, 6.0F)
+                    .sound(SoundType.METAL).noOcclusion().noLootTable().pushReaction(PushReaction.BLOCK)));
 
     private static BlockBehaviour.Properties protogenStationProperties() {
         return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F).requiresCorrectToolForDrops()
-                .sound(SoundType.METAL).noOcclusion().lightLevel(state -> state.getValue(ProtogenStationBlock.ACTIVE) ? 10 : 5);
+                .sound(SoundType.METAL).noOcclusion().pushReaction(PushReaction.BLOCK)
+                .lightLevel(state -> state.getValue(ProtogenStationBlock.ACTIVE) ? 10 : 5);
     }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

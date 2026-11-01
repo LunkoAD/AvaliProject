@@ -10,6 +10,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -233,5 +235,30 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(ModTags.Blocks.INCORRECT_FOR_CERAMIC_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
+
+        tag(com.lunkoashtail.avaliproject.vitals.Radiation.RADIOACTIVE_BLOCKS)
+                .add(ModBlocks.THERMAL_CRYSTAL_ORE.get())
+                .add(ModBlocks.THERMAL_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.AERO_CRYSTAL_ORE.get())
+                .add(ModBlocks.AERO_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.ARCAITES_CRYSTAL_ORE.get())
+                .add(ModBlocks.ARCAITES_CRYSTAL_DEEPSLATE_ORE.get())
+                .add(ModBlocks.CRYSTALITHIUM_ORE.get())
+                .add(ModBlocks.CRYSTALITHIUM_DEEPSLATE_ORE.get());
+
+        tag(ModTags.Blocks.EXPIE_COMFORT)
+                .addTag(BlockTags.BEDS)
+                .addTag(BlockTags.FLOWERS)
+                .addTag(BlockTags.LEAVES)
+                .addTag(BlockTags.WOOL)
+                .addTag(BlockTags.WOOL_CARPETS)
+                .addTag(BlockTags.DOORS)
+                .addTag(BlockTags.CAMPFIRES)
+                .addTag(BlockTags.CANDLES)
+                .addTag(Tags.Blocks.GLASS_BLOCKS)
+                .addTag(Tags.Blocks.GLASS_PANES)
+                .add(Blocks.LANTERN)
+                .add(Blocks.SOUL_LANTERN)
+                .add(ModBlocks.EXPIE_PLUSH.get());
     }
 }

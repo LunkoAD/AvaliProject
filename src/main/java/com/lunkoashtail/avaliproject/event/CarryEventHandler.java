@@ -1,6 +1,7 @@
 package com.lunkoashtail.avaliproject.event;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
+import net.minecraft.network.protocol.game.ClientboundSetPassengersPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -15,7 +16,10 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @EventBusSubscriber(modid = AvaliProject.MOD_ID)
 public class CarryEventHandler {
@@ -28,6 +32,8 @@ public class CarryEventHandler {
 
     private static final double BACK_OFFSET_UP = 1.1;
     private static final double BACK_OFFSET_BEHIND = 0.2;
+
+    private static final Map<UUID, List<Integer>> SELF_SYNCED_PASSENGERS = new HashMap<>();
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
@@ -48,6 +54,20 @@ public class CarryEventHandler {
         if (player.isPassenger() && player.getVehicle() instanceof Player carrier
                 && (!carrier.isAlive() || carrier.level() != player.level())) {
             player.stopRiding();
+        }
+
+        syncOwnPassengers(player);
+    }
+
+    private static void syncOwnPassengers(ServerPlayer player) {
+        List<Integer> current = player.getPassengers().stream().map(Entity::getId).toList();
+        List<Integer> previous = SELF_SYNCED_PASSENGERS.getOrDefault(player.getUUID(), List.of());
+        if (current.equals(previous)) return;
+        player.connection.send(new ClientboundSetPassengersPacket(player));
+        if (current.isEmpty()) {
+            SELF_SYNCED_PASSENGERS.remove(player.getUUID());
+        } else {
+            SELF_SYNCED_PASSENGERS.put(player.getUUID(), current);
         }
     }
 
@@ -91,6 +111,7 @@ public class CarryEventHandler {
     @SubscribeEvent
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         dismountEverything(event.getEntity());
+        SELF_SYNCED_PASSENGERS.remove(event.getEntity().getUUID());
     }
 
     private static void dismountEverything(Entity entity) {

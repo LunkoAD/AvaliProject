@@ -1,5 +1,8 @@
 package com.lunkoashtail.avaliproject.entity.client;
 
+import com.lunkoashtail.avaliproject.client.event.SpeciesRenderHandler;
+import net.minecraft.world.entity.Pose;
+
 import com.lunkoashtail.avaliproject.entity.custom.ExpieEntity;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.animation.AnimationState;
@@ -19,6 +22,8 @@ public class ExpieModel extends GeoModel<ExpieEntity> {
     private static final float CLING_LEG_ROT_X    = -85f * Mth.DEG_TO_RAD;
     private static final float CLING_TAIL_ROT_X   = 55f * Mth.DEG_TO_RAD;
     private static final float RIDING_EXTRA_LEAN  = -18f * Mth.DEG_TO_RAD;
+
+    private static final String[] TORSO_BONES = {"expie", "body"};
 
     private static final float HOLD_ARM_ROT_X = 60f * Mth.DEG_TO_RAD;
     private static final float HOLD_ARM_ROT_Z = 48f * Mth.DEG_TO_RAD;
@@ -67,7 +72,21 @@ public class ExpieModel extends GeoModel<ExpieEntity> {
             setBoneRotation("rightarm", HOLD_ARM_ROT_X, 0f, -HOLD_ARM_ROT_Z);
             setBoneRotation("leftarm", HOLD_ARM_ROT_X, 0f, HOLD_ARM_ROT_Z);
         } else {
+            if (SpeciesRenderHandler.ownerOf(animatable) != null) resetUnanimatedTorso(animatable);
             poser.apply(getAnimationProcessor(), animatable, animationState);
+        }
+    }
+
+    private void resetUnanimatedTorso(ExpieEntity animatable) {
+        Pose pose = animatable.getPose();
+        boolean moving = animatable.getDeltaMovement().horizontalDistanceSqr() > 0.001;
+        if (pose == Pose.SWIMMING || pose == Pose.CROUCHING || (animatable.isSprinting() && moving)) return;
+        for (String name : TORSO_BONES) {
+            GeoBone bone = getAnimationProcessor().getBone(name);
+            if (bone == null) continue;
+            bone.setRotX(bone.getInitialSnapshot().getRotX());
+            bone.setRotY(bone.getInitialSnapshot().getRotY());
+            bone.setRotZ(bone.getInitialSnapshot().getRotZ());
         }
     }
 

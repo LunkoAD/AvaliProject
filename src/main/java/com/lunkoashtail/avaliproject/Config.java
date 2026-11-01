@@ -36,7 +36,13 @@ public class Config
             .comment("A list of items to log on common setup.")
             .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), () -> "", Config::validateItemName);
 
+    private static final ModConfigSpec.BooleanValue REALISTIC_VITALS = BUILDER
+            .comment("Expie players use the vitals system: bleeding drains blood instead of health and medical conditions decide death")
+            .define("realisticVitals", true);
+
     static final ModConfigSpec SPEC = BUILDER.build();
+
+    public static boolean realisticVitals = true;
 
     public static boolean logDirtBlock;
     public static int magicNumber;
@@ -54,6 +60,7 @@ public class Config
         logDirtBlock = LOG_DIRT_BLOCK.get();
         magicNumber = MAGIC_NUMBER.get();
         magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+        realisticVitals = REALISTIC_VITALS.get();
 
         
         items = ITEM_STRINGS.get().stream()

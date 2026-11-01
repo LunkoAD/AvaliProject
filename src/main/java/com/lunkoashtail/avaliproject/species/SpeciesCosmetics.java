@@ -55,10 +55,6 @@ public final class SpeciesCosmetics {
 
         add(Species.WICKERBEAST, null, "default", "wickerbeast/wickerbeast", NO_VARIANT);
 
-        for (ManokitVariant variant : ManokitVariant.values()) {
-            add(Species.MANOKIT, variant, variant.id(), "manokit/" + variant.id() + "/manokit_" + variant.id(), NO_VARIANT);
-        }
-
         Path root = textureRoot();
         if (root != null) {
             discover(root);

@@ -11,7 +11,9 @@ public enum FluidType {
     BIOCHEM,
     OPIUM,
     MORPHINE,
-    SALINE;
+    SALINE,
+    BOILED_WATER,
+    IRRADIATED_WATER;
 
     public static final Codec<FluidType> CODEC = Codec.STRING.xmap(FluidType::valueOf, FluidType::name);
 
@@ -25,6 +27,8 @@ public enum FluidType {
             case OPIUM -> Component.literal("Opium");
             case MORPHINE -> Component.literal("Morphine");
             case SALINE -> Component.literal("Saline");
+            case BOILED_WATER -> Component.literal("Boiled Water");
+            case IRRADIATED_WATER -> Component.literal("Irradiated Water");
         };
     }
 }

@@ -33,6 +33,8 @@ public class ModSounds {
 
     
     public static final Supplier<SoundEvent> SYRINGE_STAB   = registerSoundEvent("syringe_stab");
+    public static final Supplier<SoundEvent> ECG_BEEP = registerSoundEvent("ecg_beep");
+    public static final Supplier<SoundEvent> ECG_FLATLINE = registerSoundEvent("ecg_flatline");
     public static final Supplier<SoundEvent> SYRINGE_INJECT = registerSoundEvent("syringe_inject");
 
     public static final Supplier<SoundEvent> SHRAPNEL_PULL     = registerSoundEvent("shrapnel_pull");

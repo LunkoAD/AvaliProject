@@ -36,14 +36,33 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.AVALI_SPEAR.get())
                 .add(ModItems.SERGAL_SWORD.get())
                 .add(ModItems.SERGAL_GREATSWORD.get())
-                .add(ModItems.SERGAL_LANCE.get());
+                .add(ModItems.SERGAL_LANCE.get())
+                .add(ModItems.TITANIUM_SWORD.get());
         tag(ItemTags.PICKAXES)
-                .add(ModItems.AVALI_PICKAXE.get());
+                .add(ModItems.AVALI_PICKAXE.get())
+                .add(ModItems.TITANIUM_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(ModItems.PROTOGEN_AXE.get())
-                .add(ModItems.AVALI_AXE.get());
+                .add(ModItems.AVALI_AXE.get())
+                .add(ModItems.TITANIUM_AXE.get());
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.TITANIUM_SHOVEL.get());
         tag(ItemTags.HOES)
-                .add(ModItems.AVALI_HOE.get());
+                .add(ModItems.AVALI_HOE.get())
+                .add(ModItems.TITANIUM_HOE.get());
+        tag(ItemTags.HEAD_ARMOR)
+                .add(ModItems.TITANIUM_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR)
+                .add(ModItems.TITANIUM_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR)
+                .add(ModItems.TITANIUM_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR)
+                .add(ModItems.TITANIUM_BOOTS.get());
+        tag(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.TITANIUM_HELMET.get())
+                .add(ModItems.TITANIUM_CHESTPLATE.get())
+                .add(ModItems.TITANIUM_LEGGINGS.get())
+                .add(ModItems.TITANIUM_BOOTS.get());
 
 
         tag(ItemTags.MACE_ENCHANTABLE)
@@ -250,6 +269,15 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.RAW_DURASTEEL.get())
                 .add(ModItems.RAW_TITANIUM.get())
                 .add(ModItems.TITANIUM_INGOT.get())
+                .add(ModItems.TITANIUM_SWORD.get())
+                .add(ModItems.TITANIUM_PICKAXE.get())
+                .add(ModItems.TITANIUM_AXE.get())
+                .add(ModItems.TITANIUM_SHOVEL.get())
+                .add(ModItems.TITANIUM_HOE.get())
+                .add(ModItems.TITANIUM_HELMET.get())
+                .add(ModItems.TITANIUM_CHESTPLATE.get())
+                .add(ModItems.TITANIUM_LEGGINGS.get())
+                .add(ModItems.TITANIUM_BOOTS.get())
                 .add(ModItems.WOVEN_FABRIC.get())
                 .add(ModItems.WOVEN_GRAPHENE.get())
                 .add(ModItems.NANITE_INJECTOR.get())
@@ -377,6 +405,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.TRASH_BAG.get())
                 .add(ModItems.WATER_BOTTLE.get())
                 .add(ModItems.WOUND_GLUE.get())
+                .add(ModItems.COMBAT_PEN.get())
                 .add(ModItems.CHUNK_OF_PLASTIC.get())
                 .add(ModItems.FLEXIGLASS.get())
                 .add(ModItems.BUNDLE_OF_WIRES.get())
@@ -409,7 +438,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(GalaxyCategory.FELKIN.tag())
                 .add(ModItems.FELKIN_HIDE.get())
-                .add(ModItems.FELKIN_SPAWN_EGG.get())
                 .add(ModItems.NORTHERN_FELKIN_SPAWN_EGG.get());
 
         tag(GalaxyCategory.ZORGOIA.tag())

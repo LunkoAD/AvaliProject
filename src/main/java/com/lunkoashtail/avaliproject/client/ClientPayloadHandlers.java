@@ -76,6 +76,29 @@ public final class ClientPayloadHandlers {
         }, targetEntityId));
     }
 
+    public static void openMedicalLimbSelection(Player player, InteractionHand hand, int targetEntityId,
+                                                com.lunkoashtail.avaliproject.vitals.MedicalAction action) {
+        Minecraft.getInstance().setScreen(new LimbSelectionScreen(selectedLimb -> {
+            if (!action.limbs.allowed.contains(selectedLimb)) {
+                player.displayClientMessage(net.minecraft.network.chat.Component.literal(
+                        "That can't be used on the " + selectedLimb.getDisplayName().getString().toLowerCase() + "."), true);
+                return;
+            }
+            net.neoforged.neoforge.network.PacketDistributor.sendToServer(
+                    new com.lunkoashtail.avaliproject.network.ApplyMedicalPayload(
+                            action.ordinal(), selectedLimb.ordinal(), hand == InteractionHand.MAIN_HAND, targetEntityId));
+            Minecraft.getInstance().setScreen(null);
+        }, targetEntityId));
+    }
+
+    public static void openAutoinjectorLoadScreen(InteractionHand hand) {
+        Minecraft.getInstance().setScreen(new com.lunkoashtail.avaliproject.screen.custom.AutoinjectorLoadScreen(hand));
+    }
+
+    public static void openHealthPanel(int targetEntityId) {
+        Minecraft.getInstance().setScreen(new com.lunkoashtail.avaliproject.screen.custom.HealthPanelScreen(targetEntityId));
+    }
+
     public static void openBloodDrawScreen() {
         Minecraft.getInstance().setScreen(new BloodDrawScreen());
     }

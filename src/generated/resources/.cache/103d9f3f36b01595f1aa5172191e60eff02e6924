@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-02T17:44:11.2894569	Registries
+// 1.21.1	2026-10-31T09:21:02.4683355	Registries
 b16db961aadf39dd1c2fe4fa17ed9f4818cb1d7d data/avaliproject/dimension/avalon.json
 587c117911fb70ad2397c4ed7866aefa46fc66ad data/avaliproject/dimension_type/avalon.json
 b9b39fb13962f62a0196e0eee6268cf01ce9f937 data/avaliproject/dimension_type/avalon_orbit.json
@@ -10,7 +10,7 @@ b9b39fb13962f62a0196e0eee6268cf01ce9f937 data/avaliproject/dimension_type/avalon
 4d65f439f052e768ee57c042fce7dbe6fbe7fd20 data/avaliproject/neoforge/biome_modifier/add_container_crate.json
 2f36635ecee2617e7eb32eec711697e87dae5a66 data/avaliproject/neoforge/biome_modifier/add_crystalithium_ore.json
 a8615e40e78131589e426dc963bf9e605eb1cffd data/avaliproject/neoforge/biome_modifier/add_durasteel_ore.json
-bb4c136d5feac3ede232bd43de6193e94575868c data/avaliproject/neoforge/biome_modifier/add_expie_spawn.json
+1b4c3b61ac7bf2ff91c047b43b26815b48b3f351 data/avaliproject/neoforge/biome_modifier/add_expie_spawn.json
 0a4fc5bbaf706b46177df6e2604d34c948622116 data/avaliproject/neoforge/biome_modifier/add_felkin_spawn.json
 226d20dc350986a636cced775c9bfb2f12ca4a53 data/avaliproject/neoforge/biome_modifier/add_geotree.json
 a63e7e3bd7a4833851136a35138a9e993b1f8986 data/avaliproject/neoforge/biome_modifier/add_glowplant.json

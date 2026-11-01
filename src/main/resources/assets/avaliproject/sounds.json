@@ -142,5 +142,23 @@
         "stream": false
       }
     ]
+  },
+  "ecg_beep": {
+    "subtitle": "subtitles.avaliproject.ecg_beep",
+    "sounds": [
+      {
+        "name": "avaliproject:vitals/ecg_beep",
+        "stream": false
+      }
+    ]
+  },
+  "ecg_flatline": {
+    "subtitle": "subtitles.avaliproject.ecg_flatline",
+    "sounds": [
+      {
+        "name": "avaliproject:vitals/ecg_flatline",
+        "stream": false
+      }
+    ]
   }
 }

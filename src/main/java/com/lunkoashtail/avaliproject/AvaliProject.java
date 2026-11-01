@@ -5,11 +5,17 @@ import com.lunkoashtail.avaliproject.component.ModDataComponents;
 import com.lunkoashtail.avaliproject.diplomacy.DiplomacyData;
 import com.lunkoashtail.avaliproject.limb.ModAttachments;
 import com.lunkoashtail.avaliproject.network.AvaliOpenEquipPayload;
+import com.lunkoashtail.avaliproject.network.ProtogenAssignPayload;
+import com.lunkoashtail.avaliproject.screen.custom.ProtogenGeneratorScreen;
+import com.lunkoashtail.avaliproject.screen.custom.ProtogenStationScreen;
+import com.lunkoashtail.avaliproject.screen.custom.GrowthVatScreen;
+import com.lunkoashtail.avaliproject.screen.custom.SynchPodScreen;
 import com.lunkoashtail.avaliproject.network.CarryCandidatesSyncPayload;
 import com.lunkoashtail.avaliproject.network.CarryConsentAcceptPayload;
 import com.lunkoashtail.avaliproject.network.CarryConsentDeclinePayload;
 import com.lunkoashtail.avaliproject.network.CarryConsentRequestPayload;
 import com.lunkoashtail.avaliproject.network.CarryOpenPayload;
+import com.lunkoashtail.avaliproject.network.CarryDropPayload;
 import com.lunkoashtail.avaliproject.network.CarryRequestPayload;
 import com.lunkoashtail.avaliproject.network.AvaliRecruitPayload;
 import com.lunkoashtail.avaliproject.network.AvaliRecruitProposalAcceptPayload;
@@ -122,6 +128,7 @@ public class AvaliProject {
         ModAttachments.register(modEventBus);
         ModDataComponents.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        com.lunkoashtail.avaliproject.item.ModArmorMaterials.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
@@ -147,6 +154,14 @@ public class AvaliProject {
     private void registerPayloads(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar("1");
         registrar.playToServer(
+                CarryDropPayload.TYPE,
+                CarryDropPayload.STREAM_CODEC,
+                CarryDropPayload::handle);
+        registrar.playToServer(
+                ProtogenAssignPayload.TYPE,
+                ProtogenAssignPayload.STREAM_CODEC,
+                ProtogenAssignPayload::handle);
+        registrar.playToServer(
                 SyringeEffectPayload.TYPE,
                 SyringeEffectPayload.STREAM_CODEC,
                 SyringeEffectPayload::handle);
@@ -168,6 +183,26 @@ public class AvaliProject {
                 ExpieOpenTradePayload::handle);
 
         
+        registrar.playToClient(
+                com.lunkoashtail.avaliproject.network.VitalsSyncPayload.TYPE,
+                com.lunkoashtail.avaliproject.network.VitalsSyncPayload.STREAM_CODEC,
+                com.lunkoashtail.avaliproject.network.VitalsSyncPayload::handle);
+        registrar.playToServer(
+                com.lunkoashtail.avaliproject.network.RequestVitalsPayload.TYPE,
+                com.lunkoashtail.avaliproject.network.RequestVitalsPayload.STREAM_CODEC,
+                com.lunkoashtail.avaliproject.network.RequestVitalsPayload::handle);
+        registrar.playToServer(
+                com.lunkoashtail.avaliproject.network.ApplyMedicalPayload.TYPE,
+                com.lunkoashtail.avaliproject.network.ApplyMedicalPayload.STREAM_CODEC,
+                com.lunkoashtail.avaliproject.network.ApplyMedicalPayload::handle);
+        registrar.playToServer(
+                com.lunkoashtail.avaliproject.network.AutoinjectorLoadPayload.TYPE,
+                com.lunkoashtail.avaliproject.network.AutoinjectorLoadPayload.STREAM_CODEC,
+                com.lunkoashtail.avaliproject.network.AutoinjectorLoadPayload::handle);
+        registrar.playToServer(
+                com.lunkoashtail.avaliproject.network.RemoveTourniquetPayload.TYPE,
+                com.lunkoashtail.avaliproject.network.RemoveTourniquetPayload.STREAM_CODEC,
+                com.lunkoashtail.avaliproject.network.RemoveTourniquetPayload::handle);
         registrar.playToClient(
                 LimbDataSyncPayload.TYPE,
                 LimbDataSyncPayload.STREAM_CODEC,
@@ -369,6 +404,7 @@ public class AvaliProject {
             BlockEntityRenderers.register(ModBlockEntities.SYNCH_POD_BE.get(), context -> new ProtogenMachineRenderer<>("synch_pod"));
             BlockEntityRenderers.register(ModBlockEntities.GROWTH_VAT_BE.get(), context -> new ProtogenMachineRenderer<>("growth_vat"));
             BlockEntityRenderers.register(ModBlockEntities.PROTOGEN_STATION_BE.get(), context -> new ProtogenStationRenderer());
+            BlockEntityRenderers.register(ModBlockEntities.PROTOGEN_GENERATOR_BE.get(), context -> new ProtogenStationRenderer());
             EntityRenderers.register(ModEntities.SKSCEEGEHKJA.get(), SksceegehkjaRenderer::new);
             EntityRenderers.register(ModEntities.SKACIKKJRRKBWCAK.get(), SkacikkjrrkbwcakRenderer::new);
             EntityRenderers.register(ModEntities.PROTOGEN.get(), ProtogenRenderer::new);
@@ -427,6 +463,10 @@ public class AvaliProject {
             event.register(ModMenuTypes.NANOLOOM_MENU.get(), NanoloomScreen::new);
             event.register(ModMenuTypes.AVALI_EQUIP_MENU.get(), AvaliEquipScreen::new);
             event.register(ModMenuTypes.AUGMENT_MENU.get(), AugmentScreen::new);
+            event.register(ModMenuTypes.PROTOGEN_GENERATOR_MENU.get(), ProtogenGeneratorScreen::new);
+            event.register(ModMenuTypes.PROTOGEN_STATION_MENU.get(), ProtogenStationScreen::new);
+            event.register(ModMenuTypes.GROWTH_VAT_MENU.get(), GrowthVatScreen::new);
+            event.register(ModMenuTypes.SYNCH_POD_MENU.get(), SynchPodScreen::new);
         }
     }
 
@@ -548,11 +588,20 @@ public class AvaliProject {
             event.accept(ModItems.AVALI_PICKAXE);
             event.accept(ModItems.AVALI_HOE);
             event.accept(ModItems.PROTOGEN_AXE);
+            event.accept(ModItems.TITANIUM_SHOVEL);
+            event.accept(ModItems.TITANIUM_PICKAXE);
+            event.accept(ModItems.TITANIUM_AXE);
+            event.accept(ModItems.TITANIUM_HOE);
         }
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.AVALI_SWORD);
             event.accept(ModItems.PROTOGEN_SWORD);
+            event.accept(ModItems.TITANIUM_SWORD);
+            event.accept(ModItems.TITANIUM_HELMET);
+            event.accept(ModItems.TITANIUM_CHESTPLATE);
+            event.accept(ModItems.TITANIUM_LEGGINGS);
+            event.accept(ModItems.TITANIUM_BOOTS);
             event.accept(ModItems.SERGAL_SWORD);
             event.accept(ModItems.SERGAL_GREATSWORD);
             event.accept(ModItems.SERGAL_LANCE);

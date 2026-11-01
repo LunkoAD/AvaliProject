@@ -1,4 +1,5 @@
-// 1.21.1	2026-10-21T22:53:28.9889785	Tags for minecraft:block mod id avaliproject
+// 1.21.1	2026-10-31T09:37:20.7169648	Tags for minecraft:block mod id avaliproject
+1958582226f57339cf72a9c1bdf983109d79df70 data/avaliproject/tags/block/expie_comfort.json
 edb717ba8ce70db0f1c3d09fbaab29aed6d4e5ff data/avaliproject/tags/block/incorrect_for_aerogel_tool.json
 edb717ba8ce70db0f1c3d09fbaab29aed6d4e5ff data/avaliproject/tags/block/incorrect_for_ceramic_tool.json
 edb717ba8ce70db0f1c3d09fbaab29aed6d4e5ff data/avaliproject/tags/block/incorrect_for_hardlight_tool.json
@@ -8,6 +9,7 @@ edb717ba8ce70db0f1c3d09fbaab29aed6d4e5ff data/avaliproject/tags/block/incorrect_
 f325d9aa808927ea5b0e83077f3f37923bc0bbdc data/avaliproject/tags/block/palm_logs.json
 0f0560f8bbb428123bc9721952e32f52e7360ecc data/avaliproject/tags/block/papaya_logs.json
 9c3fdfc1dd939bc4262db3138a6b162707f5c30f data/avaliproject/tags/block/passion_fruit_logs.json
+2935932b798d6ca7d9b3265735e8872eb83bc252 data/avaliproject/tags/block/radioactive_blocks.json
 95e93baf6ae44fb9ee94bcee9c865dc1872e6a0d data/c/tags/block/ores/aegisalt.json
 cf4979251ba2cceea27075bb096b582a8dcc5954 data/c/tags/block/ores/aerocrystal.json
 c5447d47566faafff4e5d8b0dbc5b8fac3f79ca6 data/c/tags/block/ores/agate.json

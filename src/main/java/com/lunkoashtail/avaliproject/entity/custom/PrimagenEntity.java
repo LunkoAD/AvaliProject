@@ -4,6 +4,13 @@ import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.entity.client.PrimagenVariant;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.Util;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.trading.ItemCost;
+import net.minecraft.world.item.trading.Merchant;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -41,7 +48,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 
-public class PrimagenEntity extends Monster implements GeoEntity {
+public class PrimagenEntity extends Monster implements GeoEntity, Merchant {
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(PrimagenEntity.class, EntityDataSerializers.INT);
 
@@ -53,6 +60,10 @@ public class PrimagenEntity extends Monster implements GeoEntity {
     private boolean lastloop;
     private long lastSwing;
     public String animationprocedure = "empty";
+    @Nullable
+    private Player tradingPlayer;
+    @Nullable
+    private MerchantOffers offers;
 
     public PrimagenEntity(EntityType<PrimagenEntity> type, Level world) {
         super(type, world);
@@ -86,6 +97,95 @@ public class PrimagenEntity extends Monster implements GeoEntity {
     protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean recentlyHitIn) {
         super.dropCustomDeathLoot(serverLevel, source, recentlyHitIn);
         this.spawnAtLocation(new ItemStack(ModItems.PROTOGEN_RAM.get()));
+    }
+
+    @Override
+    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+        if (!this.isAlive() || this.getTarget() != null || this.getTradingPlayer() != null || player.isSecondaryUseActive()) {
+            return super.mobInteract(player, hand);
+        }
+        if (!this.level().isClientSide()) {
+            this.getNavigation().stop();
+            this.setTradingPlayer(player);
+            this.openTradingScreen(player, this.getDisplayName(), 1);
+        }
+        return InteractionResult.sidedSuccess(this.level().isClientSide());
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+        if (this.tradingPlayer != null) {
+            this.getNavigation().stop();
+            this.getLookControl().setLookAt(this.tradingPlayer);
+            if (!this.tradingPlayer.isAlive() || this.tradingPlayer.distanceToSqr(this) > 64) {
+                this.tradingPlayer = null;
+            }
+        }
+    }
+
+    @Override
+    public void setTradingPlayer(@Nullable Player player) {
+        this.tradingPlayer = player;
+    }
+
+    @Nullable
+    @Override
+    public Player getTradingPlayer() {
+        return this.tradingPlayer;
+    }
+
+    @Override
+    public MerchantOffers getOffers() {
+        if (this.offers == null) {
+            this.offers = new MerchantOffers();
+            this.offers.add(offer(3, new ItemStack(ModItems.DNA.get())));
+            this.offers.add(offer(2, new ItemStack(ModItems.NUTRIENT_PASTE.get(), 2)));
+            this.offers.add(offer(6, new ItemStack(ModItems.EMBRYO.get())));
+        }
+        return this.offers;
+    }
+
+    private static MerchantOffer offer(int price, ItemStack result) {
+        return new MerchantOffer(new ItemCost(ModItems.NOVULITE.get(), price), result, 999, 1, 0.05f);
+    }
+
+    @Override
+    public void overrideOffers(MerchantOffers offers) {
+        this.offers = offers;
+    }
+
+    @Override
+    public void notifyTrade(MerchantOffer offer) {
+        offer.increaseUses();
+    }
+
+    @Override
+    public void notifyTradeUpdated(ItemStack stack) {
+    }
+
+    @Override
+    public int getVillagerXp() {
+        return 0;
+    }
+
+    @Override
+    public void overrideXp(int xp) {
+    }
+
+    @Override
+    public boolean showProgressBar() {
+        return false;
+    }
+
+    @Override
+    public SoundEvent getNotifyTradeSound() {
+        return BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.villager.yes"));
+    }
+
+    @Override
+    public boolean isClientSide() {
+        return this.level().isClientSide();
     }
 
     @Override

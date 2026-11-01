@@ -58,7 +58,7 @@ public enum ManokitVariant {
     }
 
     public String texturePath() {
-        return "textures/entity/manokit/" + name + "/manokit_" + name + ".png";
+        return "textures/entity/manokit/" + name + "/uv/manokit_" + name + ".png";
     }
 
     public float renderScale() {

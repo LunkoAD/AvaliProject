@@ -1,0 +1,13 @@
+{
+  "type": "avaliproject:boil_canteen",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "avaliproject:canteen"
+  },
+  "result": {
+    "count": 1,
+    "id": "avaliproject:canteen"
+  }
+}

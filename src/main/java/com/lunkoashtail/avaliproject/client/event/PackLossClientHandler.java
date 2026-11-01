@@ -44,7 +44,9 @@ public final class PackLossClientHandler {
 
     public static boolean isDarkened(LivingEntity entity) {
         MobEffectInstance packLoss = entity.getEffect(ModEffects.PACK_LOSS);
-        return packLoss != null && packLoss.getAmplifier() >= PackLossEffect.DARKNESS_LEVEL;
+        if (packLoss == null) return false;
+        int effective = entity.hasEffect(ModEffects.ANTIDEPRESSANT) ? packLoss.getAmplifier() - 1 : packLoss.getAmplifier();
+        return effective >= PackLossEffect.DARKNESS_LEVEL;
     }
 
     @SubscribeEvent

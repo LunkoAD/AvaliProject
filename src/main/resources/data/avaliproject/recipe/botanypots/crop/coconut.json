@@ -1,0 +1,55 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "avaliproject:coconut",
+  "input": {
+    "item": "avaliproject:coconut"
+  },
+  "soil": [
+    {
+      "tag": "botanypots:soil/sand"
+    },
+    {
+      "tag": "botanypots:soil/dirt"
+    }
+  ],
+  "grow_time": 2400,
+  "drops": [
+    {
+      "type": "botanypots:items",
+      "items": [
+        {
+          "result": {
+            "id": "avaliproject:palm_log",
+            "count": 2
+          }
+        },
+        {
+          "result": {
+            "id": "avaliproject:coconut",
+            "count": 1
+          }
+        },
+        {
+          "result": {
+            "id": "avaliproject:coconut",
+            "count": 1
+          },
+          "chance": 0.5
+        },
+        {
+          "result": {
+            "id": "avaliproject:palm_leaves",
+            "count": 1
+          },
+          "chance": 0.25
+        }
+      ]
+    }
+  ]
+}

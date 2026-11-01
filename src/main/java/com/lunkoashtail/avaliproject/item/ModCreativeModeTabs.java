@@ -164,6 +164,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_DURASTEEL);
                         output.accept(ModItems.RAW_TITANIUM);
                         output.accept(ModItems.TITANIUM_INGOT);
+                        output.accept(ModItems.TITANIUM_SWORD);
+                        output.accept(ModItems.TITANIUM_PICKAXE);
+                        output.accept(ModItems.TITANIUM_AXE);
+                        output.accept(ModItems.TITANIUM_SHOVEL);
+                        output.accept(ModItems.TITANIUM_HOE);
+                        output.accept(ModItems.TITANIUM_HELMET);
+                        output.accept(ModItems.TITANIUM_CHESTPLATE);
+                        output.accept(ModItems.TITANIUM_LEGGINGS);
+                        output.accept(ModItems.TITANIUM_BOOTS);
                         output.accept(ModItems.NANITE_INJECTOR);
                         output.accept(ModItems.PROTOSTEEL_INGOT);
                         output.accept(ModItems.DURASTEEL_INGOT);
@@ -258,6 +267,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STERILIZED_DRESSING);
                         output.accept(ModItems.STREPTOKINASE);
                         output.accept(ModItems.SYRINGE);
+                        output.accept(ModItems.COMBAT_PEN);
                         output.accept(ModItems.TOURNIQUET);
                         output.accept(ModItems.TRASH_BAG);
                         output.accept(ModItems.WATER_BOTTLE);
@@ -289,7 +299,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WICKERBEAST_SPAWN_EGG);
 
                         output.accept(ModItems.FELKIN_HIDE);
-                        output.accept(ModItems.FELKIN_SPAWN_EGG);
                         output.accept(ModItems.NORTHERN_FELKIN_SPAWN_EGG);
 
                         output.accept(ModItems.ZORGOIA_SPAWN_EGG);

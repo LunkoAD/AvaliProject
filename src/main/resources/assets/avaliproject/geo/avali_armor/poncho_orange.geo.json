@@ -1,0 +1,664 @@
+{
+ "format_version": "1.12.0",
+ "minecraft:geometry": [
+  {
+   "description": {
+    "identifier": "geometry.avali_armor_poncho_orange",
+    "texture_width": 64,
+    "texture_height": 64,
+    "visible_bounds_width": 7,
+    "visible_bounds_height": 4.5,
+    "visible_bounds_offset": [
+     0,
+     1.75,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "Body",
+     "parent": "root",
+     "pivot": [
+      0,
+      24,
+      0
+     ]
+    },
+    {
+     "name": "Chest",
+     "parent": "Body",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "rotation": [
+      350,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "chest|Chest",
+     "parent": "Chest",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -3.65,
+        18.8,
+        -2.65
+       ],
+       "size": [
+        7.3,
+        4.85,
+        5.3
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          32,
+          33
+         ],
+         "uv_size": [
+          15,
+          10
+         ]
+        },
+        "east": {
+         "uv": [
+          32,
+          43
+         ],
+         "uv_size": [
+          11,
+          10
+         ]
+        },
+        "south": {
+         "uv": [
+          47,
+          33
+         ],
+         "uv_size": [
+          15,
+          10
+         ]
+        },
+        "west": {
+         "uv": [
+          43,
+          43
+         ],
+         "uv_size": [
+          11,
+          10
+         ]
+        },
+        "up": {
+         "uv": [
+          2,
+          33
+         ],
+         "uv_size": [
+          15,
+          11
+         ]
+        },
+        "down": {
+         "uv": [
+          17,
+          44
+         ],
+         "uv_size": [
+          15,
+          -11
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        -3.6,
+        13.5,
+        -3.25
+       ],
+       "size": [
+        7.2,
+        6,
+        0.35
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          34,
+          21
+         ],
+         "uv_size": [
+          14,
+          12
+         ]
+        },
+        "east": {
+         "uv": [
+          62,
+          0
+         ],
+         "uv_size": [
+          1,
+          12
+         ]
+        },
+        "south": {
+         "uv": [
+          48,
+          21
+         ],
+         "uv_size": [
+          14,
+          12
+         ]
+        },
+        "west": {
+         "uv": [
+          63,
+          0
+         ],
+         "uv_size": [
+          1,
+          12
+         ]
+        },
+        "up": {
+         "uv": [
+          2,
+          54
+         ],
+         "uv_size": [
+          14,
+          1
+         ]
+        },
+        "down": {
+         "uv": [
+          32,
+          55
+         ],
+         "uv_size": [
+          14,
+          -1
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        -4,
+        13.5,
+        2.9
+       ],
+       "size": [
+        8,
+        6,
+        0.35
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          2,
+          21
+         ],
+         "uv_size": [
+          16,
+          12
+         ]
+        },
+        "east": {
+         "uv": [
+          62,
+          12
+         ],
+         "uv_size": [
+          1,
+          12
+         ]
+        },
+        "south": {
+         "uv": [
+          18,
+          21
+         ],
+         "uv_size": [
+          16,
+          12
+         ]
+        },
+        "west": {
+         "uv": [
+          63,
+          12
+         ],
+         "uv_size": [
+          1,
+          12
+         ]
+        },
+        "up": {
+         "uv": [
+          32,
+          53
+         ],
+         "uv_size": [
+          16,
+          1
+         ]
+        },
+        "down": {
+         "uv": [
+          48,
+          54
+         ],
+         "uv_size": [
+          16,
+          -1
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "Torso",
+     "parent": "Body",
+     "pivot": [
+      0,
+      20.06,
+      -0.71
+     ],
+     "rotation": [
+      10,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "chest|Torso",
+     "parent": "Torso",
+     "pivot": [
+      0,
+      20.06,
+      -0.71
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -3.103,
+        14,
+        -2.813
+       ],
+       "size": [
+        6.206,
+        1,
+        4.206
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          2,
+          52
+         ],
+         "uv_size": [
+          12,
+          2
+         ]
+        },
+        "east": {
+         "uv": [
+          54,
+          43
+         ],
+         "uv_size": [
+          8,
+          2
+         ]
+        },
+        "south": {
+         "uv": [
+          14,
+          52
+         ],
+         "uv_size": [
+          12,
+          2
+         ]
+        },
+        "west": {
+         "uv": [
+          54,
+          45
+         ],
+         "uv_size": [
+          8,
+          2
+         ]
+        },
+        "up": {
+         "uv": [
+          2,
+          44
+         ],
+         "uv_size": [
+          12,
+          8
+         ]
+        },
+        "down": {
+         "uv": [
+          14,
+          52
+         ],
+         "uv_size": [
+          12,
+          -8
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "RightArm",
+     "parent": "root",
+     "pivot": [
+      -3.75,
+      21,
+      0.5
+     ]
+    },
+    {
+     "name": "Right Arm Auxiliary",
+     "parent": "RightArm",
+     "pivot": [
+      -3.75,
+      22,
+      -0.5
+     ]
+    },
+    {
+     "name": "Right Arm root",
+     "parent": "Right Arm Auxiliary",
+     "pivot": [
+      -3.75,
+      22,
+      -0.5
+     ]
+    },
+    {
+     "name": "Right Arm",
+     "parent": "Right Arm root",
+     "pivot": [
+      -4.75,
+      21.11,
+      0.5
+     ],
+     "rotation": [
+      15,
+      349,
+      17
+     ]
+    },
+    {
+     "name": "Feathers Wing Right",
+     "parent": "Right Arm",
+     "pivot": [
+      -4.75,
+      22.11,
+      0.5
+     ],
+     "rotation": [
+      10,
+      360,
+      360
+     ]
+    },
+    {
+     "name": "chest|Feathers Wing Right",
+     "parent": "Feathers Wing Right",
+     "pivot": [
+      -4.75,
+      22.11,
+      0.5
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -5.15,
+        12,
+        -4.8
+       ],
+       "size": [
+        0.7,
+        10.41,
+        12.6
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          53,
+          0
+         ],
+         "uv_size": [
+          -1,
+          21
+         ]
+        },
+        "east": {
+         "uv": [
+          52,
+          0
+         ],
+         "uv_size": [
+          -25,
+          21
+         ]
+        },
+        "south": {
+         "uv": [
+          54,
+          0
+         ],
+         "uv_size": [
+          -1,
+          21
+         ]
+        },
+        "west": {
+         "uv": [
+          27,
+          0
+         ],
+         "uv_size": [
+          -25,
+          21
+         ]
+        },
+        "up": {
+         "uv": [
+          1,
+          0
+         ],
+         "uv_size": [
+          -1,
+          25
+         ]
+        },
+        "down": {
+         "uv": [
+          2,
+          25
+         ],
+         "uv_size": [
+          -1,
+          -25
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "LeftArm",
+     "parent": "root",
+     "pivot": [
+      3.75,
+      21,
+      0.5
+     ]
+    },
+    {
+     "name": "Left Arm Auxiliary",
+     "parent": "LeftArm",
+     "pivot": [
+      3.75,
+      22,
+      -0.5
+     ]
+    },
+    {
+     "name": "Left Arm root",
+     "parent": "Left Arm Auxiliary",
+     "pivot": [
+      3.75,
+      22,
+      -0.5
+     ]
+    },
+    {
+     "name": "Left Arm",
+     "parent": "Left Arm root",
+     "pivot": [
+      4.75,
+      21.11,
+      0.5
+     ],
+     "rotation": [
+      15,
+      11,
+      343
+     ]
+    },
+    {
+     "name": "Feathers Wing Left",
+     "parent": "Left Arm",
+     "pivot": [
+      4.75,
+      22.11,
+      0.5
+     ],
+     "rotation": [
+      10,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "chest|Feathers Wing Left",
+     "parent": "Feathers Wing Left",
+     "pivot": [
+      4.75,
+      22.11,
+      0.5
+     ],
+     "cubes": [
+      {
+       "origin": [
+        4.45,
+        12,
+        -4.8
+       ],
+       "size": [
+        0.7,
+        10.41,
+        12.6
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          52,
+          0
+         ],
+         "uv_size": [
+          1,
+          21
+         ]
+        },
+        "east": {
+         "uv": [
+          2,
+          0
+         ],
+         "uv_size": [
+          25,
+          21
+         ]
+        },
+        "south": {
+         "uv": [
+          53,
+          0
+         ],
+         "uv_size": [
+          1,
+          21
+         ]
+        },
+        "west": {
+         "uv": [
+          27,
+          0
+         ],
+         "uv_size": [
+          25,
+          21
+         ]
+        },
+        "up": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          1,
+          25
+         ]
+        },
+        "down": {
+         "uv": [
+          1,
+          25
+         ],
+         "uv_size": [
+          1,
+          -25
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

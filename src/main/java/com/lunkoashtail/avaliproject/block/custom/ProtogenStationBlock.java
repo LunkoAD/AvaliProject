@@ -1,13 +1,14 @@
 package com.lunkoashtail.avaliproject.block.custom;
 
+import com.lunkoashtail.avaliproject.block.entity.custom.ProtogenGeneratorBlockEntity;
 import com.lunkoashtail.avaliproject.block.entity.custom.ProtogenStationBlockEntity;
+import com.lunkoashtail.avaliproject.block.entity.custom.ProtogenWorkStationBlockEntity;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -20,18 +21,24 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class ProtogenStationBlock extends BaseEntityBlock {
     public static final MapCodec<ProtogenStationBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            StationKind.CODEC.fieldOf("kind").forGetter(ProtogenStationBlock::kind),
             Codec.STRING.fieldOf("idle_animation").forGetter(ProtogenStationBlock::getIdleAnimation),
             Codec.STRING.fieldOf("active_animation").forGetter(ProtogenStationBlock::getActiveAnimation),
             Codec.INT.fieldOf("width").forGetter(block -> block.width),
@@ -41,27 +48,29 @@ public class ProtogenStationBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 
+    private final StationKind kind;
     private final String idleAnimation;
     private final String activeAnimation;
     private final int width;
     private final int height;
     private final int depth;
-    private final VoxelShape shapeX;
-    private final VoxelShape shapeZ;
 
-    public ProtogenStationBlock(String idleAnimation, String activeAnimation, int width, int height, int depth,
+    public ProtogenStationBlock(StationKind kind, String idleAnimation, String activeAnimation, int width, int height, int depth,
                                 BlockBehaviour.Properties properties) {
         super(properties);
+        this.kind = kind;
         this.idleAnimation = idleAnimation;
         this.activeAnimation = activeAnimation;
         this.width = width;
         this.height = height;
         this.depth = depth;
-        this.shapeX = Block.box(8.0 - width / 2.0, 0.0, 8.0 - depth / 2.0, 8.0 + width / 2.0, height, 8.0 + depth / 2.0);
-        this.shapeZ = Block.box(8.0 - depth / 2.0, 0.0, 8.0 - width / 2.0, 8.0 + depth / 2.0, height, 8.0 + width / 2.0);
         registerDefaultState(stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(ACTIVE, false));
+    }
+
+    public StationKind kind() {
+        return kind;
     }
 
     public String getIdleAnimation() {
@@ -84,13 +93,22 @@ public class ProtogenStationBlock extends BaseEntityBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return state.getValue(FACING).getAxis() == Direction.Axis.Z ? shapeX : shapeZ;
+        MachineFootprint footprint = MachineFootprint.of(this);
+        return footprint == null ? Shapes.block() : footprint.cellShape(0);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        Direction facing = context.getHorizontalDirection().getOpposite();
+        if (!MachinePartBlock.canPlace(context, this, facing)) return null;
+        return defaultBlockState().setValue(FACING, facing);
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        MachinePartBlock.placeParts(level, pos, state);
     }
 
     @Override
@@ -108,17 +126,36 @@ public class ProtogenStationBlock extends BaseEntityBlock {
         if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
-        boolean active = !state.getValue(ACTIVE);
-        level.setBlock(pos, state.setValue(ACTIVE, active), Block.UPDATE_ALL);
-        level.playSound(null, pos, active ? SoundEvents.BEACON_ACTIVATE : SoundEvents.BEACON_DEACTIVATE,
-                SoundSource.BLOCKS, 0.6F, 1.4F);
+        if (level.getBlockEntity(pos) instanceof ProtogenStationBlockEntity station && player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.openMenu(station, pos);
+        }
         return InteractionResult.CONSUME;
+    }
+
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (!state.is(newState.getBlock())) {
+            if (level.getBlockEntity(pos) instanceof ProtogenStationBlockEntity station) station.onBroken();
+            MachinePartBlock.removeParts(level, pos, state);
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new ProtogenStationBlockEntity(pos, state);
+        return kind == StationKind.GENERATOR
+                ? new ProtogenGeneratorBlockEntity(pos, state)
+                : new ProtogenWorkStationBlockEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        if (level.isClientSide()) return null;
+        return (tickLevel, tickPos, tickState, blockEntity) -> {
+            if (blockEntity instanceof ProtogenStationBlockEntity station) station.serverTick();
+        };
     }
 
     @Override

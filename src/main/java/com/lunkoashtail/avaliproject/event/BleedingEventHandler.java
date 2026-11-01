@@ -184,6 +184,7 @@ public class BleedingEventHandler {
         if (!player.isAlive() || player.isDeadOrDying()) return;
         if (player.getData(ModAttachments.SPECIES) != Species.EXPIE) return;
         if (player.tickCount % BLEED_TICK_INTERVAL != 0) return;
+        if (com.lunkoashtail.avaliproject.Config.realisticVitals) return;
 
         LimbData data = player.getData(ModAttachments.LIMB_DATA);
         if (!data.isAnyBleeding()) return;

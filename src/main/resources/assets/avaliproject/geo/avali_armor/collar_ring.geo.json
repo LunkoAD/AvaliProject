@@ -1,0 +1,206 @@
+{
+ "format_version": "1.12.0",
+ "minecraft:geometry": [
+  {
+   "description": {
+    "identifier": "geometry.avali_armor_collar_ring",
+    "texture_width": 64,
+    "texture_height": 64,
+    "visible_bounds_width": 7,
+    "visible_bounds_height": 4.5,
+    "visible_bounds_offset": [
+     0,
+     1.75,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "Body",
+     "parent": "root",
+     "pivot": [
+      0,
+      24,
+      0
+     ]
+    },
+    {
+     "name": "Neck",
+     "parent": "Body",
+     "pivot": [
+      0,
+      24,
+      0
+     ]
+    },
+    {
+     "name": "head|Neck",
+     "parent": "Neck",
+     "pivot": [
+      0,
+      24,
+      0
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -2.26,
+        22.4,
+        -1.26
+       ],
+       "size": [
+        4.52,
+        1.2,
+        2.52
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          18,
+          0
+         ],
+         "uv_size": [
+          9,
+          2
+         ]
+        },
+        "east": {
+         "uv": [
+          36,
+          0
+         ],
+         "uv_size": [
+          5,
+          2
+         ]
+        },
+        "south": {
+         "uv": [
+          27,
+          0
+         ],
+         "uv_size": [
+          9,
+          2
+         ]
+        },
+        "west": {
+         "uv": [
+          41,
+          0
+         ],
+         "uv_size": [
+          5,
+          2
+         ]
+        },
+        "up": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          9,
+          5
+         ]
+        },
+        "down": {
+         "uv": [
+          9,
+          5
+         ],
+         "uv_size": [
+          9,
+          -5
+         ]
+        }
+       }
+      },
+      {
+       "origin": [
+        -0.7,
+        21.4,
+        -1.75
+       ],
+       "size": [
+        1.4,
+        1.2,
+        0.4
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          46,
+          0
+         ],
+         "uv_size": [
+          3,
+          2
+         ]
+        },
+        "east": {
+         "uv": [
+          52,
+          0
+         ],
+         "uv_size": [
+          1,
+          2
+         ]
+        },
+        "south": {
+         "uv": [
+          49,
+          0
+         ],
+         "uv_size": [
+          3,
+          2
+         ]
+        },
+        "west": {
+         "uv": [
+          53,
+          0
+         ],
+         "uv_size": [
+          1,
+          2
+         ]
+        },
+        "up": {
+         "uv": [
+          54,
+          0
+         ],
+         "uv_size": [
+          3,
+          1
+         ]
+        },
+        "down": {
+         "uv": [
+          57,
+          1
+         ],
+         "uv_size": [
+          3,
+          -1
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,12 +1,12 @@
 package com.lunkoashtail.avaliproject.entity.client;
 
+import com.google.common.collect.MapMaker;
 import software.bernie.geckolib.cache.object.GeoBone;
 
 import java.util.Map;
-import java.util.WeakHashMap;
 
 public final class GeoBoneOffsets {
-    private static final Map<GeoBone, float[]> STATES = new WeakHashMap<>();
+    private static final Map<GeoBone, float[]> STATES = new MapMaker().weakKeys().makeMap();
 
     private GeoBoneOffsets() {
     }

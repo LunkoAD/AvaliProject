@@ -60,10 +60,12 @@ public class PackLossEffect extends MobEffect {
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         if (entity.level().isClientSide()) return true;
-        if (amplifier >= HUNGER_LEVEL && entity instanceof Player player) {
-            player.causeFoodExhaustion(HUNGER_EXHAUSTION_PER_TICK * TICK_INTERVAL);
+        boolean eased = entity.hasEffect(ModEffects.ANTIDEPRESSANT);
+        int effective = eased ? amplifier - 1 : amplifier;
+        if (effective >= HUNGER_LEVEL && entity instanceof Player player) {
+            player.causeFoodExhaustion(HUNGER_EXHAUSTION_PER_TICK * TICK_INTERVAL * (eased ? 0.5f : 1f));
         }
-        if (amplifier >= DARKNESS_LEVEL) {
+        if (effective >= DARKNESS_LEVEL) {
             MobEffectInstance packLoss = entity.getEffect(ModEffects.PACK_LOSS);
             int phase = packLoss == null ? -1 : packLoss.getDuration() % WITHER_INTERVAL_TICKS;
             if (phase == 0 || phase == WITHER_INTERVAL_TICKS - WITHER_DAMAGE_SPACING_TICKS) {

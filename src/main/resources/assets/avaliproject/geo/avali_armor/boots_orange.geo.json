@@ -1,0 +1,867 @@
+{
+ "format_version": "1.12.0",
+ "minecraft:geometry": [
+  {
+   "description": {
+    "identifier": "geometry.avali_armor_boots_orange",
+    "texture_width": 64,
+    "texture_height": 64,
+    "visible_bounds_width": 7,
+    "visible_bounds_height": 4.5,
+    "visible_bounds_offset": [
+     0,
+     1.75,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "RightLeg",
+     "parent": "root",
+     "pivot": [
+      -1.9,
+      15,
+      0
+     ]
+    },
+    {
+     "name": "Thigh Right",
+     "parent": "RightLeg",
+     "pivot": [
+      -2.15,
+      16,
+      -0.2
+     ],
+     "rotation": [
+      345,
+      5,
+      6
+     ]
+    },
+    {
+     "name": "Calf Right",
+     "parent": "Thigh Right",
+     "pivot": [
+      -2.15,
+      11,
+      -0.2
+     ],
+     "rotation": [
+      52,
+      360,
+      360
+     ]
+    },
+    {
+     "name": "Foot Right 1",
+     "parent": "Calf Right",
+     "pivot": [
+      -2.15,
+      6,
+      0.8
+     ],
+     "rotation": [
+      303,
+      355,
+      350
+     ]
+    },
+    {
+     "name": "Toes Bottom Right",
+     "parent": "Foot Right 1",
+     "pivot": [
+      -3.75,
+      -1.8,
+      1.8
+     ],
+     "rotation": [
+      200,
+      359,
+      5
+     ]
+    },
+    {
+     "name": "feet|Toes Bottom Right",
+     "parent": "Toes Bottom Right",
+     "pivot": [
+      -3.75,
+      -1.8,
+      1.8
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -4.193,
+        -2.943,
+        0.967
+       ],
+       "size": [
+        2.286,
+        2.286,
+        3.633
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          47,
+          17
+         ],
+         "uv_size": [
+          -5,
+          5
+         ]
+        },
+        "east": {
+         "uv": [
+          42,
+          17
+         ],
+         "uv_size": [
+          -7,
+          5
+         ]
+        },
+        "south": {
+         "uv": [
+          53,
+          21
+         ],
+         "uv_size": [
+          -5,
+          5
+         ]
+        },
+        "west": {
+         "uv": [
+          35,
+          17
+         ],
+         "uv_size": [
+          -7,
+          5
+         ]
+        },
+        "up": {
+         "uv": [
+          58,
+          14
+         ],
+         "uv_size": [
+          -5,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          63,
+          21
+         ],
+         "uv_size": [
+          -5,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "Foot Right 2",
+     "parent": "Foot Right 1",
+     "pivot": [
+      -2.15,
+      6,
+      0.8
+     ],
+     "rotation": [
+      0,
+      0,
+      10
+     ]
+    },
+    {
+     "name": "feet|Foot Right 2",
+     "parent": "Foot Right 2",
+     "pivot": [
+      -2.15,
+      6,
+      0.8
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -3.679,
+        -2.569,
+        -0.639
+       ],
+       "size": [
+        2.338,
+        8.338,
+        3.338
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          43,
+          0
+         ],
+         "uv_size": [
+          -5,
+          17
+         ]
+        },
+        "east": {
+         "uv": [
+          28,
+          0
+         ],
+         "uv_size": [
+          -7,
+          17
+         ]
+        },
+        "south": {
+         "uv": [
+          48,
+          0
+         ],
+         "uv_size": [
+          -5,
+          17
+         ]
+        },
+        "west": {
+         "uv": [
+          21,
+          0
+         ],
+         "uv_size": [
+          -7,
+          17
+         ]
+        },
+        "up": {
+         "uv": [
+          63,
+          7
+         ],
+         "uv_size": [
+          -5,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          53,
+          21
+         ],
+         "uv_size": [
+          -5,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "feet|Foot Right 1",
+     "parent": "Foot Right 1",
+     "pivot": [
+      -2.15,
+      6,
+      0.8
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -3.145,
+        -2.595,
+        -0.685
+       ],
+       "size": [
+        2.39,
+        8.39,
+        3.39
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          33,
+          0
+         ],
+         "uv_size": [
+          -5,
+          17
+         ]
+        },
+        "east": {
+         "uv": [
+          14,
+          0
+         ],
+         "uv_size": [
+          -7,
+          17
+         ]
+        },
+        "south": {
+         "uv": [
+          38,
+          0
+         ],
+         "uv_size": [
+          -5,
+          17
+         ]
+        },
+        "west": {
+         "uv": [
+          7,
+          0
+         ],
+         "uv_size": [
+          -7,
+          17
+         ]
+        },
+        "up": {
+         "uv": [
+          53,
+          7
+         ],
+         "uv_size": [
+          -5,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          58,
+          14
+         ],
+         "uv_size": [
+          -5,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "feet|Calf Right",
+     "parent": "Calf Right",
+     "pivot": [
+      -2.15,
+      11,
+      -0.2
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -3.9425,
+        4.1575,
+        -1.6925
+       ],
+       "size": [
+        3.585,
+        2.8425,
+        3.585
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          7,
+          17
+         ],
+         "uv_size": [
+          -7,
+          6
+         ]
+        },
+        "east": {
+         "uv": [
+          28,
+          17
+         ],
+         "uv_size": [
+          -7,
+          6
+         ]
+        },
+        "south": {
+         "uv": [
+          14,
+          17
+         ],
+         "uv_size": [
+          -7,
+          6
+         ]
+        },
+        "west": {
+         "uv": [
+          21,
+          17
+         ],
+         "uv_size": [
+          -7,
+          6
+         ]
+        },
+        "up": {
+         "uv": [
+          55,
+          0
+         ],
+         "uv_size": [
+          -7,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          62,
+          7
+         ],
+         "uv_size": [
+          -7,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "LeftLeg",
+     "parent": "root",
+     "pivot": [
+      1.9,
+      15,
+      0
+     ]
+    },
+    {
+     "name": "Thigh Left",
+     "parent": "LeftLeg",
+     "pivot": [
+      2.15,
+      16,
+      -0.2
+     ],
+     "rotation": [
+      345,
+      355,
+      354
+     ]
+    },
+    {
+     "name": "Calf Left",
+     "parent": "Thigh Left",
+     "pivot": [
+      2.15,
+      11,
+      -0.2
+     ],
+     "rotation": [
+      52,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "Foot Left 1",
+     "parent": "Calf Left",
+     "pivot": [
+      2.15,
+      6,
+      0.8
+     ],
+     "rotation": [
+      303,
+      5,
+      10
+     ]
+    },
+    {
+     "name": "Toes Bottom Left",
+     "parent": "Foot Left 1",
+     "pivot": [
+      3.75,
+      -1.8,
+      1.8
+     ],
+     "rotation": [
+      200,
+      1,
+      355
+     ]
+    },
+    {
+     "name": "feet|Toes Bottom Left",
+     "parent": "Toes Bottom Left",
+     "pivot": [
+      3.75,
+      -1.8,
+      1.8
+     ],
+     "cubes": [
+      {
+       "origin": [
+        1.907,
+        -2.943,
+        0.967
+       ],
+       "size": [
+        2.286,
+        2.286,
+        3.633
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          42,
+          17
+         ],
+         "uv_size": [
+          5,
+          5
+         ]
+        },
+        "east": {
+         "uv": [
+          28,
+          17
+         ],
+         "uv_size": [
+          7,
+          5
+         ]
+        },
+        "south": {
+         "uv": [
+          48,
+          21
+         ],
+         "uv_size": [
+          5,
+          5
+         ]
+        },
+        "west": {
+         "uv": [
+          35,
+          17
+         ],
+         "uv_size": [
+          7,
+          5
+         ]
+        },
+        "up": {
+         "uv": [
+          53,
+          14
+         ],
+         "uv_size": [
+          5,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          58,
+          21
+         ],
+         "uv_size": [
+          5,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "Foot Left 2",
+     "parent": "Foot Left 1",
+     "pivot": [
+      2.15,
+      6,
+      0.8
+     ],
+     "rotation": [
+      0,
+      0,
+      350
+     ]
+    },
+    {
+     "name": "feet|Foot Left 2",
+     "parent": "Foot Left 2",
+     "pivot": [
+      2.15,
+      6,
+      0.8
+     ],
+     "cubes": [
+      {
+       "origin": [
+        1.341,
+        -2.569,
+        -0.639
+       ],
+       "size": [
+        2.338,
+        8.338,
+        3.338
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          38,
+          0
+         ],
+         "uv_size": [
+          5,
+          17
+         ]
+        },
+        "east": {
+         "uv": [
+          14,
+          0
+         ],
+         "uv_size": [
+          7,
+          17
+         ]
+        },
+        "south": {
+         "uv": [
+          43,
+          0
+         ],
+         "uv_size": [
+          5,
+          17
+         ]
+        },
+        "west": {
+         "uv": [
+          21,
+          0
+         ],
+         "uv_size": [
+          7,
+          17
+         ]
+        },
+        "up": {
+         "uv": [
+          58,
+          7
+         ],
+         "uv_size": [
+          5,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          48,
+          21
+         ],
+         "uv_size": [
+          5,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "feet|Foot Left 1",
+     "parent": "Foot Left 1",
+     "pivot": [
+      2.15,
+      6,
+      0.8
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0.755,
+        -2.595,
+        -0.685
+       ],
+       "size": [
+        2.39,
+        8.39,
+        3.39
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          28,
+          0
+         ],
+         "uv_size": [
+          5,
+          17
+         ]
+        },
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          7,
+          17
+         ]
+        },
+        "south": {
+         "uv": [
+          33,
+          0
+         ],
+         "uv_size": [
+          5,
+          17
+         ]
+        },
+        "west": {
+         "uv": [
+          7,
+          0
+         ],
+         "uv_size": [
+          7,
+          17
+         ]
+        },
+        "up": {
+         "uv": [
+          48,
+          7
+         ],
+         "uv_size": [
+          5,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          53,
+          14
+         ],
+         "uv_size": [
+          5,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "feet|Calf Left",
+     "parent": "Calf Left",
+     "pivot": [
+      2.15,
+      11,
+      -0.2
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0.3575,
+        4.1575,
+        -1.6925
+       ],
+       "size": [
+        3.585,
+        2.8425,
+        3.585
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          0,
+          17
+         ],
+         "uv_size": [
+          7,
+          6
+         ]
+        },
+        "east": {
+         "uv": [
+          14,
+          17
+         ],
+         "uv_size": [
+          7,
+          6
+         ]
+        },
+        "south": {
+         "uv": [
+          7,
+          17
+         ],
+         "uv_size": [
+          7,
+          6
+         ]
+        },
+        "west": {
+         "uv": [
+          21,
+          17
+         ],
+         "uv_size": [
+          7,
+          6
+         ]
+        },
+        "up": {
+         "uv": [
+          48,
+          0
+         ],
+         "uv_size": [
+          7,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          55,
+          7
+         ],
+         "uv_size": [
+          7,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

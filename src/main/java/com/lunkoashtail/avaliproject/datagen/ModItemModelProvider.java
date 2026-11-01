@@ -59,6 +59,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.REFINED_AEGISALT.get());
         basicItem(ModItems.RAW_AEGISALT.get());
         basicItem(ModItems.TITANIUM_INGOT.get());
+        basicItem(ModItems.COMBAT_PEN.get());
+        handheldItem(ModItems.TITANIUM_SWORD);
+        handheldItem(ModItems.TITANIUM_PICKAXE);
+        handheldItem(ModItems.TITANIUM_AXE);
+        handheldItem(ModItems.TITANIUM_SHOVEL);
+        handheldItem(ModItems.TITANIUM_HOE);
+        trimmedArmorItem(ModItems.TITANIUM_HELMET);
+        trimmedArmorItem(ModItems.TITANIUM_CHESTPLATE);
+        trimmedArmorItem(ModItems.TITANIUM_LEGGINGS);
+        trimmedArmorItem(ModItems.TITANIUM_BOOTS);
         basicItem(ModItems.RAW_TITANIUM.get());
         basicItem(ModItems.FIBER.get());
         basicItem(ModItems.LUME.get());
@@ -302,7 +312,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.AMMOLITE.get());
 
         withExistingParent(ModItems.WICKERBEAST_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
-        withExistingParent(ModItems.FELKIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.NORTHERN_FELKIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.ZORGOIA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.DUTCH_ANGEL_DRAGON_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));

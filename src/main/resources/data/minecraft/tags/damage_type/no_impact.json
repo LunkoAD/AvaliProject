@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "avaliproject:bled_out",
+    "avaliproject:overdose",
+    "avaliproject:cardiac_arrest",
+    "avaliproject:brain_death",
+    "avaliproject:radiation",
+    "avaliproject:dehydration"
+  ]
+}

@@ -2,9 +2,13 @@ package com.lunkoashtail.avaliproject.block.entity.client;
 
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.custom.ProtogenColor;
+import com.lunkoashtail.avaliproject.block.custom.SynchPodBlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.model.GeoModel;
 
 public class ProtogenMachineModel<T extends BlockEntity & GeoAnimatable> extends GeoModel<T> {
@@ -36,5 +40,13 @@ public class ProtogenMachineModel<T extends BlockEntity & GeoAnimatable> extends
     @Override
     public ResourceLocation getAnimationResource(T animatable) {
         return animation;
+    }
+
+    @Override
+    public void setCustomAnimations(T animatable, long instanceId, AnimationState<T> animationState) {
+        BlockState state = animatable.getBlockState();
+        if (!state.hasProperty(SynchPodBlock.OCCUPIED)) return;
+        GeoBone patient = getAnimationProcessor().getBone("patient");
+        if (patient != null) patient.setHidden(!state.getValue(SynchPodBlock.OCCUPIED));
     }
 }

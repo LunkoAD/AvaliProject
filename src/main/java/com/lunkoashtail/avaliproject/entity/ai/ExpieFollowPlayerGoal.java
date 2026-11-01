@@ -26,6 +26,7 @@ public class ExpieFollowPlayerGoal extends Goal {
     );
     private static final int CHASE_LINE_COOLDOWN_MIN_TICKS = 1200;
     private static final int CHASE_LINE_COOLDOWN_MAX_TICKS = 2000;
+    private static final double CHASE_LINE_MAX_DISTANCE = 16.0;
 
     private final ExpieEntity expie;
     private final PathNavigation navigation;
@@ -82,6 +83,7 @@ public class ExpieFollowPlayerGoal extends Goal {
 
     private void maybeSayChaseLine() {
         if (expie.level().getGameTime() < nextChaseLineTick) return;
+        if (target == null || expie.distanceToSqr(target) > CHASE_LINE_MAX_DISTANCE * CHASE_LINE_MAX_DISTANCE) return;
         nextChaseLineTick = expie.level().getGameTime()
                 + CHASE_LINE_COOLDOWN_MIN_TICKS
                 + expie.getRandom().nextInt(CHASE_LINE_COOLDOWN_MAX_TICKS - CHASE_LINE_COOLDOWN_MIN_TICKS);

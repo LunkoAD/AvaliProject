@@ -122,8 +122,8 @@ public final class GeoModelLoader {
             float minZ = origin[2] - framePivot[2];
 
             Map<Direction, float[]> faces = faceUvs(cube, size);
-            ModelPart.Cube built = new ModelPart.Cube(0, 0, minX, minY, minZ, size[0], size[1], size[2],
-                    inflate, inflate, inflate, false, textureWidth, textureHeight,
+            ModelPart.Cube built = new GeoCube(minX, minY, minZ, size[0], size[1], size[2],
+                    inflate, textureWidth, textureHeight,
                     faces.isEmpty() ? EnumSet.noneOf(Direction.class) : EnumSet.copyOf(faces.keySet()));
             int index = 0;
             for (Direction direction : VANILLA_FACE_ORDER) {

@@ -1,0 +1,471 @@
+{
+ "format_version": "1.12.0",
+ "minecraft:geometry": [
+  {
+   "description": {
+    "identifier": "geometry.avali_armor_wraps_black",
+    "texture_width": 64,
+    "texture_height": 64,
+    "visible_bounds_width": 7,
+    "visible_bounds_height": 4.5,
+    "visible_bounds_offset": [
+     0,
+     1.75,
+     0
+    ]
+   },
+   "bones": [
+    {
+     "name": "root",
+     "pivot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "RightLeg",
+     "parent": "root",
+     "pivot": [
+      -1.9,
+      15,
+      0
+     ]
+    },
+    {
+     "name": "Thigh Right",
+     "parent": "RightLeg",
+     "pivot": [
+      -2.15,
+      16,
+      -0.2
+     ],
+     "rotation": [
+      345,
+      5,
+      6
+     ]
+    },
+    {
+     "name": "Calf Right",
+     "parent": "Thigh Right",
+     "pivot": [
+      -2.15,
+      11,
+      -0.2
+     ],
+     "rotation": [
+      52,
+      360,
+      360
+     ]
+    },
+    {
+     "name": "Foot Right 1",
+     "parent": "Calf Right",
+     "pivot": [
+      -2.15,
+      6,
+      0.8
+     ],
+     "rotation": [
+      303,
+      355,
+      350
+     ]
+    },
+    {
+     "name": "feet|Foot Right 1",
+     "parent": "Foot Right 1",
+     "pivot": [
+      -2.15,
+      6,
+      0.8
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -3.093,
+        0,
+        -0.633
+       ],
+       "size": [
+        2.286,
+        5.743,
+        3.286
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          19,
+          0
+         ],
+         "uv_size": [
+          -5,
+          11
+         ]
+        },
+        "east": {
+         "uv": [
+          14,
+          0
+         ],
+         "uv_size": [
+          -7,
+          11
+         ]
+        },
+        "south": {
+         "uv": [
+          24,
+          0
+         ],
+         "uv_size": [
+          -5,
+          11
+         ]
+        },
+        "west": {
+         "uv": [
+          7,
+          0
+         ],
+         "uv_size": [
+          -7,
+          11
+         ]
+        },
+        "up": {
+         "uv": [
+          64,
+          0
+         ],
+         "uv_size": [
+          -5,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          64,
+          14
+         ],
+         "uv_size": [
+          -5,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "feet|Calf Right",
+     "parent": "Calf Right",
+     "pivot": [
+      -2.15,
+      11,
+      -0.2
+     ],
+     "cubes": [
+      {
+       "origin": [
+        -3.806,
+        4.294,
+        -1.556
+       ],
+       "size": [
+        3.312,
+        4.206,
+        3.312
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          31,
+          0
+         ],
+         "uv_size": [
+          -7,
+          8
+         ]
+        },
+        "east": {
+         "uv": [
+          52,
+          0
+         ],
+         "uv_size": [
+          -7,
+          8
+         ]
+        },
+        "south": {
+         "uv": [
+          38,
+          0
+         ],
+         "uv_size": [
+          -7,
+          8
+         ]
+        },
+        "west": {
+         "uv": [
+          45,
+          0
+         ],
+         "uv_size": [
+          -7,
+          8
+         ]
+        },
+        "up": {
+         "uv": [
+          59,
+          0
+         ],
+         "uv_size": [
+          -7,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          59,
+          14
+         ],
+         "uv_size": [
+          -7,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "LeftLeg",
+     "parent": "root",
+     "pivot": [
+      1.9,
+      15,
+      0
+     ]
+    },
+    {
+     "name": "Thigh Left",
+     "parent": "LeftLeg",
+     "pivot": [
+      2.15,
+      16,
+      -0.2
+     ],
+     "rotation": [
+      345,
+      355,
+      354
+     ]
+    },
+    {
+     "name": "Calf Left",
+     "parent": "Thigh Left",
+     "pivot": [
+      2.15,
+      11,
+      -0.2
+     ],
+     "rotation": [
+      52,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "Foot Left 1",
+     "parent": "Calf Left",
+     "pivot": [
+      2.15,
+      6,
+      0.8
+     ],
+     "rotation": [
+      303,
+      5,
+      10
+     ]
+    },
+    {
+     "name": "feet|Foot Left 1",
+     "parent": "Foot Left 1",
+     "pivot": [
+      2.15,
+      6,
+      0.8
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0.807,
+        0,
+        -0.633
+       ],
+       "size": [
+        2.286,
+        5.743,
+        3.286
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          14,
+          0
+         ],
+         "uv_size": [
+          5,
+          11
+         ]
+        },
+        "east": {
+         "uv": [
+          0,
+          0
+         ],
+         "uv_size": [
+          7,
+          11
+         ]
+        },
+        "south": {
+         "uv": [
+          19,
+          0
+         ],
+         "uv_size": [
+          5,
+          11
+         ]
+        },
+        "west": {
+         "uv": [
+          7,
+          0
+         ],
+         "uv_size": [
+          7,
+          11
+         ]
+        },
+        "up": {
+         "uv": [
+          59,
+          0
+         ],
+         "uv_size": [
+          5,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          59,
+          14
+         ],
+         "uv_size": [
+          5,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "feet|Calf Left",
+     "parent": "Calf Left",
+     "pivot": [
+      2.15,
+      11,
+      -0.2
+     ],
+     "cubes": [
+      {
+       "origin": [
+        0.494,
+        4.294,
+        -1.556
+       ],
+       "size": [
+        3.312,
+        4.206,
+        3.312
+       ],
+       "uv": {
+        "north": {
+         "uv": [
+          24,
+          0
+         ],
+         "uv_size": [
+          7,
+          8
+         ]
+        },
+        "east": {
+         "uv": [
+          38,
+          0
+         ],
+         "uv_size": [
+          7,
+          8
+         ]
+        },
+        "south": {
+         "uv": [
+          31,
+          0
+         ],
+         "uv_size": [
+          7,
+          8
+         ]
+        },
+        "west": {
+         "uv": [
+          45,
+          0
+         ],
+         "uv_size": [
+          7,
+          8
+         ]
+        },
+        "up": {
+         "uv": [
+          52,
+          0
+         ],
+         "uv_size": [
+          7,
+          7
+         ]
+        },
+        "down": {
+         "uv": [
+          52,
+          14
+         ],
+         "uv_size": [
+          7,
+          -7
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

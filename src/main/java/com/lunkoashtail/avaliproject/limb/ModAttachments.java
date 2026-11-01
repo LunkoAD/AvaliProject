@@ -139,6 +139,20 @@ public class ModAttachments {
                     .build()
     );
 
+    public static final Supplier<AttachmentType<com.lunkoashtail.avaliproject.vitals.Vitals>> VITALS = ATTACHMENT_TYPES.register(
+            "vitals",
+            () -> AttachmentType.<com.lunkoashtail.avaliproject.vitals.Vitals>builder(com.lunkoashtail.avaliproject.vitals.Vitals::new)
+                    .serialize(com.lunkoashtail.avaliproject.vitals.Vitals.CODEC)
+                    .build()
+    );
+
+    public static final Supplier<AttachmentType<com.lunkoashtail.avaliproject.vitals.LimbHealth>> LIMB_HEALTH = ATTACHMENT_TYPES.register(
+            "limb_health",
+            () -> AttachmentType.<com.lunkoashtail.avaliproject.vitals.LimbHealth>builder(com.lunkoashtail.avaliproject.vitals.LimbHealth::new)
+                    .serialize(com.lunkoashtail.avaliproject.vitals.LimbHealth.CODEC)
+                    .build()
+    );
+
     public static void register(IEventBus eventBus) {
         ATTACHMENT_TYPES.register(eventBus);
     }

@@ -90,6 +90,11 @@ public class SpeciesRenderHandler {
         return slot.dummy();
     }
 
+    public static void forget(UUID playerId) {
+        DummySlot slot = DUMMIES.remove(playerId);
+        if (slot != null) OWNERS.remove(slot.dummy());
+    }
+
     @Nullable
     public static Player ownerOf(Entity dummy) {
         return OWNERS.get(dummy);
