@@ -3,6 +3,7 @@ package com.lunkoashtail.avaliproject.datagen;
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.block.WoodSet;
+import com.lunkoashtail.avaliproject.compat.ae2.AE2Compat;
 import com.lunkoashtail.avaliproject.creativetab.GalaxyCategory;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.core.HolderLookup;
@@ -263,6 +264,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.PIRU_NODULE.asItem())
                 .add(ModItems.AVALI_SERUM.get())
                 .add(ModItems.AVALI_AUGMENT.get());
+        //load this only if ae2 is present - @989onan
+        if(AE2Compat.IsLoaded) {
+            tag(GalaxyCategory.AVALI.tag()).add(ModItems.SHATTERED_SYNC_CRYSTAL.get());
+        }
+
 
         tag(GalaxyCategory.PROTOGEN.tag())
                 .add(ModItems.ARCAITES_CRYSTAL.get())

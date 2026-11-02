@@ -3,6 +3,7 @@ package com.lunkoashtail.avaliproject.datagen;
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.block.WoodSet;
+import com.lunkoashtail.avaliproject.compat.ae2.AE2Compat;
 import com.lunkoashtail.avaliproject.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
@@ -49,6 +50,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.AERO_CRYSTAL.get());
         basicItem(ModItems.THERMAL_CRYSTAL.get());
         basicItem(ModItems.SYNC_CRYSTAL.get());
+        if(AE2Compat.IsLoaded){
+            basicItem(ModItems.SHATTERED_SYNC_CRYSTAL.get());
+        }
         basicItem(ModItems.AEROGEL.get());
         basicItem(ModItems.AEROGEL_BATTERY.get());
         basicItem(ModItems.AEROMER.get());
