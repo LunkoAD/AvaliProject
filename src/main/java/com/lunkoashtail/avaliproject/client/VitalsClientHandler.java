@@ -90,7 +90,7 @@ public class VitalsClientHandler {
         VitalsClientCache.clear();
     }
 
-    @EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = AvaliProject.MOD_ID, value = Dist.CLIENT)
     public static class Layers {
         @SubscribeEvent
         public static void register(RegisterGuiLayersEvent event) {

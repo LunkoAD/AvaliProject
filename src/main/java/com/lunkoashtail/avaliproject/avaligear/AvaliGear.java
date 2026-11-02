@@ -48,7 +48,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-@EventBusSubscriber(modid = AvaliProject.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = AvaliProject.MOD_ID)
 public final class AvaliGear {
     private AvaliGear() {
     }
