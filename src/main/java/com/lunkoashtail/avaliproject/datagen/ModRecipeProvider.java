@@ -12,18 +12,24 @@ import com.lunkoashtail.avaliproject.recipe.custom.OpiumRecipe;
 import com.lunkoashtail.avaliproject.recipe.custom.SalineRecipe;
 import com.lunkoashtail.avaliproject.recipe.custom.WaterBottleRecipe;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import com.lunkoashtail.avaliproject.item.custom.TrinketItem;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+
+import static net.minecraft.tags.TagEntry.tag;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
@@ -1063,67 +1069,67 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("T")
                 .pattern("T")
                 .pattern("S")
-                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
                 .define('S', Items.STICK)
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TITANIUM_PICKAXE.get())
                 .pattern("TTT")
                 .pattern(" S ")
                 .pattern(" S ")
-                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
                 .define('S', Items.STICK)
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TITANIUM_AXE.get())
                 .pattern("TT")
                 .pattern("TS")
                 .pattern(" S")
-                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
                 .define('S', Items.STICK)
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TITANIUM_SHOVEL.get())
                 .pattern("T")
                 .pattern("S")
                 .pattern("S")
-                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
                 .define('S', Items.STICK)
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
                 .pattern("TT")
                 .pattern(" S")
                 .pattern(" S")
-                .define('T', ModItems.TITANIUM_INGOT.get())
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
                 .define('S', Items.STICK)
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())
                 .pattern("TTT")
                 .pattern("T T")
-                .define('T', ModItems.TITANIUM_INGOT.get())
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_CHESTPLATE.get())
                 .pattern("T T")
                 .pattern("TTT")
                 .pattern("TTT")
-                .define('T', ModItems.TITANIUM_INGOT.get())
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_LEGGINGS.get())
                 .pattern("TTT")
                 .pattern("T T")
                 .pattern("T T")
-                .define('T', ModItems.TITANIUM_INGOT.get())
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
                 .pattern("T T")
                 .pattern("T T")
-                .define('T', ModItems.TITANIUM_INGOT.get())
-                .unlockedBy("has_titanium_ingot", has(ModItems.TITANIUM_INGOT))
+                .define('T', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
+                .unlockedBy("has_titanium_ingot", has(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium"))))
                 .save(recipeOutput);
         oreSmelting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 200, "lume_bit");
         oreBlasting(recipeOutput, LUME_SMELTABLES, RecipeCategory.MISC, ModItems.LUME_BIT.get(), 0.25f, 100, "lume_bit");

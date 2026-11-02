@@ -58,6 +58,26 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.TITANIUM_LEGGINGS.get());
         tag(ItemTags.FOOT_ARMOR)
                 .add(ModItems.TITANIUM_BOOTS.get());
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots")))
+                .add(ModItems.TITANIUM_INGOT.get())
+                .add(ModItems.AEROGEL.get())
+                .add(ModItems.VILOUS_CERAMIC_INGOT.get())
+                .add(ModItems.DURASTEEL_INGOT.get())
+                .add(ModItems.PROTOSTEEL_INGOT.get())
+                .add(ModItems.REFINED_AEGISALT.get());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/titanium")))
+                .add(ModItems.TITANIUM_INGOT.get());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/steel")))
+                .add(ModItems.DURASTEEL_INGOT.get())
+                .add(ModItems.PROTOSTEEL_INGOT.get());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ore/titanium")))
+                .add(ModBlocks.TITANIUM_ORE.asItem())
+                .add(ModBlocks.TITANIUM_DEEPSLATE_ORE.asItem());
+
+
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.TITANIUM_HELMET.get())
                 .add(ModItems.TITANIUM_CHESTPLATE.get())
