@@ -3,6 +3,7 @@ package com.lunkoashtail.avaliproject.item;
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
 import com.lunkoashtail.avaliproject.block.WoodSet;
+import com.lunkoashtail.avaliproject.compat.ae2.AE2Compat;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -68,6 +69,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.AEROGEL_BATTERY);
                         output.accept(ModItems.PIRU_FLOUR);
                         output.accept(ModItems.SYNC_CRYSTAL);
+                        if(AE2Compat.IsLoaded){
+                            output.accept(ModItems.SHATTERED_SYNC_CRYSTAL);
+                        }
                         output.accept(ModItems.AERO_CRYSTAL);
                         output.accept(ModItems.THERMAL_CRYSTAL);
                         output.accept(ModItems.REFINED_AEGISALT);

@@ -3,11 +3,14 @@
   "minVersion": "0.8",
   "package": "com.lunkoashtail.avaliproject.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "ItemEntityMixin"
+  ],
   "client": [
     "LevelRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "plugin": "com.moulberry.mixinconstraints.ConstraintsMixinPlugin"
 }

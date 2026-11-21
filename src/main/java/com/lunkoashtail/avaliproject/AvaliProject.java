@@ -120,10 +120,12 @@ public class AvaliProject {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerPayloads);
 
+
         com.lunkoashtail.avaliproject.compat.origins.OriginsCompat.init();
         modEventBus.addListener(com.lunkoashtail.avaliproject.compat.origins.OriginsCompat::onAddPackFinders);
 
         NeoForge.EVENT_BUS.register(this);
+        initOptionalIntegrations();
 
         ModAttachments.register(modEventBus);
         ModDataComponents.register(modEventBus);
@@ -365,7 +367,7 @@ public class AvaliProject {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.KIRI_NODULE.getId(), ModBlocks.POTTED_KIRI_NODULE);
             System.out.println("Common setup for Avali Project.");
         });
-        initOptionalIntegrations();
+
         LOGGER.info("HELLO FROM COMMON SETUP");
         if (Config.logDirtBlock)
             LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));

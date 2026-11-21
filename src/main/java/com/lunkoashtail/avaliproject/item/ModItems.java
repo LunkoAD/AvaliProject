@@ -1,13 +1,14 @@
 package com.lunkoashtail.avaliproject.item;
 
+import appeng.api.ids.AEComponents;
 import com.lunkoashtail.avaliproject.AvaliProject;
 import com.lunkoashtail.avaliproject.block.ModBlocks;
+import com.lunkoashtail.avaliproject.compat.ae2.AE2Compat;
 import com.lunkoashtail.avaliproject.entity.ModEntities;
 import com.lunkoashtail.avaliproject.item.custom.*;
 import com.lunkoashtail.avaliproject.sound.ModSounds;
 import com.lunkoashtail.avaliproject.species.Species;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
@@ -15,6 +16,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AvaliProject.MOD_ID);
@@ -154,6 +156,18 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SYNC_CRYSTAL = ITEMS.register("sync_crystal",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(16)));
+
+    public static final DeferredItem<Item> SHATTERED_SYNC_CRYSTAL = registerOptional(() -> AE2Compat.IsLoaded, "shattered_sync_crystal",
+            () -> new Item(new Item.Properties().component(AEComponents.ENTANGLED_SINGULARITY_ID, 1l).rarity(Rarity.EPIC).stacksTo(2)){
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable("tooltip.avaliproject.shattered_sync_crystal.tooltip_1"));
+                    tooltip.add(Component.translatable("tooltip.avaliproject.shattered_sync_crystal.tooltip_2"));
+                    tooltip.add(Component.translatable("tooltip.avaliproject.shattered_sync_crystal.tooltip_3"));
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
+
     public static final DeferredItem<Item> RAW_DURASTEEL = ITEMS.register("raw_durasteel",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_AEGISALT = ITEMS.register("raw_aegisalt",
@@ -746,5 +760,12 @@ public class ModItems {
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
+    }
+
+    public static DeferredItem<Item> registerOptional(Supplier<Boolean> should_register, String name, Supplier<? extends Item> item_supplier){
+        if(should_register.get()){
+            return ITEMS.register(name, item_supplier);
+        }
+        return null;
     }
 }
